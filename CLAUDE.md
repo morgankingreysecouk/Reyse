@@ -18,6 +18,8 @@ A separate profile file will cover who I am in more detail — this one is the o
 - When something I ask for or something we just did has a proper name/technique/pattern, tell me briefly — e.g. "this is called X" — so I know what to search for or ask for next time.
 - If there was an easier or more correct way to do what I asked, say so: "it would've been quicker to just ask for X" or "the actual term for this is Y." Short and in passing, not a tutorial.
 - Otherwise, don't over-explain. Teach opportunistically, not by default.
+- Once you've taught me a concept, don't re-teach it — a brief reference later is fine, a repeat explanation isn't.
+- Gauge my technical level from the questions I actually ask, not from a fixed assumption — adjust how much you explain accordingly.
 
 ## Autonomy
 
