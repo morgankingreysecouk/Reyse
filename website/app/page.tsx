@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const industries = [
   "Estate agents",
   "Letting agents",
@@ -9,12 +11,6 @@ const industries = [
   "Student accommodation",
   "Holiday parks",
   "Self-storage",
-];
-
-const chatMessages = [
-  { from: "visitor", text: "Hi! Is the 2-bed on Kings Road still available for viewings?" },
-  { from: "agent", text: "Yes it is! I can see slots this Thursday at 4pm or Saturday morning — which works better?" },
-  { from: "visitor", text: "Saturday morning, please." },
 ];
 
 export default function Home() {
@@ -39,98 +35,43 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero */}
-        <section className="relative overflow-hidden">
+        <section className="relative flex min-h-[92vh] items-end overflow-hidden">
+          <Image
+            src="/images/hero-laptop.png"
+            alt="An AI live chat widget answering a property inquiry, shown on a laptop browsing short-term rentals"
+            fill
+            priority
+            className="object-cover"
+          />
           <div
             aria-hidden
-            className="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-accent/20 blur-3xl"
+            className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10"
           />
-          <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:py-28">
-            <div>
-              <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
-                AI live chat for the property industry
-              </p>
-              <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
-                Never miss another inquiry.
-              </h1>
-              <p className="mt-5 max-w-md text-lg text-foreground/70">
-                Reyse answers your leads, tenants and guests instantly &mdash;
-                day or night &mdash; so your team can focus on closing, not
-                repeating themselves.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="#contact"
-                  className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-                >
-                  Book a demo
-                </a>
-                <a
-                  href="#how-it-works"
-                  className="rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-foreground/40"
-                >
-                  See how it works
-                </a>
-              </div>
-            </div>
-
-            {/* Product mockup */}
-            <div className="relative">
-              <div className="overflow-hidden rounded-2xl border border-border bg-panel shadow-2xl">
-                <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
-                  <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-foreground/20" />
-                </div>
-                <div className="grid grid-cols-5">
-                  {/* Left: sample client site */}
-                  <div className="col-span-3 border-r border-border p-4">
-                    <div className="mb-3 flex gap-2 rounded-lg border border-border bg-background/40 p-2 text-[10px] text-foreground/60 sm:text-xs">
-                      <span className="rounded bg-background/60 px-2 py-1">Location</span>
-                      <span className="rounded bg-background/60 px-2 py-1">Check in</span>
-                      <span className="rounded bg-background/60 px-2 py-1">Guests</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      {["Beachfront Villa", "Mountain Retreat", "City Loft", "Countryside Cottage"].map(
-                        (name) => (
-                          <div key={name} className="rounded-lg border border-border p-2">
-                            <div className="mb-2 h-12 rounded-md bg-gradient-to-br from-accent/30 to-background" />
-                            <p className="text-xs font-medium">{name}</p>
-                            <p className="text-[10px] text-foreground/50">2 beds &middot; 4 guests</p>
-                          </div>
-                        ),
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Right: live chat widget */}
-                  <div className="col-span-2 flex flex-col p-3">
-                    <div className="mb-3 flex items-center justify-between">
-                      <span className="text-xs font-semibold">Live chat</span>
-                      <span className="flex items-center gap-1 text-[10px] text-foreground/60">
-                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                        Online
-                      </span>
-                    </div>
-                    <div className="flex-1 space-y-2">
-                      {chatMessages.map((m, i) => (
-                        <div
-                          key={i}
-                          className={
-                            m.from === "agent"
-                              ? "ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-chat-bubble px-2.5 py-1.5 text-[11px] text-foreground"
-                              : "mr-auto max-w-[85%] rounded-lg rounded-tl-sm bg-background/60 px-2.5 py-1.5 text-[11px] text-foreground/80"
-                          }
-                        >
-                          {m.text}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 rounded-lg border border-border px-2.5 py-1.5 text-[10px] text-foreground/40">
-                      Type a message&hellip;
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div className="relative mx-auto w-full max-w-6xl px-6 pb-16 pt-24">
+            <p className="mb-4 inline-block rounded-full border border-border bg-background/40 px-3 py-1 text-xs font-medium text-foreground/80 backdrop-blur">
+              AI live chat for the property industry
+            </p>
+            <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+              Never miss another inquiry.
+            </h1>
+            <p className="mt-5 max-w-md text-lg text-foreground/80">
+              Reyse answers your leads, tenants and guests instantly &mdash;
+              day or night &mdash; so your team can focus on closing, not
+              repeating themselves.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+              >
+                Book a demo
+              </a>
+              <a
+                href="#how-it-works"
+                className="rounded-full border border-border bg-background/40 px-6 py-3 text-sm font-medium backdrop-blur hover:border-foreground/40"
+              >
+                See how it works
+              </a>
             </div>
           </div>
         </section>
