@@ -1,4 +1,5 @@
 import HeroSlideshow from "./components/HeroSlideshow";
+import HowItWorksScroll from "./components/HowItWorksScroll";
 
 const trustedBy = [
   "Harbor Estates",
@@ -58,30 +59,7 @@ export default function Home() {
             <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
               How it works
             </h2>
-            <div className="mt-10 grid gap-8 sm:grid-cols-3">
-              {[
-                {
-                  title: "Drop it in",
-                  body: "Add Reyse to your website, WhatsApp or socials in minutes — no developer needed.",
-                },
-                {
-                  title: "It handles the inquiry",
-                  body: "Reyse answers questions about availability, pricing and viewings instantly, any time of day.",
-                },
-                {
-                  title: "You get the lead",
-                  body: "Qualified conversations get handed to your team, ready to close.",
-                },
-              ].map((step, i) => (
-                <div key={step.title} className="rounded-xl border border-border p-6">
-                  <span className="text-sm font-medium text-accent">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-2 font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-sm text-foreground/60">{step.body}</p>
-                </div>
-              ))}
-            </div>
+            <HowItWorksScroll />
           </div>
         </section>
 
