@@ -24,6 +24,7 @@ export default function IndustriesGrid() {
             src={`/images/industries/${industry.slug}.jpg`}
             alt={industry.label}
             fill
+            sizes="(max-width: 640px) 50vw, (max-width: 1152px) 40vw, 460px"
             className="object-cover transition duration-300 group-hover:scale-105"
           />
           <div
