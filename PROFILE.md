@@ -13,8 +13,15 @@ Who I am and what I'm working on. See `CLAUDE.md` for how I want you to act — 
 ## Reyse
 
 - A startup I'm founding
-- AI service — industry/product not yet narrowed down further
-- Stage: idea / early planning, no product built yet
+- Product: AI-powered live chat for businesses in the property industry. AI voice assistants planned as a later addition — live chat comes first.
+- Target market: anyone in property with high inquiry volume — estate agents, letting agents, property management, investment firms, new homes/developers, short-term let hosts (Airbnb-style), wedding/event venues. Broadly: anything that gets rented or sold, short or long term.
+- Problem angles being tested (not yet sure which is strongest):
+  - Missed inquiries outside office hours
+  - Staff time wasted answering repetitive questions (availability, pricing, viewing times)
+  - Slow response times losing leads/deals in fast-moving property markets
+- Deployment channels (all planned): website widget, WhatsApp/SMS, social media DMs (Facebook/Instagram)
+- Business model: not decided yet (subscription vs usage-based still open)
+- Product stage: idea/concept only — nothing built yet. The website is being built ahead of the actual product.
 - Tech stack: not decided — open to recommendations
 
 ## What I want help with
