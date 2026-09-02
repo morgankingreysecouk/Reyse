@@ -21,7 +21,7 @@ export default function IndustriesGrid() {
           className={`group relative col-span-2 h-56 overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30 ${spanPattern[i % spanPattern.length]}`}
         >
           <Image
-            src={`/images/industries/${industry.slug}.png`}
+            src={`/images/industries/${industry.slug}.jpg`}
             alt={industry.label}
             fill
             className="object-cover transition duration-300 group-hover:scale-105"

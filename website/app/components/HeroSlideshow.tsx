@@ -5,28 +5,28 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/images/hero-laptop.png",
+    src: "/images/hero-laptop.jpg",
     alt: "A person browsing a short-term rental site with an AI live chat widget open, mid-conversation",
     objectPosition: "center 65%",
     heading: "Never miss another inquiry.",
     body: "Reyse answers your leads, tenants and guests instantly — day or night — so your team can focus on closing, not repeating themselves.",
   },
   {
-    src: "/images/hero-2.png",
+    src: "/images/hero-2.jpg",
     alt: "A man relaxing on his sofa at night, messaging on his phone",
     objectPosition: "center 60%",
     heading: "Answered in seconds. Any hour.",
     body: "While your team's asleep, Reyse is already replying — so no lead goes cold overnight.",
   },
   {
-    src: "/images/hero-3.png",
+    src: "/images/hero-3.jpg",
     alt: "A family arriving at a grand country house at dusk",
     objectPosition: "center 80%",
     heading: "From first message to move-in day.",
     body: "City flat or country estate, Reyse turns inquiries into guests, tenants and buyers.",
   },
   {
-    src: "/images/hero-4.png",
+    src: "/images/hero-4.jpg",
     alt: "A phone on a dark wooden table showing a stack of new enquiry notifications from five different property developments",
     objectPosition: "center 55%",
     heading: "Five conversations. Zero missed.",
