@@ -8,7 +8,6 @@ const slides = [
     src: "/images/hero-laptop.png",
     alt: "A person browsing a short-term rental site with an AI live chat widget open, mid-conversation",
     objectPosition: "center 65%",
-    badge: "AI live chat for the property industry",
     heading: "Never miss another inquiry.",
     body: "Reyse answers your leads, tenants and guests instantly — day or night — so your team can focus on closing, not repeating themselves.",
   },
@@ -16,7 +15,6 @@ const slides = [
     src: "/images/hero-2.png",
     alt: "A man relaxing on his sofa at night, messaging on his phone",
     objectPosition: "center 60%",
-    badge: "Always online, even at 11pm",
     heading: "Answered in seconds. Any hour.",
     body: "While your team's asleep, Reyse is already replying — so no lead goes cold overnight.",
   },
@@ -24,7 +22,6 @@ const slides = [
     src: "/images/hero-3.png",
     alt: "A family arriving at a grand country house at dusk",
     objectPosition: "center 80%",
-    badge: "For every kind of booking",
     heading: "From first message to move-in day.",
     body: "City flat or country estate, Reyse turns inquiries into guests, tenants and buyers.",
   },
@@ -32,7 +29,6 @@ const slides = [
     src: "/images/hero-4.png",
     alt: "A phone on a dark wooden table showing a stack of new enquiry notifications from five different property developments",
     objectPosition: "center 55%",
-    badge: "Built for volume, not just one lead",
     heading: "Five conversations. Zero missed.",
     body: "One enquiry or fifty, Reyse answers every single one instantly — across every property you manage.",
   },
@@ -81,9 +77,6 @@ export default function HeroSlideshow() {
         key={index}
         className="relative mx-auto w-full max-w-6xl animate-[hero-fade-in_0.7s_ease-out] px-6 pb-16 pt-24"
       >
-        <p className="mb-4 inline-block rounded-full border border-border bg-background/40 px-3 py-1 text-xs font-medium text-foreground/80 backdrop-blur">
-          {current.badge}
-        </p>
         <h1 className="max-w-2xl font-heading text-4xl leading-[1.4] tracking-tight sm:text-5xl">
           {current.heading}
         </h1>
