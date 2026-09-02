@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { industries } from "../industries/data";
 import { products } from "../products/data";
+import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
 
 // Split into (up to) 2 columns, sized to fit however many products there
@@ -97,10 +98,11 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href="/get-started"
-            className="rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-white/90"
+            className="hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-white/90 sm:inline-block"
           >
             Get started
           </a>
+          <MobileMenu />
         </div>
       </nav>
     </header>
