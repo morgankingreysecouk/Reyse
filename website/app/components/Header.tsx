@@ -91,22 +91,10 @@ export default function Header() {
         </a>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
           <NavDropdown label="Product" href="/#product" columns={productColumns} />
-          <a href="/#how-it-works" className="hover:text-foreground">
-            How it works
-          </a>
           <NavDropdown label="Industries" href="/#industries" columns={industryColumns} />
           <NavDropdown label="Company" href="/#contact" columns={companyColumns} />
-          <a href="/#contact" className="hover:text-foreground">
-            Contact
-          </a>
         </div>
         <div className="flex items-center gap-3">
-          <a
-            href="/#contact"
-            className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-foreground backdrop-blur hover:bg-white/15"
-          >
-            Contact
-          </a>
           <a
             href="/get-started"
             className="rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-white/90"
