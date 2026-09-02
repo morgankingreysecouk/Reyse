@@ -16,20 +16,28 @@ const industries = [
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <header className="border-b border-border">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+      <header className="fixed inset-x-0 top-0 z-20 border-b border-white/10 bg-background/30 backdrop-blur-md">
+        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <span className="text-lg font-semibold tracking-tight">Reyse</span>
-          <div className="hidden items-center gap-8 text-sm text-foreground/70 sm:flex">
+          <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
             <a href="#how-it-works" className="hover:text-foreground">How it works</a>
             <a href="#industries" className="hover:text-foreground">Industries</a>
             <a href="#contact" className="hover:text-foreground">Contact</a>
           </div>
-          <a
-            href="#contact"
-            className="rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:opacity-90"
-          >
-            Get a demo
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-foreground backdrop-blur hover:bg-white/15"
+            >
+              Contact
+            </a>
+            <a
+              href="#contact"
+              className="rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-white/90"
+            >
+              Book a demo
+            </a>
+          </div>
         </nav>
       </header>
 
@@ -77,7 +85,7 @@ export default function Home() {
         </section>
 
         {/* How it works */}
-        <section id="how-it-works" className="border-t border-border">
+        <section id="how-it-works" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               How it works
@@ -110,7 +118,7 @@ export default function Home() {
         </section>
 
         {/* Industries */}
-        <section id="industries" className="border-t border-border">
+        <section id="industries" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               Built for anyone renting or selling property
@@ -132,7 +140,7 @@ export default function Home() {
         </section>
 
         {/* CTA */}
-        <section id="contact" className="border-t border-border">
+        <section id="contact" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20 text-center">
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
               Ready to stop missing inquiries?
