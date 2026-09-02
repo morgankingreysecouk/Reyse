@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Boldonse, Geist, Geist_Mono } from "next/font/google";
+import CookieConsent from "./components/CookieConsent";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import ScrollProgressBar from "./components/ScrollProgressBar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,11 +35,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${boldonse.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <ScrollProgressBar />
         <Header />
 
         {children}
 
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );
