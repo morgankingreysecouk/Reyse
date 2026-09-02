@@ -36,6 +36,12 @@ export const products: Product[] = [
     description: "Answers WhatsApp enquiries instantly, day or night.",
   },
   {
+    slug: "google-business-messages",
+    label: "Google Business Messages",
+    description:
+      "Chats straight from your Google Business Profile and Maps listing — right where “estate agents near me” searches land.",
+  },
+  {
     slug: "teams-slack",
     label: "Teams / Slack",
     description: "Routes and answers enquiries wherever your team already works.",
@@ -44,6 +50,17 @@ export const products: Product[] = [
     slug: "email",
     label: "Email",
     description: "Drafts and sends replies to enquiry emails automatically.",
+  },
+  {
+    slug: "review-response",
+    label: "Review response automation",
+    description: "Drafts and posts replies to Google and Trustpilot reviews, so your brand voice stays consistent everywhere.",
+  },
+  {
+    slug: "chatgpt-app",
+    label: "ChatGPT app integration",
+    status: "Coming soon",
+    description: "Publishes your Reyse agent inside ChatGPT, for customers who search there instead of Google.",
   },
   {
     slug: "custom",
