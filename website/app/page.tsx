@@ -26,36 +26,10 @@ const industries = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      <header className="fixed inset-x-0 top-0 z-20 border-b border-white/10 bg-background/30 backdrop-blur-md">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <span className="text-lg font-semibold tracking-tight">Reyse</span>
-          <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
-            <a href="#how-it-works" className="hover:text-foreground">How it works</a>
-            <a href="#industries" className="hover:text-foreground">Industries</a>
-            <a href="#contact" className="hover:text-foreground">Contact</a>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href="#contact"
-              className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-foreground backdrop-blur hover:bg-white/15"
-            >
-              Contact
-            </a>
-            <a
-              href="#contact"
-              className="rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-white/90"
-            >
-              Book a demo
-            </a>
-          </div>
-        </nav>
-      </header>
+    <main className="flex-1">
+      <HeroSlideshow />
 
-      <main className="flex-1">
-        <HeroSlideshow />
-
-        <div className="relative z-10 bg-background">
+      <div className="relative z-10 bg-background">
         {/* Social proof */}
         <section className="border-t border-border py-12">
           <p className="mx-auto mb-8 max-w-6xl px-6 text-center text-xs font-medium uppercase tracking-widest text-foreground/40">
@@ -143,21 +117,14 @@ export default function Home() {
               Tell us about your business and we&rsquo;ll show you Reyse in action.
             </p>
             <a
-              href="mailto:hello@reyse.co.uk"
+              href="/get-started"
               className="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
             >
-              Book a demo
+              Get started
             </a>
           </div>
         </section>
-        </div>
-      </main>
-
-      <footer className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-foreground/50">
-          &copy; {new Date().getFullYear()} Reyse. All rights reserved.
-        </div>
-      </footer>
-    </div>
+      </div>
+    </main>
   );
 }

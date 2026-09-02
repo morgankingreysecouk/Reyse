@@ -7,6 +7,7 @@ const slides = [
   {
     src: "/images/hero-laptop.png",
     alt: "A person browsing a short-term rental site with an AI live chat widget open, mid-conversation",
+    objectPosition: "center 65%",
     badge: "AI live chat for the property industry",
     heading: "Never miss another inquiry.",
     body: "Reyse answers your leads, tenants and guests instantly — day or night — so your team can focus on closing, not repeating themselves.",
@@ -14,6 +15,7 @@ const slides = [
   {
     src: "/images/hero-2.png",
     alt: "A man relaxing on his sofa at night, messaging on his phone",
+    objectPosition: "center 60%",
     badge: "Always online, even at 11pm",
     heading: "Answered in seconds. Any hour.",
     body: "While your team's asleep, Reyse is already replying — so no lead goes cold overnight.",
@@ -21,6 +23,7 @@ const slides = [
   {
     src: "/images/hero-3.png",
     alt: "A family arriving at a grand country house at dusk",
+    objectPosition: "center 80%",
     badge: "For every kind of booking",
     heading: "From first message to move-in day.",
     body: "City flat or country estate, Reyse turns inquiries into guests, tenants and buyers.",
@@ -42,7 +45,7 @@ export default function HeroSlideshow() {
   const current = slides[index];
 
   return (
-    <section className="sticky top-0 z-0 flex min-h-[92vh] items-end overflow-hidden">
+    <section className="sticky top-0 z-0 flex min-h-screen items-end overflow-hidden">
       {slides.map((slide, i) => (
         <div
           key={slide.src}
@@ -56,6 +59,7 @@ export default function HeroSlideshow() {
             fill
             priority={i === 0}
             className="object-cover"
+            style={{ objectPosition: slide.objectPosition }}
           />
         </div>
       ))}
@@ -78,10 +82,10 @@ export default function HeroSlideshow() {
         <p className="mt-5 max-w-md text-lg text-foreground/80">{current.body}</p>
         <div className="mt-8 flex flex-wrap gap-4">
           <a
-            href="#contact"
+            href="/get-started"
             className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
           >
-            Book a demo
+            Get started
           </a>
           <a
             href="#how-it-works"
