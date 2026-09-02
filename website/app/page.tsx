@@ -55,7 +55,7 @@ export default function Home() {
         {/* How it works */}
         <section id="how-it-works" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
               How it works
             </h2>
             <div className="mt-10 grid gap-8 sm:grid-cols-3">
@@ -88,7 +88,7 @@ export default function Home() {
         {/* Industries */}
         <section id="industries" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
               Built for anyone renting or selling property
             </h2>
             <p className="mt-3 max-w-2xl text-foreground/60">
@@ -110,7 +110,7 @@ export default function Home() {
         {/* CTA */}
         <section id="contact" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20 text-center">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
               Ready to stop missing inquiries?
             </h2>
             <p className="mx-auto mt-3 max-w-md text-foreground/60">

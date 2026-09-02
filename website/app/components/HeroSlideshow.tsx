@@ -76,7 +76,7 @@ export default function HeroSlideshow() {
         <p className="mb-4 inline-block rounded-full border border-border bg-background/40 px-3 py-1 text-xs font-medium text-foreground/80 backdrop-blur">
           {current.badge}
         </p>
-        <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="max-w-2xl font-heading text-4xl tracking-tight sm:text-5xl">
           {current.heading}
         </h1>
         <p className="mt-5 max-w-md text-lg text-foreground/80">{current.body}</p>

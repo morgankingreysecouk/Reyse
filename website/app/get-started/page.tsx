@@ -20,7 +20,7 @@ export default function GetStarted() {
         <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
           Get started
         </p>
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="font-heading text-4xl tracking-tight sm:text-5xl">
           Where would you like to start?
         </h1>
         <p className="mt-5 max-w-md text-lg text-foreground/70">
