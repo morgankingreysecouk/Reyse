@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo_Black, Geist, Geist_Mono } from "next/font/google";
+import { Boldonse, Geist, Geist_Mono } from "next/font/google";
 import Header from "./components/Header";
 import "./globals.css";
 
@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const archivoBlack = Archivo_Black({
+const boldonse = Boldonse({
   variable: "--font-heading",
   weight: "400",
   subsets: ["latin"],
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${archivoBlack.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${boldonse.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <Header />
