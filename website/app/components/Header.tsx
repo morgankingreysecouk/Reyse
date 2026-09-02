@@ -1,6 +1,88 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import NavDropdown from "./NavDropdown";
+
+const productColumns = [
+  [
+    {
+      label: "AI Live Chat",
+      description: "Instant answers on your website, WhatsApp and social DMs.",
+      href: "/#how-it-works",
+    },
+    {
+      label: "AI Voice Assistant",
+      description: "Coming soon — the same intelligence, now on the phone.",
+      href: "/#how-it-works",
+    },
+  ],
+];
+
+const industryColumns = [
+  [
+    {
+      label: "Estate agents",
+      description: "Answer buyer questions and book viewings the moment they message.",
+    },
+    {
+      label: "Letting agents",
+      description: "Qualify tenants and fill vacancies faster, day or night.",
+    },
+    {
+      label: "Property management",
+      description: "Handle resident queries at scale without adding headcount.",
+    },
+  ],
+  [
+    {
+      label: "New homes & developers",
+      description: "Turn plot and pricing questions into booked show-home visits.",
+    },
+    {
+      label: "Short-term lets",
+      description: "Confirm availability and bookings before guests look elsewhere.",
+    },
+    {
+      label: "Wedding & event venues",
+      description: "Answer date and pricing enquiries the instant they land.",
+    },
+  ],
+  [
+    {
+      label: "Serviced apartments",
+      description: "Convert corporate enquiries into confirmed stays, faster.",
+    },
+    {
+      label: "Student accommodation",
+      description: "Handle intake-season enquiry spikes without extra staff.",
+    },
+  ],
+  [
+    {
+      label: "Holiday parks",
+      description: "Keep pitches and lodges booked through every peak season.",
+    },
+    {
+      label: "Self-storage",
+      description: "Turn unit enquiries into move-ins the same day.",
+    },
+  ],
+];
+
+const companyColumns = [
+  [
+    {
+      label: "About Reyse",
+      description: "Why we're building AI live chat for the property industry.",
+      href: "/",
+    },
+    {
+      label: "Contact",
+      description: "Get in touch or book a demo.",
+      href: "/#contact",
+    },
+  ],
+];
 
 export default function Header() {
   const [inFront, setInFront] = useState(true);
@@ -38,12 +120,12 @@ export default function Header() {
           Reyse
         </a>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
+          <NavDropdown label="Product" href="/#how-it-works" columns={productColumns} />
           <a href="/#how-it-works" className="hover:text-foreground">
             How it works
           </a>
-          <a href="/#industries" className="hover:text-foreground">
-            Industries
-          </a>
+          <NavDropdown label="Industries" href="/#industries" columns={industryColumns} />
+          <NavDropdown label="Company" href="/#contact" columns={companyColumns} />
           <a href="/#contact" className="hover:text-foreground">
             Contact
           </a>
