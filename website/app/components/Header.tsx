@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Logo from "./Logo";
 import NavDropdown from "./NavDropdown";
 
 const productColumns = [
@@ -116,8 +117,8 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" className="text-lg font-semibold tracking-tight">
-          Reyse
+        <a href="/">
+          <Logo />
         </a>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
           <NavDropdown label="Product" href="/#how-it-works" columns={productColumns} />
