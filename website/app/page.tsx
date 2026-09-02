@@ -1,5 +1,6 @@
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
+import IndustriesGrid from "./components/IndustriesGrid";
 
 const trustedBy = [
   "Harbor Estates",
@@ -10,19 +11,6 @@ const trustedBy = [
   "Meadowvale Lets",
   "Blackwood & Co",
   "Silverline Realty",
-];
-
-const industries = [
-  "Estate agents",
-  "Letting agents",
-  "Property management",
-  "New homes & developers",
-  "Short-term lets",
-  "Wedding & event venues",
-  "Serviced apartments",
-  "Student accommodation",
-  "Holiday parks",
-  "Self-storage",
 ];
 
 export default function Home() {
@@ -53,42 +41,66 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How it works */}
-        <section id="how-it-works" className="scroll-mt-20 border-t border-border">
+        {/* Products */}
+        <section id="product" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
-              How it works
+            <h2 className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
+              Our AI agents
             </h2>
-            <HowItWorksScroll />
+            <p className="mt-3 max-w-2xl text-foreground/60">
+              One intelligence, everywhere your customers already are.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
+              <div className="rounded-xl border border-border p-8">
+                <span className="inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-accent">
+                  Live
+                </span>
+                <h3 className="mt-4 text-xl font-semibold">AI Live Chat</h3>
+                <p className="mt-2 text-foreground/60">
+                  Instant answers on your website, WhatsApp and social DMs — day or night.
+                </p>
+              </div>
+              <div className="rounded-xl border border-border p-8">
+                <span className="inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/60">
+                  Coming soon
+                </span>
+                <h3 className="mt-4 text-xl font-semibold">AI Voice Assistant</h3>
+                <p className="mt-2 text-foreground/60">
+                  The same intelligence, now answering the phone.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Industries */}
         <section id="industries" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
+            <h2 className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
               Built for anyone renting or selling property
             </h2>
             <p className="mt-3 max-w-2xl text-foreground/60">
-              If people are messaging you about it, Reyse can answer them.
+              If people are messaging you about it, Reyse can answer them. Click an
+              industry to see how.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              {industries.map((name) => (
-                <span
-                  key={name}
-                  className="rounded-full border border-border px-4 py-2 text-sm text-foreground/80"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
+            <IndustriesGrid />
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section id="how-it-works" className="scroll-mt-20 border-t border-border">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <h2 className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
+              How it works
+            </h2>
+            <HowItWorksScroll />
           </div>
         </section>
 
         {/* CTA */}
         <section id="contact" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20 text-center">
-            <h2 className="font-heading text-2xl tracking-tight sm:text-3xl">
+            <h2 className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
               Ready to stop missing inquiries?
             </h2>
             <p className="mx-auto mt-3 max-w-md text-foreground/60">

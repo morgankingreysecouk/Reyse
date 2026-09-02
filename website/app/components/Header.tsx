@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { industries } from "../industries/data";
 import NavDropdown from "./NavDropdown";
 
 const productColumns = [
@@ -8,66 +9,31 @@ const productColumns = [
     {
       label: "AI Live Chat",
       description: "Instant answers on your website, WhatsApp and social DMs.",
-      href: "/#how-it-works",
+      href: "/#product",
     },
     {
       label: "AI Voice Assistant",
       description: "Coming soon — the same intelligence, now on the phone.",
-      href: "/#how-it-works",
+      href: "/#product",
     },
   ],
 ];
 
-const industryColumns = [
-  [
-    {
-      label: "Estate agents",
-      description: "Answer buyer questions and book viewings the moment they message.",
-    },
-    {
-      label: "Letting agents",
-      description: "Qualify tenants and fill vacancies faster, day or night.",
-    },
-    {
-      label: "Property management",
-      description: "Handle resident queries at scale without adding headcount.",
-    },
-  ],
-  [
-    {
-      label: "New homes & developers",
-      description: "Turn plot and pricing questions into booked show-home visits.",
-    },
-    {
-      label: "Short-term lets",
-      description: "Confirm availability and bookings before guests look elsewhere.",
-    },
-    {
-      label: "Wedding & event venues",
-      description: "Answer date and pricing enquiries the instant they land.",
-    },
-  ],
-  [
-    {
-      label: "Serviced apartments",
-      description: "Convert corporate enquiries into confirmed stays, faster.",
-    },
-    {
-      label: "Student accommodation",
-      description: "Handle intake-season enquiry spikes without extra staff.",
-    },
-  ],
-  [
-    {
-      label: "Holiday parks",
-      description: "Keep pitches and lodges booked through every peak season.",
-    },
-    {
-      label: "Self-storage",
-      description: "Turn unit enquiries into move-ins the same day.",
-    },
-  ],
-];
+const industryChunkSizes = [3, 3, 2, 2];
+const industryColumns: { label: string; description: string; href: string }[][] = [];
+{
+  let cursor = 0;
+  for (const size of industryChunkSizes) {
+    industryColumns.push(
+      industries.slice(cursor, cursor + size).map((industry) => ({
+        label: industry.label,
+        description: industry.tagline,
+        href: `/industries/${industry.slug}`,
+      })),
+    );
+    cursor += size;
+  }
+}
 
 const companyColumns = [
   [
@@ -120,7 +86,7 @@ export default function Header() {
           Reyse
         </a>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
-          <NavDropdown label="Product" href="/#how-it-works" columns={productColumns} />
+          <NavDropdown label="Product" href="/#product" columns={productColumns} />
           <a href="/#how-it-works" className="hover:text-foreground">
             How it works
           </a>
