@@ -1,8 +1,8 @@
 import { industries } from "../industries/data";
+import { products } from "../products/data";
 
 const productLinks = [
-  { label: "AI Live Chat", href: "/#product" },
-  { label: "AI Voice Assistant", href: "/#product" },
+  ...products.map((product) => ({ label: product.label, href: "/#product" })),
   { label: "How it works", href: "/#how-it-works" },
 ];
 

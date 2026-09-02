@@ -1,6 +1,7 @@
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
 import IndustriesGrid from "./components/IndustriesGrid";
+import { products } from "./products/data";
 
 const trustedBy = [
   "Harbor Estates",
@@ -50,25 +51,22 @@ export default function Home() {
             <p className="mt-3 max-w-2xl text-foreground/60">
               One intelligence, everywhere your customers already are.
             </p>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2">
-              <div className="rounded-xl border border-border p-8">
-                <span className="inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-accent">
-                  Live
-                </span>
-                <h3 className="mt-4 text-xl font-semibold">AI Live Chat</h3>
-                <p className="mt-2 text-foreground/60">
-                  Instant answers on your website, WhatsApp and social DMs — day or night.
-                </p>
-              </div>
-              <div className="rounded-xl border border-border p-8">
-                <span className="inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/60">
-                  Coming soon
-                </span>
-                <h3 className="mt-4 text-xl font-semibold">AI Voice Assistant</h3>
-                <p className="mt-2 text-foreground/60">
-                  The same intelligence, now answering the phone.
-                </p>
-              </div>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {products.map((product) => (
+                <div key={product.slug} className="rounded-xl border border-border p-8">
+                  {product.status && (
+                    <span
+                      className={`inline-block rounded-full border border-border px-3 py-1 text-xs font-medium ${
+                        product.status === "Live" ? "text-accent" : "text-foreground/60"
+                      }`}
+                    >
+                      {product.status}
+                    </span>
+                  )}
+                  <h3 className="mt-4 text-xl font-semibold">{product.label}</h3>
+                  <p className="mt-2 text-foreground/60">{product.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

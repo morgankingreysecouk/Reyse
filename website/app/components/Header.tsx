@@ -2,22 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 import { industries } from "../industries/data";
+import { products } from "../products/data";
 import NavDropdown from "./NavDropdown";
 
-const productColumns = [
-  [
-    {
-      label: "AI Live Chat",
-      description: "Instant answers on your website, WhatsApp and social DMs.",
+// Split into (up to) 2 columns, sized to fit however many products there
+// are — so adding or removing one never silently drops it from the menu.
+const productColumnCount = 2;
+const productPerColumn = Math.ceil(products.length / productColumnCount);
+const productColumns: { label: string; description: string; href: string }[][] = [];
+for (let c = 0; c < productColumnCount; c++) {
+  const slice = products.slice(c * productPerColumn, (c + 1) * productPerColumn);
+  if (slice.length === 0) break;
+  productColumns.push(
+    slice.map((product) => ({
+      label: product.status ? `${product.label} (${product.status})` : product.label,
+      description: product.description,
       href: "/#product",
-    },
-    {
-      label: "AI Voice Assistant",
-      description: "Coming soon — the same intelligence, now on the phone.",
-      href: "/#product",
-    },
-  ],
-];
+    })),
+  );
+}
 
 // Split into (up to) 4 columns, sized to fit however many industries there
 // are — so adding or removing one never silently drops it from the menu.
