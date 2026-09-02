@@ -28,6 +28,14 @@ const slides = [
     heading: "From first message to move-in day.",
     body: "City flat or country estate, Reyse turns inquiries into guests, tenants and buyers.",
   },
+  {
+    src: "/images/hero-4.png",
+    alt: "A phone on a dark wooden table showing a stack of new enquiry notifications from five different property developments",
+    objectPosition: "center 55%",
+    badge: "Built for volume, not just one lead",
+    heading: "Five conversations. Zero missed.",
+    body: "One enquiry or fifty, Reyse answers every single one instantly — across every property you manage.",
+  },
 ];
 
 const SLIDE_DURATION_MS = 6000;
