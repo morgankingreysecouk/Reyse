@@ -15,7 +15,7 @@ export async function generateMetadata({
   const industry = industries.find((i) => i.slug === slug);
   if (!industry) return {};
   return {
-    title: `${industry.label} — Reyse`,
+    title: industry.label,
     description: industry.tagline,
   };
 }
