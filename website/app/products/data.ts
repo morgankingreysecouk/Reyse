@@ -5,12 +5,20 @@ export type Product = {
   description: string;
 };
 
+// Order matters: ProductsBento lays the first two out as large "featured"
+// cards, then the rest in rows of three.
 export const products: Product[] = [
   {
     slug: "live-chat",
     label: "Live chat",
     status: "Live",
     description: "Instant answers on your website chat widget, day or night.",
+  },
+  {
+    slug: "ai-voice",
+    label: "AI voice automation",
+    status: "Coming soon",
+    description: "The same intelligence, now answering the phone.",
   },
   {
     slug: "instagram-dm",
@@ -36,12 +44,6 @@ export const products: Product[] = [
     slug: "email",
     label: "Email",
     description: "Drafts and sends replies to enquiry emails automatically.",
-  },
-  {
-    slug: "ai-voice",
-    label: "AI voice automation",
-    status: "Coming soon",
-    description: "The same intelligence, now answering the phone.",
   },
   {
     slug: "custom",
