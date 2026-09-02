@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { industries } from "../industries/data";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const openButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   // The panel is portaled to <body> because the header uses backdrop-blur,
   // which — like transform/filter — creates a new containing block for
@@ -18,6 +21,25 @@ export default function MobileMenu() {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  // Modal semantics: make everything outside the panel inert (removed from
+  // the tab order and accessibility tree) while open, so keyboard and
+  // screen-reader users can't reach content hidden behind the overlay.
+  useEffect(() => {
+    if (!open) return;
+
+    closeButtonRef.current?.focus();
+
+    const siblings = Array.from(document.body.children).filter(
+      (el) => el !== panelRef.current,
+    ) as HTMLElement[];
+    siblings.forEach((el) => el.setAttribute("inert", ""));
+
+    return () => {
+      siblings.forEach((el) => el.removeAttribute("inert"));
+      openButtonRef.current?.focus();
     };
   }, [open]);
 
@@ -34,6 +56,7 @@ export default function MobileMenu() {
   return (
     <div className="sm:hidden">
       <button
+        ref={openButtonRef}
         type="button"
         aria-label="Open menu"
         aria-expanded={open}
@@ -50,11 +73,16 @@ export default function MobileMenu() {
       {mounted &&
         createPortal(
           <div
+            ref={panelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
             className={`fixed inset-0 z-40 bg-background transition-opacity duration-200 sm:hidden ${
               open ? "visible opacity-100" : "invisible opacity-0"
             }`}
           >
             <button
+              ref={closeButtonRef}
               type="button"
               aria-label="Close menu"
               onClick={close}
