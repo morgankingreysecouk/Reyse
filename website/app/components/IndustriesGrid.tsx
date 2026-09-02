@@ -1,11 +1,8 @@
 import { industries } from "../industries/data";
 
-const spans = [
-  "sm:col-span-3",
-  "sm:col-span-3",
-  "sm:col-span-2",
-  "sm:col-span-2",
-  "sm:col-span-2",
+// Repeats every 5 cards: two large (half-width) then three small (third-width),
+// so the pattern keeps working as industries are added or removed.
+const spanPattern = [
   "sm:col-span-3",
   "sm:col-span-3",
   "sm:col-span-2",
@@ -20,7 +17,7 @@ export default function IndustriesGrid() {
         <a
           key={industry.slug}
           href={`/industries/${industry.slug}`}
-          className={`group relative col-span-2 h-56 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-panel to-background transition hover:border-foreground/30 ${spans[i]}`}
+          className={`group relative col-span-2 h-56 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-panel to-background transition hover:border-foreground/30 ${spanPattern[i % spanPattern.length]}`}
         >
           <div className="absolute inset-0 flex items-end p-6">
             <span className="font-heading text-2xl leading-none text-foreground/90 transition group-hover:text-foreground">

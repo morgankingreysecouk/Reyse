@@ -49,13 +49,6 @@ export const industries: Industry[] = [
       "Couples enquire about dates, capacity and pricing long before they ever call. Reyse answers instantly, keeping your venue front of mind while they're comparing options.",
   },
   {
-    slug: "serviced-apartments",
-    label: "Serviced apartments",
-    tagline: "Convert corporate enquiries into confirmed stays, faster.",
-    description:
-      "Corporate bookers need quick answers on rates and availability to secure sign-off. Reyse responds immediately, turning enquiries into confirmed stays faster.",
-  },
-  {
     slug: "student-accommodation",
     label: "Student accommodation",
     tagline: "Handle intake-season enquiry spikes without extra staff.",
@@ -75,5 +68,19 @@ export const industries: Industry[] = [
     tagline: "Turn unit enquiries into move-ins the same day.",
     description:
       "People enquiring about a unit want to know size, price and availability right now. Reyse answers on the spot and turns enquiries into move-ins the same day.",
+  },
+  {
+    slug: "holiday-rental-agencies",
+    label: "Holiday rental agencies",
+    tagline: "Answer booking enquiries across your whole portfolio, instantly.",
+    description:
+      "Guests enquire about dozens of different properties at once, all expecting a fast reply. Reyse answers instantly across your entire portfolio, so no booking enquiry waits for a human to catch up.",
+  },
+  {
+    slug: "campsites-glamping",
+    label: "Campsites & glamping",
+    tagline: "Keep pitches and glamping units booked through every peak season.",
+    description:
+      "Seasonal booking spikes bring a flood of questions about pitches, availability and facilities. Reyse answers around the clock, so your team isn't overwhelmed the moment good weather hits.",
   },
 ];

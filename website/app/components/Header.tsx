@@ -19,20 +19,21 @@ const productColumns = [
   ],
 ];
 
-const industryChunkSizes = [3, 3, 2, 2];
+// Split into (up to) 4 columns, sized to fit however many industries there
+// are — so adding or removing one never silently drops it from the menu.
+const industryColumnCount = 4;
+const industryPerColumn = Math.ceil(industries.length / industryColumnCount);
 const industryColumns: { label: string; description: string; href: string }[][] = [];
-{
-  let cursor = 0;
-  for (const size of industryChunkSizes) {
-    industryColumns.push(
-      industries.slice(cursor, cursor + size).map((industry) => ({
-        label: industry.label,
-        description: industry.tagline,
-        href: `/industries/${industry.slug}`,
-      })),
-    );
-    cursor += size;
-  }
+for (let c = 0; c < industryColumnCount; c++) {
+  const slice = industries.slice(c * industryPerColumn, (c + 1) * industryPerColumn);
+  if (slice.length === 0) break;
+  industryColumns.push(
+    slice.map((industry) => ({
+      label: industry.label,
+      description: industry.tagline,
+      href: `/industries/${industry.slug}`,
+    })),
+  );
 }
 
 const companyColumns = [
