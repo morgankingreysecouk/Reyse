@@ -23,7 +23,7 @@ export default function Home() {
       <div className="relative z-10 bg-background">
         {/* Social proof */}
         <section className="border-t border-border py-12">
-          <p className="mx-auto mb-8 max-w-6xl px-6 text-center text-xs font-medium uppercase tracking-widest text-foreground/40">
+          <p className="mx-auto mb-8 max-w-6xl px-6 text-center text-xs font-medium uppercase tracking-widest text-foreground/60">
             Trusted by property businesses like
           </p>
           <div

@@ -40,6 +40,9 @@ export default function HeroSlideshow() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
     const id = setInterval(() => {
       setIndex((i) => (i + 1) % slides.length);
     }, SLIDE_DURATION_MS);

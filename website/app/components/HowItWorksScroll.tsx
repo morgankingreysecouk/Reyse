@@ -49,7 +49,7 @@ export default function HowItWorksScroll() {
                 refs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" })
               }
               className={`flex w-fit cursor-pointer flex-col items-start text-left transition-colors duration-500 ${
-                i === active ? "text-foreground" : "text-foreground/40"
+                i === active ? "text-foreground" : "text-foreground/60"
               }`}
             >
               <span className="text-xs font-medium text-accent">0{i + 1}</span>
