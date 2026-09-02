@@ -1,4 +1,4 @@
-import Image from "next/image";
+import HeroSlideshow from "./components/HeroSlideshow";
 
 const industries = [
   "Estate agents",
@@ -42,47 +42,7 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        {/* Hero */}
-        <section className="relative flex min-h-[92vh] items-end overflow-hidden">
-          <Image
-            src="/images/hero-laptop.png"
-            alt="An AI live chat widget answering a property inquiry, shown on a laptop browsing short-term rentals"
-            fill
-            priority
-            className="object-cover"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10"
-          />
-          <div className="relative mx-auto w-full max-w-6xl px-6 pb-16 pt-24">
-            <p className="mb-4 inline-block rounded-full border border-border bg-background/40 px-3 py-1 text-xs font-medium text-foreground/80 backdrop-blur">
-              AI live chat for the property industry
-            </p>
-            <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
-              Never miss another inquiry.
-            </h1>
-            <p className="mt-5 max-w-md text-lg text-foreground/80">
-              Reyse answers your leads, tenants and guests instantly &mdash;
-              day or night &mdash; so your team can focus on closing, not
-              repeating themselves.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-              >
-                Book a demo
-              </a>
-              <a
-                href="#how-it-works"
-                className="rounded-full border border-border bg-background/40 px-6 py-3 text-sm font-medium backdrop-blur hover:border-foreground/40"
-              >
-                See how it works
-              </a>
-            </div>
-          </div>
-        </section>
+        <HeroSlideshow />
 
         {/* How it works */}
         <section id="how-it-works" className="scroll-mt-20 border-t border-border">
