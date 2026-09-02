@@ -42,7 +42,7 @@ export default function HeroSlideshow() {
   const current = slides[index];
 
   return (
-    <section className="relative flex min-h-[92vh] items-end overflow-hidden">
+    <section className="sticky top-0 z-0 flex min-h-[92vh] items-end overflow-hidden">
       {slides.map((slide, i) => (
         <div
           key={slide.src}

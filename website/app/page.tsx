@@ -1,5 +1,16 @@
 import HeroSlideshow from "./components/HeroSlideshow";
 
+const trustedBy = [
+  "Harbor Estates",
+  "Kingsbridge Lettings",
+  "Willowmere Homes",
+  "Ashcroft Property",
+  "The Grange Collection",
+  "Meadowvale Lets",
+  "Blackwood & Co",
+  "Silverline Realty",
+];
+
 const industries = [
   "Estate agents",
   "Letting agents",
@@ -43,6 +54,29 @@ export default function Home() {
 
       <main className="flex-1">
         <HeroSlideshow />
+
+        <div className="relative z-10 bg-background">
+        {/* Social proof */}
+        <section className="border-t border-border py-12">
+          <p className="mx-auto mb-8 max-w-6xl px-6 text-center text-xs font-medium uppercase tracking-widest text-foreground/40">
+            Trusted by property businesses like
+          </p>
+          <div
+            aria-hidden
+            className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
+          >
+            <div className="flex w-max animate-[marquee_30s_linear_infinite] gap-16">
+              {[...trustedBy, ...trustedBy].map((name, i) => (
+                <span
+                  key={`${name}-${i}`}
+                  className="whitespace-nowrap text-xl font-semibold tracking-tight text-foreground/40"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* How it works */}
         <section id="how-it-works" className="scroll-mt-20 border-t border-border">
@@ -116,6 +150,7 @@ export default function Home() {
             </a>
           </div>
         </section>
+        </div>
       </main>
 
       <footer className="border-t border-border">
