@@ -1,3 +1,4 @@
+import BenefitsGrid from "./components/BenefitsGrid";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
 import IndustriesGrid from "./components/IndustriesGrid";
@@ -39,6 +40,19 @@ export default function Home() {
                 </span>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Why Reyse */}
+        <section id="why-reyse" className="scroll-mt-20 border-t border-border">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <h2 className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
+              Why property businesses choose Reyse
+            </h2>
+            <p className="mt-3 max-w-2xl text-foreground/60">
+              One AI agent, built around what actually moves the needle for your business.
+            </p>
+            <BenefitsGrid />
           </div>
         </section>
 
