@@ -22,7 +22,7 @@ export default function IndustriesGrid() {
         >
           <Image
             src={`/images/industries/${industry.slug}.jpg`}
-            alt={industry.label}
+            alt=""
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1152px) 40vw, 460px"
             className="object-cover transition duration-300 group-hover:scale-105"
