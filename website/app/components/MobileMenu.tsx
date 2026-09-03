@@ -94,10 +94,6 @@ export default function MobileMenu() {
             </button>
             <div className="flex h-full flex-col overflow-y-auto px-6 pb-10 pt-24">
               <nav className="flex flex-col gap-8">
-                <a href="/#product" onClick={close} className="text-2xl font-medium">
-                  Product
-                </a>
-
                 <div>
                   <p className="text-2xl font-medium">Industries</p>
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">

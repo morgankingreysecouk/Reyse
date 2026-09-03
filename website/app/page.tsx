@@ -2,7 +2,6 @@ import BenefitsGrid from "./components/BenefitsGrid";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
 import IndustriesGrid from "./components/IndustriesGrid";
-import ProductsBento from "./components/ProductsBento";
 
 const trustedBy = [
   "Harbor Estates",
@@ -53,19 +52,6 @@ export default function Home() {
               One AI agent, built around what actually moves the needle for your business.
             </p>
             <BenefitsGrid />
-          </div>
-        </section>
-
-        {/* Products */}
-        <section id="product" className="scroll-mt-20 border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
-              Our AI agents
-            </h2>
-            <p className="mt-3 max-w-2xl text-foreground/60">
-              One intelligence, everywhere your customers already are.
-            </p>
-            <ProductsBento />
           </div>
         </section>
 

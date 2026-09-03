@@ -1,13 +1,8 @@
 import { industries } from "../industries/data";
-import { products } from "../products/data";
-
-const productLinks = [
-  ...products.map((product) => ({ label: product.label, href: "/#product" })),
-  { label: "How it works", href: "/#how-it-works" },
-];
 
 const companyLinks = [
   { label: "About Reyse", href: "/" },
+  { label: "How it works", href: "/#how-it-works" },
   { label: "Contact", href: "/#contact" },
 ];
 
@@ -71,13 +66,12 @@ export default function Footer() {
   return (
     <footer className="border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-5">
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
             <a href="/" className="text-lg font-semibold tracking-tight">
               Reyse
             </a>
           </div>
-          <FooterColumn title="Product" links={productLinks} />
           <FooterColumn
             title="Industries"
             links={industries.map((industry) => ({
