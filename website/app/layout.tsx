@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Boldonse, Geist, Geist_Mono } from "next/font/google";
+import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import CookieConsent from "./components/CookieConsent";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -16,9 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const boldonse = Boldonse({
+const fraunces = Fraunces({
   variable: "--font-heading",
-  weight: "400",
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
 });
 
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0b0c0e",
+  themeColor: "#faf8f2",
 };
 
 const organizationJsonLd = {
@@ -65,7 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-GB"
-      className={`${geistSans.variable} ${geistMono.variable} ${boldonse.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <head>
         <script

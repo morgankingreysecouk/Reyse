@@ -139,7 +139,7 @@ export default function MobileMenu() {
               <a
                 href="/get-started"
                 onClick={close}
-                className="mt-10 inline-block rounded-full bg-white px-6 py-3 text-center text-sm font-medium text-neutral-900 hover:bg-white/90"
+                className="mt-10 inline-block rounded-full bg-ink px-6 py-3 text-center text-sm font-medium text-ink-foreground hover:opacity-90"
               >
                 Get started
               </a>

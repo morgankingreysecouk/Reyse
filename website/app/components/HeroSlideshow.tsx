@@ -45,66 +45,65 @@ export default function HeroSlideshow() {
   const current = slides[index];
 
   return (
-    <section className="sticky top-0 z-0 flex min-h-screen items-end overflow-hidden">
-      {slides.map((slide, i) => (
-        <div
-          key={slide.src}
-          aria-hidden={i !== index}
-          className="absolute inset-0 transition-transform duration-[1100ms] ease-in-out"
-          style={{ transform: `translateX(${(i - index) * 100}%)` }}
-        >
-          <Image
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            priority={i === 0}
-            className="object-cover"
-            style={{ objectPosition: slide.objectPosition }}
-          />
+    <section className="border-b border-border">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-40 lg:grid-cols-2 lg:items-center">
+        <div key={index} className="animate-[hero-fade-in_0.7s_ease-out]">
+          <h1 className="max-w-lg font-heading text-5xl font-medium leading-[1.1] tracking-tight sm:text-6xl">
+            {current.heading}
+          </h1>
+          <p className="mt-6 max-w-md text-lg text-foreground/70">{current.body}</p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <a
+              href="/get-started"
+              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+            >
+              Get started
+            </a>
+            <a
+              href="#how-it-works"
+              className="rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-foreground/40"
+            >
+              See how it works
+            </a>
+          </div>
         </div>
-      ))}
 
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/10"
-      />
+        <div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border shadow-xl">
+            {slides.map((slide, i) => (
+              <div
+                key={slide.src}
+                aria-hidden={i !== index}
+                className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+                style={{ opacity: i === index ? 1 : 0 }}
+              >
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill
+                  priority={i === 0}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  style={{ objectPosition: slide.objectPosition }}
+                />
+              </div>
+            ))}
+          </div>
 
-      <div
-        key={index}
-        className="relative mx-auto w-full max-w-6xl animate-[hero-fade-in_0.7s_ease-out] px-6 pb-16 pt-24"
-      >
-        <h1 className="max-w-2xl font-heading text-4xl leading-[1.4] tracking-tight sm:text-5xl">
-          {current.heading}
-        </h1>
-        <p className="mt-5 max-w-md text-lg text-foreground/80">{current.body}</p>
-        <div className="mt-8 flex flex-wrap gap-4">
-          <a
-            href="/get-started"
-            className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-          >
-            Get started
-          </a>
-          <a
-            href="#how-it-works"
-            className="rounded-full border border-border bg-background/40 px-6 py-3 text-sm font-medium backdrop-blur hover:border-foreground/40"
-          >
-            See how it works
-          </a>
+          <div className="mt-5 flex justify-center gap-2">
+            {slides.map((slide, i) => (
+              <button
+                key={slide.src}
+                type="button"
+                aria-label={`Show slide ${i + 1}`}
+                onClick={() => setIndex(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === index ? "w-6 bg-ink" : "w-2 bg-ink/25 hover:bg-ink/40"
+                }`}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div className="absolute bottom-20 right-6 z-10 flex gap-2">
-        {slides.map((slide, i) => (
-          <button
-            key={slide.src}
-            type="button"
-            aria-label={`Show slide ${i + 1}`}
-            onClick={() => setIndex(i)}
-            className={`h-2 rounded-full transition-all ${
-              i === index ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
-            }`}
-          />
-        ))}
       </div>
     </section>
   );

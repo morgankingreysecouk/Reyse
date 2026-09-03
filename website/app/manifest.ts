@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Reyse gives property businesses an AI live chat that answers inquiries instantly, day or night.",
     start_url: "/",
     display: "standalone",
-    background_color: "#0b0c0e",
-    theme_color: "#0b0c0e",
+    background_color: "#faf8f2",
+    theme_color: "#faf8f2",
     icons: [{ src: "/icon.png", sizes: "512x512", type: "image/png" }],
   };
 }

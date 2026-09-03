@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0c0e;
-  --foreground: #f2f0ea;
-  --panel: #16181c;
-  --border: #2a2d33;
-  --accent: #e8a33d;
-  --accent-foreground: #1a1200;
-  --chat-bubble: #16342b;
+  --background: #faf8f2;
+  --foreground: #1c1a17;
+  --panel: #f1ede2;
+  --border: #e3ddcf;
+  --accent: #a6ad3e;
+  --accent-foreground: #1c1a17;
+  --ink: #1c1a17;
+  --ink-foreground: #faf8f2;
+  --chat-bubble: #e8ecd8;
 }
 
 @theme inline {
@@ -17,6 +19,8 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-ink: var(--ink);
+  --color-ink-foreground: var(--ink-foreground);
   --color-chat-bubble: var(--chat-bubble);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);

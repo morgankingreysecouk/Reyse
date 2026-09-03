@@ -64,7 +64,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 border-b border-white/10 bg-background/30 backdrop-blur-md ${
+      className={`fixed inset-x-0 top-0 border-b border-black/10 bg-background/70 backdrop-blur-md ${
         inFront ? "z-20" : "z-0"
       }`}
     >
@@ -79,7 +79,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href="/get-started"
-            className="hidden rounded-full bg-white px-4 py-2 text-sm font-medium text-neutral-900 hover:bg-white/90 sm:inline-block"
+            className="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground hover:opacity-90 sm:inline-block"
           >
             Get started
           </a>

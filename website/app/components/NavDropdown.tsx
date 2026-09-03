@@ -27,7 +27,7 @@ export default function NavDropdown({
                   <li key={item.label}>
                     <a
                       href={item.href ?? href}
-                      className="flex w-auto flex-col gap-1 rounded-lg p-3 text-left hover:bg-white/5"
+                      className="flex w-auto flex-col gap-1 rounded-lg p-3 text-left hover:bg-black/5"
                     >
                       <span className="text-sm font-medium text-foreground">
                         {item.label}
