@@ -5,32 +5,25 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/images/hero-laptop.jpg",
-    alt: "A person browsing a short-term rental site with an AI live chat widget open, mid-conversation",
-    objectPosition: "center 65%",
-    heading: "Never miss another inquiry.",
-    body: "Reyse answers your leads, tenants and guests instantly — day or night — so your team can focus on closing, not repeating themselves.",
-  },
-  {
     src: "/images/hero-2.jpg",
     alt: "A man relaxing on his sofa at night, messaging on his phone",
     objectPosition: "center 60%",
-    heading: "Answered in seconds. Any hour.",
-    body: "While your team's asleep, Reyse is already replying — so no lead goes cold overnight.",
-  },
-  {
-    src: "/images/hero-3.jpg",
-    alt: "A family arriving at a grand country house at dusk",
-    objectPosition: "center 80%",
-    heading: "From first message to move-in day.",
-    body: "City flat or country estate, Reyse turns inquiries into guests, tenants and buyers.",
+    heading: "Found by ChatGPT. Not just Google.",
+    body: "Buyers and tenants are asking AI for recommendations before they ever type into Google. Reyse makes sure your business is the one they're told about.",
   },
   {
     src: "/images/hero-4.jpg",
     alt: "A phone on a dark wooden table showing a stack of new enquiry notifications from five different property developments",
     objectPosition: "center 55%",
-    heading: "Five conversations. Zero missed.",
-    body: "One enquiry or fifty, Reyse answers every single one instantly — across every property you manage.",
+    heading: "Every review. Answered instantly.",
+    body: "Reyse drafts on-brand replies to every Google and Trustpilot review, so your reputation stays managed without taking up your day.",
+  },
+  {
+    src: "/images/hero-laptop.jpg",
+    alt: "A person browsing a short-term rental site with an AI live chat widget open, mid-conversation",
+    objectPosition: "center 65%",
+    heading: "Never miss another inquiry.",
+    body: "Reyse answers your leads, tenants and guests instantly — day or night — so your team can focus on closing, not repeating themselves.",
   },
 ];
 
@@ -100,7 +93,7 @@ export default function HeroSlideshow() {
         </div>
       </div>
 
-      <div className="absolute bottom-6 right-6 z-10 flex gap-2">
+      <div className="absolute bottom-20 right-6 z-10 flex gap-2">
         {slides.map((slide, i) => (
           <button
             key={slide.src}
