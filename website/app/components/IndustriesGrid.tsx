@@ -1,41 +1,24 @@
-import Image from "next/image";
 import { industries } from "../industries/data";
-
-// Repeats every 5 cards: two large (half-width) then three small (third-width),
-// so the pattern keeps working as industries are added or removed.
-const spanPattern = [
-  "sm:col-span-3",
-  "sm:col-span-3",
-  "sm:col-span-2",
-  "sm:col-span-2",
-  "sm:col-span-2",
-];
 
 export default function IndustriesGrid() {
   return (
-    <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-6">
-      {industries.map((industry, i) => (
+    <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {industries.map((industry) => (
         <a
           key={industry.slug}
           href={`/industries/${industry.slug}`}
-          className={`group relative col-span-2 h-56 overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30 ${spanPattern[i % spanPattern.length]}`}
+          className="group flex flex-col justify-between rounded-2xl border border-border p-6 transition hover:border-foreground/30 hover:bg-panel"
         >
-          <Image
-            src={`/images/industries/${industry.slug}.jpg`}
-            alt=""
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1152px) 40vw, 460px"
-            className="object-cover transition duration-300 group-hover:scale-105"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"
-          />
-          <div className="absolute inset-0 flex items-end p-6">
-            <span className="font-heading text-2xl leading-none text-white drop-shadow-sm">
-              {industry.label}
-            </span>
+          <div>
+            <h3 className="font-heading text-xl">{industry.label}</h3>
+            <p className="mt-2 text-sm text-foreground/60">{industry.tagline}</p>
           </div>
+          <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent opacity-0 transition group-hover:opacity-100">
+            Learn more
+            <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
         </a>
       ))}
     </div>
