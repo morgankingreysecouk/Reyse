@@ -145,25 +145,75 @@ export default async function ProductPage({
           <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
             Everything included
           </h2>
-          <div className="mt-8 space-y-8">
-            {product.included.map((item) => (
+          <div className="mt-10 space-y-10">
+            {product.included.map((item, i) => (
               <div key={item.title} className="flex gap-4">
                 <span
                   aria-hidden
-                  className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent"
+                  className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-medium text-accent"
                 >
-                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                  {i + 1}
                 </span>
                 <div>
-                  <h3 className="font-medium text-foreground">{item.title}</h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="font-medium text-foreground">{item.title}</h3>
+                    {item.growthOnly && (
+                      <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-medium text-ink-foreground">
+                        Growth only
+                      </span>
+                    )}
+                  </div>
                   <p className="mt-1 text-sm text-foreground/60">{item.description}</p>
+                  {item.growthNote && (
+                    <div className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
+                      <p className="text-xs font-medium text-accent">On Growth</p>
+                      <p className="mt-1 text-sm text-foreground/70">{item.growthNote}</p>
+                    </div>
+                  )}
+                  {item.tierNote && (
+                    <p className="mt-3 text-xs text-foreground/50">{item.tierNote}</p>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {product.addOns && (
+          <div className="mt-16 border-t border-border pt-10">
+            <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
+              Optional add-ons
+            </h2>
+            <div className="mt-10 space-y-10">
+              {product.addOns.map((addOn) => (
+                <div key={addOn.title} className="flex gap-4">
+                  <span
+                    aria-hidden
+                    className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-panel text-accent"
+                  >
+                    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8">
+                      <path d="M8 3.5v9M3.5 8h9" strokeLinecap="round" />
+                    </svg>
+                  </span>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-medium text-foreground">{addOn.title}</h3>
+                      {addOn.growthOnly && (
+                        <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-medium text-ink-foreground">
+                          Growth only
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-1 text-sm text-foreground/60">{addOn.description}</p>
+                    {addOn.note && (
+                      <p className="mt-3 text-xs text-foreground/50">{addOn.note}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
           <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
