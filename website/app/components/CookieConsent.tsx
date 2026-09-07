@@ -1,30 +1,44 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "reyse-cookie-consent";
+const listeners = new Set<() => void>();
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  return () => listeners.delete(callback);
+}
+
+function hasAccepted() {
+  try {
+    return localStorage.getItem(STORAGE_KEY) !== null;
+  } catch {
+    return false;
+  }
+}
+
+// Render nothing on the server — there's no way to know the visitor's
+// choice until the client checks localStorage after hydration.
+function hasAcceptedOnServer() {
+  return true;
+}
+
+function accept() {
+  try {
+    localStorage.setItem(STORAGE_KEY, "accepted");
+  } catch {
+    // Storage may be unavailable (private browsing, disabled); the banner
+    // will just reappear next visit, which is an acceptable fallback.
+  }
+  listeners.forEach((listener) => listener());
+}
 
 export default function CookieConsent() {
-  const [visible, setVisible] = useState(false);
+  const accepted = useSyncExternalStore(subscribe, hasAccepted, hasAcceptedOnServer);
 
-  useEffect(() => {
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        setVisible(true);
-      }
-    } catch {
-      setVisible(true);
-    }
-  }, []);
-
-  const accept = () => {
-    try {
-      localStorage.setItem(STORAGE_KEY, "accepted");
-    } catch {}
-    setVisible(false);
-  };
-
-  if (!visible) return null;
+  if (accepted) return null;
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-panel/95 backdrop-blur">
@@ -32,9 +46,9 @@ export default function CookieConsent() {
         <p className="max-w-2xl">
           We use essential cookies to make Reyse work, and may use analytics cookies to
           understand how the site is used. Read our{" "}
-          <a href="/terms" className="underline hover:text-foreground">
+          <Link href="/terms" className="underline hover:text-foreground">
             Terms of Service
-          </a>{" "}
+          </Link>{" "}
           for more.
         </p>
         <button

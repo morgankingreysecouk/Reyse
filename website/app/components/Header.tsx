@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { industries } from "../industries/data";
 import MobileMenu from "./MobileMenu";
@@ -69,23 +70,23 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <a href="/" className="text-lg font-semibold tracking-tight">
+        <Link href="/" className="text-lg font-semibold tracking-tight">
           Reyse
-        </a>
+        </Link>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
-          <a href="/#product" className="hover:text-foreground">
+          <Link href="/#product" className="hover:text-foreground">
             Product
-          </a>
+          </Link>
           <NavDropdown label="Industries" href="/#industries" columns={industryColumns} />
           <NavDropdown label="Company" href="/#contact" columns={companyColumns} />
         </div>
         <div className="flex items-center gap-3">
-          <a
+          <Link
             href="/get-started"
             className="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground hover:opacity-90 sm:inline-block"
           >
             Get started
-          </a>
+          </Link>
           <MobileMenu />
         </div>
       </nav>

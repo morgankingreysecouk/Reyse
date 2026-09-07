@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { GeoMockup, ReviewMockup } from "./HeroMockups";
 
@@ -42,18 +43,18 @@ export default function HeroSlideshow() {
           </h1>
           <p className="mt-6 max-w-md text-lg text-foreground/70">{current.body}</p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
+            <Link
               href="/get-started"
               className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
             >
               Get started
-            </a>
-            <a
+            </Link>
+            <Link
               href="#how-it-works"
               className="rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-foreground/40"
             >
               See how it works
-            </a>
+            </Link>
           </div>
         </div>
 

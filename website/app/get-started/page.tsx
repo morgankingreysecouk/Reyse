@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Get Started",
@@ -24,21 +25,26 @@ export default function GetStarted() {
           Where would you like to start?
         </h1>
         <p className="mt-5 max-w-md text-lg text-foreground/70">
-          Pick whatever's most useful right now — we'll take it from there.
+          Pick whatever&rsquo;s most useful right now — we&rsquo;ll take it from there.
         </p>
 
         <div className="mt-12 space-y-2.5">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="group relative block max-w-max"
-            >
+          {links.map((link) => {
+            const label = (
               <span className="inline-block text-2xl font-medium tracking-tight text-foreground transition-transform delay-75 duration-300 ease-in-out group-hover:translate-x-4 group-hover:delay-0 sm:text-3xl">
                 {link.label}
               </span>
-            </a>
-          ))}
+            );
+            return link.href.startsWith("mailto:") ? (
+              <a key={link.label} href={link.href} className="group relative block max-w-max">
+                {label}
+              </a>
+            ) : (
+              <Link key={link.label} href={link.href} className="group relative block max-w-max">
+                {label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </main>

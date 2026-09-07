@@ -1,12 +1,25 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { industries } from "../industries/data";
 
+function subscribeNever() {
+  return () => {};
+}
+
+// The portal target (document.body) only exists on the client, so this
+// hook reports false during SSR and true once hydrated — the standard
+// useSyncExternalStore pattern for client-only state, without the
+// setState-in-effect that a "mounted" boolean + useEffect would need.
+function useIsClient() {
+  return useSyncExternalStore(subscribeNever, () => true, () => false);
+}
+
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsClient();
   const panelRef = useRef<HTMLDivElement>(null);
   const openButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -15,7 +28,6 @@ export default function MobileMenu() {
   // which — like transform/filter — creates a new containing block for
   // fixed-position descendants, so a nested "fixed inset-0" only fills the
   // header's own box instead of the viewport.
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -37,9 +49,10 @@ export default function MobileMenu() {
     ) as HTMLElement[];
     siblings.forEach((el) => el.setAttribute("inert", ""));
 
+    const openButton = openButtonRef.current;
     return () => {
       siblings.forEach((el) => el.removeAttribute("inert"));
-      openButtonRef.current?.focus();
+      openButton?.focus();
     };
   }, [open]);
 
@@ -94,22 +107,22 @@ export default function MobileMenu() {
             </button>
             <div className="flex h-full flex-col overflow-y-auto px-6 pb-10 pt-24">
               <nav className="flex flex-col gap-8">
-                <a href="/#product" onClick={close} className="text-2xl font-medium">
+                <Link href="/#product" onClick={close} className="text-2xl font-medium">
                   Product
-                </a>
+                </Link>
 
                 <div>
                   <p className="text-2xl font-medium">Industries</p>
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
                     {industries.map((industry) => (
                       <li key={industry.slug}>
-                        <a
+                        <Link
                           href={`/industries/${industry.slug}`}
                           onClick={close}
                           className="text-base text-foreground/70 hover:text-foreground"
                         >
                           {industry.label}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -119,34 +132,34 @@ export default function MobileMenu() {
                   <p className="text-2xl font-medium">Company</p>
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
                     <li>
-                      <a
+                      <Link
                         href="/"
                         onClick={close}
                         className="text-base text-foreground/70 hover:text-foreground"
                       >
                         About Reyse
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         href="/#contact"
                         onClick={close}
                         className="text-base text-foreground/70 hover:text-foreground"
                       >
                         Contact
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
               </nav>
 
-              <a
+              <Link
                 href="/get-started"
                 onClick={close}
                 className="mt-10 inline-block rounded-full bg-ink px-6 py-3 text-center text-sm font-medium text-ink-foreground hover:opacity-90"
               >
                 Get started
-              </a>
+              </Link>
             </div>
           </div>,
           document.body,

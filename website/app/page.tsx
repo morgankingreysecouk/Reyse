@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
 import IndustriesGrid from "./components/IndustriesGrid";
@@ -62,8 +63,8 @@ export default function Home() {
               Built for anyone renting or selling property
             </h2>
             <p className="mt-3 max-w-2xl text-foreground/60">
-              If people are messaging you about it, Reyse can answer them. Click an
-              industry to see how.
+              Buyers and tenants are already asking Google and AI about businesses
+              like yours. Click an industry to see how Reyse gets you found.
             </p>
             <IndustriesGrid />
           </div>
@@ -88,12 +89,12 @@ export default function Home() {
             <p className="mx-auto mt-3 max-w-md text-foreground/60">
               Tell us about your business and we&rsquo;ll show you Reyse in action.
             </p>
-            <a
+            <Link
               href="/get-started"
               className="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
             >
               Get started
-            </a>
+            </Link>
           </div>
         </section>
       </>

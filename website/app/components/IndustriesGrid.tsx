@@ -1,3 +1,4 @@
+import Link from "next/link";
 import IndustryIcon from "./IndustryIcons";
 import { industries } from "../industries/data";
 
@@ -5,7 +6,7 @@ export default function IndustriesGrid() {
   return (
     <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {industries.map((industry) => (
-        <a
+        <Link
           key={industry.slug}
           href={`/industries/${industry.slug}`}
           className="group flex flex-col justify-between rounded-2xl border border-border p-6 transition hover:border-foreground/30 hover:bg-panel"
@@ -23,7 +24,7 @@ export default function IndustriesGrid() {
               <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
-        </a>
+        </Link>
       ))}
     </div>
   );

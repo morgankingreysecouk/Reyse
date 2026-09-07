@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { products } from "../data";
 
@@ -47,9 +48,9 @@ export default async function ProductPage({
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
       <div className="mx-auto max-w-3xl">
-        <a href="/#product" className="text-sm text-foreground/60 hover:text-foreground">
+        <Link href="/#product" className="text-sm text-foreground/60 hover:text-foreground">
           ← All products
-        </a>
+        </Link>
         <p className="mb-4 mt-6 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
           {product.label}
         </p>
@@ -59,12 +60,12 @@ export default async function ProductPage({
         <p className="mt-5 max-w-xl text-lg text-foreground/70">{product.description}</p>
 
         <div className="mt-8 flex items-center gap-4">
-          <a
+          <Link
             href="/get-started"
             className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
           >
             Get started
-          </a>
+          </Link>
           <p className="text-sm text-foreground/60">
             <span className="font-medium text-foreground">{product.price}</span>{" "}
             {product.priceNote}
@@ -223,12 +224,12 @@ export default async function ProductPage({
             Tell us about your business and we&rsquo;ll show you exactly what&rsquo;s
             missing.
           </p>
-          <a
+          <Link
             href="/get-started"
             className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
           >
             Get started
-          </a>
+          </Link>
         </div>
       </div>
     </main>

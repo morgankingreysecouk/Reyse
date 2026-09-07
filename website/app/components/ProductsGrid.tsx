@@ -1,10 +1,11 @@
+import Link from "next/link";
 import { products } from "../products/data";
 
 export default function ProductsGrid() {
   return (
     <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => (
-        <a
+        <Link
           key={product.slug}
           href={`/products/${product.slug}`}
           className="group flex flex-col justify-between rounded-2xl border border-border p-6 transition hover:border-foreground/30 hover:bg-panel"
@@ -25,7 +26,7 @@ export default function ProductsGrid() {
               </svg>
             </span>
           </div>
-        </a>
+        </Link>
       ))}
     </div>
   );

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { industries } from "../industries/data";
 
 const companyLinks = [
@@ -49,12 +50,12 @@ function FooterColumn({
       <ul className="mt-4 flex flex-col gap-3">
         {links.map((link) => (
           <li key={link.label}>
-            <a
+            <Link
               href={link.href}
               className="text-sm text-foreground/60 hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -68,9 +69,9 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <a href="/" className="text-lg font-semibold tracking-tight">
+            <Link href="/" className="text-lg font-semibold tracking-tight">
               Reyse
-            </a>
+            </Link>
           </div>
           <FooterColumn
             title="Industries"
@@ -113,9 +114,9 @@ export default function Footer() {
               </select>
             </label>
 
-            <a href="/terms" className="hover:text-foreground">
+            <Link href="/terms" className="hover:text-foreground">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
