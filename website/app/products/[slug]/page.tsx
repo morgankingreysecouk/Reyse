@@ -2,6 +2,20 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { products } from "../data";
 
+function TierCell({ value }: { value: string }) {
+  const included = value.startsWith("✓");
+  const note = value.replace(/^[✓✗]/, "").trim();
+  return (
+    <div className="flex items-baseline gap-2">
+      <span className={included ? "text-accent" : "text-foreground/30"} aria-hidden>
+        {included ? "✓" : "✗"}
+      </span>
+      <span className="sr-only">{included ? "Included" : "Not included"}</span>
+      {note && <span className="text-xs text-foreground/50">{note}</span>}
+    </div>
+  );
+}
+
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
 }
@@ -28,6 +42,7 @@ export default async function ProductPage({
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
   if (!product) notFound();
+  const comparison = product.comparison;
 
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
@@ -55,6 +70,76 @@ export default async function ProductPage({
             {product.priceNote}
           </p>
         </div>
+
+        {comparison && (
+          <div className="mt-16">
+            <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
+              Reyse {product.label} — {comparison.tierLabels[0]} vs.{" "}
+              {comparison.tierLabels[1]}
+            </h2>
+            {/* Table for sm+ — a nested horizontal scroll on mobile has no
+               visible affordance, so narrow viewports get a stacked list
+               instead rather than two hidden columns. */}
+            <div className="mt-6 hidden overflow-x-auto rounded-2xl border border-border sm:block">
+              <table className="w-full min-w-[600px] border-collapse text-sm">
+                <thead>
+                  <tr className="border-b border-border bg-panel text-left">
+                    <th className="px-4 py-3 font-medium text-foreground/50">#</th>
+                    <th className="px-4 py-3 font-medium text-foreground/50">Service</th>
+                    <th className="px-4 py-3 font-medium text-foreground/50">
+                      {comparison.tierLabels[0]}
+                    </th>
+                    <th className="px-4 py-3 font-medium text-foreground/50">
+                      {comparison.tierLabels[1]}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparison.rows.map((row, i) => (
+                    <tr key={row.service} className="border-b border-border last:border-0">
+                      <td className="px-4 py-3 text-foreground/40">{i + 1}</td>
+                      <td className="px-4 py-3 font-medium text-foreground">{row.service}</td>
+                      <td className="px-4 py-3">
+                        <TierCell value={row.foundation} />
+                      </td>
+                      <td className="px-4 py-3">
+                        <TierCell value={row.growth} />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-6 divide-y divide-border rounded-2xl border border-border sm:hidden">
+              {comparison.rows.map((row, i) => (
+                <div key={row.service} className="p-4">
+                  <p className="text-sm font-medium text-foreground">
+                    {i + 1}. {row.service}
+                  </p>
+                  <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <p className="text-xs font-medium text-foreground/40">
+                        {comparison.tierLabels[0]}
+                      </p>
+                      <div className="mt-1">
+                        <TierCell value={row.foundation} />
+                      </div>
+                    </div>
+                    <div>
+                      <p className="text-xs font-medium text-foreground/40">
+                        {comparison.tierLabels[1]}
+                      </p>
+                      <div className="mt-1">
+                        <TierCell value={row.growth} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">

@@ -3,6 +3,12 @@ export type IncludedItem = {
   description: string;
 };
 
+export type ComparisonRow = {
+  service: string;
+  foundation: string;
+  growth: string;
+};
+
 export type Product = {
   slug: string;
   label: string;
@@ -11,6 +17,10 @@ export type Product = {
   price: string;
   priceNote: string;
   included: IncludedItem[];
+  comparison?: {
+    tierLabels: [string, string];
+    rows: ComparisonRow[];
+  };
 };
 
 export const products: Product[] = [
@@ -21,7 +31,24 @@ export const products: Product[] = [
     description:
       "Buyers and tenants increasingly ask ChatGPT, Google's AI Overviews and Perplexity for recommendations before they ever browse a website. Reyse audits and fixes your visibility across all of it — traditional search included — so you're the business they're told about.",
     price: "£450",
-    priceNote: "one-off, then upkeep is folded into your monthly plan",
+    priceNote:
+      "Foundation — one-off. Growth adds £199/month for ongoing monitoring, management and reporting.",
+    comparison: {
+      tierLabels: ["Foundation", "Growth"],
+      rows: [
+        { service: "Technical Health Audit", foundation: "✓", growth: "✓ (+ ongoing monitoring)" },
+        { service: "On-Page Audit", foundation: "✓", growth: "✓ (+ monthly review)" },
+        { service: "NAP Consistency Audit", foundation: "✓", growth: "✓ (+ ongoing monitoring)" },
+        { service: "Total Visibility Audit", foundation: "✓", growth: "✓ (+ ongoing strategy)" },
+        { service: "Profile Setup Audit", foundation: "✓", growth: "✓ (+ ongoing management)" },
+        { service: "Content Audit", foundation: "✓", growth: "✓ (+ monthly review)" },
+        { service: "Property Schema Template", foundation: "✓", growth: "✓" },
+        { service: "Profile Activity", foundation: "✓", growth: "✓" },
+        { service: "Local Expert Content", foundation: "✓", growth: "✓" },
+        { service: "SEO Reporting", foundation: "✗", growth: "✓" },
+        { service: "ROI Report", foundation: "✗", growth: "✓" },
+      ],
+    },
     included: [
       {
         title: "Full technical audit",
