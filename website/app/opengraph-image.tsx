@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Reyse — AI live chat for the property industry";
+export const alt = "Reyse — AI search visibility and reviews for the property industry";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -71,7 +71,7 @@ export default function OpengraphImage() {
             maxWidth: 920,
           }}
         >
-          Never miss another inquiry.
+          Get found by Google — and by AI.
         </div>
         <div
           style={{
@@ -82,8 +82,9 @@ export default function OpengraphImage() {
             maxWidth: 780,
           }}
         >
-          AI live chat for the property industry — answering leads, tenants and
-          guests instantly, day or night.
+          AI-powered search visibility and review management for property
+          businesses — found by Google, recommended by AI, answered on every
+          review.
         </div>
       </div>
     ),

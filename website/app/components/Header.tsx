@@ -26,7 +26,7 @@ const companyColumns = [
   [
     {
       label: "About Reyse",
-      description: "Why we're building AI live chat for the property industry.",
+      description: "Why we help property businesses get found and trusted online.",
       href: "/",
     },
     {

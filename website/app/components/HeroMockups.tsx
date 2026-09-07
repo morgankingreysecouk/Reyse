@@ -68,34 +68,3 @@ export function ReviewMockup() {
     </div>
   );
 }
-
-export function ChatMockup() {
-  return (
-    <div className="flex h-full flex-col">
-      <div className="flex items-center gap-2 border-b border-border pb-3">
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
-          <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
-        </span>
-        <p className="text-sm font-medium text-foreground">Live chat</p>
-        <span className="text-xs text-foreground/40">· Online</span>
-      </div>
-      <div className="flex flex-1 flex-col justify-end gap-3 py-4">
-        <div className="max-w-[85%] rounded-2xl rounded-bl-sm border border-border bg-background px-4 py-2.5 text-sm text-foreground/80">
-          Hi! Is the 2-bed on Elm Street still available?
-        </div>
-        <div className="max-w-[85%] self-end rounded-2xl rounded-br-sm bg-chat-bubble px-4 py-2.5 text-sm text-foreground">
-          Yes, it is! Would you like to book a viewing this week?
-        </div>
-        <div className="flex items-center gap-1 self-start rounded-2xl border border-border bg-background px-4 py-3">
-          <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/30 [animation-delay:-0.3s]" />
-          <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/30 [animation-delay:-0.15s]" />
-          <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-foreground/30" />
-        </div>
-      </div>
-      <div className="rounded-full border border-border px-4 py-2.5 text-sm text-foreground/40">
-        Type a message…
-      </div>
-    </div>
-  );
-}

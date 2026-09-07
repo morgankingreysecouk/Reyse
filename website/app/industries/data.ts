@@ -9,78 +9,78 @@ export const industries: Industry[] = [
   {
     slug: "estate-agents",
     label: "Estate agents",
-    tagline: "Answer buyer questions and book viewings the moment they message.",
+    tagline: "Get recommended by Google and AI before the call ever comes in.",
     description:
-      "Buyers message at all hours asking about price, square footage, and when they can view. Reyse answers instantly and books the viewing, so agents spend their time with buyers who are ready to move.",
+      "Buyers now ask ChatGPT, Google's AI Overviews and Perplexity who the best local agent is before they browse a single listing. Reyse gets your visibility and reviews in shape so you're the name they're told — not a competitor down the road.",
   },
   {
     slug: "letting-agents",
     label: "Letting agents",
-    tagline: "Qualify tenants and fill vacancies faster, day or night.",
+    tagline: "Be the letting agent tenants and AI find first.",
     description:
-      "Every vacant listing brings a wave of tenant enquiries about availability, deposits and move-in dates. Reyse qualifies each one and fills vacancies faster, without tying up your team.",
+      "Tenants search \"best letting agent in [town]\" on Google and increasingly ask AI the same question. Reyse fixes your visibility across search, listings and profiles, and keeps your reviews answered, so vacancies get filled by people who found you first.",
   },
   {
     slug: "property-management",
     label: "Property management",
-    tagline: "Handle resident queries at scale without adding headcount.",
+    tagline: "Stay the trusted name residents and boards find and recommend.",
     description:
-      "Residents have questions around the clock — maintenance, service charges, parking. Reyse handles the routine ones instantly, so your team isn't fielding the same questions on repeat.",
+      "Residents and boards check reviews and search results before choosing — and after every interaction. Reyse strengthens your visibility across Google and AI search and makes sure every review gets a considered, on-brand reply.",
   },
   {
     slug: "new-homes-developers",
     label: "New homes & developers",
-    tagline: "Turn plot and pricing questions into booked show-home visits.",
+    tagline: "Get your development found before ground's even broken.",
     description:
-      "Plot pricing, specifications and show-home times drive a constant stream of enquiries. Reyse answers them the moment they land and books the visit.",
+      "Buyers research developments on Google and ask AI tools to compare them long before they visit a show home. Reyse makes sure your development shows up — and that early reviews build the reputation that gets plots reserved.",
   },
   {
     slug: "short-term-lets",
     label: "Short-term lets",
-    tagline: "Confirm availability and bookings before guests look elsewhere.",
+    tagline: "Win the booking before a review ever gets left.",
     description:
-      "Guests expect an answer in minutes, not hours — and they'll book elsewhere if they don't get one. Reyse confirms availability and takes the booking before they look elsewhere.",
+      "Guests compare short-term lets on Google, AI search and reviews before they book. Reyse keeps your listings visible and every review answered quickly, so a five-star reputation keeps driving bookings on its own.",
   },
   {
     slug: "wedding-event-venues",
     label: "Wedding & event venues",
-    tagline: "Answer date and pricing enquiries the instant they land.",
+    tagline: "Be the venue Google and AI suggest for their big day.",
     description:
-      "Couples enquire about dates, capacity and pricing long before they ever call. Reyse answers instantly, keeping your venue front of mind while they're comparing options.",
+      "Couples research venues for months, comparing reviews and asking AI tools for recommendations long before they enquire. Reyse builds your visibility across search and keeps your reviews answered, so you're front of mind while they're still deciding.",
   },
   {
     slug: "student-accommodation",
     label: "Student accommodation",
-    tagline: "Handle intake-season enquiry spikes without extra staff.",
+    tagline: "Be the accommodation students find — and trust — first.",
     description:
-      "Enquiries spike hard during intake season, all asking about rooms, rent and contracts. Reyse handles the surge without extra staff, so nothing slips through.",
+      "Students and parents search hard during intake season, checking Google, reviews and increasingly AI tools before committing. Reyse gets your visibility and review responses in shape well before the rush, so you're the trusted option when it matters most.",
   },
   {
     slug: "holiday-parks",
     label: "Holiday parks",
-    tagline: "Keep pitches and lodges booked through every peak season.",
+    tagline: "Get found before every peak season starts.",
     description:
-      "Pitch and lodge enquiries pile up fast in peak season. Reyse keeps answering and booking around the clock, even when your team can't.",
+      "Holidaymakers search and compare parks on Google and AI tools long before booking, and reviews make or break the decision. Reyse keeps your visibility strong and your reviews answered, so pitches and lodges fill up before the season even begins.",
   },
   {
     slug: "self-storage",
     label: "Self-storage",
-    tagline: "Turn unit enquiries into move-ins the same day.",
+    tagline: "Be the self-storage unit that shows up first, locally.",
     description:
-      "People enquiring about a unit want to know size, price and availability right now. Reyse answers on the spot and turns enquiries into move-ins the same day.",
+      "\"Storage near me\" searches are won by visibility and trust. Reyse gets your business properly set up across Google, Bing and AI search, and makes sure every review is answered — so the search near you finds you, not a competitor.",
   },
   {
     slug: "holiday-rental-agencies",
     label: "Holiday rental agencies",
-    tagline: "Answer booking enquiries across your whole portfolio, instantly.",
+    tagline: "Get every property in your portfolio found and trusted.",
     description:
-      "Guests enquire about dozens of different properties at once, all expecting a fast reply. Reyse answers instantly across your entire portfolio, so no booking enquiry waits for a human to catch up.",
+      "Guests search dozens of individual properties and compare reviews across your whole portfolio before booking. Reyse makes sure each one is visible in search and AI recommendations, and that reviews across the board are consistently answered.",
   },
   {
     slug: "campsites-glamping",
     label: "Campsites & glamping",
-    tagline: "Keep pitches and glamping units booked through every peak season.",
+    tagline: "Get pitches booked before the good weather hits.",
     description:
-      "Seasonal booking spikes bring a flood of questions about pitches, availability and facilities. Reyse answers around the clock, so your team isn't overwhelmed the moment good weather hits.",
+      "Campers and glampers search and compare on Google and AI tools well ahead of peak season, and reviews are often the deciding factor. Reyse builds your visibility across search and keeps every review answered, so you're booked out before the rush.",
   },
 ];

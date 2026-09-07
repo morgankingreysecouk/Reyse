@@ -4,16 +4,16 @@ import { useEffect, useRef, useState } from "react";
 
 const steps = [
   {
-    label: "Drop it in",
-    body: "Add Reyse to your website, WhatsApp or socials in minutes — no developer needed.",
+    label: "We audit your visibility",
+    body: "We check how you show up across Google, Bing, AI search and every review platform — and flag exactly what's costing you enquiries.",
   },
   {
-    label: "It handles the inquiry",
-    body: "Reyse answers questions about availability, pricing and viewings instantly, any time of day.",
+    label: "We fix what's costing you",
+    body: "Schema, business profiles, listings and review replies — set up properly and left working, not just flagged.",
   },
   {
-    label: "You get the lead",
-    body: "Qualified conversations get handed to your team, ready to close.",
+    label: "You stay ahead of it",
+    body: "Growth keeps monitoring, managing and reporting on it every month, so nothing quietly slips backwards as search and your business keep moving.",
   },
 ];
 

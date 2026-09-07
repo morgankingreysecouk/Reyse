@@ -23,9 +23,9 @@ const fraunces = Fraunces({
   subsets: ["latin"],
 });
 
-const title = "Reyse — AI Live Chat for Property Businesses";
+const title = "Reyse — AI Search Visibility & Reviews for Property Businesses";
 const description =
-  "Reyse gives property businesses an AI live chat that answers inquiries instantly, day or night.";
+  "Reyse gets property businesses found across Google, Bing and AI search — and keeps every review answered, so your visibility and reputation work for you around the clock.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://reyse.co.uk"),

@@ -9,7 +9,6 @@
   --accent-foreground: #1c1a17;
   --ink: #1c1a17;
   --ink-foreground: #faf8f2;
-  --chat-bubble: #e8ecd8;
 }
 
 @theme inline {
@@ -21,7 +20,6 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
-  --color-chat-bubble: var(--chat-bubble);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-heading);

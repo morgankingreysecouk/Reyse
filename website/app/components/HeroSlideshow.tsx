@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ChatMockup, GeoMockup, ReviewMockup } from "./HeroMockups";
+import { GeoMockup, ReviewMockup } from "./HeroMockups";
 
 const slides = [
   {
@@ -13,11 +13,6 @@ const slides = [
     Mockup: ReviewMockup,
     heading: "Every review. Answered instantly.",
     body: "Reyse drafts on-brand replies to every Google and Trustpilot review, so your reputation stays managed without taking up your day.",
-  },
-  {
-    Mockup: ChatMockup,
-    heading: "Never miss another inquiry.",
-    body: "Reyse answers your leads, tenants and guests instantly — day or night — so your team can focus on closing, not repeating themselves.",
   },
 ];
 

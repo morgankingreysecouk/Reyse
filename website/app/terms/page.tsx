@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 const sections = [
   {
     heading: "1. Who we are",
-    body: "Reyse (“we”, “us”, “our”) provides AI-powered live chat and messaging automation for property businesses, including estate and letting agents, property managers, developers, and short-term let operators. These terms apply whenever you use our website, product, or related services (the “Service”).",
+    body: "Reyse (“we”, “us”, “our”) provides AI-powered search visibility (SEO/GEO) audits and review management services for property businesses, including estate and letting agents, property managers, developers, and short-term let operators. These terms apply whenever you use our website, product, or related services (the “Service”).",
   },
   {
     heading: "2. Accepting these terms",
-    body: "By creating an account, installing our chat widget, or otherwise using the Service, you agree to these terms on behalf of yourself and, if applicable, the business you represent. If you don't agree, please don't use the Service.",
+    body: "By creating an account, purchasing a service, or otherwise using the Service, you agree to these terms on behalf of yourself and, if applicable, the business you represent. If you don't agree, please don't use the Service.",
   },
   {
     heading: "3. Your account",
@@ -20,11 +20,11 @@ const sections = [
   },
   {
     heading: "4. Acceptable use",
-    body: "You agree not to use the Service to send unlawful, harassing, or deceptive messages, to impersonate another person or business, to attempt to disrupt or reverse-engineer the Service, or to use it in any way that breaches applicable data protection or consumer protection law.",
+    body: "You agree not to use the Service for unlawful, harassing, or deceptive purposes, to impersonate another person or business, to attempt to disrupt or reverse-engineer the Service, or to use it in any way that breaches applicable data protection or consumer protection law.",
   },
   {
     heading: "5. Your content and data",
-    body: "You retain ownership of the content and customer data you provide to Reyse (for example, property listings or conversation data). You grant us a licence to process that data solely to provide and improve the Service. Our use of personal data is described in our Privacy Policy.",
+    body: "You retain ownership of the content and customer data you provide to Reyse (for example, property listings, business listings, or review data). You grant us a licence to process that data solely to provide and improve the Service. Our use of personal data is described in our Privacy Policy.",
   },
   {
     heading: "6. Fees and payment",
