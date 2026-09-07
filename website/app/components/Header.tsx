@@ -73,6 +73,9 @@ export default function Header() {
           Reyse
         </a>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
+          <a href="/#product" className="hover:text-foreground">
+            Product
+          </a>
           <NavDropdown label="Industries" href="/#industries" columns={industryColumns} />
           <NavDropdown label="Company" href="/#contact" columns={companyColumns} />
         </div>

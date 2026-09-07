@@ -67,7 +67,7 @@ export default function Terms() {
         <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
           Legal
         </p>
-        <h1 className="font-heading text-4xl leading-[1.4] tracking-tight sm:text-5xl">
+        <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
           Terms of Service
         </h1>
         <p className="mt-5 max-w-xl text-lg text-foreground/70">
