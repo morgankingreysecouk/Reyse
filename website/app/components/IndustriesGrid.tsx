@@ -1,3 +1,4 @@
+import IndustryIcon from "./IndustryIcons";
 import { industries } from "../industries/data";
 
 export default function IndustriesGrid() {
@@ -10,7 +11,10 @@ export default function IndustriesGrid() {
           className="group flex flex-col justify-between rounded-2xl border border-border p-6 transition hover:border-foreground/30 hover:bg-panel"
         >
           <div>
-            <h3 className="font-heading text-xl">{industry.label}</h3>
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
+              <IndustryIcon slug={industry.slug} />
+            </span>
+            <h3 className="mt-4 font-heading text-xl">{industry.label}</h3>
             <p className="mt-2 text-sm text-foreground/60">{industry.tagline}</p>
           </div>
           <span className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent opacity-0 transition group-hover:opacity-100">
