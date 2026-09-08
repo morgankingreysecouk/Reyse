@@ -183,7 +183,7 @@ export default async function ProductPage({
         {product.addOns && (
           <div className="mt-16 border-t border-border pt-10">
             <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
-              Optional add-ons
+              Optional add-on{product.addOns.length !== 1 ? "s" : ""}
             </h2>
             <div className="mt-10 space-y-10">
               {product.addOns.map((addOn) => (

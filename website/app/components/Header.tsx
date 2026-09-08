@@ -3,8 +3,17 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { industries } from "../industries/data";
+import { products } from "../products/data";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
+
+const productColumns = [
+  products.map((product) => ({
+    label: product.label,
+    description: product.tagline,
+    href: `/products/${product.slug}`,
+  })),
+];
 
 // Split into (up to) 4 columns, sized to fit however many industries there
 // are — so adding or removing one never silently drops it from the menu.
@@ -74,9 +83,7 @@ export default function Header() {
           Reyse
         </Link>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
-          <Link href="/#product" className="hover:text-foreground">
-            Product
-          </Link>
+          <NavDropdown label="Product" href="/#product" columns={productColumns} />
           <NavDropdown label="Industries" href="/#industries" columns={industryColumns} />
           <NavDropdown label="Company" href="/#contact" columns={companyColumns} />
         </div>

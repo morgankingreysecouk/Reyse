@@ -155,4 +155,91 @@ export const products: Product[] = [
       },
     ],
   },
+  {
+    slug: "geo",
+    label: "GEO",
+    tagline:
+      "Get recommended — by ChatGPT, Gemini, Copilot, Siri, and every AI your customers now ask.",
+    description:
+      "Buyers and sellers increasingly ask ChatGPT, Gemini, and Perplexity who to trust before they ever browse a website — and it's not just chatbots. When someone does a normal Google search, an AI-generated answer, powered by Gemini, now often appears right above the regular results. The same is true on Microsoft Edge, where Copilot answers are built directly into everyday Bing searches, and on iPhone, where Siri and Spotlight increasingly answer questions directly rather than just pointing to a website. Reyse audits, fixes, and actively manages your visibility across all of it — every AI surface your customers might already be asking, whether they realise it or not — so you're the business they're told about.",
+    price: "£950",
+    priceNote:
+      "Foundation — one-off. Growth adds £4,000/month for ongoing implementation, entity building, and multi-branch AI visibility.",
+    comparison: {
+      tierLabels: ["Foundation", "Growth"],
+      rows: [
+        { service: "AI Visibility Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ ongoing implementation & reporting)" },
+        { service: "Answer-Ready Content Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ monthly review & rewriting)" },
+        { service: "Freshness Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ ongoing monitoring)" },
+        { service: "AI Trust Signals", foundation: "✓ Included", growth: "✓ Included" },
+        { service: "AI Query Mapping", foundation: "✗ Not included", growth: "✓ Included" },
+        { service: "Knowledge Panel & Entity Optimisation", foundation: "✗ Not included", growth: "✓ Included" },
+        { service: "AI Reputation Response", foundation: "✗ Not included", growth: "✓ Included" },
+        { service: "Full-Funnel Attribution", foundation: "✗ Not included", growth: "✓ Included" },
+      ],
+    },
+    included: [
+      {
+        title: "AI Visibility Audit & Fix",
+        description:
+          "When someone asks ChatGPT, Gemini, or Perplexity \"best estate agent in [town]\" — or simply searches on Google, Bing, or their iPhone and gets an AI-generated answer instead of a list of links — only a handful of businesses ever get named. We test these exact real-world questions and searches across every major AI surface — ChatGPT, Google's Gemini-powered AI Overviews, Microsoft's Copilot, and Apple's Siri and Spotlight — fix what we can put right immediately, and give you a clear, practical guide for keeping your visibility strong going forward on your own.",
+        growthNote:
+          "Rather than handing you a guide and leaving you to keep on top of it, we do it for you — implementing every fix, then re-testing every month across all four ecosystems, tracking whether your position and how you compare to your closest local competitors is improving, holding steady, or slipping, and reporting it back to you in plain terms.",
+      },
+      {
+        title: "Answer-Ready Content Audit & Fix",
+        description:
+          "AI tools don't browse your website the way a person does — they scan for content that answers a specific question clearly and directly, then lift it straight into their response, whether that's inside a chatbot, Google's AI Overview box, or a spoken answer from Siri. We review your key pages, rewrite the most important ones ourselves as part of Foundation, and give you a clear guide for structuring anything new you publish going forward.",
+        growthNote:
+          "We keep doing this for you — as you publish new pages and listings, we review and rewrite each one every month, keeping everything genuinely extractable across every AI surface, not just readable by a person.",
+      },
+      {
+        title: "Freshness Audit & Fix",
+        description:
+          "AI models consistently favour recently updated content and can quietly stop citing pages that haven't been touched in months, even if they ranked well before — this holds true whether it's ChatGPT, Gemini, or Copilot doing the citing. We check how current your key pages are, refresh the most important ones as part of Foundation, and leave you with a clear plan for keeping the rest current yourself.",
+        growthNote:
+          "We keep everything current for you, every month, so your most important pages never quietly slip past the point where any of these AI systems stop trusting them.",
+      },
+      {
+        title: "AI Trust Signals",
+        description:
+          "Beyond what a human reads, AI tools rely on a hidden layer of structured data — including a dedicated llm.txt file, a document written specifically for AI crawlers — to understand exactly what your business is, what it does, and where. This same structured data is what Google's Gemini, Microsoft's Copilot, and Apple's Siri all draw from when deciding what to say about you. We build this directly into your website on Foundation, giving every AI system a clean, unambiguous source to draw from.",
+        growthNote:
+          "We keep it properly maintained as your site evolves, rather than it quietly falling out of date.",
+      },
+      {
+        title: "AI Query Mapping",
+        description:
+          "Most agencies only think about \"best estate agent in [town].\" Real buyers and sellers ask AI dozens of different things — \"is now a good time to sell in [town],\" \"what's the average time on market,\" \"how much is stamp duty on a second home\" — whether they're typing into ChatGPT, asking Copilot in Edge, or asking Siri out loud. We research and map every realistic question your future customers are asking, across every platform, and build your content strategy around genuine demand.",
+        growthOnly: true,
+      },
+      {
+        title: "Knowledge Panel & Entity Optimisation",
+        description:
+          "AI increasingly treats businesses as distinct, recognised \"entities\" rather than just websites — and Google, Microsoft, and Apple each maintain their own version of this. We claim and correct your Google Knowledge Panel, and make sure your business is consistently represented across the other sources these systems check — Bing Places, Apple Business Connect, Companies House, LinkedIn — linking them together so every AI system can confidently recognise you as one real, established business.",
+        growthOnly: true,
+      },
+      {
+        title: "AI Reputation Response",
+        description:
+          "If any AI platform — ChatGPT, Gemini, Copilot, or Siri — ever states something inaccurate or damaging about your business, we catch it and act fast, not next month.",
+        growthOnly: true,
+      },
+      {
+        title: "Full-Funnel Attribution",
+        description:
+          "We track AI-driven traffic where it's technically detectable across every platform, add simple \"how did you hear about us\" tracking to your enquiry process, and compare your AI visibility movement against real enquiry and instruction data each month — so the value of this work is provable in pounds, wherever the enquiry actually came from.",
+        growthOnly: true,
+      },
+    ],
+    addOns: [
+      {
+        title: "Multi-Branch AI Rollout",
+        description:
+          "If you operate across multiple branches, each one needs its own dedicated AI visibility across every platform. Where relevant, we build and maintain this properly across every branch, so no location is left behind.",
+        note: "Growth, where applicable — only relevant if you operate more than one branch.",
+        growthOnly: true,
+      },
+    ],
+  },
 ];

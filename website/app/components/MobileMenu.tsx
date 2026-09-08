@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { industries } from "../industries/data";
+import { products } from "../products/data";
 
 function subscribeNever() {
   return () => {};
@@ -107,9 +108,22 @@ export default function MobileMenu() {
             </button>
             <div className="flex h-full flex-col overflow-y-auto px-6 pb-10 pt-24">
               <nav className="flex flex-col gap-8">
-                <Link href="/#product" onClick={close} className="text-2xl font-medium">
-                  Product
-                </Link>
+                <div>
+                  <p className="text-2xl font-medium">Product</p>
+                  <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
+                    {products.map((product) => (
+                      <li key={product.slug}>
+                        <Link
+                          href={`/products/${product.slug}`}
+                          onClick={close}
+                          className="text-base text-foreground/70 hover:text-foreground"
+                        >
+                          {product.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
                 <div>
                   <p className="text-2xl font-medium">Industries</p>
