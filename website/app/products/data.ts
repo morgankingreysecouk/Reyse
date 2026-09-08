@@ -242,4 +242,40 @@ export const products: Product[] = [
       },
     ],
   },
+  {
+    slug: "reviews",
+    label: "Review Management",
+    tagline: "Your reputation, watched, answered, and grown — automatically, everywhere.",
+    description:
+      "Reviews don't just sit on Google anymore. Bing pulls in review data of its own, and Apple Business Connect actually inherits and displays reviews directly from Yelp and Tripadvisor — meaning a review left on a site you've never even logged into can shape what a customer sees on their iPhone. Reyse manages your reputation across every platform that matters — replying automatically, and making sure happy customers actually leave a review in the first place.",
+    price: "£299",
+    priceNote: "per month.",
+    included: [
+      {
+        title: "AI Review Responder",
+        description:
+          "We check every place a review about your business could appear — Google, Bing, Trustpilot, Facebook, and Yelp and Tripadvisor specifically, since Apple Business Connect quietly pulls its reviews from those two. We start by clearing your entire existing backlog of unanswered reviews, giving you a clean slate. From there, an AI responder takes over — reading every new review as it comes in, on every platform, and automatically drafting and posting a genuine, well-considered reply in your voice, not a generic \"thank you for your feedback.\" Nothing sits unanswered, no matter how many come in or how busy you are.",
+      },
+      {
+        title: "Automatic Review Reminders",
+        description:
+          "The best time to ask for a review is the moment right after you've actually helped someone — but that's exactly the moment it's easiest to forget. We build and run a system that automatically sends a review request the moment a service is completed — a sale finishing, a tenancy starting, a stay ending — with a gentle automatic follow-up if a customer doesn't respond the first time. Review growth happens continuously in the background, not only when someone remembers to ask.",
+      },
+      {
+        title: "Review Monitoring & Reporting",
+        description:
+          "Every month, we track your review count, average rating, and response speed across every platform — Google, Bing, Apple (via Yelp and Tripadvisor), Trustpilot, and Facebook — and show you exactly how you're trending, including against the kind of review volume and rating range that genuinely influences whether AI tools recommend you.",
+      },
+      {
+        title: "Sentiment & Theme Analysis",
+        description:
+          "Reviews aren't just a number — they're honest feedback most businesses never properly read as a whole. Each month, we identify the genuine patterns across what customers are saying, both good and bad, and flag anything recurring that's worth your attention.",
+      },
+      {
+        title: "Reputation Crisis Response",
+        description:
+          "A single bad review sitting unanswered, or a sudden cluster of negative reviews, can do real damage fast. We monitor for this actively and respond immediately when it matters — with a human checking in on anything sensitive the AI flags — rather than it waiting to be picked up in the next scheduled check.",
+      },
+    ],
+  },
 ];
