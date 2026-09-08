@@ -67,63 +67,63 @@ export const products: Product[] = [
       {
         title: "Technical Health Audit",
         description:
-          "Before anything else, we make sure the foundations are solid. A slow, clunky, or hard-to-navigate website loses buyers, sellers, and tenants before they've even had a chance to browse — and search engines notice too, ranking sluggish sites lower regardless of how good the content is. We check your site works smoothly on every device, loads quickly, and has no hidden errors quietly turning visitors away. We also review your enquiry and valuation forms specifically, checking whether people are dropping out before completing them.",
+          "Before anything else, we make sure the foundations are solid. A slow, clunky, or hard-to-navigate website loses buyers, sellers, and tenants before they've even had a chance to browse — and search engines notice too, ranking sluggish sites lower regardless of how good the content is. We check your site works smoothly on every device, loads quickly, and has no hidden errors quietly turning visitors away — putting right what we find as part of this initial pass, and reviewing your enquiry and valuation forms specifically for people dropping out before completing them. Where something needs ongoing attention rather than a one-off fix, we tell you exactly what it is and how to stay on top of it.",
         growthNote:
           "A website is never \"finished\" — search engines regularly change how they evaluate site speed and mobile performance, browsers update, plugins age, and every new page or property listing you add is a new opportunity for something to quietly break. We monitor your site continuously, checking every change, every new listing, and every new page as it goes live — catching slow pages, broken links, and fresh errors before they cost you visibility, rather than discovering them months later in a one-off check.",
       },
       {
         title: "On-Page Audit",
         description:
-          "Every page on your website is a chance to be found by the exact person searching for what you offer — but only if it's written and structured in a way search engines can understand. We review every page to make sure it clearly signals what you do and where you operate, so the right buyers, sellers, and tenants find you first.",
+          "Every page on your website is a chance to be found by the exact person searching for what you offer — but only if it's written and structured in a way search engines can understand. We review every page, fix what's holding it back, and make sure it clearly signals what you do and where you operate — so the right buyers, sellers, and tenants find you first. For anything that needs a bigger content rework, we'll tell you exactly what to prioritise next.",
         growthNote:
           "What counts as \"well-optimised\" shifts over time as search engines refine how they read and rank content, and your website itself keeps growing — new property listings, new pages, updated services. We review every new page and listing as it's published, giving it the same scrutiny as your original site, so nothing new is left underperforming, and nothing already working slips out of date as the rules change around it.",
       },
       {
         title: "NAP Consistency Audit",
         description:
-          "\"NAP\" stands for Name, Address, and Phone number — the core details that identify your business online. We check that these match exactly everywhere your business appears — your website, Google, Bing, Apple, review sites, and industry directories — because even small mismatches quietly damage the trust search engines and AI need to recommend you with confidence.",
+          "\"NAP\" stands for Name, Address, and Phone number — the core details that identify your business online. We check these match exactly everywhere your business appears — your website, Google, Bing, Apple, review sites, and industry directories — correcting every mismatch we find, because even small inconsistencies quietly damage the trust search engines and AI need to recommend you with confidence. Any listing we can't fix directly, we hand you clear instructions for getting corrected.",
         growthNote:
           "Consistency isn't a one-time fix — directories change their formatting, listings get updated in one place and forgotten in another, and new platforms emerge that need the same details added correctly from day one. We keep checking every listing every month, so your details never quietly drift out of sync without you knowing.",
       },
       {
         title: "Total Visibility Audit",
         description:
-          "Most agencies focus entirely on Google and stop there — but buyers and sellers are searching across many different platforms and devices, and each one works differently. We review your presence everywhere those searches happen — Google, Bing, Apple, and beyond — so you know exactly where you're visible and where you're not.",
+          "Most agencies focus entirely on Google and stop there — but buyers and sellers are searching across many different platforms and devices, and each one works differently. We review your presence everywhere those searches happen — Google, Bing, Apple, and beyond — fixing the gaps we can close immediately, and giving you a clear, prioritised plan for the rest, so you know exactly where you're visible, where you're not, and what to do about it.",
         growthNote:
           "The platforms themselves are constantly evolving — new features get added, algorithms are updated, and search habits shift as people adopt new tools (AI search being the clearest recent example). A strategy that works today can quietly lose effectiveness within months if nobody's watching. We continually revisit and adjust your strategy across every platform, so you're never left behind as the ground shifts beneath you.",
       },
       {
         title: "Profile Setup Audit",
         description:
-          "For most local searches, your business profile is the very first impression a potential customer gets — often before they've even visited your website. We review and properly set up your presence on Google Business Profile, Bing Places, and Apple Business Connect — including Apple, one of the easiest, least competitive opportunities available right now since most property businesses haven't claimed theirs at all.",
+          "For most local searches, your business profile is the very first impression a potential customer gets — often before they've even visited your website. We review and properly set up your presence on Google Business Profile, Bing Places, and Apple Business Connect — including Apple, one of the easiest, least competitive opportunities available right now since most property businesses haven't claimed theirs at all. Once everything's set up properly, we'll show you exactly what to keep updated yourself to keep each profile working in your favour.",
         growthNote:
           "A profile isn't something you set up once and forget — it needs fresh photos, accurate current hours, correct services, and an actively managed public Q&A section, all of which naturally go stale over time if left untouched. We actively manage all three profiles every month, keeping them accurate and current, so your visibility doesn't quietly decay the way an unmaintained profile inevitably does.",
       },
       {
         title: "Content Audit",
         description:
-          "We review your website's content to see what's working, what's outdated, and what's missing — including a sample of your live property listings and any local market content you already have.",
+          "We review your website's content to see what's working, what's outdated, and what's missing — including a sample of your live property listings and any local market content you already have — fixing or refreshing what we can as part of this initial pass, and giving you a clear list of what to update next and why.",
         growthNote:
           "What people search for changes constantly — a shift in the market, new legislation, a seasonal change in demand — and content that performed well last year can quietly become irrelevant or outdated. Each month, we review your content and a sample of your live listings, refining what's underperforming, and we track what's rising in relevance to your business, flagging genuine opportunities to you as they happen rather than after the moment's passed.",
       },
       {
         title: "Property Schema Template",
         description:
-          "\"Schema\" is a hidden layer of code that clearly labels the details of your property listings — price, bedrooms, property type, location — in a format search engines and AI tools can read with total accuracy, rather than guessing. We build this into how your listings are published, so every property you list is automatically presented in the clearest, most search-friendly way possible, with no extra work required from you.",
+          "\"Schema\" is a hidden layer of code that clearly labels the details of your property listings — price, bedrooms, property type, location — in a format search engines and AI tools can read with total accuracy, rather than guessing. We build this into how your listings are published, so every property you list is automatically presented in the clearest, most search-friendly way possible, with no extra work required from you. We'll also show you exactly how it's set up, so you know what to check if you ever change how listings are published.",
         tierNote:
           "This is a one-time build: once the template is in place, it applies automatically to every future listing — there's nothing to redo, though it's included and maintained as part of Growth to make sure it keeps working correctly as your website evolves.",
       },
       {
         title: "Profile Activity",
         description:
-          "Google and Apple both reward business profiles that look genuinely active, and quietly downrank ones that look abandoned. We build you a simple, ready-made system for posting quick updates to your profiles — a new instruction, a seasonal message — so staying visibly active never becomes a burden.",
+          "Google and Apple both reward business profiles that look genuinely active, and quietly downrank ones that look abandoned. We build you a simple, ready-made system for posting quick updates to your profiles — a new instruction, a seasonal message — so staying visibly active never becomes a burden. We'll talk you through how and when to use it, so keeping your profiles active going forward is entirely in your hands.",
         tierNote:
           "This is a one-time build, giving you a tool you can keep using indefinitely without needing to come back to us each time.",
       },
       {
         title: "Local Expert Content",
         description:
-          "Trust is built long before someone picks up the phone. We create dedicated area guides for the towns you cover, genuine local sold-price data, and credible profile pages for your team — turning your website into a real local authority, not just a listings page.",
+          "Trust is built long before someone picks up the phone. We create dedicated area guides for the towns you cover, genuine local sold-price data, and credible profile pages for your team — turning your website into a real local authority, not just a listings page. We'll also flag the areas most worth expanding into next, if you want to take it further yourself.",
         growthNote:
           "This initial content is the foundation — it's then kept current and expanded through your monthly Content Review, since local data and team details naturally change over time and stale information undermines the very trust this content is meant to build.",
       },
