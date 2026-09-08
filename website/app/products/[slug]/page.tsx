@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Reveal from "../../components/Reveal";
+import IncludedItemsScroll from "../../components/IncludedItemsScroll";
 import { SeoPlatformsVisual } from "../../components/ProductVisuals";
 import { products, type ComparisonRow } from "../data";
 
@@ -197,49 +198,11 @@ export default async function ProductPage({
           </Reveal>
         )}
 
-        <div className="mx-auto mt-16 max-w-3xl border-t border-border pt-10">
+        <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
             Everything included
           </h2>
-          <div className="mt-10 space-y-10">
-            {product.included.map((item, i) => (
-              <Reveal key={item.title} delay={Math.min(i, 4) * 60}>
-                <div className="flex gap-4">
-                  <span
-                    aria-hidden
-                    className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-medium text-accent"
-                  >
-                    {i + 1}
-                  </span>
-                  <div>
-                    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                      <h3 className="font-medium text-foreground">
-                        {item.title}
-                        {item.subtitle && (
-                          <span className="font-normal text-foreground/50"> — {item.subtitle}</span>
-                        )}
-                      </h3>
-                      {item.growthOnly && (
-                        <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-medium text-ink-foreground">
-                          Growth only
-                        </span>
-                      )}
-                    </div>
-                    <p className="mt-1 text-sm text-foreground/60">{item.description}</p>
-                    {item.tierNote && (
-                      <p className="mt-3 text-xs text-foreground/50">{item.tierNote}</p>
-                    )}
-                    {item.growthNote && (
-                      <div className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
-                        <p className="text-xs font-medium text-accent">On Growth</p>
-                        <p className="mt-1 text-sm text-foreground/70">{item.growthNote}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <IncludedItemsScroll items={product.included} comparisonRows={comparison?.rows} />
         </div>
 
         {product.addOns && (
