@@ -278,4 +278,25 @@ export const products: Product[] = [
       },
     ],
   },
+  {
+    slug: "market-intelligence",
+    label: "Market & Competitive Intelligence",
+    tagline: "Know how you compare, and what people are actually searching for.",
+    description:
+      "Most businesses have no idea how their SEO and AI visibility actually compares to the competitor down the road, or what real buyers and sellers are searching for right now. Reyse tracks both, every month, so you're never guessing.",
+    price: "£249",
+    priceNote: "per month.",
+    included: [
+      {
+        title: "Competitor SEO & GEO Benchmarking",
+        description:
+          "It's hard to know if you're doing well without knowing what \"well\" actually looks like locally. Every month, we track your closest competitors across everything that matters — where they rank in Google, how visible they are in Bing and Apple, their review count and rating, how complete and active their business profiles are, and how often each of you is being named when someone asks ChatGPT or Gemini who to use. We put this side by side with your own numbers, so instead of a vague sense of \"we should be doing better,\" you get a precise, month-by-month picture of exactly where you're ahead, where you're being outpaced, and by how much — the kind of comparison most businesses simply never see.",
+      },
+      {
+        title: "Search & AI Trend Updates",
+        description:
+          "What people are actually searching for — on Google, and increasingly by asking AI tools like ChatGPT, Gemini, and Copilot directly — shifts constantly, and most of it happens invisibly to a business owner who's busy running the day-to-day. A change in interest rates, a new piece of tenancy legislation, a seasonal spike in demand for a particular property type or area — all of it changes what your future customers are asking, often weeks before it shows up in your enquiries. Every month, we keep watch on this and flag what's genuinely rising in relevance to your specific business and local market, so you're finding out about a shift while there's still time to act on it, rather than noticing it only after a competitor already has.",
+      },
+    ],
+  },
 ];
