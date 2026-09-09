@@ -13,7 +13,7 @@ import {
 const slides = [
   {
     Mockup: GeoMockup,
-    heading: "Google finds you. ChatGPT doesn't.",
+    heading: "Your next customer just asked ChatGPT, not Google.",
     body: "Buyers and tenants are asking AI for recommendations before they ever type into Google. Reyse makes sure your business is the one they're told about.",
   },
   {
