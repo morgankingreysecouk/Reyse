@@ -251,7 +251,7 @@ export default async function ProductPage({
 
         <div className="mx-auto mt-16 max-w-3xl rounded-2xl border border-border bg-panel p-8 text-center">
           <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
-            Ready to see where you stand?
+            {product.ctaHeading ?? "Ready to see where you stand?"}
           </h2>
           <p className="mx-auto mt-2 max-w-md text-sm text-foreground/60">
             {product.ctaSubtext ??

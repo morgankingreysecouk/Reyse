@@ -50,6 +50,8 @@ export type Product = {
     tierLabels: [string, string];
     rows: ComparisonRow[];
   };
+  /** Overrides the generic closing-CTA heading when a product has something more specific to say. */
+  ctaHeading?: string;
   /** Overrides the generic closing-CTA subtext when a product has something more specific to say. */
   ctaSubtext?: string;
 };
@@ -373,6 +375,60 @@ export const products: Product[] = [
         subtitle: "the early warning: catching a shift before your competitor does.",
         description:
           "56% of local businesses still haven't adjusted anything for AI-driven search at all — which means most of your competitors are already behind on the exact shifts we're watching for you. What people are actually searching for — on Google, and increasingly by asking AI tools like ChatGPT, Gemini, and Copilot directly — shifts constantly, and most of it happens invisibly to a business owner who's busy running the day-to-day. A change in interest rates, a new piece of tenancy legislation, a seasonal spike in demand for a particular property type or area — all of it changes what your future customers are asking, often weeks before it shows up in your enquiries. Every month, we keep watch on this and flag what's genuinely rising in relevance to your specific business and local market, so you're finding out about a shift while there's still time to act on it.",
+      },
+    ],
+  },
+  {
+    slug: "scale",
+    label: "Scale",
+    tagline: "One system, built once. Every branch, everywhere.",
+    description:
+      "A business with 30 locations and just 20% inconsistency in its listing data has 6 branches actively working against the other 24 at every directory where the details don't match — and multi-location brands with consistent data see up to twice the customer engagement of those without. Growing from one office to a hundred shouldn't mean rebuilding SEO, GEO, reviews, and market intelligence from scratch every time you open a door. Reyse Scale takes everything already built for your first branch and replicates it, properly, for every branch after — with the same rigour whether you're a single agency or the biggest name in the country.",
+    price: "Custom",
+    priceNote: "Custom pricing, based on the number of branches — get in touch for a quote.",
+    stats: [
+      { value: "20%", label: "listing inconsistency is enough to put a fifth of your branches working against the rest" },
+      { value: "2×", label: "the customer engagement multi-location brands see with consistent listing data" },
+    ],
+    ctaHeading: "Ready to scale properly?",
+    ctaSubtext:
+      "Tell us how many branches you're running, and we'll show you exactly how this replicates across every one.",
+    included: [
+      {
+        title: "Replicable by Design",
+        subtitle: "the setup: a new branch launches fast, because nothing gets rebuilt.",
+        description:
+          "Most multi-location businesses hit a wall because every new site depends on manual effort starting over. Every schema template, every trust signal, every content system built for your first branch was designed from day one to be duplicated — so a brand-new location gets SEO, GEO, reviews, and market intelligence live together from opening day, not staggered in over the months your original branch took to build.",
+      },
+      {
+        title: "Brand Authority Inheritance",
+        subtitle: "the architecture: where a page lives, decided once, at setup.",
+        description:
+          "Separately from the templates themselves, there's a structural decision that matters just as much: a new branch page built as part of your existing website, rather than a standalone site of its own, inherits some of the trust your main domain has already earned. This is why a 50th branch can rank faster than your 1st one ever did — it's a one-time architectural choice, not something that gets redone per branch.",
+      },
+      {
+        title: "Consistency at Scale",
+        subtitle: "the maintenance: ongoing, for as long as the network exists.",
+        description:
+          "As branch count grows, so does the number of places your name, address, and phone number can quietly drift out of sync, and even a small inconsistency rate compounds fast: a fifth of your locations can end up actively undermining the other four-fifths. We monitor every branch, every platform, continuously — checking new locations as they open and re-checking existing ones as their details change.",
+      },
+      {
+        title: "Group-Level & Branch-Level Reporting",
+        subtitle: "the visibility: two audiences, two different reports.",
+        description:
+          "A regional director scanning fifty branches needs something completely different from a single office manager checking their own patch. The branch-level report is short and specific: that location's own rankings, reviews, and AI visibility, month over month. The group-level report is a full network comparison instead — every branch side by side, showing which are pulling ahead, which are falling behind, and where head office should focus attention next.",
+      },
+      {
+        title: "White-Label Option",
+        subtitle: "the branding: whose name appears on everything you're already getting.",
+        description:
+          "Every report and dashboard above can carry your own branding instead of ours — your logo, your name, your colours. For franchise groups rolling this out to franchisees, it appears as an in-house service belonging to you, not a third-party vendor those franchisees have never heard of. The work itself doesn't change; only whose name is on it does.",
+      },
+      {
+        title: "Territory Exclusivity",
+        subtitle: "the guarantee: a policy, not a task.",
+        description:
+          "We work with only one estate agency per local area, full stop. For an independent agent, the advantage you're paying for can never be bought by the rival down the road. For a chain, every new territory you expand into gets locked in the moment you do — a competitor opening in that same town after you can never access Reyse there at all.",
       },
     ],
   },
