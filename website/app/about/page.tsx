@@ -7,6 +7,12 @@ export const metadata: Metadata = {
   description: "Why Reyse exists, and who's building it.",
 };
 
+const stats = [
+  { value: "0", label: "times our own agency was mentioned when we asked AI who to trust — that's what started this" },
+  { value: "2 years", label: "on the lettings desk, not just studying the industry from outside it" },
+  { value: "365 days", label: "of daily AI-search research before Reyse existed as a product" },
+];
+
 function PhotoPlaceholder({ label, note }: { label: string; note: string }) {
   return (
     <div className="flex aspect-[4/5] w-full flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-border bg-panel p-6 text-center">
@@ -43,6 +49,19 @@ export default function AboutPage() {
             problem — mine. It&rsquo;s now built for every property business with the
             same blind spot.
           </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-1 gap-4 border-y border-border py-10 sm:grid-cols-3 sm:gap-8">
+          {stats.map((stat, i) => (
+            <Reveal key={stat.label} delay={i * 100}>
+              <div>
+                <p className="font-heading text-4xl leading-none tracking-tight text-accent">
+                  {stat.value}
+                </p>
+                <p className="mt-2 text-sm text-foreground/60">{stat.label}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
         <div className="mt-20 grid gap-12 sm:grid-cols-[1fr_300px] sm:items-start">
