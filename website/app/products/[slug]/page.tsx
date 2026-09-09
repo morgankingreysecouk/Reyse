@@ -142,17 +142,13 @@ export default async function ProductPage({
             </h1>
             <p className="mt-5 text-lg text-foreground/70">{product.description}</p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8">
               <Link
                 href="/get-started"
-                className="shrink-0 rounded-full bg-accent px-6 py-3 text-sm font-medium whitespace-nowrap text-accent-foreground hover:opacity-90"
+                className="inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
               >
                 Get started
               </Link>
-              <p className="text-sm text-foreground/60">
-                <span className="font-medium text-foreground">{product.price}</span>{" "}
-                {product.priceNote}
-              </p>
             </div>
           </div>
 
