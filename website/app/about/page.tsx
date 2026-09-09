@@ -55,6 +55,10 @@ const milestones: Milestone[] = [
       type: "photo",
       label: "Morgan King, early agency days",
       note: "Photo placeholder",
+      // Higgsfield brief: Morgan in a lettings/estate agency setting — behind a
+      // desk with property particulars or keys, or in front of a high-street
+      // agency shopfront. Grounded, everyday, slightly overwhelmed — not a
+      // polished corporate headshot. Portrait/4:5.
     },
   },
   {
@@ -71,6 +75,9 @@ const milestones: Milestone[] = [
       type: "photo",
       label: "One year of daily research",
       note: "Photo placeholder",
+      // Higgsfield brief: Morgan at a laptop late at night — research mode,
+      // multiple browser tabs implied, warm desk-lamp lighting, maybe a coffee
+      // cup. Focused, solitary, determined. Portrait/4:5.
     },
   },
   {
@@ -81,6 +88,10 @@ const milestones: Milestone[] = [
       type: "photo",
       label: "Morgan King, Founder",
       note: "Photo placeholder",
+      // Higgsfield brief: Morgan today — present-day portrait, confident,
+      // direct-to-camera, clean/neutral background. More polished than the
+      // "early agency days" shot above — this is the deliberate "after"
+      // bookend to it. Portrait/4:5.
     },
   },
 ];
