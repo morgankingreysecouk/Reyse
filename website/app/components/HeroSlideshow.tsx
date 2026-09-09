@@ -2,18 +2,39 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { GeoMockup, ReviewMockup } from "./HeroMockups";
+import {
+  GeoMockup,
+  MarketIntelligenceMockup,
+  ReviewMockup,
+  ScaleMockup,
+  SeoMockup,
+} from "./HeroMockups";
 
 const slides = [
   {
     Mockup: GeoMockup,
-    heading: "Found by ChatGPT. Not just Google.",
+    heading: "Google finds you. ChatGPT doesn't.",
     body: "Buyers and tenants are asking AI for recommendations before they ever type into Google. Reyse makes sure your business is the one they're told about.",
+  },
+  {
+    Mockup: SeoMockup,
+    heading: "Found on Google. Found everywhere else too.",
+    body: "Nearly a third of UK web traffic happens on Safari, not Google — and most agencies never even check it. Reyse makes your site, listings, and profiles fast, accurate, and visible everywhere your next customer is searching.",
   },
   {
     Mockup: ReviewMockup,
     heading: "Every review. Answered instantly.",
     body: "Reyse drafts on-brand replies to every Google and Trustpilot review, so your reputation stays managed without taking up your day.",
+  },
+  {
+    Mockup: MarketIntelligenceMockup,
+    heading: "Know exactly where you stand, and what's coming next.",
+    body: "The top 20% of local businesses now capture 68% of all search visibility. Reyse tracks your SEO and AI visibility against your closest competitors every month, so you're never guessing.",
+  },
+  {
+    Mockup: ScaleMockup,
+    heading: "One system, built once. Every branch, everywhere.",
+    body: "A 20% inconsistency rate is enough to put a fifth of your branches working against the rest. Reyse replicates everything built for your first branch — properly — for every branch that follows.",
   },
 ];
 
