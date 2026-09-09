@@ -147,7 +147,7 @@ export default function MobileMenu() {
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
                     <li>
                       <Link
-                        href="/"
+                        href="/about"
                         onClick={close}
                         className="text-base text-foreground/70 hover:text-foreground"
                       >

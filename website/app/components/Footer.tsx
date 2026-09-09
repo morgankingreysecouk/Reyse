@@ -2,7 +2,7 @@ import Link from "next/link";
 import { industries } from "../industries/data";
 
 const companyLinks = [
-  { label: "About Reyse", href: "/" },
+  { label: "About Reyse", href: "/about" },
   { label: "How it works", href: "/#how-it-works" },
   { label: "Contact", href: "/#contact" },
 ];

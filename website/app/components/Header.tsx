@@ -37,7 +37,7 @@ const companyColumns = [
     {
       label: "About Reyse",
       description: "Why we help property businesses get found and trusted online.",
-      href: "/",
+      href: "/about",
     },
     {
       label: "Contact",
