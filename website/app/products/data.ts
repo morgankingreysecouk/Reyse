@@ -48,6 +48,8 @@ export type Product = {
     tierLabels: [string, string];
     rows: ComparisonRow[];
   };
+  /** Overrides the generic closing-CTA subtext when a product has something more specific to say. */
+  ctaSubtext?: string;
 };
 
 export const products: Product[] = [
@@ -175,86 +177,116 @@ export const products: Product[] = [
   {
     slug: "geo",
     label: "GEO",
-    tagline:
-      "Get recommended — by ChatGPT, Gemini, Copilot, Siri, and every AI your customers now ask.",
+    tagline: "Recommended by one AI. Invisible to the rest.",
     description:
-      "Buyers and sellers increasingly ask ChatGPT, Gemini, and Perplexity who to trust before they ever browse a website — and it's not just chatbots. When someone does a normal Google search, an AI-generated answer, powered by Gemini, now often appears right above the regular results. The same is true on Microsoft Edge, where Copilot answers are built directly into everyday Bing searches, and on iPhone, where Siri and Spotlight increasingly answer questions directly rather than just pointing to a website. Reyse audits, fixes, and actively manages your visibility across all of it — every AI surface your customers might already be asking, whether they realise it or not — so you're the business they're told about.",
+      "Only 11% of businesses cited by one AI tool are also cited by another — being named by ChatGPT tells you nothing about whether Perplexity, Gemini, or Copilot have ever heard of you. Buyers and sellers increasingly ask ChatGPT, Gemini, and Perplexity who to trust before they ever browse a website — and it's not just chatbots. A normal Google search now often shows an AI-generated answer, powered by Gemini, right above the regular results. Edge does the same through Copilot, and on iPhone, Siri and Spotlight increasingly just answer the question rather than pointing to a website. Reyse audits, fixes, and actively manages your visibility across every single one — so you're the business they're told about, everywhere they ask.",
     price: "£950",
     priceNote:
       "Foundation — one-off. Growth adds £4,000/month for ongoing implementation, entity building, and multi-branch AI visibility.",
+    stats: [
+      { value: "11%", label: "of businesses cited by one AI tool are also cited by another" },
+      { value: "77%", label: "of what AI cites about a business isn't even on that business's own website" },
+      { value: "1 in 4", label: "business websites accidentally block the AI crawlers that power citations" },
+    ],
+    ctaSubtext:
+      "Tell us about your business and we'll show you exactly what AI is currently saying about you — and what a competitor is being recommended instead.",
     comparison: {
       tierLabels: ["Foundation", "Growth"],
       rows: [
-        { service: "AI Visibility Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ ongoing implementation & reporting)" },
+        { service: "AI Crawler Access Check", foundation: "✓ Included", growth: "✓ Included (+ ongoing monitoring)" },
         { service: "Answer-Ready Content Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ monthly review & rewriting)" },
         { service: "Freshness Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ ongoing monitoring)" },
-        { service: "AI Trust Signals", foundation: "✓ Included", growth: "✓ Included" },
+        { service: "AI Trust Signals", foundation: "✓ Included", growth: "✓ Included (+ ongoing maintenance)" },
+        { service: "Review & Rating Schema", foundation: "✓ Included", growth: "✓ Included (+ ongoing sync)" },
+        { service: "AI Visibility Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ ongoing implementation & reporting)" },
         { service: "AI Query Mapping", foundation: "✗ Not included", growth: "✓ Included" },
         { service: "Knowledge Panel & Entity Optimisation", foundation: "✗ Not included", growth: "✓ Included" },
+        { service: "Community & Forum Visibility", foundation: "✗ Not included", growth: "✓ Included" },
         { service: "AI Reputation Response", foundation: "✗ Not included", growth: "✓ Included" },
         { service: "Full-Funnel Attribution", foundation: "✗ Not included", growth: "✓ Included" },
       ],
     },
     included: [
       {
-        title: "AI Visibility Audit & Fix",
+        title: "AI Crawler Access Check",
+        subtitle: "the gatekeeper: can AI even reach your site at all?",
         description:
-          "When someone asks ChatGPT, Gemini, or Perplexity \"best estate agent in [town]\" — or simply searches on Google, Bing, or their iPhone and gets an AI-generated answer instead of a list of links — only a handful of businesses ever get named. We test these exact real-world questions and searches across every major AI surface — ChatGPT, Google's Gemini-powered AI Overviews, Microsoft's Copilot, and Apple's Siri and Spotlight — fix what we can put right immediately, and give you a clear, practical guide for keeping your visibility strong going forward on your own.",
+          "Around 1 in 4 business websites accidentally block the very crawlers that power AI citations, usually through security settings that treat ChatGPT's or Perplexity's crawler the same as a malicious bot. OpenAI states plainly that a blocked site will never appear in ChatGPT's search answers — not ranked lower, genuinely invisible. We check whether your site is silently blocking any major AI crawler, and fix it.",
         growthNote:
-          "Rather than handing you a guide and leaving you to keep on top of it, we do it for you — implementing every fix, then re-testing every month across all four ecosystems, tracking whether your position and how you compare to your closest local competitors is improving, holding steady, or slipping, and reporting it back to you in plain terms.",
+          "Hosting changes, security updates, and new CDN settings can silently start blocking these crawlers at any point, without breaking anything else on your site to warn you. Depending on what you'd prefer, we check and fix this ourselves every month, or flag it to you the moment it happens, so a technical change elsewhere never quietly switches your visibility off.",
       },
       {
         title: "Answer-Ready Content Audit & Fix",
+        subtitle: "fixing the format of what you already have.",
         description:
-          "AI tools don't browse your website the way a person does — they scan for content that answers a specific question clearly and directly, then lift it straight into their response, whether that's inside a chatbot, Google's AI Overview box, or a spoken answer from Siri. We review your key pages, rewrite the most important ones ourselves as part of Foundation, and give you a clear guide for structuring anything new you publish going forward.",
+          "Pages built around clear, specific facts and figures are roughly 40% more likely to get quoted by an AI tool than vague, general text. AI doesn't browse your website like a person does — it scans for a direct answer to a specific question and lifts it straight into its response. This is about the content you already have. Depending on what you'd prefer, we rewrite your key pages ourselves as part of Foundation, or give you a clear guide for structuring anything new you publish going forward.",
         growthNote:
-          "We keep doing this for you — as you publish new pages and listings, we review and rewrite each one every month, keeping everything genuinely extractable across every AI surface, not just readable by a person.",
+          "As you publish new pages, each one needs the same treatment, and what counts as \"well-structured\" keeps shifting as AI models change how they read content. Depending on what you'd prefer, we review and rewrite every new page ourselves each month, or report it to you so your team can act on it — either way, nothing new goes unnoticed.",
       },
       {
         title: "Freshness Audit & Fix",
+        subtitle: "the timing: is your content recent enough for AI to still trust it?",
         description:
-          "AI models consistently favour recently updated content and can quietly stop citing pages that haven't been touched in months, even if they ranked well before — this holds true whether it's ChatGPT, Gemini, or Copilot doing the citing. We check how current your key pages are, refresh the most important ones as part of Foundation, and leave you with a clear plan for keeping the rest current yourself.",
+          "Content that AI actually cites is roughly a quarter more recently updated, on average, than content that simply ranks well on Google — and half of it was refreshed within the last three months. AI models quietly stop citing pages that haven't been touched in a while, even ones that ranked well before. Depending on what you'd prefer, we refresh your most important pages ourselves as part of Foundation, or leave you with a clear plan for keeping the rest current yourself.",
         growthNote:
-          "We keep everything current for you, every month, so your most important pages never quietly slip past the point where any of these AI systems stop trusting them.",
+          "A page that was fresh last month is stale this month — AI's trust in a page decays continuously, not on a fixed schedule you can plan around once and forget. Depending on what you'd prefer, we keep everything current for you every month, or report exactly what needs updating so your team can act on it.",
       },
       {
         title: "AI Trust Signals",
+        subtitle: "the code: does AI have a clean, accurate source to read you from?",
         description:
-          "Beyond what a human reads, AI tools rely on a hidden layer of structured data — including a dedicated llm.txt file, a document written specifically for AI crawlers — to understand exactly what your business is, what it does, and where. This same structured data is what Google's Gemini, Microsoft's Copilot, and Apple's Siri all draw from when deciding what to say about you. We build this directly into your website on Foundation, giving every AI system a clean, unambiguous source to draw from.",
+          "Google, Microsoft, and OpenAI have all confirmed they use this kind of structured data to help decide what to say about a business. Beyond what a human reads, AI relies on a hidden layer of code — including a dedicated llm.txt file, written specifically for AI crawlers — to understand exactly what your business is, what it does, and where. Without it, AI is working from guesswork rather than fact. We build this directly into your website on Foundation.",
         growthNote:
-          "We keep it properly maintained as your site evolves, rather than it quietly falling out of date.",
+          "Every time your website changes — a new page, a new service — this hidden code can quietly fall out of step with what's actually on the page, with nothing visibly breaking to warn you. When that happens, AI is working from outdated facts without anyone noticing. Depending on what you'd prefer, we check and fix this every month ourselves, or report exactly what's drifted so your team can correct it.",
+      },
+      {
+        title: "Review & Rating Schema",
+        subtitle: "turning your rating into a hard data point, not just background text.",
+        description:
+          "There's a specific type of code called \"AggregateRating schema\" that lets a website declare its review score and count in a format machines read as verified fact — the same mechanism behind the star ratings you sometimes see directly in search results. For \"best X\" and comparison-style questions, AI increasingly uses this declared number as a direct filter when building its shortlist, rather than reading a page and estimating your reputation from the words on it. We take the genuine review score and count already being built through your Review Management, and add this code to your site correctly — including the required attribution back to where the reviews actually came from, since AI and search engines discount ratings that look self-published.",
+        growthNote:
+          "Your real review score changes every time a new review comes in, but the number written into this code doesn't update on its own — left alone, AI ends up reading a rating that's no longer accurate, which can undersell a business that's actually improved. Depending on what you'd prefer, we keep this synced to your real, current score every month ourselves, or send you a simple report flagging when it's fallen behind so your team can update it.",
+      },
+      {
+        title: "AI Visibility Audit & Fix",
+        subtitle: "the test: do you actually show up, on every platform that matters?",
+        description:
+          "Only 11% of businesses cited by one AI tool are also cited by another — 89% of citations are platform-exclusive. We test the exact real-world questions your customers ask — \"best estate agent in [town]\" — across ChatGPT, Google's Gemini-powered AI Overviews, Microsoft's Copilot, and Apple's Siri. Depending on what you'd prefer, we fix what we can put right immediately ourselves, or give you a clear, practical guide for closing the gaps yourself.",
+        growthNote:
+          "AI's answers change every time it's asked, and a competitor can overtake you within weeks without anything on your own site changing at all. Depending on what you'd prefer, we implement every fix ourselves or keep you updated with a clear report — either way, we re-test every month across all four ecosystems, tracking your position against your closest local competitors.",
       },
       {
         title: "AI Query Mapping",
+        subtitle: "finding the questions you have no content for at all.",
         description:
-          "Most agencies only think about \"best estate agent in [town].\" Real buyers and sellers ask AI dozens of different things — \"is now a good time to sell in [town],\" \"what's the average time on market,\" \"how much is stamp duty on a second home\" — whether they're typing into ChatGPT, asking Copilot in Edge, or asking Siri out loud. We research and map every realistic question your future customers are asking, across every platform, and build your content strategy around genuine demand.",
+          "The Visibility Audit and Answer-Ready Content both work with questions and pages you already know about. This is different: it's about finding the real questions your future customers are asking that you currently have nothing written on at all. Real buyers and sellers ask AI dozens of things beyond the obvious — \"is now a good time to sell in [town],\" \"what's the average time on market,\" \"how much is stamp duty on a second home\" — and what people ask shifts with the market. We research this every month and build genuinely new content around the gaps we find, rather than just polishing what already exists.",
         growthOnly: true,
       },
       {
         title: "Knowledge Panel & Entity Optimisation",
+        subtitle: "recognition: known as a real business, not just correctly labelled code.",
         description:
-          "AI increasingly treats businesses as distinct, recognised \"entities\" rather than just websites — and Google, Microsoft, and Apple each maintain their own version of this. We claim and correct your Google Knowledge Panel, and make sure your business is consistently represented across the other sources these systems check — Bing Places, Apple Business Connect, Companies House, LinkedIn — linking them together so every AI system can confidently recognise you as one real, established business.",
+          "Being mentioned by name across the web is now a stronger predictor of AI visibility than traditional backlinks. Trust Signals give AI the raw data to read you correctly — this goes a step further, actively building your recognition as a distinct, established entity. Where a Google Knowledge Panel exists or is eligible for your business, we claim and correct it; either way, we keep you consistently represented across Bing Places, Apple Business Connect, Companies House, and LinkedIn as those sources change over time, so every AI system stays confident you're one real business.",
+        growthOnly: true,
+      },
+      {
+        title: "Community & Forum Visibility",
+        subtitle: "the majority: most of what AI cites about you isn't even on your site.",
+        description:
+          "Roughly 77% of what AI cites about a specific business comes from somewhere other than that business's own website — often a forum or community discussion. Your own site can only ever cover a minority of what AI actually reads about you. We build a genuine, ongoing presence in the property discussions your future customers are already having — answering real questions in the right places, consistently, month after month.",
         growthOnly: true,
       },
       {
         title: "AI Reputation Response",
+        subtitle: "catching what AI gets wrong before it costs you a customer.",
         description:
-          "If any AI platform — ChatGPT, Gemini, Copilot, or Siri — ever states something inaccurate or damaging about your business, we catch it and act fast, not next month.",
+          "AI can get basic facts about your business wrong — the wrong opening hours, an outdated service list, even wrongly suggesting you've closed down — and there's no notification system that tells you when this happens, the way there is for a bad review. We check what each major AI platform is currently saying about your business on a regular cycle, and where something's inaccurate or damaging, we act on it quickly rather than leaving it for the next scheduled report.",
         growthOnly: true,
       },
       {
         title: "Full-Funnel Attribution",
         description:
-          "We track AI-driven traffic where it's technically detectable across every platform, add simple \"how did you hear about us\" tracking to your enquiry process, and compare your AI visibility movement against real enquiry and instruction data each month — so the value of this work is provable in pounds, wherever the enquiry actually came from.",
-        growthOnly: true,
-      },
-    ],
-    addOns: [
-      {
-        title: "Multi-Branch AI Rollout",
-        description:
-          "If you operate across multiple branches, each one needs its own dedicated AI visibility across every platform. Where relevant, we build and maintain this properly across every branch, so no location is left behind.",
-        note: "Growth, where applicable — only relevant if you operate more than one branch.",
+          "Visibility on its own doesn't prove it's working — the same AI mention can mean nothing or mean a real sale, and there's no way to tell the difference without tracking it. We track AI-driven traffic where it's technically detectable, add simple \"how did you hear about us\" tracking to your enquiry process, and compare your AI visibility against real enquiry and instruction data each month.",
         growthOnly: true,
       },
     ],

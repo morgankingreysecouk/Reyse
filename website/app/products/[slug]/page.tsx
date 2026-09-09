@@ -253,9 +253,9 @@ export default async function ProductPage({
           <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
             Ready to see where you stand?
           </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/60">
-            Tell us about your business and we&rsquo;ll show you exactly what&rsquo;s
-            missing.
+          <p className="mx-auto mt-2 max-w-md text-sm text-foreground/60">
+            {product.ctaSubtext ??
+              "Tell us about your business and we'll show you exactly what's missing."}
           </p>
           <Link
             href="/get-started"
