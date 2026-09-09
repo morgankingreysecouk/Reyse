@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
+import { InvisibleMockup, SelfAuditMockup } from "../components/AboutVisuals";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,6 +12,77 @@ const stats = [
   { value: "0", label: "times our own agency was mentioned when we asked AI who to trust — that's what started this" },
   { value: "2 years", label: "on the lettings desk, not just studying the industry from outside it" },
   { value: "365 days", label: "of daily AI-search research before Reyse existed as a product" },
+];
+
+const beliefs = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M9 12.5l2 2 4.5-5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="12" cy="12" r="8.5" />
+      </svg>
+    ),
+    heading: "Nothing here is new technology",
+    body: "AI-powered solutions already exist for almost everything Reyse does — schema markup, review management, competitive intelligence, none of it is new. What's missing is property businesses actually using it. Most agents have never checked whether they show up when someone asks ChatGPT who to use, let alone fixed it if they don't.",
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M4 16l5-6 4 4 7-9" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15 5h5v5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+    heading: "Most of the industry hasn't caught on yet",
+    body: "We think this is one of the first real windows for AI to make a measurable difference in this industry — not as a gimmick, but as leads, enquiries, and the numbers that actually move the needle. For as long as most of the industry hasn't caught on, it's also one of the clearest ways to pull ahead of the agency down the road.",
+  },
+];
+
+type Milestone = {
+  number: string;
+  heading: string;
+  body: string;
+  visual:
+    | { type: "photo"; label: string; note: string }
+    | { type: "mockup"; render: () => React.ReactNode };
+};
+
+const milestones: Milestone[] = [
+  {
+    number: "01",
+    heading: "The lettings desk",
+    body: "Before Reyse, I was a lettings negotiator. I inherited a book of business with one of the worst reputations in the area — built up long before I got there, by people who were long gone by the time I was left to fix it.",
+    visual: {
+      type: "photo",
+      label: "Morgan King, early agency days",
+      note: "Photo placeholder",
+    },
+  },
+  {
+    number: "02",
+    heading: "The moment it clicked",
+    body: "I was determined to turn it around, so I did what any frustrated agent would do: I Googled the business, and I asked AI tools what they'd say about it. The business wasn't there. Not ranked badly — not mentioned at all. Someone asking Google or ChatGPT who to trust in the area would never hear of us, no matter how good the actual service became.",
+    visual: { type: "mockup", render: () => <InvisibleMockup /> },
+  },
+  {
+    number: "03",
+    heading: "The year of research",
+    body: "I've spent the year since researching how AI is actually changing how people search — not the theory, the specifics: what ChatGPT says when someone asks about a business like yours, why Bing and Apple matter as much as Google, what actually gets a business recommended instead of ignored.",
+    visual: {
+      type: "photo",
+      label: "One year of daily research",
+      note: "Photo placeholder",
+    },
+  },
+  {
+    number: "04",
+    heading: "Reyse, today",
+    body: "Reyse is what came out of that year, built on two years of watching the property industry from the inside.",
+    visual: {
+      type: "photo",
+      label: "Morgan King, Founder",
+      note: "Photo placeholder",
+    },
+  },
 ];
 
 function PhotoPlaceholder({ label, note }: { label: string; note: string }) {
@@ -64,83 +136,98 @@ export default function AboutPage() {
           ))}
         </div>
 
-        <div className="mt-20 grid gap-12 sm:grid-cols-[1fr_300px] sm:items-start">
-          <div className="space-y-5 text-foreground/70">
-            <p>
-              Before Reyse, I was a lettings negotiator. I inherited a book of
-              business with one of the worst reputations in the area — built up
-              long before I got there, by people who were long gone by the time I
-              was left to fix it.
-            </p>
-            <p>
-              I was determined to turn it around, so I did what any frustrated
-              agent would do: I Googled the business, and I asked AI tools what
-              they&rsquo;d say about it. The business wasn&rsquo;t there. Not ranked
-              badly — not mentioned at all. Someone asking Google or ChatGPT who to
-              trust in the area would never hear of us, no matter how good the
-              actual service became.
-            </p>
-            <p>
-              That was the moment. The reputation wasn&rsquo;t really the problem —
-              the invisibility was. Fixing one without the other was never going to
-              work.
-            </p>
-            <p>
-              I&rsquo;ve spent the year since researching how AI is actually
-              changing how people search — not the theory, the specifics: what
-              ChatGPT says when someone asks about a business like yours, why Bing
-              and Apple matter as much as Google, what actually gets a business
-              recommended instead of ignored. Reyse is what came out of that year,
-              built on two years of watching the property industry from the
-              inside.
-            </p>
-          </div>
-
+        <div className="mt-24">
           <Reveal>
-            <PhotoPlaceholder
-              label="Morgan King, Founder"
-              note="Photo placeholder — swap in a real photo here"
-            />
+            <h2 className="font-heading text-2xl leading-[1.1] tracking-tight sm:text-3xl">
+              How Reyse started
+            </h2>
           </Reveal>
-        </div>
 
-        <div className="mx-auto mt-20 max-w-3xl border-t border-border pt-14">
-          <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
-            What we believe
-          </h2>
-          <div className="mt-5 space-y-5 text-foreground/70">
-            <p>
-              AI-powered solutions already exist for almost everything Reyse
-              does — schema markup, review management, competitive intelligence,
-              none of it is new technology. What&rsquo;s missing is property
-              businesses actually using it. Most agents have never checked whether
-              they show up when someone asks ChatGPT who to use, let alone fixed it
-              if they don&rsquo;t.
-            </p>
-            <p>
-              We think this is one of the first real windows for AI to make a
-              measurable difference in this industry — not as a gimmick, but as
-              leads, enquiries, and the numbers that actually move the needle. And
-              for as long as most of the industry hasn&rsquo;t caught on yet,
-              it&rsquo;s also one of the clearest ways to pull ahead of the agency
-              down the road.
-            </p>
+          <div className="mt-14 flex flex-col gap-20">
+            {milestones.map((milestone, i) => (
+              <div key={milestone.number}>
+                <Reveal>
+                  <div
+                    className={`grid items-center gap-10 sm:grid-cols-2 sm:gap-14 ${
+                      i % 2 === 1 ? "sm:[&>*:first-child]:order-2" : ""
+                    }`}
+                  >
+                    <div>
+                      <span className="text-sm font-medium text-accent">{milestone.number}</span>
+                      <h3 className="mt-2 font-heading text-2xl leading-[1.15] tracking-tight">
+                        {milestone.heading}
+                      </h3>
+                      <p className="mt-4 text-foreground/70">{milestone.body}</p>
+                    </div>
+                    <div>
+                      {milestone.visual.type === "photo" ? (
+                        <PhotoPlaceholder
+                          label={milestone.visual.label}
+                          note={milestone.visual.note}
+                        />
+                      ) : (
+                        milestone.visual.render()
+                      )}
+                    </div>
+                  </div>
+                </Reveal>
+
+                {i === 1 ? (
+                  <Reveal>
+                    <p className="mx-auto mt-20 max-w-3xl text-center font-heading text-3xl leading-[1.3] tracking-tight sm:text-4xl">
+                      The reputation wasn&rsquo;t really the problem — the
+                      invisibility was.
+                    </p>
+                  </Reveal>
+                ) : null}
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mx-auto mt-14 max-w-3xl border-t border-border pt-14">
-          <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
-            Built in the open
-          </h2>
-          <div className="mt-5 space-y-5 text-foreground/70">
-            <p>
-              Reyse is in the process of launching right now, which means the most
-              honest proof we can offer isn&rsquo;t a client list yet — it&rsquo;s
-              what we&rsquo;re doing to our own website. We&rsquo;re applying
-              Reyse&rsquo;s own SEO and GEO service to reyse.co.uk as we build it,
-              in public. If it doesn&rsquo;t work on us first, it doesn&rsquo;t go
-              near a client.
-            </p>
+        <div className="mt-24 border-t border-border pt-14">
+          <Reveal>
+            <h2 className="font-heading text-2xl leading-[1.1] tracking-tight sm:text-3xl">
+              What we believe
+            </h2>
+          </Reveal>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-6">
+            {beliefs.map((belief, i) => (
+              <Reveal key={belief.heading} delay={i * 100}>
+                <div className="h-full rounded-2xl border border-border p-6">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent">
+                    {belief.icon}
+                  </span>
+                  <h3 className="mt-4 text-lg font-semibold">{belief.heading}</h3>
+                  <p className="mt-2 text-sm text-foreground/70">{belief.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-24 border-t border-border pt-14">
+          <div className="grid items-center gap-10 sm:grid-cols-[1fr_360px] sm:gap-14">
+            <Reveal>
+              <div>
+                <h2 className="font-heading text-2xl leading-[1.1] tracking-tight sm:text-3xl">
+                  Built in the open
+                </h2>
+                <div className="mt-5 space-y-5 text-foreground/70">
+                  <p>
+                    Reyse is in the process of launching right now, which means
+                    the most honest proof we can offer isn&rsquo;t a client list
+                    yet — it&rsquo;s what we&rsquo;re doing to our own website.
+                    We&rsquo;re applying Reyse&rsquo;s own SEO and GEO service to
+                    reyse.co.uk as we build it, in public. If it doesn&rsquo;t
+                    work on us first, it doesn&rsquo;t go near a client.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={100}>
+              <SelfAuditMockup />
+            </Reveal>
           </div>
         </div>
 
