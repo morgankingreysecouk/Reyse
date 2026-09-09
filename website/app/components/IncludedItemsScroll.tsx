@@ -136,6 +136,12 @@ export default function IncludedItemsScroll({
                     <p className="mt-1 text-sm text-foreground/70">{item.growthNote}</p>
                   </div>
                 )}
+                {item.impactNote && (
+                  <div className="mt-3 rounded-xl border border-border bg-panel p-4">
+                    <p className="text-xs font-medium text-foreground/70">SEO &amp; GEO impact</p>
+                    <p className="mt-1 text-sm text-foreground/70">{item.impactNote}</p>
+                  </div>
+                )}
               </div>
             </div>
           </div>

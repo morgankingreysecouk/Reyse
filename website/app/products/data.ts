@@ -9,6 +9,8 @@ export type IncludedItem = {
   tierNote?: string;
   /** True for items that only exist on Growth, with no Foundation equivalent. */
   growthOnly?: boolean;
+  /** Cross-product callout — how this item feeds the SEO/GEO ranking signals those products depend on. */
+  impactNote?: string;
 };
 
 export type AddOn = {
@@ -294,36 +296,56 @@ export const products: Product[] = [
   {
     slug: "reviews",
     label: "Review Management",
-    tagline: "Your reputation, watched, answered, and grown — automatically, everywhere.",
+    tagline: "Watched everywhere. Missed nowhere.",
     description:
-      "Reviews don't just sit on Google anymore. Bing pulls in review data of its own, and Apple Business Connect actually inherits and displays reviews directly from Yelp and Tripadvisor — meaning a review left on a site you've never even logged into can shape what a customer sees on their iPhone. Reyse manages your reputation across every platform that matters — replying automatically, and making sure happy customers actually leave a review in the first place.",
+      "68% of negative reviews go completely unanswered — the exact category most likely to cost a hesitant buyer's trust before they've even called. Reviews don't just sit on Google anymore: Bing pulls in review data of its own, and Apple Business Connect actually inherits reviews directly from Yelp and Tripadvisor, meaning a review left on a site you've never logged into can shape what a customer sees on their iPhone — and the same count, rating, and response consistency directly feed both your SEO and your GEO visibility, since search engines and AI tools both use these signals to decide who to rank and who to recommend. Reyse manages your reputation across every platform that matters, closing that response gap and making sure happy customers actually leave a review in the first place.",
     price: "£299",
     priceNote: "per month.",
+    stats: [
+      { value: "68%", label: "of negative reviews go completely unanswered" },
+      { value: "74%", label: "of consumers specifically look for reviews from the last three months" },
+      { value: "0.3–0.7★", label: "average rating lift within six months of consistent responses" },
+    ],
     included: [
       {
         title: "AI Review Responder",
+        subtitle: "the routine: nothing sits unanswered, ever.",
         description:
-          "We check every place a review about your business could appear — Google, Bing, Trustpilot, Facebook, and Yelp and Tripadvisor specifically, since Apple Business Connect quietly pulls its reviews from those two. We start by clearing your entire existing backlog of unanswered reviews, giving you a clean slate. From there, an AI responder takes over — reading every new review as it comes in, on every platform, and automatically drafting and posting a genuine, well-considered reply in your voice, not a generic \"thank you for your feedback.\" Nothing sits unanswered, no matter how many come in or how busy you are.",
+          "89% of consumers say they're more likely to choose a business that responds to every review, yet only 54% of reviews get any response at all. We check every place a review could appear — Google, Bing, Trustpilot, Facebook, and Yelp and Tripadvisor specifically, since Apple Business Connect quietly pulls its reviews from those two. We start by clearing your entire existing backlog, then an AI responder handles every new one as it comes in, drafting a genuine, well-considered reply in your voice — with a light layer of human oversight built in, since consumers trust a business less when a response feels purely robotic with nobody checking it.",
+        impactNote:
+          "Review response activity is itself a confirmed local search ranking factor, independent of everything else on your site. It also directly supports your GEO visibility: AI tools cross-check how actively and consistently a business engages with its own reviews as part of deciding who to recommend, so an unanswered backlog quietly works against you on both fronts at once.",
       },
       {
         title: "Automatic Review Reminders",
+        subtitle: "the supply: keeping fresh reviews coming in, not just answering the ones that show up.",
         description:
-          "The best time to ask for a review is the moment right after you've actually helped someone — but that's exactly the moment it's easiest to forget. We build and run a system that automatically sends a review request the moment a service is completed — a sale finishing, a tenancy starting, a stay ending — with a gentle automatic follow-up if a customer doesn't respond the first time. Review growth happens continuously in the background, not only when someone remembers to ask.",
+          "74% of consumers specifically look for reviews written within the last three months — a business surviving on reviews from two years ago is quietly losing trust, regardless of its star rating. The best moment to ask is right after you've helped someone, which is exactly the moment it's easiest to forget. We build and run a system that automatically sends a request the instant a service completes — a sale finishing, a tenancy starting, a stay ending — with a gentle automatic follow-up if they don't respond the first time.",
+        impactNote:
+          "Review volume and recency both factor into local ranking, and a steady flow of new reviews signals an active, trustworthy business rather than one coasting on old goodwill. The same freshness principle applies to GEO: AI models consistently favour recent signals over stale ones, and a review profile that keeps growing gives them a current, credible picture to draw from rather than an outdated one.",
       },
       {
         title: "Review Monitoring & Reporting",
+        subtitle: "the score: tracking the number that actually moves your ranking.",
         description:
-          "Every month, we track your review count, average rating, and response speed across every platform — Google, Bing, Apple (via Yelp and Tripadvisor), Trustpilot, and Facebook — and show you exactly how you're trending, including against the kind of review volume and rating range that genuinely influences whether AI tools recommend you.",
+          "Consistent review responses have been shown to lift average ratings by 0.3-0.7 stars within six months. Every month, we track your review count, average rating, and response speed across every platform — Google, Bing, Apple, Trustpilot, and Facebook — and show you exactly how you're trending.",
+        impactNote:
+          "This is the same data both SEO and GEO depend on behind the scenes: your rating and review count are a direct local ranking input, and AI tools use the same figures as a trust threshold before naming a business at all. Tracking it monthly means you see a slip in either direction before it costs you visibility, not after.",
       },
       {
         title: "Sentiment & Theme Analysis",
+        subtitle: "the pattern: catching what most businesses only see one review at a time.",
         description:
-          "Reviews aren't just a number — they're honest feedback most businesses never properly read as a whole. Each month, we identify the genuine patterns across what customers are saying, both good and bad, and flag anything recurring that's worth your attention.",
+          "87% of unhappy customers contact a business directly before ever posting a negative review — meaning by the time a pattern shows up publicly, it's often already happened privately several times first. Each month, we identify the genuine patterns across everything customers are saying, good and bad, and flag anything recurring before it becomes a public problem.",
+        impactNote:
+          "This one supports SEO and GEO more indirectly than the others: it doesn't move a ranking factor on its own, but it protects the rating and review consistency that both systems are already relying on — catching the root cause before it drags your score down is cheaper than repairing the damage afterwards.",
       },
       {
         title: "Reputation Crisis Response",
+        subtitle: "the emergency: severe or sudden damage, handled in hours, not the next scheduled check.",
         description:
-          "A single bad review sitting unanswered, or a sudden cluster of negative reviews, can do real damage fast. We monitor for this actively and respond immediately when it matters — with a human checking in on anything sensitive the AI flags — rather than it waiting to be picked up in the next scheduled check.",
+          "A negative review responded to within 4 hours is three times more likely to end in the reviewer actually updating their rating — but that window closes fast. This is different from the routine AI Responder above: a single review sitting unanswered is routine; a sudden cluster of negative reviews, or one severe enough to do real damage, isn't. We monitor for exactly that, with a human checking in directly on anything sensitive, and respond immediately rather than waiting for the next scheduled cycle.",
+        impactNote:
+          "Like Sentiment Analysis, this is protective rather than a direct ranking lever: a sudden rating drop can push a business below the review threshold AI tools use to decide who's trustworthy enough to recommend, and this is what stops that from happening unnoticed.",
       },
     ],
   },
