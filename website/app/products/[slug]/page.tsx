@@ -164,7 +164,11 @@ export default async function ProductPage({
         </div>
 
         {product.stats && (
-          <div className="mt-16 grid grid-cols-1 gap-4 border-y border-border py-10 sm:grid-cols-3 sm:gap-8">
+          <div
+            className={`mt-16 grid grid-cols-1 gap-4 border-y border-border py-10 sm:gap-8 ${
+              product.stats.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3"
+            }`}
+          >
             {product.stats.map((stat, i) => (
               <Reveal key={stat.label} delay={i * 100}>
                 <div>
