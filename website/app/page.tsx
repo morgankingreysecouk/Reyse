@@ -62,11 +62,12 @@ export default function Home() {
         <section id="industries" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              Built for anyone renting or selling property
+              Built for anyone renting, hosting, or managing property
             </h2>
             <p className="mt-3 max-w-2xl text-foreground/60">
-              Buyers and tenants are already asking Google and AI about businesses
-              like yours. Click an industry to see how Reyse gets you found.
+              From buyers and tenants to guests and students, people are already
+              asking Google and AI about businesses like yours. Click an industry
+              to see how Reyse gets you found.
             </p>
             <IndustriesGrid />
           </div>
