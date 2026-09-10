@@ -242,7 +242,24 @@ export default async function ProductPage({
                           </span>
                         )}
                       </div>
-                      <p className="mt-1 text-sm text-foreground/60">{addOn.description}</p>
+                      {addOn.stat && (
+                        <div className="mt-3 flex items-center gap-4 rounded-2xl border border-accent/20 bg-accent/5 px-5 py-3">
+                          <p className="shrink-0 font-heading text-3xl leading-none tracking-tight text-accent-text">
+                            {addOn.stat.value}
+                          </p>
+                          <p className="text-sm text-foreground/70">{addOn.stat.label}</p>
+                        </div>
+                      )}
+                      <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                        <div className="rounded-xl border border-border bg-panel p-4">
+                          <p className="text-xs font-medium text-foreground/50">The problem</p>
+                          <p className="mt-1.5 text-sm text-foreground/70">{addOn.problem}</p>
+                        </div>
+                        <div className="rounded-xl border border-accent/20 bg-accent/5 p-4">
+                          <p className="text-xs font-medium text-accent-text">What we do</p>
+                          <p className="mt-1.5 text-sm text-foreground/70">{addOn.fix}</p>
+                        </div>
+                      </div>
                       {addOn.growthNote && (
                         <div className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
                           <p className="text-xs font-medium text-accent-text">On Growth</p>
