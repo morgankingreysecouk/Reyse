@@ -56,8 +56,8 @@ export default function HeroSlideshow() {
   const current = slides[index];
 
   return (
-    <section className="border-b border-border">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 pb-20 pt-40 lg:grid-cols-2 lg:items-center">
+    <section className="sticky top-0 z-10 flex h-dvh items-center border-b border-border bg-background">
+      <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 pb-20 pt-40 lg:grid-cols-2 lg:items-center">
         <div key={index} className="animate-[hero-fade-in_0.7s_ease-out]">
           <h1 className="max-w-lg font-heading text-5xl font-medium leading-[1.1] tracking-tight sm:text-6xl">
             {current.heading}

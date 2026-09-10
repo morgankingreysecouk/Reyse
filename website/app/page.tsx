@@ -8,11 +8,23 @@ import ProductsGrid from "./components/ProductsGrid";
 export default function Home() {
   return (
     <main className="flex-1">
-      <HeroSlideshow />
+      {/*
+        Hero and the free-forever banner are both `sticky top-0`, sharing
+        this one tall wrapper. Hero holds still while the banner's natural
+        position (right after hero, so starting 100dvh down) scrolls up
+        from below and slides over it — because it's later in the DOM with
+        a higher z-index. Both share this wrapper's release boundary, so
+        they end their sticky dwell at the same scroll position and hand
+        off cleanly to Products afterward, instead of one lingering behind
+        after the other releases. 280dvh = hero's 100dvh + banner's 100dvh
+        + an 80dvh dwell once the banner has fully covered the hero.
+      */}
+      <div className="relative h-[280dvh]">
+        <HeroSlideshow />
+        <FreeForeverBanner />
+      </div>
 
       <>
-        <FreeForeverBanner />
-
         {/* Products */}
         <section id="product" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
