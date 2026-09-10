@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ClosingCta from "./components/ClosingCta";
+import FounderCredibility from "./components/FounderCredibility";
 import FreeForeverBanner from "./components/FreeForeverBanner";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
@@ -84,6 +85,13 @@ export default function Home() {
               Three steps, and the third one keeps running for as long as you need it to.
             </p>
             <HowItWorksScroll />
+          </div>
+        </section>
+
+        {/* Founder credibility */}
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <FounderCredibility />
           </div>
         </section>
 
