@@ -122,6 +122,15 @@ export default function MobileMenu() {
                         </Link>
                       </li>
                     ))}
+                    <li>
+                      <Link
+                        href="/quiz"
+                        onClick={close}
+                        className="text-base font-medium text-accent-text"
+                      >
+                        Not sure which one? Take the quiz
+                      </Link>
+                    </li>
                   </ul>
                 </div>
 

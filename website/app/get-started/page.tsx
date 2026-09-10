@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import GetStartedForm from "../components/GetStartedForm";
 import { pageMetadata } from "../lib/seo";
 
@@ -24,7 +25,9 @@ export default function GetStarted() {
         </p>
 
         <div className="mt-10">
-          <GetStartedForm />
+          <Suspense fallback={null}>
+            <GetStartedForm />
+          </Suspense>
         </div>
 
         <p className="mt-8 text-center text-sm text-foreground/65">

@@ -12,6 +12,7 @@ const companyLinks = [
 
 const getStartedLinks = [
   { label: "Get started", href: "/get-started" },
+  { label: "Take the quiz", href: "/quiz" },
   { label: "Contact us", href: "/#contact" },
 ];
 

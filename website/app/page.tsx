@@ -31,9 +31,20 @@ export default function Home() {
             <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
               What we do
             </h2>
-            <p className="mt-3 max-w-2xl text-foreground/60">
-              Each one on its own, or bundled together as you grow.
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <p className="mt-3 max-w-2xl text-foreground/60">
+                Each one on its own, or bundled together as you grow.
+              </p>
+              <Link
+                href="/quiz"
+                className="mt-3 inline-flex shrink-0 items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium hover:border-foreground/30 hover:bg-panel"
+              >
+                Not sure? Take the 60-second quiz
+                <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </div>
             <ProductsGrid />
           </div>
         </section>

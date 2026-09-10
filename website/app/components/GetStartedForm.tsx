@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { products } from "../products/data";
 
@@ -9,6 +10,10 @@ const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
 export default function GetStartedForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const searchParams = useSearchParams();
+  const prefilledInterest = searchParams.get("interest") ?? "";
+  const interestOptions = [...products.map((p) => p.label), "Not sure yet"];
+  const defaultInterest = interestOptions.includes(prefilledInterest) ? prefilledInterest : "";
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -122,7 +127,7 @@ export default function GetStartedForm() {
           id="interest"
           name="interest"
           required
-          defaultValue=""
+          defaultValue={defaultInterest}
           className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
         >
           <option value="" disabled>

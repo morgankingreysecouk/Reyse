@@ -23,6 +23,13 @@ for (let c = 0; c < productColumnCount; c++) {
     })),
   );
 }
+productColumns.push([
+  {
+    label: "Not sure which one?",
+    description: "Take the 60-second quiz.",
+    href: "/quiz",
+  },
+]);
 
 // Split into (up to) 4 columns, sized to fit however many industries there
 // are — so adding or removing one never silently drops it from the menu.
