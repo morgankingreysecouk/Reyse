@@ -79,6 +79,9 @@ export default function Home() {
             <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
               How it works
             </h2>
+            <p className="mt-3 max-w-2xl text-foreground/60">
+              Three steps, and the third one keeps running for as long as you need it to.
+            </p>
             <HowItWorksScroll />
           </div>
         </section>
