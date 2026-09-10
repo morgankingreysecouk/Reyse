@@ -7,6 +7,7 @@ import {
   GeoVisibilityVisual,
   MarketIntelligenceVisual,
   ReviewResponseVisual,
+  ScaleVisual,
   SeoPlatformsVisual,
 } from "../../components/ProductVisuals";
 import { pageMetadata } from "../../lib/seo";
@@ -103,6 +104,7 @@ const heroVisuals: Partial<Record<string, () => React.ReactElement>> = {
   geo: GeoVisibilityVisual,
   reviews: ReviewResponseVisual,
   "market-intelligence": MarketIntelligenceVisual,
+  scale: ScaleVisual,
 };
 
 export function generateStaticParams() {

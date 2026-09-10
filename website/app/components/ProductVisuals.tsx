@@ -1,4 +1,4 @@
-import { GeoMockup, MarketIntelligenceMockup, ReviewMockup } from "./HeroMockups";
+import { GeoMockup, MarketIntelligenceMockup, ReviewMockup, ScaleMockup } from "./HeroMockups";
 import Reveal from "./Reveal";
 
 // Both mockups below were built for the hero slideshow, which supplies its
@@ -38,6 +38,14 @@ export function MarketIntelligenceVisual() {
   return (
     <MockupCard>
       <MarketIntelligenceMockup />
+    </MockupCard>
+  );
+}
+
+export function ScaleVisual() {
+  return (
+    <MockupCard>
+      <ScaleMockup />
     </MockupCard>
   );
 }
