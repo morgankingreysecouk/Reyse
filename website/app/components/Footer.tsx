@@ -95,6 +95,14 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-border">
+        <div className="mx-auto max-w-6xl px-6 pt-6 text-xs text-foreground/65">
+          <p>
+            Statistics cited across this site are industry estimates and
+            composite figures drawn from published research and Reyse&rsquo;s
+            own work, not single-study citations — treat them as
+            directional, not exact.
+          </p>
+        </div>
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 text-sm text-foreground/65 sm:flex-row sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Reyse. All rights reserved.</p>
 
