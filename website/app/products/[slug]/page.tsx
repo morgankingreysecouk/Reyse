@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Reveal from "../../components/Reveal";
 import IncludedItemsScroll from "../../components/IncludedItemsScroll";
-import { GeoVisibilityVisual, SeoPlatformsVisual } from "../../components/ProductVisuals";
+import { GeoVisibilityVisual, ReviewResponseVisual, SeoPlatformsVisual } from "../../components/ProductVisuals";
 import { pageMetadata } from "../../lib/seo";
 import { products, type ComparisonRow } from "../data";
 
@@ -96,6 +96,7 @@ function ComparisonTable({
 const heroVisuals: Partial<Record<string, () => React.ReactElement>> = {
   seo: SeoPlatformsVisual,
   geo: GeoVisibilityVisual,
+  reviews: ReviewResponseVisual,
 };
 
 export function generateStaticParams() {

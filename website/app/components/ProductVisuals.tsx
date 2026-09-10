@@ -1,11 +1,11 @@
-import { GeoMockup } from "./HeroMockups";
+import { GeoMockup, ReviewMockup } from "./HeroMockups";
 import Reveal from "./Reveal";
 
-// GeoMockup (built for the hero slideshow) is just the inner content — the
-// slideshow supplies the browser-chrome card around it. Product pages need
-// a self-contained visual, so this wraps it the same way SeoPlatformsVisual
-// wraps itself below.
-export function GeoVisibilityVisual() {
+// Both mockups below were built for the hero slideshow, which supplies its
+// own browser-chrome card around whichever one is showing. Product pages
+// need a self-contained visual, so these wrap them the same way
+// SeoPlatformsVisual wraps itself below.
+function MockupCard({ children }: { children: React.ReactNode }) {
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-panel shadow-xl">
       <div className="flex items-center gap-1.5 border-b border-border px-5 py-3.5">
@@ -13,10 +13,24 @@ export function GeoVisibilityVisual() {
         <span className="h-2.5 w-2.5 rounded-full bg-[#f4bf4f]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#61c454]" />
       </div>
-      <div className="p-6">
-        <GeoMockup />
-      </div>
+      <div className="p-6">{children}</div>
     </div>
+  );
+}
+
+export function GeoVisibilityVisual() {
+  return (
+    <MockupCard>
+      <GeoMockup />
+    </MockupCard>
+  );
+}
+
+export function ReviewResponseVisual() {
+  return (
+    <MockupCard>
+      <ReviewMockup />
+    </MockupCard>
   );
 }
 
