@@ -16,9 +16,11 @@ export default function Home() {
         it's later in the DOM with a higher z-index. Both share this
         wrapper's release boundary, so they end their sticky dwell at the
         same scroll position and hand off cleanly to Products afterward,
-        instead of one lingering behind after the other releases. 280dvh =
-        hero's 100dvh + banner's 100dvh + an 80dvh dwell once the banner
-        has fully covered the hero.
+        instead of one lingering behind after the other releases. 220dvh =
+        hero's 100dvh + banner's 100dvh + a 20dvh dwell once the banner
+        has fully covered the hero — just enough for the stack to read as
+        deliberate rather than an abrupt cut, without making visitors
+        scroll through a screen-height of nothing before reaching it.
 
         Below lg, both sections render as plain stacked blocks instead —
         forcing sticky+h-dvh on a narrow viewport made hero content taller
@@ -26,7 +28,7 @@ export default function Home() {
         header with no way to scroll to it. The stacking effect needs
         room a phone doesn't have, so it's a desktop-only enhancement.
       */}
-      <div className="relative lg:h-[280dvh]">
+      <div className="relative lg:h-[220dvh]">
         <HeroSlideshow />
         <FreeForeverBanner />
       </div>
