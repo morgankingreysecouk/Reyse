@@ -1,6 +1,15 @@
 import Link from "next/link";
 import { industries } from "../industries/data";
+import { products } from "../products/data";
 import NewsletterSignup from "./NewsletterSignup";
+
+const solutionsLinks = [
+  ...products.map((product) => ({
+    label: product.label,
+    href: `/products/${product.slug}`,
+  })),
+  { label: "Not sure which one? Take the quiz", href: "/quiz", emphasis: true },
+];
 
 const companyLinks = [
   { label: "About Reyse", href: "/about" },
@@ -63,13 +72,14 @@ export default function Footer() {
   return (
     <footer className="border-t border-border">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
-          <div className="col-span-2 sm:col-span-1">
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Link href="/" className="text-lg font-semibold tracking-tight">
               Reyse
             </Link>
             <NewsletterSignup />
           </div>
+          <FooterColumn title="Solutions" links={solutionsLinks} />
           <FooterColumn
             title="Industries"
             links={[

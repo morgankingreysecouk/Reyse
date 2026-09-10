@@ -49,7 +49,7 @@ export default function HowItWorksScroll() {
       {/* Mobile-only: the sticky index rail below doesn't fit a narrow
           screen, so this is its equivalent — a tappable progress row
           synced to the same active-step state. */}
-      <div className="sticky top-20 z-10 -mx-6 flex items-start gap-3 bg-background/90 px-6 py-3 backdrop-blur-sm sm:hidden">
+      <div className="sticky top-20 z-10 -mx-6 flex items-start gap-3 bg-background/90 px-6 py-3 backdrop-blur-sm lg:hidden">
         {steps.map((step, i) => (
           <button
             key={step.label}
@@ -73,7 +73,7 @@ export default function HowItWorksScroll() {
         ))}
       </div>
 
-      <div className="hidden shrink-0 sm:block">
+      <div className="hidden shrink-0 lg:block">
         <div className="sticky top-24 flex max-w-xs flex-col items-start gap-6 py-4">
           {steps.map((step, i) => (
             <button
@@ -105,9 +105,9 @@ export default function HowItWorksScroll() {
             ref={(el) => {
               refs.current[i] = el;
             }}
-            className="flex flex-col gap-6 rounded-2xl border border-border p-6 sm:min-h-[300px] sm:flex-row sm:items-center sm:gap-8 sm:p-8"
+            className="flex flex-col gap-6 rounded-2xl border border-border p-6 lg:min-h-[300px] lg:flex-row lg:items-center lg:gap-8 lg:p-8"
           >
-            <div className="relative h-40 shrink-0 overflow-hidden rounded-xl border border-border bg-panel/60 p-4 sm:h-48 sm:w-64">
+            <div className="relative h-40 shrink-0 overflow-hidden rounded-xl border border-border bg-panel/60 p-4 lg:h-48 lg:w-64">
               <step.Mockup />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-panel to-transparent" />
             </div>
