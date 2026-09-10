@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ClosingCta from "./components/ClosingCta";
+import Faq from "./components/Faq";
 import FounderCredibility from "./components/FounderCredibility";
 import FreeForeverBanner from "./components/FreeForeverBanner";
 import HeroSlideshow from "./components/HeroSlideshow";
@@ -92,6 +93,18 @@ export default function Home() {
         <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <FounderCredibility />
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <h2 className="text-center font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
+              Questions people actually ask
+            </h2>
+            <div className="mt-10">
+              <Faq />
+            </div>
           </div>
         </section>
 
