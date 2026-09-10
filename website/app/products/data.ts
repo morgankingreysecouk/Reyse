@@ -37,6 +37,9 @@ export type Product = {
   label: string;
   tagline: string;
   description: string;
+  /** One short sentence for the homepage grid card — `description` is sized for a
+   *  full page intro, and reusing it there made every card a different height. */
+  hook: string;
   price: string;
   priceNote: string;
   stats?: Stat[];
@@ -61,6 +64,7 @@ export const products: Product[] = [
     slug: "seo",
     label: "SEO",
     tagline: "Found on Google. Found everywhere else too.",
+    hook: "Fast, accurate, and visible on every platform your next buyer or tenant actually uses.",
     description:
       "Nearly a third of all UK web traffic happens on Safari, not Google — and most agencies never even check it. Reyse SEO makes sure your website, your listings, and your business profiles are fast, accurate, and visible across every platform your next buyer, seller, or tenant is actually using — so more of the right searches turn into real enquiries, not lost opportunities.",
     price: "£450",
@@ -182,6 +186,7 @@ export const products: Product[] = [
     slug: "geo",
     label: "GEO",
     tagline: "Recommended by one AI. Invisible to the rest.",
+    hook: "Only 11% of businesses named by one AI tool are named by another.",
     description:
       "Only 11% of businesses cited by one AI tool are also cited by another — being named by ChatGPT tells you nothing about whether Perplexity, Gemini, or Copilot have ever heard of you. Buyers and sellers increasingly ask ChatGPT, Gemini, and Perplexity who to trust before they ever browse a website — and it's not just chatbots. A normal Google search now often shows an AI-generated answer, powered by Gemini, right above the regular results. Edge does the same through Copilot, and on iPhone, Siri and Spotlight increasingly just answer the question rather than pointing to a website. Reyse audits, fixes, and actively manages your visibility across every single one — so you're the business they're told about, everywhere they ask.",
     price: "£950",
@@ -299,6 +304,7 @@ export const products: Product[] = [
     slug: "reviews",
     label: "Review Management",
     tagline: "Watched everywhere. Missed nowhere.",
+    hook: "68% of negative reviews go unanswered. Reyse replies to every one, instantly.",
     description:
       "68% of negative reviews go completely unanswered — the exact category most likely to cost a hesitant buyer's trust before they've even called. Reviews don't just sit on Google anymore: Bing pulls in review data of its own, and Apple Business Connect actually inherits reviews directly from Yelp and Tripadvisor, meaning a review left on a site you've never logged into can shape what a customer sees on their iPhone — and the same count, rating, and response consistency directly feed both your SEO and your GEO visibility, since search engines and AI tools both use these signals to decide who to rank and who to recommend. Reyse manages your reputation across every platform that matters, closing that response gap and making sure happy customers actually leave a review in the first place.",
     price: "£299",
@@ -355,6 +361,7 @@ export const products: Product[] = [
     slug: "market-intelligence",
     label: "Market & Competitive Intelligence",
     tagline: "Know exactly where you stand, and what's coming next.",
+    hook: "Tracks your SEO and AI visibility against your closest competitor, every month.",
     description:
       "The top 20% of local businesses now capture 68% of all search visibility — a gap that keeps widening for anyone not actively tracking where they sit against it. Most businesses have no idea how their SEO and AI visibility actually compares to the competitor down the road, or what real buyers and sellers are searching for right now. Reyse tracks both, every month, so you're never guessing.",
     price: "£249",
@@ -382,6 +389,7 @@ export const products: Product[] = [
     slug: "scale",
     label: "Scale",
     tagline: "One system, built once. Every branch, everywhere.",
+    hook: "The same setup, properly replicated for every branch — not copy-pasted and hoped for.",
     description:
       "A business with 30 locations and just 20% inconsistency in its listing data has 6 branches actively working against the other 24 at every directory where the details don't match — and multi-location brands with consistent data see up to twice the customer engagement of those without. Growing from one office to a hundred shouldn't mean rebuilding SEO, GEO, reviews, and market intelligence from scratch every time you open a door. Reyse Scale takes everything already built for your first branch and replicates it, properly, for every branch after — with the same rigour whether you're a single agency or the biggest name in the country.",
     price: "Custom",
