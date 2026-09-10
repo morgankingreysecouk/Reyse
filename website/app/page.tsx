@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ClosingCta from "./components/ClosingCta";
 import FreeForeverBanner from "./components/FreeForeverBanner";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
@@ -88,19 +89,8 @@ export default function Home() {
 
         {/* CTA */}
         <section id="contact" className="scroll-mt-20 border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-20 text-center">
-            <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              Ready to stop missing inquiries?
-            </h2>
-            <p className="mx-auto mt-3 max-w-md text-foreground/60">
-              Tell us about your business and we&rsquo;ll show you Reyse in action.
-            </p>
-            <Link
-              href="/get-started"
-              className="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Get started
-            </Link>
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <ClosingCta />
           </div>
         </section>
       </>
