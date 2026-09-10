@@ -1,4 +1,24 @@
+import { GeoMockup } from "./HeroMockups";
 import Reveal from "./Reveal";
+
+// GeoMockup (built for the hero slideshow) is just the inner content — the
+// slideshow supplies the browser-chrome card around it. Product pages need
+// a self-contained visual, so this wraps it the same way SeoPlatformsVisual
+// wraps itself below.
+export function GeoVisibilityVisual() {
+  return (
+    <div className="overflow-hidden rounded-3xl border border-border bg-panel shadow-xl">
+      <div className="flex items-center gap-1.5 border-b border-border px-5 py-3.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-[#ec6a5e]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#f4bf4f]" />
+        <span className="h-2.5 w-2.5 rounded-full bg-[#61c454]" />
+      </div>
+      <div className="p-6">
+        <GeoMockup />
+      </div>
+    </div>
+  );
+}
 
 const platforms = [
   { code: "G", name: "Google", detail: "Search & Maps" },

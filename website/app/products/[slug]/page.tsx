@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Reveal from "../../components/Reveal";
 import IncludedItemsScroll from "../../components/IncludedItemsScroll";
-import { SeoPlatformsVisual } from "../../components/ProductVisuals";
+import { GeoVisibilityVisual, SeoPlatformsVisual } from "../../components/ProductVisuals";
 import { pageMetadata } from "../../lib/seo";
 import { products, type ComparisonRow } from "../data";
 
@@ -95,6 +95,7 @@ function ComparisonTable({
 // text-only hero, so adding a product never requires touching this file.
 const heroVisuals: Partial<Record<string, () => React.ReactElement>> = {
   seo: SeoPlatformsVisual,
+  geo: GeoVisibilityVisual,
 };
 
 export function generateStaticParams() {
