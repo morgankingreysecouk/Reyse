@@ -93,7 +93,7 @@ export default function HeroSlideshow() {
                 className="absolute inset-x-0 bottom-0 top-[49px] p-6 transition-opacity duration-700 ease-in-out"
                 style={{ opacity: i === index ? 1 : 0 }}
               >
-                <Mockup />
+                <Mockup active={i === index} />
               </div>
             ))}
           </div>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { industries } from "../industries/data";
 import { products } from "../products/data";
-import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
 
@@ -99,8 +98,8 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/">
-          <Logo />
+        <Link href="/" className="text-lg font-semibold tracking-tight">
+          Reyse
         </Link>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 lg:flex">
           <NavDropdown label="Solutions" href="/#product" columns={productColumns} />
