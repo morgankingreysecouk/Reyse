@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { InvisibleMockup, SelfAuditMockup } from "../components/AboutVisuals";
+import { pageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description: "Why Reyse exists, and who's building it.",
-};
+});
 
 const stats = [
   { value: "0", label: "times our own agency was mentioned when we asked AI who to trust — that's what started this" },

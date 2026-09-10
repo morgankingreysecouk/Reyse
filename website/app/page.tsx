@@ -4,42 +4,29 @@ import HowItWorksScroll from "./components/HowItWorksScroll";
 import IndustriesGrid from "./components/IndustriesGrid";
 import ProductsGrid from "./components/ProductsGrid";
 
-const trustedBy = [
-  "Harbor Estates",
-  "Kingsbridge Lettings",
-  "Willowmere Homes",
-  "Ashcroft Property",
-  "The Grange Collection",
-  "Meadowvale Lets",
-  "Blackwood & Co",
-  "Silverline Realty",
-];
-
 export default function Home() {
   return (
     <main className="flex-1">
       <HeroSlideshow />
 
       <>
-        {/* Social proof */}
+        {/* Honesty over logos — no client wall yet, so say what's true instead */}
         <section className="border-t border-border py-12">
-          <p className="mx-auto mb-8 max-w-6xl px-6 text-center text-xs font-medium uppercase tracking-widest text-foreground/60">
-            Trusted by property businesses like
-          </p>
-          <div
-            aria-hidden
-            className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
-          >
-            <div className="flex w-max animate-[marquee_30s_linear_infinite] gap-16">
-              {[...trustedBy, ...trustedBy].map((name, i) => (
-                <span
-                  key={`${name}-${i}`}
-                  className="whitespace-nowrap text-xl font-semibold tracking-tight text-foreground/40"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
+          <div className="mx-auto max-w-3xl px-6 text-center">
+            <p className="text-lg text-foreground/70">
+              No client logos here — not yet. What we have is a founder who
+              searched for his own agency and found nothing, and spent a year
+              fixing that before turning it into a product.
+            </p>
+            <Link
+              href="/about"
+              className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+            >
+              Read the story
+              <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
         </section>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import CookieConsent from "./components/CookieConsent";
 import Footer from "./components/Footer";
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <Footer />
         <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );

@@ -46,8 +46,8 @@ export default function CookieConsent() {
         <p className="max-w-2xl">
           We use essential cookies to make Reyse work, and may use analytics cookies to
           understand how the site is used. Read our{" "}
-          <Link href="/terms" className="underline hover:text-foreground">
-            Terms of Service
+          <Link href="/privacy" className="underline hover:text-foreground">
+            Privacy Policy
           </Link>{" "}
           for more.
         </p>

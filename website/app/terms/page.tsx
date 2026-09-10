@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Service",
   description: "The terms that govern your use of Reyse.",
-};
+});
 
 const sections = [
   {
@@ -71,7 +72,7 @@ export default function Terms() {
           Terms of Service
         </h1>
         <p className="mt-5 max-w-xl text-lg text-foreground/70">
-          Last updated {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}.
+          Last updated 10 September 2026.
           This is a draft policy and should be reviewed by a solicitor before Reyse launches publicly.
         </p>
 

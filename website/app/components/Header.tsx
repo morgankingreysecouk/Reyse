@@ -82,15 +82,15 @@ export default function Header() {
         <Link href="/" className="text-lg font-semibold tracking-tight">
           Reyse
         </Link>
-        <div className="hidden items-center gap-8 text-sm text-foreground/80 sm:flex">
+        <div className="hidden items-center gap-8 text-sm text-foreground/80 lg:flex">
           <NavDropdown label="Solutions" href="/#product" columns={productColumns} />
           <NavDropdown label="Industries" href="/#industries" columns={industryColumns} />
-          <NavDropdown label="Company" href="/#contact" columns={companyColumns} />
+          <NavDropdown label="Company" href="/about" columns={companyColumns} />
         </div>
         <div className="flex items-center gap-3">
           <Link
             href="/get-started"
-            className="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground hover:opacity-90 sm:inline-block"
+            className="hidden rounded-full bg-ink px-4 py-2 text-sm font-medium text-ink-foreground hover:opacity-90 lg:inline-block"
           >
             Get started
           </Link>

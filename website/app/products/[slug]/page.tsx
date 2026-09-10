@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Reveal from "../../components/Reveal";
 import IncludedItemsScroll from "../../components/IncludedItemsScroll";
 import { SeoPlatformsVisual } from "../../components/ProductVisuals";
+import { pageMetadata } from "../../lib/seo";
 import { products, type ComparisonRow } from "../data";
 
 function TierCell({ value }: { value: string }) {
@@ -108,10 +109,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
-  return {
+  return pageMetadata({
     title: product.label,
     description: product.tagline,
-  };
+  });
 }
 
 export default async function ProductPage({

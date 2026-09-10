@@ -68,7 +68,7 @@ export default function MobileMenu() {
   const close = () => setOpen(false);
 
   return (
-    <div className="sm:hidden">
+    <div className="lg:hidden">
       <button
         ref={openButtonRef}
         type="button"
@@ -91,7 +91,7 @@ export default function MobileMenu() {
             role="dialog"
             aria-modal="true"
             aria-label="Site menu"
-            className={`fixed inset-0 z-40 bg-background transition-opacity duration-200 sm:hidden ${
+            className={`fixed inset-0 z-40 bg-background transition-opacity duration-200 lg:hidden ${
               open ? "visible opacity-100" : "invisible opacity-0"
             }`}
           >

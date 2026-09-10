@@ -41,15 +41,6 @@ select:focus-visible {
   border-radius: 2px;
 }
 
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @keyframes hero-fade-in {
   from {
     opacity: 0;

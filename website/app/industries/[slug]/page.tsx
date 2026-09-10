@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { industries } from "../data";
+import { pageMetadata } from "../../lib/seo";
 
 export function generateStaticParams() {
   return industries.map((industry) => ({ slug: industry.slug }));
@@ -15,10 +16,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const industry = industries.find((i) => i.slug === slug);
   if (!industry) return {};
-  return {
+  return pageMetadata({
     title: industry.label,
     description: industry.tagline,
-  };
+  });
 }
 
 export default async function IndustryPage({

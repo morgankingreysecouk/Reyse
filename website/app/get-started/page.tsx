@@ -1,50 +1,43 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import GetStartedForm from "../components/GetStartedForm";
+import { pageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Get Started",
-  description: "Choose how you'd like to get started with Reyse.",
-};
-
-const links = [
-  { label: "Book a demo", href: "mailto:hello@reyse.co.uk" },
-  { label: "See how it works", href: "/#how-it-works" },
-  { label: "Explore industries we support", href: "/#industries" },
-  { label: "Contact us", href: "/#contact" },
-  { label: "Back to home", href: "/" },
-];
+  description: "Tell us about your business and we'll show you exactly what's missing.",
+});
 
 export default function GetStarted() {
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
-      <div className="mx-auto max-w-3xl">
+      <div className="mx-auto max-w-xl">
         <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
           Get started
         </p>
         <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          Where would you like to start?
+          Tell us about your business
         </h1>
-        <p className="mt-5 max-w-md text-lg text-foreground/70">
-          Pick whatever&rsquo;s most useful right now — we&rsquo;ll take it from there.
+        <p className="mt-5 text-lg text-foreground/70">
+          A few details and we&rsquo;ll show you exactly what&rsquo;s costing you
+          enquiries — no obligation, no sales script.
         </p>
 
-        <div className="mt-12 space-y-2.5">
-          {links.map((link) => {
-            const label = (
-              <span className="inline-block text-2xl font-medium tracking-tight text-foreground transition-transform delay-75 duration-300 ease-in-out group-hover:translate-x-4 group-hover:delay-0 sm:text-3xl">
-                {link.label}
-              </span>
-            );
-            return link.href.startsWith("mailto:") ? (
-              <a key={link.label} href={link.href} className="group relative block max-w-max">
-                {label}
-              </a>
-            ) : (
-              <Link key={link.label} href={link.href} className="group relative block max-w-max">
-                {label}
-              </Link>
-            );
-          })}
+        <div className="mt-10">
+          <GetStartedForm />
+        </div>
+
+        <p className="mt-8 text-center text-sm text-foreground/50">
+          Prefer email?{" "}
+          <a href="mailto:hello@reyse.co.uk" className="underline hover:text-foreground">
+            hello@reyse.co.uk
+          </a>
+        </p>
+
+        <div className="mt-4 text-center">
+          <Link href="/" className="text-sm text-foreground/50 hover:text-foreground">
+            ← Back to home
+          </Link>
         </div>
       </div>
     </main>
