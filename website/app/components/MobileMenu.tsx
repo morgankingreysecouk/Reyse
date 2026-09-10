@@ -156,6 +156,24 @@ export default function MobileMenu() {
                     </li>
                     <li>
                       <Link
+                        href="/blog"
+                        onClick={close}
+                        className="text-base text-foreground/70 hover:text-foreground"
+                      >
+                        Blog
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/careers"
+                        onClick={close}
+                        className="text-base text-foreground/70 hover:text-foreground"
+                      >
+                        Careers
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
                         href="/#contact"
                         onClick={close}
                         className="text-base text-foreground/70 hover:text-foreground"

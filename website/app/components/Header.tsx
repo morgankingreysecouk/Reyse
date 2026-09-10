@@ -41,6 +41,16 @@ const companyColumns = [
       href: "/about",
     },
     {
+      label: "Blog",
+      description: "Specific, practical writing on AI search, SEO, and reviews.",
+      href: "/blog",
+    },
+    {
+      label: "Careers",
+      description: "Early-stage, and honest about what that means.",
+      href: "/careers",
+    },
+    {
       label: "Contact",
       description: "Get in touch or book a demo.",
       href: "/#contact",

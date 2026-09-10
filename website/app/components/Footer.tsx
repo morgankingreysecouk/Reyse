@@ -5,6 +5,8 @@ import Logo from "./Logo";
 const companyLinks = [
   { label: "About Reyse", href: "/about" },
   { label: "How it works", href: "/#how-it-works" },
+  { label: "Blog", href: "/blog" },
+  { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/#contact" },
 ];
 

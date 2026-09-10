@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { industries } from "./industries/data";
+import { posts } from "./blog/data";
 import { products } from "./products/data";
 
 const BASE_URL = "https://reyse.co.uk";
@@ -8,6 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: BASE_URL, changeFrequency: "weekly", priority: 1 },
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/careers`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/get-started`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/terms`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/privacy`, changeFrequency: "yearly", priority: 0.3 },
@@ -25,5 +28,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...industryRoutes];
+  const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${BASE_URL}/blog/${post.slug}`,
+    changeFrequency: "yearly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...industryRoutes, ...postRoutes];
 }
