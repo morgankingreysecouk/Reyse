@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { LegalBody, type LegalBlock } from "../components/LegalBody";
+import { type LegalBlock } from "../components/LegalBody";
+import { LegalPage } from "../components/LegalPage";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -181,30 +182,18 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
 
 export default function Terms() {
   return (
-    <main className="flex-1 px-6 pb-24 pt-40">
-      <div className="mx-auto max-w-3xl">
-        <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
-          Legal
-        </p>
-        <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          Terms of Service
-        </h1>
-        <p className="mt-5 max-w-xl text-lg text-foreground/70">
+    <LegalPage
+      eyebrow="Legal"
+      title="Terms of Service"
+      intro={
+        <>
           Last updated 10 September 2026. This is a considered draft, written
           specifically for Reyse&rsquo;s business, but it is not a substitute for
           review by a qualified solicitor — that review should happen before
           Reyse launches publicly or takes its first paying client.
-        </p>
-
-        <div className="mt-12 space-y-10">
-          {sections.map((section) => (
-            <div key={section.heading}>
-              <h2 className="text-lg font-semibold">{section.heading}</h2>
-              <LegalBody body={section.body} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </main>
+        </>
+      }
+      sections={sections}
+    />
   );
 }
