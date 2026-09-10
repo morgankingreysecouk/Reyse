@@ -189,6 +189,13 @@ export default async function ProductPage({
           </Reveal>
         )}
 
+        <div className="mt-16 border-t border-border pt-10">
+          <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
+            Everything included
+          </h2>
+          <IncludedItemsScroll items={product.included} comparisonRows={comparison?.rows} />
+        </div>
+
         {addOnsComparison && (
           <Reveal>
             <ComparisonTable
@@ -198,13 +205,6 @@ export default async function ProductPage({
             />
           </Reveal>
         )}
-
-        <div className="mt-16 border-t border-border pt-10">
-          <h2 className="font-heading text-2xl leading-[1.1] tracking-tight">
-            Everything included
-          </h2>
-          <IncludedItemsScroll items={product.included} comparisonRows={comparison?.rows} />
-        </div>
 
         {product.addOns && (
           <div className="mx-auto mt-16 max-w-3xl border-t border-border pt-10">
