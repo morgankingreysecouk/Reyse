@@ -34,7 +34,7 @@ function FooterColumn({
   links,
 }: {
   title: string;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; emphasis?: boolean }[];
 }) {
   return (
     <div>
@@ -44,7 +44,11 @@ function FooterColumn({
           <li key={link.label}>
             <Link
               href={link.href}
-              className="text-sm text-foreground/60 hover:text-foreground"
+              className={
+                link.emphasis
+                  ? "text-sm font-medium text-accent-text hover:text-foreground"
+                  : "text-sm text-foreground/60 hover:text-foreground"
+              }
             >
               {link.label}
             </Link>
@@ -68,10 +72,13 @@ export default function Footer() {
           </div>
           <FooterColumn
             title="Industries"
-            links={industries.map((industry) => ({
-              label: industry.label,
-              href: `/industries/${industry.slug}`,
-            }))}
+            links={[
+              ...industries.slice(0, 6).map((industry) => ({
+                label: industry.label,
+                href: `/industries/${industry.slug}`,
+              })),
+              { label: "See all industries", href: "/#industries", emphasis: true },
+            ]}
           />
           <FooterColumn title="Company" links={companyLinks} />
           <FooterColumn title="Get started" links={getStartedLinks} />
@@ -90,7 +97,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-foreground/65 hover:text-foreground"
+                  className="-m-3 p-3 text-foreground/65 hover:text-foreground"
                 >
                   <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden="true">
                     <path d={social.path} />
