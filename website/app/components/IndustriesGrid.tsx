@@ -2,37 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { industries, type Industry } from "../industries/data";
+import { useScrollReveal } from "../lib/useScrollReveal";
 
 function IndustryTile({ industry, index }: { industry: Industry; index: number }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  // Visible by default — a tile only starts hidden (for the scroll-reveal
-  // transition) if it's confirmed to be below the fold at mount, so
-  // content never depends on JS running to be visible.
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (el.getBoundingClientRect().top > window.innerHeight) {
-      setVisible(false);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useScrollReveal<HTMLAnchorElement>();
 
   return (
     <Link

@@ -105,9 +105,9 @@ export default function HowItWorksScroll() {
             ref={(el) => {
               refs.current[i] = el;
             }}
-            className="flex flex-col gap-6 rounded-xl border border-border p-6 sm:min-h-[300px] sm:flex-row sm:items-center sm:gap-8 sm:p-8"
+            className="flex flex-col gap-6 rounded-2xl border border-border p-6 sm:min-h-[300px] sm:flex-row sm:items-center sm:gap-8 sm:p-8"
           >
-            <div className="relative h-40 shrink-0 overflow-hidden rounded-lg border border-border bg-panel/60 p-4 sm:h-48 sm:w-64">
+            <div className="relative h-40 shrink-0 overflow-hidden rounded-xl border border-border bg-panel/60 p-4 sm:h-48 sm:w-64">
               <step.Mockup />
               <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-panel to-transparent" />
             </div>

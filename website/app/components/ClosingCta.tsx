@@ -1,36 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useScrollReveal } from "../lib/useScrollReveal";
 
 export default function ClosingCta() {
-  const ref = useRef<HTMLDivElement>(null);
-  // Visible by default — only starts hidden (for the reveal transition) if
-  // confirmed below the fold at mount, so it never depends on JS running
-  // to be visible.
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (el.getBoundingClientRect().top > window.innerHeight) {
-      setVisible(false);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useScrollReveal<HTMLDivElement>();
 
   return (
     <div

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { products, type Product } from "../products/data";
+import { useScrollReveal } from "../lib/useScrollReveal";
 import {
   GeoMockup,
   MarketIntelligenceMockup,
@@ -24,35 +24,7 @@ const mockups: Record<string, () => React.ReactNode> = {
 };
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  // Visible by default — a card only starts hidden (for the scroll-reveal
-  // transition) if it's confirmed to be below the fold at mount. That way
-  // content never depends on JS running to be visible: no JS means every
-  // card just renders in its final state, no animation, nothing missing.
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (el.getBoundingClientRect().top > window.innerHeight) {
-      setVisible(false);
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
+  const { ref, visible } = useScrollReveal<HTMLAnchorElement>();
   const Mockup = mockups[product.slug];
 
   return (
