@@ -15,6 +15,7 @@ export default function ScrollTextReveal({
 
   useEffect(() => {
     let raf = 0;
+    let scrolled = false;
 
     const measure = () => {
       const el = ref.current;
@@ -31,6 +32,7 @@ export default function ScrollTextReveal({
     };
 
     const onScroll = () => {
+      scrolled = true;
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(measure);
     };
@@ -38,10 +40,20 @@ export default function ScrollTextReveal({
     measure();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
+
+    // If the block starts below the fold, it renders at low contrast
+    // (partway through the fade) until a real scroll happens. A render
+    // path with no genuine scroll events would leave it stuck that way,
+    // so this guarantees full readability regardless after a beat.
+    const fallback = setTimeout(() => {
+      if (!scrolled) setProgress(1);
+    }, 1200);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
       cancelAnimationFrame(raf);
+      clearTimeout(fallback);
     };
   }, []);
 
