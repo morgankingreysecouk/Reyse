@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CountdownTimer from "../components/CountdownTimer";
+import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
 import { CLAIMED_COUNTIES, SPOTS_REMAINING, TOTAL_SPOTS } from "../lib/freeForever";
 
@@ -50,48 +51,54 @@ export default function FreeForeverPage() {
           service, free, for as long as your business exists.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-panel p-6">
-          <div>
-            <p className="font-heading text-3xl leading-none tracking-tight text-accent-text">
-              {SPOTS_REMAINING} / {TOTAL_SPOTS}
-            </p>
-            <p className="mt-1 text-xs text-foreground/65">counties still open</p>
+        <Reveal delay={80}>
+          <div className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-panel p-6">
+            <div>
+              <p className="font-heading text-3xl leading-none tracking-tight text-accent-text">
+                {SPOTS_REMAINING} / {TOTAL_SPOTS}
+              </p>
+              <p className="mt-1 text-xs text-foreground/65">counties still open</p>
+            </div>
+            <div className="h-10 w-px bg-border" />
+            <div>
+              <p className="text-sm font-medium">
+                <CountdownTimer />
+              </p>
+              <p className="mt-1 text-xs text-foreground/65">until this month&rsquo;s window closes</p>
+            </div>
           </div>
-          <div className="h-10 w-px bg-border" />
-          <div>
-            <p className="text-sm font-medium">
-              <CountdownTimer />
-            </p>
-            <p className="mt-1 text-xs text-foreground/65">until this month&rsquo;s window closes</p>
-          </div>
-        </div>
+        </Reveal>
 
         <div className="mt-16 space-y-10">
-          {terms.map((item) => (
-            <div key={item.heading} className="border-t border-border pt-8">
-              <h2 className="font-heading text-xl leading-[1.2] tracking-tight">
-                {item.heading}
-              </h2>
-              <p className="mt-3 text-foreground/70">{item.body}</p>
-            </div>
+          {terms.map((item, i) => (
+            <Reveal key={item.heading} delay={i * 60}>
+              <div className="border-t border-border pt-8">
+                <h2 className="font-heading text-xl leading-[1.2] tracking-tight">
+                  {item.heading}
+                </h2>
+                <p className="mt-3 text-foreground/70">{item.body}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mx-auto mt-20 max-w-xl rounded-2xl border border-border bg-panel p-8 text-center">
-          <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
-            Want your county?
-          </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
-            Tell us about your business through the usual form and mention
-            the free-forever offer — say which county you&rsquo;re in.
-          </p>
-          <Link
-            href="/get-started"
-            className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-          >
-            Apply for your county
-          </Link>
-        </div>
+        <Reveal>
+          <div className="mx-auto mt-20 max-w-xl rounded-2xl border border-border bg-panel p-8 text-center">
+            <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
+              Want your county?
+            </h2>
+            <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
+              Tell us about your business through the usual form and mention
+              the free-forever offer — say which county you&rsquo;re in.
+            </p>
+            <Link
+              href="/get-started"
+              className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+            >
+              Apply for your county
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </main>
   );
