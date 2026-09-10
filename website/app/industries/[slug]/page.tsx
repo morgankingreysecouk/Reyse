@@ -81,7 +81,7 @@ export default async function IndustryPage({
             {industry.scenarios.map((scenario, i) => (
               <Reveal key={scenario} delay={i * 100}>
                 <div className="h-full rounded-2xl border border-border p-6">
-                  <span className="text-sm font-medium text-accent">0{i + 1}</span>
+                  <span className="text-sm font-medium text-accent-text">0{i + 1}</span>
                   <p className="mt-3 text-sm text-foreground/70">{scenario}</p>
                 </div>
               </Reveal>
@@ -115,7 +115,7 @@ export default async function IndustryPage({
                     </h3>
                   </div>
                   <div className="mt-6 flex items-center justify-end">
-                    <span className="inline-flex items-center gap-1 text-sm font-medium text-accent opacity-0 transition group-hover:opacity-100">
+                    <span className="inline-flex items-center gap-1 text-sm font-medium text-accent-text opacity-0 transition group-hover:opacity-100">
                       Learn more
                       <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
                         <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />

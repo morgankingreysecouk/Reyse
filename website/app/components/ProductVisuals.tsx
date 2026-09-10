@@ -16,7 +16,7 @@ export function SeoPlatformsVisual() {
         <span className="h-2.5 w-2.5 rounded-full bg-[#61c454]" />
       </div>
       <div className="p-6">
-        <p className="text-xs font-medium uppercase tracking-wide text-foreground/40">
+        <p className="text-xs font-medium uppercase tracking-wide text-foreground/65">
           Where your customers actually search
         </p>
         <div className="mt-4 flex flex-col gap-2.5">
@@ -42,7 +42,7 @@ export function SeoPlatformsVisual() {
                   <p className="text-sm font-semibold text-foreground">{platform.name}</p>
                   <p className="text-xs text-foreground/60">{platform.detail}</p>
                 </div>
-                <span className="flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 text-[10px] font-medium text-accent">
+                <span className="flex items-center gap-1 rounded-full bg-accent/15 px-2.5 py-1 text-[10px] font-medium text-accent-text">
                   <svg viewBox="0 0 16 16" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>

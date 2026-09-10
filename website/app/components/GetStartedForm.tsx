@@ -67,7 +67,7 @@ export default function GetStartedForm() {
             name="name"
             type="text"
             required
-            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/65 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
             placeholder="Jane Smith"
           />
         </div>
@@ -80,7 +80,7 @@ export default function GetStartedForm() {
             name="business"
             type="text"
             required
-            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/65 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
             placeholder="Smith & Co Lettings"
           />
         </div>
@@ -96,19 +96,19 @@ export default function GetStartedForm() {
             name="email"
             type="email"
             required
-            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/65 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
             placeholder="jane@smithlettings.co.uk"
           />
         </div>
         <div>
           <label htmlFor="phone" className="text-sm font-medium text-foreground">
-            Phone <span className="text-foreground/40">(optional)</span>
+            Phone <span className="text-foreground/65">(optional)</span>
           </label>
           <input
             id="phone"
             name="phone"
             type="tel"
-            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
+            className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/65 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
             placeholder="07700 900000"
           />
         </div>
@@ -139,13 +139,13 @@ export default function GetStartedForm() {
 
       <div>
         <label htmlFor="message" className="text-sm font-medium text-foreground">
-          Anything else? <span className="text-foreground/40">(optional)</span>
+          Anything else? <span className="text-foreground/65">(optional)</span>
         </label>
         <textarea
           id="message"
           name="message"
           rows={4}
-          className="mt-2 w-full resize-none rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
+          className="mt-2 w-full resize-none rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/65 focus:outline-none focus-visible:outline-2 focus-visible:outline-accent"
           placeholder="Your website, how many branches, what's prompting you to look at this now — whatever's useful."
         />
       </div>

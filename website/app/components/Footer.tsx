@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 text-sm text-foreground/50 sm:flex-row sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 text-sm text-foreground/65 sm:flex-row sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Reyse. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
@@ -86,7 +86,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="text-foreground/50 hover:text-foreground"
+                  className="text-foreground/65 hover:text-foreground"
                 >
                   <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="currentColor" aria-hidden="true">
                     <path d={social.path} />

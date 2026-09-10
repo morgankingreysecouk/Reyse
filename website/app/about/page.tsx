@@ -112,7 +112,7 @@ function PhotoPlaceholder({ label, note }: { label: string; note: string }) {
       </span>
       <div>
         <p className="text-sm font-medium text-foreground/60">{label}</p>
-        <p className="mt-1 text-xs text-foreground/40">{note}</p>
+        <p className="mt-1 text-xs text-foreground/65">{note}</p>
       </div>
     </div>
   );
@@ -140,7 +140,7 @@ export default function AboutPage() {
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 100}>
               <div>
-                <p className="font-heading text-4xl leading-none tracking-tight text-accent">
+                <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
                   {stat.value}
                 </p>
                 <p className="mt-2 text-sm text-foreground/60">{stat.label}</p>
@@ -166,7 +166,7 @@ export default function AboutPage() {
                     }`}
                   >
                     <div>
-                      <span className="text-sm font-medium text-accent">{milestone.number}</span>
+                      <span className="text-sm font-medium text-accent-text">{milestone.number}</span>
                       <h3 className="mt-2 font-heading text-2xl leading-[1.15] tracking-tight">
                         {milestone.heading}
                       </h3>
@@ -206,7 +206,7 @@ export default function AboutPage() {
             {beliefs.map((belief, i) => (
               <Reveal key={belief.heading} delay={i * 100}>
                 <div className="h-full rounded-2xl border border-border p-6">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
                     {belief.icon}
                   </span>
                   <h3 className="mt-4 text-lg font-semibold">{belief.heading}</h3>

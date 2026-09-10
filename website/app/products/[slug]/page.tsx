@@ -12,11 +12,11 @@ function TierCell({ value }: { value: string }) {
   const note = value.replace(/^[✓✗]/, "").trim();
   return (
     <div className="flex items-baseline gap-2">
-      <span className={included ? "text-accent" : "text-foreground/30"} aria-hidden>
+      <span className={included ? "text-accent-text" : "text-foreground/30"} aria-hidden>
         {included ? "✓" : "✗"}
       </span>
       <span className="sr-only">{included ? "Included" : "Not included"}</span>
-      {note && <span className="text-xs text-foreground/50">{note}</span>}
+      {note && <span className="text-xs text-foreground/65">{note}</span>}
     </div>
   );
 }
@@ -40,16 +40,16 @@ function ComparisonTable({
         <table className="w-full min-w-[600px] border-collapse text-sm">
           <thead>
             <tr className="border-b border-border bg-panel text-left">
-              <th className="px-4 py-3 font-medium text-foreground/50">#</th>
-              <th className="px-4 py-3 font-medium text-foreground/50">Service</th>
-              <th className="px-4 py-3 font-medium text-foreground/50">{tierLabels[0]}</th>
-              <th className="px-4 py-3 font-medium text-foreground/50">{tierLabels[1]}</th>
+              <th className="px-4 py-3 font-medium text-foreground/65">#</th>
+              <th className="px-4 py-3 font-medium text-foreground/65">Service</th>
+              <th className="px-4 py-3 font-medium text-foreground/65">{tierLabels[0]}</th>
+              <th className="px-4 py-3 font-medium text-foreground/65">{tierLabels[1]}</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row, i) => (
               <tr key={row.service} className="border-b border-border last:border-0">
-                <td className="px-4 py-3 text-foreground/40">{i + 1}</td>
+                <td className="px-4 py-3 text-foreground/65">{i + 1}</td>
                 <td className="px-4 py-3 font-medium text-foreground">{row.service}</td>
                 <td className="px-4 py-3">
                   <TierCell value={row.foundation} />
@@ -71,13 +71,13 @@ function ComparisonTable({
             </p>
             <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
               <div>
-                <p className="text-xs font-medium text-foreground/40">{tierLabels[0]}</p>
+                <p className="text-xs font-medium text-foreground/65">{tierLabels[0]}</p>
                 <div className="mt-1">
                   <TierCell value={row.foundation} />
                 </div>
               </div>
               <div>
-                <p className="text-xs font-medium text-foreground/40">{tierLabels[1]}</p>
+                <p className="text-xs font-medium text-foreground/65">{tierLabels[1]}</p>
                 <div className="mt-1">
                   <TierCell value={row.growth} />
                 </div>
@@ -169,7 +169,7 @@ export default async function ProductPage({
             {product.stats.map((stat, i) => (
               <Reveal key={stat.label} delay={i * 100}>
                 <div>
-                  <p className="font-heading text-4xl leading-none tracking-tight text-accent">
+                  <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
                     {stat.value}
                   </p>
                   <p className="mt-2 text-sm text-foreground/60">{stat.label}</p>
@@ -217,7 +217,7 @@ export default async function ProductPage({
                   <div className="flex gap-4">
                     <span
                       aria-hidden
-                      className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-panel text-accent"
+                      className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-panel text-accent-text"
                     >
                       <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.8">
                         <path d="M8 3.5v9M3.5 8h9" strokeLinecap="round" />
@@ -235,12 +235,12 @@ export default async function ProductPage({
                       <p className="mt-1 text-sm text-foreground/60">{addOn.description}</p>
                       {addOn.growthNote && (
                         <div className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
-                          <p className="text-xs font-medium text-accent">On Growth</p>
+                          <p className="text-xs font-medium text-accent-text">On Growth</p>
                           <p className="mt-1 text-sm text-foreground/70">{addOn.growthNote}</p>
                         </div>
                       )}
                       {addOn.note && (
-                        <p className="mt-3 text-xs text-foreground/50">{addOn.note}</p>
+                        <p className="mt-3 text-xs text-foreground/65">{addOn.note}</p>
                       )}
                     </div>
                   </div>

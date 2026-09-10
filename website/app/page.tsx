@@ -20,7 +20,7 @@ export default function Home() {
             </p>
             <Link
               href="/about"
-              className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent-text hover:underline"
             >
               Read the story
               <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">

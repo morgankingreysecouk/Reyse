@@ -18,7 +18,7 @@ export default function ProductsGrid() {
             <p className="mt-2 text-sm text-foreground/60">{product.description}</p>
           </div>
           <div className="mt-6 flex items-center justify-end">
-            <span className="inline-flex items-center gap-1 text-sm font-medium text-accent opacity-0 transition group-hover:opacity-100">
+            <span className="inline-flex items-center gap-1 text-sm font-medium text-accent-text opacity-0 transition group-hover:opacity-100">
               Learn more
               <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />

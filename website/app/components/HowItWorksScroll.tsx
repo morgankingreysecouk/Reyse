@@ -52,7 +52,7 @@ export default function HowItWorksScroll() {
                 i === active ? "text-foreground" : "text-foreground/60"
               }`}
             >
-              <span className="text-xs font-medium text-accent">0{i + 1}</span>
+              <span className="text-xs font-medium text-accent-text">0{i + 1}</span>
               <span className="mt-1 text-base font-medium">{step.label}</span>
               <span className="relative mt-3 h-px w-[174px] bg-border">
                 <span
@@ -75,7 +75,7 @@ export default function HowItWorksScroll() {
             }}
             className="flex min-h-[50vh] flex-col justify-center rounded-xl border border-border p-8"
           >
-            <span className="text-sm font-medium text-accent">0{i + 1}</span>
+            <span className="text-sm font-medium text-accent-text">0{i + 1}</span>
             <h3 className="mt-2 text-xl font-semibold">{step.label}</h3>
             <p className="mt-3 max-w-md text-foreground/60">{step.body}</p>
           </div>

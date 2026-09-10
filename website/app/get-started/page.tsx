@@ -27,7 +27,7 @@ export default function GetStarted() {
           <GetStartedForm />
         </div>
 
-        <p className="mt-8 text-center text-sm text-foreground/50">
+        <p className="mt-8 text-center text-sm text-foreground/65">
           Prefer email?{" "}
           <a href="mailto:hello@reyse.co.uk" className="underline hover:text-foreground">
             hello@reyse.co.uk
@@ -35,7 +35,7 @@ export default function GetStarted() {
         </p>
 
         <div className="mt-4 text-center">
-          <Link href="/" className="text-sm text-foreground/50 hover:text-foreground">
+          <Link href="/" className="text-sm text-foreground/65 hover:text-foreground">
             ← Back to home
           </Link>
         </div>

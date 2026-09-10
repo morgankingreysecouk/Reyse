@@ -1,7 +1,7 @@
 export function SeoMockup() {
   return (
     <div className="flex h-full flex-col gap-4">
-      <div className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-xs text-foreground/50">
+      <div className="flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-xs text-foreground/65">
         <svg
           viewBox="0 0 16 16"
           className="h-3.5 w-3.5 shrink-0"
@@ -31,9 +31,9 @@ export function SeoMockup() {
       </div>
       <div className="rounded-2xl border border-border bg-background px-4 py-3 opacity-50">
         <p className="text-sm font-medium text-foreground/70">Competitor Lettings Ltd</p>
-        <p className="text-xs text-foreground/40">competitor-lettings.co.uk</p>
+        <p className="text-xs text-foreground/65">competitor-lettings.co.uk</p>
       </div>
-      <div className="mt-auto flex items-center gap-2 text-xs font-medium text-foreground/50">
+      <div className="mt-auto flex items-center gap-2 text-xs font-medium text-foreground/65">
         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ink text-[10px] text-ink-foreground">
           ✓
         </span>
@@ -60,7 +60,7 @@ function IntelligenceBar({ label, you, them }: { label: string; you: number; the
 export function MarketIntelligenceMockup() {
   return (
     <div className="flex h-full flex-col gap-4">
-      <div className="flex items-center gap-3 text-xs font-medium text-foreground/50">
+      <div className="flex items-center gap-3 text-xs font-medium text-foreground/65">
         <span className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-accent" /> You
         </span>
@@ -85,7 +85,7 @@ function BranchRow({ name, status }: { name: string; status: "live" | "launching
     <div className="flex items-center justify-between rounded-xl border border-border bg-background px-4 py-2.5">
       <span className="text-sm font-medium text-foreground">{name}</span>
       {status === "live" ? (
-        <span className="flex items-center gap-1.5 text-xs font-medium text-foreground/50">
+        <span className="flex items-center gap-1.5 text-xs font-medium text-foreground/65">
           <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Live
         </span>
       ) : (
@@ -100,7 +100,7 @@ function BranchRow({ name, status }: { name: string; status: "live" | "launching
 export function ScaleMockup() {
   return (
     <div className="flex h-full flex-col gap-2.5">
-      <div className="mb-1 text-xs font-medium text-foreground/50">
+      <div className="mb-1 text-xs font-medium text-foreground/65">
         Branch network · 12 locations
       </div>
       <BranchRow name="London" status="live" />
@@ -117,7 +117,7 @@ export function ScaleMockup() {
 export function GeoMockup() {
   return (
     <div className="flex h-full flex-col gap-4">
-      <div className="flex items-center gap-2 text-xs font-medium text-foreground/50">
+      <div className="flex items-center gap-2 text-xs font-medium text-foreground/65">
         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ink text-[10px] text-ink-foreground">
           AI
         </span>
@@ -155,16 +155,16 @@ export function ReviewMockup() {
           </span>
           <div>
             <p className="text-sm font-medium text-foreground">Sarah M.</p>
-            <div className="text-xs tracking-tight text-accent">★★★★★</div>
+            <div className="text-xs tracking-tight text-accent-text">★★★★★</div>
           </div>
         </div>
-        <span className="text-xs text-foreground/40">Google review</span>
+        <span className="text-xs text-foreground/65">Google review</span>
       </div>
       <p className="rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground/80">
         Quick to respond and really helpful with the whole move-in process. Would
         recommend!
       </p>
-      <div className="mt-1 flex items-center gap-2 text-xs font-medium text-foreground/50">
+      <div className="mt-1 flex items-center gap-2 text-xs font-medium text-foreground/65">
         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ink text-[10px] text-ink-foreground">
           AI
         </span>

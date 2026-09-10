@@ -8,9 +8,9 @@ function TierRow({ label, value }: { label: string; value: string }) {
   const note = value.replace(/^[✓✗]/, "").trim();
   return (
     <div className="flex items-start justify-between gap-3 py-2.5">
-      <span className="text-xs font-medium text-foreground/50">{label}</span>
+      <span className="text-xs font-medium text-foreground/65">{label}</span>
       <div className="flex items-center gap-1.5">
-        <span className={included ? "text-accent" : "text-foreground/30"} aria-hidden>
+        <span className={included ? "text-accent-text" : "text-foreground/30"} aria-hidden>
           {included ? "✓" : "✗"}
         </span>
         <span className="text-right text-xs text-foreground/60">
@@ -57,14 +57,14 @@ export default function IncludedItemsScroll({
     <div className="mt-10 flex flex-col gap-10 sm:flex-row sm:gap-12">
       <div className="hidden shrink-0 sm:block sm:w-[260px]">
         <div className="sticky top-28 rounded-3xl border border-border bg-panel p-7 shadow-xl">
-          <p className="font-heading text-5xl leading-none tracking-tight text-accent">
+          <p className="font-heading text-5xl leading-none tracking-tight text-accent-text">
             0{active + 1}
           </p>
           <p className="mt-4 font-heading text-xl leading-[1.15] tracking-tight">
             {activeItem.title}
           </p>
           {activeItem.subtitle && (
-            <p className="mt-1.5 text-xs text-foreground/50">{activeItem.subtitle}</p>
+            <p className="mt-1.5 text-xs text-foreground/65">{activeItem.subtitle}</p>
           )}
 
           {activeItem.growthOnly ? (
@@ -108,7 +108,7 @@ export default function IncludedItemsScroll({
             <div className="flex gap-4">
               <span
                 aria-hidden
-                className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-medium text-accent"
+                className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-medium text-accent-text"
               >
                 {i + 1}
               </span>
@@ -117,7 +117,7 @@ export default function IncludedItemsScroll({
                   <h3 className="font-medium text-foreground">
                     {item.title}
                     {item.subtitle && (
-                      <span className="font-normal text-foreground/50"> — {item.subtitle}</span>
+                      <span className="font-normal text-foreground/65"> — {item.subtitle}</span>
                     )}
                   </h3>
                   {item.growthOnly && (
@@ -128,11 +128,11 @@ export default function IncludedItemsScroll({
                 </div>
                 <p className="mt-1 text-sm text-foreground/60">{item.description}</p>
                 {item.tierNote && (
-                  <p className="mt-3 text-xs text-foreground/50">{item.tierNote}</p>
+                  <p className="mt-3 text-xs text-foreground/65">{item.tierNote}</p>
                 )}
                 {item.growthNote && (
                   <div className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
-                    <p className="text-xs font-medium text-accent">On Growth</p>
+                    <p className="text-xs font-medium text-accent-text">On Growth</p>
                     <p className="mt-1 text-sm text-foreground/70">{item.growthNote}</p>
                   </div>
                 )}

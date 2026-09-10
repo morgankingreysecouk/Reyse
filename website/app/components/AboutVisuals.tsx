@@ -4,7 +4,7 @@ function BrowserChrome({ label }: { label?: string }) {
       <span className="h-2.5 w-2.5 rounded-full bg-[#ec6a5e]" />
       <span className="h-2.5 w-2.5 rounded-full bg-[#f4bf4f]" />
       <span className="h-2.5 w-2.5 rounded-full bg-[#61c454]" />
-      {label ? <span className="ml-2 text-xs text-foreground/40">{label}</span> : null}
+      {label ? <span className="ml-2 text-xs text-foreground/65">{label}</span> : null}
     </div>
   );
 }
@@ -14,7 +14,7 @@ export function InvisibleMockup() {
     <div className="overflow-hidden rounded-3xl border border-border bg-panel shadow-sm">
       <BrowserChrome />
       <div className="flex flex-col gap-4 p-6">
-        <div className="flex items-center gap-2 text-xs font-medium text-foreground/50">
+        <div className="flex items-center gap-2 text-xs font-medium text-foreground/65">
           <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ink text-[10px] text-ink-foreground">
             AI
           </span>
@@ -34,7 +34,7 @@ export function InvisibleMockup() {
             Willowmere Homes
           </div>
         </div>
-        <div className="rounded-2xl border border-dashed border-border px-4 py-3 text-sm italic text-foreground/40">
+        <div className="rounded-2xl border border-dashed border-border px-4 py-3 text-sm italic text-foreground/65">
           We weren&rsquo;t on the list.
         </div>
       </div>
@@ -64,7 +64,7 @@ export function SelfAuditMockup() {
             </span>
           </div>
         ))}
-        <p className="mt-1 text-xs text-foreground/40">
+        <p className="mt-1 text-xs text-foreground/65">
           Every service on this site, run on this site, first.
         </p>
       </div>

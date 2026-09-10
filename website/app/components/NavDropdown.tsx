@@ -34,7 +34,7 @@ export default function NavDropdown({
                       <span className="text-sm font-medium text-foreground">
                         {item.label}
                       </span>
-                      <p className="text-xs text-foreground/50">{item.description}</p>
+                      <p className="text-xs text-foreground/65">{item.description}</p>
                     </Link>
                   </li>
                 ))}
