@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
+import ScrollTextReveal from "../components/ScrollTextReveal";
 import { InvisibleMockup, SelfAuditMockup } from "../components/AboutVisuals";
 import { pageMetadata } from "../lib/seo";
 
@@ -185,12 +186,10 @@ export default function AboutPage() {
                 </Reveal>
 
                 {i === 1 ? (
-                  <Reveal>
-                    <p className="mx-auto mt-20 max-w-3xl text-center font-heading text-3xl leading-[1.3] tracking-tight sm:text-4xl">
-                      The reputation wasn&rsquo;t really the problem — the
-                      invisibility was.
-                    </p>
-                  </Reveal>
+                  <ScrollTextReveal
+                    text="The reputation wasn’t really the problem — the invisibility was."
+                    className="mx-auto mt-20 max-w-3xl text-center font-heading text-3xl leading-[1.3] tracking-tight sm:text-4xl"
+                  />
                 ) : null}
               </div>
             ))}

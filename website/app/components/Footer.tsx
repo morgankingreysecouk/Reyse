@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { industries } from "../industries/data";
+import Logo from "./Logo";
 
 const companyLinks = [
   { label: "About Reyse", href: "/about" },
@@ -57,8 +58,8 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-4">
           <div className="col-span-2 sm:col-span-1">
-            <Link href="/" className="text-lg font-semibold tracking-tight">
-              Reyse
+            <Link href="/">
+              <Logo />
             </Link>
           </div>
           <FooterColumn
