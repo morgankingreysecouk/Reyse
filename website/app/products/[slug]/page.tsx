@@ -252,7 +252,7 @@ export default async function ProductPage({
                       )}
                       <div className="mt-3 grid gap-3 sm:grid-cols-2">
                         <div className="rounded-xl border border-border bg-panel p-4">
-                          <p className="text-xs font-medium text-foreground/50">The problem</p>
+                          <p className="text-xs font-medium text-foreground/65">The problem</p>
                           <p className="mt-1.5 text-sm text-foreground/70">{addOn.problem}</p>
                         </div>
                         <div className="rounded-xl border border-accent/20 bg-accent/5 p-4">
