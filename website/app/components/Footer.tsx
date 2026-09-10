@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { industries } from "../industries/data";
 import Logo from "./Logo";
+import NewsletterSignup from "./NewsletterSignup";
 
 const companyLinks = [
   { label: "About Reyse", href: "/about" },
@@ -63,6 +64,7 @@ export default function Footer() {
             <Link href="/">
               <Logo />
             </Link>
+            <NewsletterSignup />
           </div>
           <FooterColumn
             title="Industries"

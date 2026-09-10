@@ -8,13 +8,22 @@ import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
 
-const productColumns = [
-  products.map((product) => ({
-    label: product.label,
-    description: product.tagline,
-    href: `/products/${product.slug}`,
-  })),
-];
+// Split into (up to) 2 columns, sized to fit however many products there
+// are — so adding or removing one never silently drops it from the menu.
+const productColumnCount = 2;
+const productPerColumn = Math.ceil(products.length / productColumnCount);
+const productColumns: { label: string; description: string; href: string }[][] = [];
+for (let c = 0; c < productColumnCount; c++) {
+  const slice = products.slice(c * productPerColumn, (c + 1) * productPerColumn);
+  if (slice.length === 0) break;
+  productColumns.push(
+    slice.map((product) => ({
+      label: product.label,
+      description: product.tagline,
+      href: `/products/${product.slug}`,
+    })),
+  );
+}
 
 // Split into (up to) 4 columns, sized to fit however many industries there
 // are — so adding or removing one never silently drops it from the menu.

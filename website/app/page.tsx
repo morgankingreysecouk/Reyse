@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FreeForeverBanner from "./components/FreeForeverBanner";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
 import IndustriesGrid from "./components/IndustriesGrid";
@@ -10,25 +11,7 @@ export default function Home() {
       <HeroSlideshow />
 
       <>
-        {/* Honesty over logos — no client wall yet, so say what's true instead */}
-        <section className="border-t border-border py-12">
-          <div className="mx-auto max-w-3xl px-6 text-center">
-            <p className="text-lg text-foreground/70">
-              No client logos here — not yet. What we have is a founder who
-              searched for his own agency and found nothing, and spent a year
-              fixing that before turning it into a product.
-            </p>
-            <Link
-              href="/about"
-              className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent-text hover:underline"
-            >
-              Read the story
-              <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </div>
-        </section>
+        <FreeForeverBanner />
 
         {/* Products */}
         <section id="product" className="scroll-mt-20 border-t border-border">
