@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   GeoMockup,
   MarketIntelligenceMockup,
@@ -10,60 +10,61 @@ import {
   SeoMockup,
 } from "./HeroMockups";
 
-const slides = [
+// One fixed headline (the strongest, most differentiated claim) instead of
+// rotating five on a timer — auto-advancing carousels bury every message
+// after the first behind a timer nobody waits for. The other four live on
+// as a click-through gallery beside it, so a visitor explores at their own
+// pace instead of having the message picked for them.
+const proofs = [
   {
+    key: "geo",
+    label: "AI search",
+    caption: "What ChatGPT tells your next customer",
     Mockup: GeoMockup,
-    heading: "Your next customer just asked ChatGPT, not Google.",
-    body: "Buyers and tenants are asking AI for recommendations before they ever type into Google. Reyse makes sure your business is the one they're told about.",
   },
   {
+    key: "seo",
+    label: "Google & Safari",
+    caption: "What shows up when they Google you",
     Mockup: SeoMockup,
-    heading: "Found on Google. Found everywhere else too.",
-    body: "Nearly a third of UK web traffic happens on Safari, not Google — and most agencies never even check it. Reyse makes your site, listings, and profiles fast, accurate, and visible everywhere your next customer is searching.",
   },
   {
+    key: "reviews",
+    label: "Reviews",
+    caption: "Every review, answered for you",
     Mockup: ReviewMockup,
-    heading: "Every review. Answered instantly.",
-    body: "Reyse drafts on-brand replies to every Google and Trustpilot review, so your reputation stays managed without taking up your day.",
   },
   {
+    key: "intelligence",
+    label: "Competitors",
+    caption: "Where you stand against the business down the road",
     Mockup: MarketIntelligenceMockup,
-    heading: "Know exactly where you stand, and what's coming next.",
-    body: "The top 20% of local businesses now capture 68% of all search visibility. Reyse tracks your SEO and AI visibility against your closest competitors every month, so you're never guessing.",
   },
   {
+    key: "scale",
+    label: "Multi-branch",
+    caption: "One system, replicated properly for every branch",
     Mockup: ScaleMockup,
-    heading: "One system, built once. Every branch, everywhere.",
-    body: "A 20% inconsistency rate is enough to put a fifth of your branches working against the rest. Reyse replicates everything built for your first branch — properly — for every branch that follows.",
   },
 ];
 
-const SLIDE_DURATION_MS = 6000;
-
 export default function HeroSlideshow() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
-    const id = setInterval(() => {
-      setIndex((i) => (i + 1) % slides.length);
-    }, SLIDE_DURATION_MS);
-    return () => clearInterval(id);
-  }, []);
-
-  const current = slides[index];
+  const [active, setActive] = useState(0);
+  const current = proofs[active];
 
   return (
-    <section className="sticky top-0 z-10 flex h-dvh items-center border-b border-border bg-background">
-      <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 pb-20 pt-40 lg:grid-cols-2 lg:items-center">
-        <div key={index} className="animate-[hero-fade-in_0.7s_ease-out]">
-          <h1 className="max-w-lg font-heading text-5xl font-medium leading-[1.1] tracking-tight sm:text-6xl">
-            {current.heading}
+    <section className="border-b border-border bg-background lg:sticky lg:top-0 lg:z-10 lg:flex lg:h-dvh lg:items-center">
+      <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-16 pt-28 lg:grid-cols-2 lg:items-center lg:gap-12 lg:pb-20 lg:pt-40">
+        <div>
+          <h1 className="max-w-lg font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+            Your next customer just asked ChatGPT, not Google.
           </h1>
-          <p className="mt-6 max-w-md text-lg text-foreground/70">{current.body}</p>
-          <div className="mt-8 flex flex-wrap gap-4">
+          <p className="mt-5 max-w-md text-base text-foreground/70 sm:mt-6 sm:text-lg">
+            Buyers and tenants are asking AI for recommendations before they
+            ever type into Google. Reyse makes sure your business is the one
+            they&rsquo;re told about.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-4 sm:mt-8">
             <Link
               href="/get-started"
               className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
@@ -80,37 +81,36 @@ export default function HeroSlideshow() {
         </div>
 
         <div>
-          <div className="relative min-h-[420px] overflow-hidden rounded-3xl border border-border bg-panel shadow-xl">
+          <p className="text-sm font-medium text-foreground/60">See it in action:</p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {proofs.map((proof, i) => (
+              <button
+                key={proof.key}
+                type="button"
+                aria-pressed={i === active}
+                onClick={() => setActive(i)}
+                className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
+                  i === active
+                    ? "border-accent bg-accent/10 text-foreground"
+                    : "border-border text-foreground/60 hover:border-foreground/30 hover:text-foreground"
+                }`}
+              >
+                {proof.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="relative mt-4 min-h-[380px] overflow-hidden rounded-3xl border border-border bg-panel shadow-xl sm:min-h-[420px]">
             <div className="flex items-center gap-1.5 border-b border-border px-5 py-3.5">
               <span className="h-2.5 w-2.5 rounded-full bg-[#ec6a5e]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#f4bf4f]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#61c454]" />
             </div>
-            {slides.map(({ Mockup }, i) => (
-              <div
-                key={i}
-                aria-hidden={i !== index}
-                className="absolute inset-x-0 bottom-0 top-[49px] p-6 transition-opacity duration-700 ease-in-out"
-                style={{ opacity: i === index ? 1 : 0 }}
-              >
-                <Mockup active={i === index} />
-              </div>
-            ))}
+            <div key={current.key} className="animate-[hero-fade-in_0.4s_ease-out] p-6">
+              <current.Mockup active />
+            </div>
           </div>
-
-          <div className="mt-5 flex justify-center gap-2">
-            {slides.map((slide, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`Show slide ${i + 1}`}
-                onClick={() => setIndex(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === index ? "w-6 bg-ink" : "w-2 bg-ink/25 hover:bg-ink/40"
-                }`}
-              />
-            ))}
-          </div>
+          <p className="mt-3 text-center text-sm text-foreground/60">{current.caption}</p>
         </div>
       </div>
     </section>

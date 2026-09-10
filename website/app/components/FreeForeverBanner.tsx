@@ -6,7 +6,7 @@ import { CLAIMED_COUNTIES, SPOTS_REMAINING, TOTAL_SPOTS } from "../lib/freeForev
 // page.tsx — see the comment there for how the hand-off timing works.
 export default function FreeForeverBanner() {
   return (
-    <section className="sticky top-0 z-20 flex h-dvh flex-col items-center justify-center border-t border-b border-border bg-ink text-ink-foreground">
+    <section className="flex flex-col items-center justify-center border-t border-b border-border bg-ink py-20 text-ink-foreground lg:sticky lg:top-0 lg:z-20 lg:h-dvh lg:py-0">
       <Link
         href="/free-forever"
         className="mx-auto flex max-w-6xl flex-col items-center gap-5 px-6 text-center transition hover:opacity-90"
