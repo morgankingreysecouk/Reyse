@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { industries } from "../industries/data";
 import { products } from "../products/data";
+import CookieSettingsLink from "./CookieSettingsLink";
 import NewsletterSignup from "./NewsletterSignup";
 
 const solutionsLinks = [
@@ -123,6 +124,7 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+            <CookieSettingsLink />
             <Link href="/privacy" className="hover:text-foreground">
               Privacy Policy
             </Link>

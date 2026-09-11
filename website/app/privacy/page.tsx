@@ -83,15 +83,19 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
     body: [
       {
         type: "p",
-        text: "This site uses Vercel Web Analytics, which is cookieless by design — it identifies visits using a temporary, anonymised hash rather than a cookie or persistent identifier, doesn't track you across other websites, and automatically discards session data after 24 hours. Because it doesn't use cookies or equivalent storage and access technology at all, it falls outside what the Privacy and Electronic Communications Regulations (PECR) require consent for, whether or not it would also qualify for one of the analytics exemptions introduced by the Data (Use and Access) Act 2025.",
+        text: "This site uses Vercel Web Analytics, which is cookieless by design — it identifies visits using a temporary, anonymised hash rather than a cookie or persistent identifier, doesn't track you across other websites, and automatically discards session data after 24 hours. Because it doesn't use cookies or equivalent storage and access technology at all, it falls outside what the Privacy and Electronic Communications Regulations (PECR) require consent for — it would also separately qualify for the statistical-purposes exemption the Data (Use and Access) Act 2025 introduced into PECR from 5 February 2026, since it's used solely to understand and improve the site and nothing is shared beyond that.",
       },
       {
         type: "p",
-        text: "The only other thing stored in your browser is a single, strictly necessary preference — whether you've dismissed our cookie/privacy notice — kept in your browser's local storage rather than as a cookie, and used solely to remember that choice.",
+        text: "Even though it isn't legally required, we give you the choice anyway: the banner you see on first visit lets you accept, reject, or customise this, and you can change your mind at any time via \"Cookie settings\" in the footer of every page. Turning analytics off means your visit simply isn't counted.",
       },
       {
         type: "p",
-        text: "If we add tools in future that do use cookies or similar technology for analytics, marketing, or embedded content (for example, a booking widget), we'll update this section and this site's consent banner, and ask for your consent first wherever PECR requires it.",
+        text: "The only other thing stored in your browser is a single, strictly necessary preference — your cookie choice itself — kept in your browser's local storage rather than as a cookie, used solely to remember that choice and never sent anywhere.",
+      },
+      {
+        type: "p",
+        text: "If we add tools in future that do use cookies or similar technology for analytics, marketing, or embedded content (for example, a booking widget), we'll add them as a new category in the same preference centre and ask for your consent first wherever PECR requires it.",
       },
     ],
   },
