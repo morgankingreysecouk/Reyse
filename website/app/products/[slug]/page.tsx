@@ -153,6 +153,20 @@ export default async function ProductPage({
             </h1>
             <p className="mt-5 text-lg text-foreground/70">{product.description}</p>
 
+            <div className="mt-6">
+              <p className="font-heading text-3xl leading-none tracking-tight text-accent-text">
+                {product.price}
+              </p>
+              <p className="mt-1.5 text-sm text-foreground/60">{product.priceNote}</p>
+              <p className="mt-2 text-sm text-foreground/60">
+                Free right now for the first 5 clients —{" "}
+                <Link href="/free-forever" className="underline hover:text-foreground">
+                  see if your county&rsquo;s open
+                </Link>
+                .
+              </p>
+            </div>
+
             <div className="mt-8">
               <Link
                 href="/get-started"
