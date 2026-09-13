@@ -57,7 +57,8 @@ export default function HeroSlideshow() {
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-16 pt-28 lg:grid-cols-2 lg:items-center lg:gap-12 lg:pb-20 lg:pt-40">
         <div>
           <h1 className="max-w-lg font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            Your next customer just asked ChatGPT, not Google.
+            You&rsquo;re not losing to a better agency — you&rsquo;re losing
+            to the one people find first.
           </h1>
           <p className="mt-5 max-w-md text-base text-foreground/70 sm:mt-6 sm:text-lg">
             Buyers and tenants are asking AI for recommendations before they
