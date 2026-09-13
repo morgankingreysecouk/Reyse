@@ -35,8 +35,8 @@ const guarantees = [
   },
   {
     title: "The Charity Flip Guarantee",
-    promise: "If we miss any of the guarantees on this page, or an agreed milestone.",
-    remedy: "We make an additional donation to your chosen charity, on top of the one already built into your offer.",
+    promise: "If we miss any of the guarantees on this page, or an agreed milestone, and a charity donation is already part of your offer.",
+    remedy: "We make an additional donation to your chosen charity, on top of the one already pledged.",
   },
   {
     title: "The No-Overreach Guarantee",
