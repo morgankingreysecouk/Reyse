@@ -45,7 +45,11 @@ export default function Home() {
             </h2>
             <div className="flex flex-wrap items-center justify-between gap-4">
               <p className="mt-3 max-w-2xl text-foreground/60">
-                Each one on its own, or bundled together as you grow.
+                Each one on its own, or{" "}
+                <Link href="/system" className="font-medium text-accent-text hover:underline">
+                  bundled together as one system
+                </Link>{" "}
+                — with a bonus stack only the full bundle unlocks.
               </p>
               <Link
                 href="/quiz"

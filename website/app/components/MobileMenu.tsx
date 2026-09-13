@@ -111,6 +111,15 @@ export default function MobileMenu() {
                 <div>
                   <p className="text-2xl font-medium">Solutions</p>
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
+                    <li>
+                      <Link
+                        href="/system"
+                        onClick={close}
+                        className="text-base font-medium text-accent-text"
+                      >
+                        The Full System — all 5, bundled
+                      </Link>
+                    </li>
                     {products.map((product) => (
                       <li key={product.slug}>
                         <Link

@@ -5,6 +5,7 @@ import CookieSettingsLink from "./CookieSettingsLink";
 import NewsletterSignup from "./NewsletterSignup";
 
 const solutionsLinks = [
+  { label: "The Full System", href: "/system", emphasis: true },
   ...products.map((product) => ({
     label: product.label,
     href: `/products/${product.slug}`,

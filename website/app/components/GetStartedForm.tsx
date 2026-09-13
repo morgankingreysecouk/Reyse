@@ -12,7 +12,7 @@ export default function GetStartedForm() {
   const [status, setStatus] = useState<Status>("idle");
   const searchParams = useSearchParams();
   const prefilledInterest = searchParams.get("interest") ?? "";
-  const interestOptions = [...products.map((p) => p.label), "Not sure yet"];
+  const interestOptions = ["The Full System", ...products.map((p) => p.label), "Not sure yet"];
   const defaultInterest = interestOptions.includes(prefilledInterest) ? prefilledInterest : "";
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -133,6 +133,7 @@ export default function GetStartedForm() {
           <option value="" disabled>
             Choose one
           </option>
+          <option value="The Full System">The Full System — all 5, bundled</option>
           {products.map((product) => (
             <option key={product.slug} value={product.label}>
               {product.label}

@@ -25,6 +25,11 @@ for (let c = 0; c < productColumnCount; c++) {
 }
 productColumns.push([
   {
+    label: "The Full System",
+    description: "All 5, bundled — plus a bonus stack only the bundle unlocks.",
+    href: "/system",
+  },
+  {
     label: "Not sure which one?",
     description: "Take the 60-second quiz.",
     href: "/quiz",
