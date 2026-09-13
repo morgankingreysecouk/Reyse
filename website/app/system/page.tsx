@@ -70,8 +70,74 @@ export default function SystemPage() {
 
         <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
+            Why this happens fast, not eventually
+          </h2>
+          <p className="mt-3 max-w-2xl text-foreground/60">
+            Backed by real guarantees, not a promise to get to it.
+          </p>
+          <div className="mt-8 space-y-4">
+            {[
+              {
+                when: "Day 5",
+                what: "Crawler access, trust signals, and your core schema are live.",
+                backing: "Delivery Guarantee — miss it, and we pay your hourly rate for every day we're late.",
+              },
+              {
+                when: "Weeks 1–8",
+                what: "A written report every single week, not a monthly summary.",
+                backing: "Transparency Guarantee — miss one, and we pay you £50 on the spot.",
+              },
+              {
+                when: "Month 3",
+                what: "Your tracked enquiries, measured against your own baseline.",
+                backing: "Growth Guarantee — if they haven't grown, we fund a month of your ad spend.",
+              },
+            ].map((step, i) => (
+              <Reveal key={step.when} delay={i * 60}>
+                <div className="flex flex-wrap gap-4 rounded-2xl border border-border p-5 sm:flex-nowrap">
+                  <p className="w-24 shrink-0 font-heading text-lg leading-tight text-accent-text">
+                    {step.when}
+                  </p>
+                  <div>
+                    <p className="text-foreground/80">{step.what}</p>
+                    <p className="mt-1.5 text-sm text-foreground/60">{step.backing}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 border-t border-border pt-10">
+          <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
+            What this doesn&rsquo;t cost you in hours
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {[
+              "One onboarding session — access, plus a few facts only you know, like your current enquiry numbers. That's it.",
+              "The labour-heavy parts — Profile Activity, AI Review Responder, Automatic Review Reminders — run automatically once built, not manually.",
+              "Everything else, we implement directly. You're not handed a to-do list.",
+              "One dashboard for your logins, API access, and monitoring — not five different places to check.",
+            ].map((text, i) => (
+              <Reveal key={text} delay={i * 60}>
+                <div className="rounded-2xl border border-border p-5">
+                  <p className="text-sm text-foreground/70">{text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 border-t border-border pt-10">
+          <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
             The 5 systems, working together
           </h2>
+          <p className="mt-3 max-w-md rounded-2xl border border-accent/20 bg-accent/5 p-4 text-sm text-foreground/70">
+            The Full System runs on Growth across all 5 — Reviews and Market
+            Intelligence are ongoing services by design, with no one-off
+            version, and the weekly reporting and monthly tracking above only
+            work as a continuous service, not a one-time setup.
+          </p>
           <p className="mt-3 max-w-2xl text-foreground/60">
             Each one stands on its own — see the individual page for what it
             actually does. Get all 5 together and it stops being 5 separate
