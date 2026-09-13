@@ -3,6 +3,7 @@ import Reveal from "../components/Reveal";
 import { bonusStack, bonusStackMonthlyTotal, bonusStackOneOffTotal } from "../lib/bonusStack";
 import { pageMetadata } from "../lib/seo";
 import { products } from "../products/data";
+import { SYSTEM_SPOTS_REMAINING, SYSTEM_TOTAL_SPOTS } from "../lib/systemOffer";
 
 export const metadata = pageMetadata({
   title: "The Full System",
@@ -34,6 +35,37 @@ export default function SystemPage() {
           >
             Get started
           </Link>
+        </div>
+
+        <Reveal delay={80}>
+          <div className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-panel p-6">
+            <div>
+              <p className="font-heading text-3xl leading-none tracking-tight text-accent-text">
+                {SYSTEM_SPOTS_REMAINING} / {SYSTEM_TOTAL_SPOTS}
+              </p>
+              <p className="mt-1 text-xs text-foreground/65">
+                full-system spots still open
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="mt-16 border-t border-border pt-10">
+          <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
+            What we ask in return
+          </h2>
+          <p className="mt-3 max-w-2xl text-foreground/70">
+            Three things, all reasonable: brutally honest feedback as we
+            build, a testimonial once you&rsquo;re seeing results, and a
+            donation to a charity of your choice. That&rsquo;s it — no hidden
+            catch beyond helping shape what this becomes. This applies
+            specifically to the full-system spots above, separate from the
+            general{" "}
+            <Link href="/free-forever" className="underline hover:text-foreground">
+              first-5-per-county offer
+            </Link>{" "}
+            available for any single product.
+          </p>
         </div>
 
         <div className="mt-16 border-t border-border pt-10">
@@ -122,11 +154,8 @@ export default function SystemPage() {
               Ready for the full system?
             </h2>
             <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
-              One agency per area, and only 5 free spots total — see{" "}
-              <Link href="/free-forever" className="underline hover:text-foreground">
-                what&rsquo;s left
-              </Link>{" "}
-              before you apply.
+              One agency per area, and only {SYSTEM_TOTAL_SPOTS} full-system spots total —{" "}
+              {SYSTEM_SPOTS_REMAINING} left right now.
             </p>
             <Link
               href="/get-started?interest=The%20Full%20System"

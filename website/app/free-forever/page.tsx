@@ -9,14 +9,23 @@ export const metadata = pageMetadata({
   description: "One business per county, first-come-first-served, gets the full Reyse service free while Reyse is at this stage. Here's exactly how it works.",
 });
 
-const terms = [
+const terms: { heading: string; body: React.ReactNode }[] = [
   {
     heading: "What you get",
-    body: "The full Reyse service for your business, on whichever tier you'd normally be on — Foundation work and, if it's part of what you need, ongoing Growth — at no cost, for as long as Reyse is at this early stage and you stay on the terms below.",
-  },
-  {
-    heading: "What we ask in return",
-    body: "Three things, all reasonable: brutally honest feedback as we build, a testimonial once you're seeing results, and a donation to a charity of your choice. That's it — no hidden catch beyond helping shape what this becomes.",
+    body: (
+      <>
+        The full Reyse service for your business, on whichever tier you&rsquo;d
+        normally be on — Foundation work and, if it&rsquo;s part of what you
+        need, ongoing Growth — at no cost, for as long as Reyse is at this
+        early stage and you stay on the terms below. This offer applies to
+        any single product. Want all 5 together instead? That&rsquo;s a
+        separate offer, with its own free spots — see{" "}
+        <Link href="/system" className="underline hover:text-foreground">
+          The Full System
+        </Link>
+        .
+      </>
+    ),
   },
   {
     heading: "Why only 5",
