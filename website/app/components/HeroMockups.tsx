@@ -2,6 +2,12 @@
 
 import { useTypewriter } from "../lib/useTypewriter";
 
+// Shared timing for the "reveal in sequence" effect used by every mockup
+// below — each element fades/rises in on its own delay, backwards fill so
+// it stays hidden (rather than flashing visible) until its turn comes.
+const REVEAL = "animate-[hero-fade-in_0.4s_ease-out_backwards]";
+const revealDelay = (ms: number) => ({ animationDelay: `${ms}ms` });
+
 export function SeoMockup({ active = true }: { active?: boolean }) {
   const { displayed, done } = useTypewriter("best letting agent manchester", active, 45);
 
@@ -66,15 +72,31 @@ export function SeoMockup({ active = true }: { active?: boolean }) {
   );
 }
 
-function IntelligenceBar({ label, you, them }: { label: string; you: number; them: number }) {
+function IntelligenceBar({
+  label,
+  you,
+  them,
+  delay,
+}: {
+  label: string;
+  you: number;
+  them: number;
+  delay: number;
+}) {
   return (
-    <div>
+    <div className={REVEAL} style={revealDelay(delay)}>
       <p className="text-xs font-medium text-foreground/60">{label}</p>
       <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-border">
-        <div className="h-full rounded-full bg-accent" style={{ width: `${you}%` }} />
+        <div
+          className="h-full origin-left rounded-full bg-accent animate-[grow-bar-in_0.6s_ease-out_backwards]"
+          style={{ width: `${you}%`, animationDelay: `${delay + 100}ms` }}
+        />
       </div>
       <div className="mt-1 h-2 overflow-hidden rounded-full bg-border">
-        <div className="h-full rounded-full bg-foreground/20" style={{ width: `${them}%` }} />
+        <div
+          className="h-full origin-left rounded-full bg-foreground/20 animate-[grow-bar-in_0.6s_ease-out_backwards]"
+          style={{ width: `${them}%`, animationDelay: `${delay + 160}ms` }}
+        />
       </div>
     </div>
   );
@@ -83,7 +105,7 @@ function IntelligenceBar({ label, you, them }: { label: string; you: number; the
 export function MarketIntelligenceMockup() {
   return (
     <div className="flex h-full flex-col gap-4">
-      <div className="flex items-center gap-3 text-xs font-medium text-foreground/65">
+      <div className={`flex items-center gap-3 text-xs font-medium text-foreground/65 ${REVEAL}`}>
         <span className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-accent" /> You
         </span>
@@ -92,20 +114,34 @@ export function MarketIntelligenceMockup() {
         </span>
       </div>
       <div className="flex flex-1 flex-col justify-center gap-4">
-        <IntelligenceBar label="Google ranking" you={88} them={61} />
-        <IntelligenceBar label="AI mentions" you={74} them={35} />
-        <IntelligenceBar label="Review rating" you={92} them={70} />
+        <IntelligenceBar label="Google ranking" you={88} them={61} delay={100} />
+        <IntelligenceBar label="AI mentions" you={74} them={35} delay={260} />
+        <IntelligenceBar label="Review rating" you={92} them={70} delay={420} />
       </div>
-      <div className="rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-foreground">
+      <div
+        className={`rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-foreground ${REVEAL}`}
+        style={revealDelay(750)}
+      >
         You&rsquo;ve pulled ahead on AI mentions this month — up 12 points.
       </div>
     </div>
   );
 }
 
-function BranchRow({ name, status }: { name: string; status: "live" | "launching" }) {
+function BranchRow({
+  name,
+  status,
+  delay,
+}: {
+  name: string;
+  status: "live" | "launching";
+  delay: number;
+}) {
   return (
-    <div className="flex items-center justify-between rounded-xl border border-border bg-background px-4 py-2.5">
+    <div
+      className={`flex items-center justify-between rounded-xl border border-border bg-background px-4 py-2.5 ${REVEAL}`}
+      style={revealDelay(delay)}
+    >
       <span className="text-sm font-medium text-foreground">{name}</span>
       {status === "live" ? (
         <span className="flex items-center gap-1.5 text-xs font-medium text-foreground/65">
@@ -123,14 +159,17 @@ function BranchRow({ name, status }: { name: string; status: "live" | "launching
 export function ScaleMockup() {
   return (
     <div className="flex h-full flex-col gap-2.5">
-      <div className="mb-1 text-xs font-medium text-foreground/65">
+      <div className={`mb-1 text-xs font-medium text-foreground/65 ${REVEAL}`}>
         Branch network · 12 locations
       </div>
-      <BranchRow name="London" status="live" />
-      <BranchRow name="Manchester" status="live" />
-      <BranchRow name="Leeds" status="live" />
-      <BranchRow name="Bristol" status="launching" />
-      <div className="mt-auto rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-foreground">
+      <BranchRow name="London" status="live" delay={100} />
+      <BranchRow name="Manchester" status="live" delay={220} />
+      <BranchRow name="Leeds" status="live" delay={340} />
+      <BranchRow name="Bristol" status="launching" delay={460} />
+      <div
+        className={`mt-auto rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-foreground ${REVEAL}`}
+        style={revealDelay(700)}
+      >
         Same setup, every branch — live across Google, Bing, and Apple from day one.
       </div>
     </div>
@@ -140,19 +179,28 @@ export function ScaleMockup() {
 export function GeoMockup() {
   return (
     <div className="flex h-full flex-col gap-4">
-      <div className="flex items-center gap-2 text-xs font-medium text-foreground/65">
+      <div className={`flex items-center gap-2 text-xs font-medium text-foreground/65 ${REVEAL}`}>
         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ink text-[10px] text-ink-foreground">
           AI
         </span>
         ChatGPT
       </div>
-      <div className="max-w-[85%] self-end rounded-2xl rounded-br-sm border border-border bg-background px-4 py-2.5 text-sm text-foreground">
+      <div
+        className={`max-w-[85%] self-end rounded-2xl rounded-br-sm border border-border bg-background px-4 py-2.5 text-sm text-foreground ${REVEAL}`}
+        style={revealDelay(150)}
+      >
         best letting agent in Manchester?
       </div>
-      <div className="max-w-[92%] rounded-2xl rounded-bl-sm border border-border bg-background px-4 py-3 text-sm text-foreground/80">
+      <div
+        className={`max-w-[92%] rounded-2xl rounded-bl-sm border border-border bg-background px-4 py-3 text-sm text-foreground/80 ${REVEAL}`}
+        style={revealDelay(500)}
+      >
         Based on response times and reviews, here&rsquo;s a strong option:
       </div>
-      <div className="flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3">
+      <div
+        className={`flex items-center gap-3 rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3 ${REVEAL}`}
+        style={revealDelay(850)}
+      >
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-semibold text-accent-foreground">
           R
         </span>
@@ -171,7 +219,7 @@ export function GeoMockup() {
 export function ReviewMockup() {
   return (
     <div className="flex h-full flex-col gap-4">
-      <div className="flex items-center justify-between">
+      <div className={`flex items-center justify-between ${REVEAL}`}>
         <div className="flex items-center gap-2">
           <span className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-background text-xs font-semibold text-foreground">
             S
@@ -183,24 +231,34 @@ export function ReviewMockup() {
         </div>
         <span className="text-xs text-foreground/65">Google review</span>
       </div>
-      <p className="rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground/80">
+      <p
+        className={`rounded-2xl border border-border bg-background px-4 py-3 text-sm text-foreground/80 ${REVEAL}`}
+        style={revealDelay(150)}
+      >
         Quick to respond and really helpful with the whole move-in process. Would
         recommend!
       </p>
-      <div className="mt-1 flex items-center gap-2 text-xs font-medium text-foreground/65">
+      <div
+        className={`mt-1 flex items-center gap-2 text-xs font-medium text-foreground/65 ${REVEAL}`}
+        style={revealDelay(500)}
+      >
         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ink text-[10px] text-ink-foreground">
           AI
         </span>
         Reyse reply · drafted in 4s
       </div>
-      <div className="rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-foreground">
+      <div
+        className={`rounded-2xl border border-accent/40 bg-accent/10 px-4 py-3 text-sm text-foreground ${REVEAL}`}
+        style={revealDelay(700)}
+      >
         Thank you so much, Sarah — really glad we could make the move smooth for
         you. Welcome home!
       </div>
       <button
         type="button"
         tabIndex={-1}
-        className="mt-auto self-start rounded-full bg-accent px-4 py-2 text-xs font-medium text-accent-foreground"
+        className={`mt-auto self-start rounded-full bg-accent px-4 py-2 text-xs font-medium text-accent-foreground ${REVEAL}`}
+        style={revealDelay(950)}
       >
         Post reply
       </button>
