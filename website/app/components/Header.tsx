@@ -66,6 +66,11 @@ const companyColumns = [
       href: "/careers",
     },
     {
+      label: "Guarantees",
+      description: "Eleven specific promises, each with a real remedy.",
+      href: "/guarantees",
+    },
+    {
       label: "Contact",
       description: "Get in touch or book a demo.",
       href: "/#contact",

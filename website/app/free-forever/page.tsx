@@ -5,14 +5,18 @@ import { pageMetadata } from "../lib/seo";
 import { CLAIMED_COUNTIES, SPOTS_REMAINING, TOTAL_SPOTS } from "../lib/freeForever";
 
 export const metadata = pageMetadata({
-  title: "The first 5 clients, free forever",
-  description: "One business per county, first-come-first-served, gets the full Reyse service free — permanently. Here's exactly how it works.",
+  title: "The first 5 clients, completely free",
+  description: "One business per county, first-come-first-served, gets the full Reyse service free while Reyse is at this stage. Here's exactly how it works.",
 });
 
 const terms = [
   {
     heading: "What you get",
-    body: "The full Reyse service for your business, on whichever tier you'd normally be on — Foundation work and, if it's part of what you need, ongoing Growth — at no cost, for as long as your business exists and stays on the terms below. Not a trial, not a discount that reverts later.",
+    body: "The full Reyse service for your business, on whichever tier you'd normally be on — Foundation work and, if it's part of what you need, ongoing Growth — at no cost, for as long as Reyse is at this early stage and you stay on the terms below.",
+  },
+  {
+    heading: "What we ask in return",
+    body: "Three things, all reasonable: brutally honest feedback as we build, a testimonial once you're seeing results, and a donation to a charity of your choice. That's it — no hidden catch beyond helping shape what this becomes.",
   },
   {
     heading: "Why only 5",
@@ -32,7 +36,7 @@ const terms = [
   },
   {
     heading: "The honest catch",
-    body: "Being one of the first five means being genuinely early — helping shape what the Service becomes, with less of a polished track record behind it than a client joining in a year's time would get. In return, you get the exclusivity and the cost saved, for good.",
+    body: "Being one of the first five means being genuinely early — helping shape what the Service becomes, with less of a polished track record behind it than a client joining in a year's time would get. In return, you get the exclusivity and real savings during this early stage.",
   },
 ];
 
@@ -44,11 +48,11 @@ export default function FreeForeverPage() {
           Limited offer
         </p>
         <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          The first {TOTAL_SPOTS} clients don&rsquo;t pay. Ever.
+          The first {TOTAL_SPOTS} clients pay nothing.
         </h1>
         <p className="mt-5 text-lg text-foreground/70">
           One business per county. First come, first served. The full
-          service, free, for as long as your business exists.
+          service, free, for as long as Reyse is at this early stage.
         </p>
 
         <Reveal delay={80}>

@@ -9,10 +9,10 @@ export default function FreeForeverBanner() {
     <section className="flex flex-col items-center justify-center border-t border-b border-border bg-ink px-6 py-20 text-center text-ink-foreground lg:sticky lg:top-0 lg:z-20 lg:h-dvh lg:py-0">
       <div className="mx-auto flex max-w-2xl flex-col items-center gap-6">
         <h2 className="font-heading text-3xl leading-[1.15] tracking-tight sm:text-5xl">
-          The first {TOTAL_SPOTS} clients don&rsquo;t pay. Ever.
+          The first {TOTAL_SPOTS} clients pay nothing.
         </h2>
         <p className="max-w-md text-ink-foreground/70">
-          Only {TOTAL_SPOTS} spots, one per county, for as long as your business exists.
+          Only {TOTAL_SPOTS} spots, one per county, free while Reyse is at this early stage.
           {CLAIMED_COUNTIES.length > 0 && (
             <>
               {" "}

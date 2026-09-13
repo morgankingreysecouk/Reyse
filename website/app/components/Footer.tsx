@@ -17,6 +17,7 @@ const companyLinks = [
   { label: "How it works", href: "/#how-it-works" },
   { label: "Blog", href: "/blog" },
   { label: "Careers", href: "/careers" },
+  { label: "Guarantees", href: "/guarantees" },
   { label: "Contact", href: "/#contact" },
 ];
 

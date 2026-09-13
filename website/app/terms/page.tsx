@@ -120,7 +120,16 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
   },
   {
     heading: "12. Service availability and disclaimers",
-    body: "We aim to provide the Service to a good professional standard, but the Service is provided on an \"as available\" basis. We don't guarantee specific search rankings, AI citation outcomes, review volumes, or business results, since these depend on factors outside our control — including decisions made by Google, other search engines, and AI providers, and actions taken by your competitors. Nothing in this clause excludes our obligation to provide the Service with reasonable care and skill under the Supply of Goods and Services Act 1982 / Consumer Rights Act 2015 principles that apply to commercial contracts by implication under English law.",
+    body: [
+      {
+        type: "p",
+        text: "We aim to provide the Service to a good professional standard, but the Service is provided on an \"as available\" basis. We don't guarantee specific search rankings, AI citation outcomes, review volumes, or business results, since these depend on factors outside our control — including decisions made by Google, other search engines, and AI providers, and actions taken by your competitors. Nothing in this clause excludes our obligation to provide the Service with reasonable care and skill under the Supply of Goods and Services Act 1982 / Consumer Rights Act 2015 principles that apply to commercial contracts by implication under English law.",
+      },
+      {
+        type: "p",
+        text: "Where we've made a specific, structured guarantee with its own stated remedy (set out in full on our Guarantees page), that guarantee applies as written and takes priority over the general disclaimer above, but only for exactly what it promises. Nothing on that page, or anywhere else, guarantees a specific ranking position, that you'll appear in every AI platform, or the size of any business outcome beyond what's explicitly and specifically stated.",
+      },
+    ],
   },
   {
     heading: "13. Limitation of liability",

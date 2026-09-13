@@ -183,6 +183,15 @@ export default function MobileMenu() {
                     </li>
                     <li>
                       <Link
+                        href="/guarantees"
+                        onClick={close}
+                        className="text-base text-foreground/70 hover:text-foreground"
+                      >
+                        Guarantees
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
                         href="/#contact"
                         onClick={close}
                         className="text-base text-foreground/70 hover:text-foreground"

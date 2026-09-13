@@ -8,7 +8,7 @@ const faqs = [
   {
     question: "How much does this actually cost?",
     answer:
-      "Pricing depends on which service and tier fits your business, and right now the first five clients — one per county — get the full service free, permanently. Tell us about your business through the get-started form and we'll talk you through exact pricing for your situation.",
+      "Pricing depends on which service and tier fits your business, and right now the first five clients — one per county — get the full service completely free while Reyse is at this early stage. Tell us about your business through the get-started form and we'll talk you through exact pricing for your situation.",
   },
   {
     question: "Am I locked into a long contract?",
@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "Do you guarantee rankings or AI mentions?",
     answer:
-      "No — and be wary of anyone who does. Google, Bing, and every AI provider make the final call, not us. What we commit to is doing the work to a good professional standard and being straight with you about what's realistically moving and what isn't, month to month.",
+      "We don't guarantee specific rankings or that you'll dominate every AI platform — Google, Bing, and every AI provider make that call, not us, and be wary of anyone who claims otherwise. What we do guarantee: baseline AI visibility within 8 weeks, backed by a real remedy if we miss it — see our Guarantees page for that one and ten others, each with a defined consequence if we fall short.",
   },
   {
     question: "If I cancel, do you undo what you've built?",
