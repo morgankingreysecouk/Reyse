@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
-import { industries } from "../industries/data";
 import { products } from "../products/data";
+import { guides } from "../resources/data";
 
 function subscribeNever() {
   return () => {};
@@ -109,7 +109,7 @@ export default function MobileMenu() {
             <div className="flex h-full flex-col overflow-y-auto px-6 pb-10 pt-24">
               <nav className="flex flex-col gap-8">
                 <div>
-                  <p className="text-2xl font-medium">Solutions</p>
+                  <p className="text-2xl font-medium">Managed</p>
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
                     <li>
                       <Link
@@ -144,16 +144,16 @@ export default function MobileMenu() {
                 </div>
 
                 <div>
-                  <p className="text-2xl font-medium">Industries</p>
+                  <p className="text-2xl font-medium">Resources</p>
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
-                    {industries.map((industry) => (
-                      <li key={industry.slug}>
+                    {guides.map((guide) => (
+                      <li key={guide.slug}>
                         <Link
-                          href={`/industries/${industry.slug}`}
+                          href={`/resources/${guide.slug}`}
                           onClick={close}
                           className="text-base text-foreground/70 hover:text-foreground"
                         >
-                          {industry.label}
+                          {guide.title}
                         </Link>
                       </li>
                     ))}

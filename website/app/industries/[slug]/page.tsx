@@ -32,12 +32,13 @@ export default async function IndustryPage({
   const { slug } = await params;
   const industry = industries.find((i) => i.slug === slug);
   if (!industry) notFound();
+  const other = industries.find((i) => i.slug !== slug);
 
   return (
     <main className="flex-1 pb-24 pt-40">
       <div className="mx-auto max-w-5xl px-6">
-        <Link href="/#industries" className="text-sm text-foreground/60 hover:text-foreground">
-          ← All industries
+        <Link href="/" className="text-sm text-foreground/60 hover:text-foreground">
+          ← Back to Reyse
         </Link>
 
         <div className="mt-6 grid gap-10 sm:grid-cols-2 sm:items-center sm:gap-14">
@@ -143,6 +144,15 @@ export default async function IndustryPage({
             Get started
           </Link>
         </div>
+
+        {other && (
+          <p className="mt-8 text-center text-sm text-foreground/60">
+            {industry.slug === "estate-agents" ? "Letting agent instead?" : "Estate agent instead?"}{" "}
+            <Link href={`/industries/${other.slug}`} className="font-medium text-accent-text hover:underline">
+              See how it works for {other.label.toLowerCase()}
+            </Link>
+          </p>
+        )}
       </div>
     </main>
   );

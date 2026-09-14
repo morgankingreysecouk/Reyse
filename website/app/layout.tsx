@@ -24,9 +24,9 @@ const fraunces = Fraunces({
   subsets: ["latin"],
 });
 
-const title = "Reyse — AI Search Visibility & Reviews for Property Businesses";
+const title = "Reyse — AI Search Visibility & Reviews for Estate & Letting Agents";
 const description =
-  "Reyse gets property businesses found across Google, Bing and AI search — and keeps every review answered, so your visibility and reputation work for you around the clock.";
+  "Reyse gets estate and letting agents found across Google, Bing and AI search — and keeps every review answered, so your visibility and reputation work for you around the clock.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://reyse.co.uk"),

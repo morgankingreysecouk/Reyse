@@ -5,8 +5,17 @@ import FounderCredibility from "./components/FounderCredibility";
 import FreeForeverBanner from "./components/FreeForeverBanner";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
-import IndustriesGrid from "./components/IndustriesGrid";
 import ProductsGrid from "./components/ProductsGrid";
+import Reveal from "./components/Reveal";
+import { industries } from "./industries/data";
+
+const moments = industries.flatMap((industry) =>
+  industry.scenarios.map((scenario) => ({
+    industry: industry.label,
+    slug: industry.slug,
+    scenario,
+  })),
+);
 
 export default function Home() {
   return (
@@ -65,18 +74,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Industries */}
-        <section id="industries" className="scroll-mt-20 border-t border-border">
+        {/* Moments this costs you */}
+        <section className="border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
             <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              Built for anyone renting, hosting, or managing property
+              Built specifically for estate and letting agents
             </h2>
             <p className="mt-3 max-w-2xl text-foreground/60">
-              From buyers and tenants to guests and students, people are already
-              asking Google and AI about businesses like yours. Click an industry
-              to see how Reyse gets you found.
+              Not a generic tool bolted onto property — every part of Reyse is
+              built around moments like these.
             </p>
-            <IndustriesGrid />
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {moments.map((moment, i) => (
+                <Reveal key={moment.scenario} delay={i * 80}>
+                  <div className="h-full rounded-2xl border border-border p-6">
+                    <Link
+                      href={`/industries/${moment.slug}`}
+                      className="text-xs font-medium text-accent-text hover:underline"
+                    >
+                      {moment.industry}
+                    </Link>
+                    <p className="mt-3 text-sm text-foreground/70">{moment.scenario}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </section>
 

@@ -23,7 +23,7 @@ export const posts: Post[] = [
     body: [
       {
         type: "p",
-        text: "Open ChatGPT right now and ask it: \"best estate agent in [your town]\". Then do the same on Gemini, Copilot, and Perplexity. If you're like most of the property businesses we've tested, your name doesn't come up on at least one of them — and quite possibly none.",
+        text: "Open ChatGPT right now and ask it: \"best estate agent in [your town]\". Then do the same on Gemini, Copilot, and Perplexity. If you're like most of the agents we've tested, your name doesn't come up on at least one of them — and quite possibly none.",
       },
       {
         type: "p",
@@ -135,7 +135,7 @@ export const posts: Post[] = [
       },
       {
         type: "p",
-        text: "This is the one almost nobody has done. Roughly a third of UK web traffic happens on Safari, and over half of UK mobile browsing happens on it — yet most property businesses have never claimed their Apple Business Connect listing at all. It costs nothing and takes minutes, and because so few competitors have bothered, it's currently one of the easiest wins available in local search.",
+        text: "This is the one almost nobody has done. Roughly a third of UK web traffic happens on Safari, and over half of UK mobile browsing happens on it — yet most agents have never claimed their Apple Business Connect listing at all. It costs nothing and takes minutes, and because so few competitors have bothered, it's currently one of the easiest wins available in local search.",
       },
       {
         type: "h2",
@@ -196,7 +196,7 @@ export const posts: Post[] = [
   },
   {
     slug: "ai-search-2026-property",
-    title: "What AI search actually means for property businesses right now",
+    title: "What AI search actually means for estate and letting agents right now",
     excerpt:
       "Not the theory — the specifics. Where people are actually asking AI tools about property decisions today, what's changed in the last year, and what's worth acting on now versus waiting on.",
     date: "18 July 2026",

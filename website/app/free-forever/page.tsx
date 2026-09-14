@@ -33,7 +33,7 @@ const terms: { heading: string; body: React.ReactNode }[] = [
   },
   {
     heading: "One per county",
-    body: "Only one business per UK county gets this. It ties directly into how Reyse already works for every client — one property business per local area, full stop — so your free spot also means a genuine local exclusivity, not just a discount.",
+    body: "Only one business per UK county gets this. It ties directly into how Reyse already works for every client — one estate or letting agent per local area, full stop — so your free spot also means a genuine local exclusivity, not just a discount.",
   },
   {
     heading: "How allocation works",

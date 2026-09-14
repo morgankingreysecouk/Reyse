@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { industries } from "../industries/data";
 import { products } from "../products/data";
+import { guides } from "../resources/data";
 import CookieSettingsLink from "./CookieSettingsLink";
 import NewsletterSignup from "./NewsletterSignup";
 
@@ -82,15 +82,15 @@ export default function Footer() {
             </Link>
             <NewsletterSignup />
           </div>
-          <FooterColumn title="Solutions" links={solutionsLinks} />
+          <FooterColumn title="Managed" links={solutionsLinks} />
           <FooterColumn
-            title="Industries"
+            title="Resources"
             links={[
-              ...industries.slice(0, 6).map((industry) => ({
-                label: industry.label,
-                href: `/industries/${industry.slug}`,
+              ...guides.map((guide) => ({
+                label: guide.title,
+                href: `/resources/${guide.slug}`,
               })),
-              { label: "See all industries", href: "/#industries", emphasis: true },
+              { label: "See all free resources", href: "/resources", emphasis: true },
             ]}
           />
           <FooterColumn title="Company" links={companyLinks} />

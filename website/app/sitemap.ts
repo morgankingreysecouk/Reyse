@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { industries } from "./industries/data";
 import { posts } from "./blog/data";
 import { products } from "./products/data";
+import { guides } from "./resources/data";
 
 const BASE_URL = "https://reyse.co.uk";
 
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/guarantees`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/system`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${BASE_URL}/resources`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/get-started`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/quiz`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/free-forever`, changeFrequency: "monthly", priority: 0.6 },
@@ -38,5 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...industryRoutes, ...postRoutes];
+  const guideRoutes: MetadataRoute.Sitemap = guides.map((guide) => ({
+    url: `${BASE_URL}/resources/${guide.slug}`,
+    changeFrequency: "yearly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...industryRoutes, ...postRoutes, ...guideRoutes];
 }

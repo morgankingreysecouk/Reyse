@@ -25,7 +25,7 @@ const beliefs = [
       </svg>
     ),
     heading: "Nothing here is new technology",
-    body: "AI-powered solutions already exist for almost everything Reyse does — schema markup, review management, competitive intelligence, none of it is new. What's missing is property businesses actually using it. Most agents have never checked whether they show up when someone asks ChatGPT who to use, let alone fixed it if they don't.",
+    body: "AI-powered solutions already exist for almost everything Reyse does — schema markup, review management, competitive intelligence, none of it is new. What's missing is agents actually using it. Most agents have never checked whether they show up when someone asks ChatGPT who to use, let alone fixed it if they don't.",
   },
   {
     icon: (
@@ -131,8 +131,8 @@ export default function AboutPage() {
           </h1>
           <p className="mt-5 text-lg text-foreground/70">
             Reyse started as the answer to one lettings agency&rsquo;s invisibility
-            problem — mine. It&rsquo;s now built for every property business with the
-            same blind spot.
+            problem — mine. It&rsquo;s now built for every estate and letting agent
+            with the same blind spot.
           </p>
         </div>
 

@@ -14,7 +14,7 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
     body: [
       {
         type: "p",
-        text: "These terms are between you (\"you\", \"your\", the business you represent) and Reyse (\"we\", \"us\", \"our\"), a business based in the United Kingdom providing AI-assisted search visibility (SEO and GEO), review management, and market and competitive intelligence services for property businesses — including estate and letting agents, property managers, developers, and short-term let operators.",
+        text: "These terms are between you (\"you\", \"your\", the business you represent) and Reyse (\"we\", \"us\", \"our\"), a business based in the United Kingdom providing AI-assisted search visibility (SEO and GEO), review management, and market and competitive intelligence services for estate and letting agents.",
       },
       {
         type: "p",

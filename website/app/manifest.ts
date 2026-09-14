@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Reyse — AI Search Visibility & Reviews for Property Businesses",
+    name: "Reyse — AI Search Visibility & Reviews for Estate & Letting Agents",
     short_name: "Reyse",
     description:
-      "Reyse gets property businesses found across Google, Bing and AI search — and keeps every review answered, so your visibility and reputation work for you around the clock.",
+      "Reyse gets estate and letting agents found across Google, Bing and AI search — and keeps every review answered, so your visibility and reputation work for you around the clock.",
     start_url: "/",
     display: "standalone",
     background_color: "#faf8f2",

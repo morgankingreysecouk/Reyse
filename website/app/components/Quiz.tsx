@@ -49,7 +49,7 @@ export default function Quiz() {
     return (
       <div className="mx-auto max-w-xl">
         <p className="text-center text-sm font-medium text-accent-text">
-          {industry ? `For a ${industry.label.toLowerCase()} business like yours` : "Based on your answers"}
+          {industry ? `For ${industry.label.toLowerCase()} like you` : "Based on your answers"}
         </p>
         <h2 className="mt-3 text-center font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
           Start with {primary.label}.
@@ -110,9 +110,9 @@ export default function Quiz() {
       {step === 0 ? (
         <div className="mt-8">
           <h2 className="text-center font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
-            What kind of property business are you?
+            Estate agent or letting agent?
           </h2>
-          <div className="mt-6 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-2 gap-2.5">
             {businessTypeOptions.map((option) => (
               <button
                 key={option.value}

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { industries } from "../industries/data";
 import { products } from "../products/data";
+import { guides } from "../resources/data";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
 
@@ -36,19 +36,19 @@ productColumns.push([
   },
 ]);
 
-// Split into (up to) 4 columns, sized to fit however many industries there
+// Split into (up to) 2 columns, sized to fit however many guides there
 // are — so adding or removing one never silently drops it from the menu.
-const industryColumnCount = 4;
-const industryPerColumn = Math.ceil(industries.length / industryColumnCount);
-const industryColumns: { label: string; description: string; href: string }[][] = [];
-for (let c = 0; c < industryColumnCount; c++) {
-  const slice = industries.slice(c * industryPerColumn, (c + 1) * industryPerColumn);
+const resourceColumnCount = 2;
+const resourcePerColumn = Math.ceil(guides.length / resourceColumnCount);
+const resourceColumns: { label: string; description: string; href: string }[][] = [];
+for (let c = 0; c < resourceColumnCount; c++) {
+  const slice = guides.slice(c * resourcePerColumn, (c + 1) * resourcePerColumn);
   if (slice.length === 0) break;
-  industryColumns.push(
-    slice.map((industry) => ({
-      label: industry.label,
-      description: industry.tagline,
-      href: `/industries/${industry.slug}`,
+  resourceColumns.push(
+    slice.map((guide) => ({
+      label: guide.title,
+      description: guide.excerpt,
+      href: `/resources/${guide.slug}`,
     })),
   );
 }
@@ -57,7 +57,7 @@ const companyColumns = [
   [
     {
       label: "About Reyse",
-      description: "Why we help property businesses get found and trusted online.",
+      description: "Why we help estate and letting agents get found and trusted online.",
       href: "/about",
     },
     {
@@ -119,8 +119,8 @@ export default function Header() {
           Reyse
         </Link>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 lg:flex">
-          <NavDropdown label="Solutions" href="/#product" columns={productColumns} />
-          <NavDropdown label="Industries" href="/#industries" columns={industryColumns} />
+          <NavDropdown label="Managed" href="/#product" columns={productColumns} />
+          <NavDropdown label="Resources" href="/resources" columns={resourceColumns} />
           <NavDropdown label="Company" href="/about" columns={companyColumns} />
         </div>
         <div className="flex items-center gap-3">

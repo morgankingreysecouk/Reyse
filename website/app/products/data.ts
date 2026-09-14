@@ -147,7 +147,7 @@ export const products: Product[] = [
       {
         title: "Profile Setup Audit",
         problem: "Your business profile is often the first impression a customer gets, before they've even visited your site — and an incomplete or poorly set-up one holds your ranking back regardless of how good your website is.",
-        fix: "We properly set up Google Business Profile, Bing Places, and Apple Business Connect — Apple especially, since most property businesses haven't claimed theirs at all.",
+        fix: "We properly set up Google Business Profile, Bing Places, and Apple Business Connect — Apple especially, since most agents haven't claimed theirs at all.",
         growthNote:
           "Details change — hours shift for a bank holiday, a new service gets added, a new question comes in on your public Q&A — and any of it left uncorrected quietly holds your ranking back. Depending on what you'd prefer, we check and correct all three profiles for you every month, or keep you updated with a clear report so your own team can act on it — either way, your information never quietly falls out of date.",
       },
