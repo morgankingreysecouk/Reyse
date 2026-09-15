@@ -69,13 +69,13 @@ export default function IncludedItemsScroll({
 
           {activeItem.growthOnly ? (
             <p className="mt-5 inline-block rounded-full bg-ink px-2.5 py-1 text-[11px] font-medium text-ink-foreground">
-              Growth only
+              Done For You only
             </p>
           ) : (
             activeRow && (
               <div className="mt-5 divide-y divide-border border-t border-border">
-                <TierRow label="Foundation" value={activeRow.foundation} />
-                <TierRow label="Growth" value={activeRow.growth} />
+                <TierRow label="Done With You" value={activeRow.foundation} />
+                <TierRow label="Done For You" value={activeRow.growth} />
               </div>
             )
           )}
@@ -122,7 +122,7 @@ export default function IncludedItemsScroll({
                   </h3>
                   {item.growthOnly && (
                     <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-medium text-ink-foreground">
-                      Growth only
+                      Done For You only
                     </span>
                   )}
                 </div>
@@ -149,7 +149,7 @@ export default function IncludedItemsScroll({
                 )}
                 {item.growthNote && (
                   <div className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
-                    <p className="text-xs font-medium text-accent-text">On Growth</p>
+                    <p className="text-xs font-medium text-accent-text">On Done For You</p>
                     <p className="mt-1 text-sm text-foreground/70">{item.growthNote}</p>
                   </div>
                 )}

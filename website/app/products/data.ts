@@ -13,11 +13,11 @@ export type IncludedItem = {
   fix: string;
   /** Optional pulled-out number, shown as a badge above the problem/fix pair. */
   stat?: Stat;
-  /** "On Growth" extension paragraph, for items Growth builds on rather than just repeats. */
+  /** "On Done For You" extension paragraph, for items Done For You builds on rather than just repeats. */
   growthNote?: string;
-  /** Short muted note for one-time builds that don't have an ongoing Growth narrative. */
+  /** Short muted note for one-time builds that don't have an ongoing Done For You narrative. */
   tierNote?: string;
-  /** True for items that only exist on Growth, with no Foundation equivalent. */
+  /** True for items that only exist on Done For You, with no Done With You equivalent. */
   growthOnly?: boolean;
   /** Cross-product callout — how this item feeds the SEO/GEO ranking signals those products depend on. */
   impactNote?: string;
@@ -76,14 +76,14 @@ export const products: Product[] = [
       "Nearly a third of all UK web traffic happens on Safari, not Google — and most agencies never even check it. Reyse SEO makes sure your website, your listings, and your business profiles are fast, accurate, and visible across every platform your next buyer, seller, or tenant is actually using — so more of the right searches turn into real enquiries, not lost opportunities.",
     price: "£450",
     priceNote:
-      "Foundation — one-off. Growth adds £199/month for ongoing monitoring, management, and reporting.",
+      "Done With You — one-off: a full audit plus a clear report for every fix. Done For You adds £199/month: we implement everything ourselves, plus ongoing monitoring and reporting.",
     stats: [
       { value: "~30%", label: "of UK web traffic happens on Safari, not Google" },
       { value: "20–30%", label: "higher click-through when schema unlocks rich results" },
       { value: "≈1%", label: "in lost conversions for every 100ms of extra load time" },
     ],
     comparison: {
-      tierLabels: ["Foundation", "Growth"],
+      tierLabels: ["Done With You", "Done For You"],
       rows: [
         { service: "Technical Health Audit", foundation: "✓ Included", growth: "✓ Included (+ ongoing monitoring)" },
         { service: "Schema Implementation", foundation: "✓ Included", growth: "✓ Included (+ ongoing maintenance)" },
@@ -97,7 +97,7 @@ export const products: Product[] = [
       ],
     },
     addOnsComparison: {
-      tierLabels: ["Foundation", "Growth"],
+      tierLabels: ["Done With You", "Done For You"],
       rows: [
         { service: "Video/YouTube SEO Audit", foundation: "✓ Optional", growth: "✓ Optional" },
         { service: "Conversion Tracking Setup", foundation: "✗ Not included", growth: "✓ Optional" },
@@ -109,56 +109,56 @@ export const products: Product[] = [
         subtitle: "the backend: does it work, and work fast?",
         stat: { value: "≈1%", label: "lost per 100ms of extra load time" },
         problem: "Slow, broken pages are quietly penalised by search engines, and every extra 100ms of load time costs roughly 1% in lost conversions.",
-        fix: "We test your site's code and performance, plus a handful of live listings, across every major device and browser — then fix it ourselves or hand you a clear, practical report.",
+        fix: "We test your site's code and performance, plus a handful of live listings, across every major device and browser — then hand you a clear, practical report of exactly what to fix.",
         growthNote:
-          "Technical standards don't stay still — what search engines reward today can shift within months, with nothing on your site actually breaking to warn you. We monitor for exactly that every month, and either implement whatever's needed to keep your SEO protected or keep you updated with a clear report, whichever you'd prefer. Every month, we also check a fresh handful of your live listings, so nothing new quietly drags your visibility down as your site grows.",
+          "On Done For You, we implement every fix ourselves instead. Technical standards don't stay still — what search engines reward today can shift within months, with nothing on your site actually breaking to warn you. We monitor for exactly that every month and implement whatever's needed to keep your SEO protected. Every month, we also check a fresh handful of your live listings, so nothing new quietly drags your visibility down as your site grows.",
       },
       {
         title: "Schema Implementation",
         stat: { value: "20–30%", label: "higher click-through once schema unlocks rich results" },
         problem: "Without schema, search engines are guessing what your listings mean — costing you the enhanced \"rich result\" listings that show price and location right in search, and get clicked more.",
-        fix: "We label your whole website once, then build a template so every property you list going forward is automatically tagged the same way — no manual work per listing.",
+        fix: "We map out exactly what your site needs, then hand you the schema template and specification for your developer to install once — so every property you list going forward is automatically tagged the same way.",
         growthNote:
-          "Building the template is a one-time job — but websites change, platforms update, and search engines occasionally shift what they expect from this code. If any of that ever quietly breaks the automation, a listing could start publishing without its schema, undoing the ranking advantage without you noticing. We check this every month as part of Growth, so the template keeps working exactly as it should, not because it needs rebuilding, but because it needs watching.",
+          "On Done For You, we build and install this directly ourselves. Building the template is a one-time job — but websites change, platforms update, and search engines occasionally shift what they expect from this code. If any of that ever quietly breaks the automation, a listing could start publishing without its schema, undoing the ranking advantage without you noticing. We check this every month as part of Done For You, so the template keeps working exactly as it should, not because it needs rebuilding, but because it needs watching.",
       },
       {
         title: "On-Page Audit",
         subtitle: "the structure: is it built for search engines and people to understand and use?",
         problem: "A confusing layout or a clunky enquiry process loses a customer even after they've found you — titles, headers, and structure send a direct signal about what a page is and where you operate.",
-        fix: "We review every page — and a sample of live listings — fixing what's structurally holding it back and what makes enquiring harder than it should be. Bigger reworks get flagged with what to prioritise next.",
+        fix: "We review every page — and a sample of live listings — and hand you a clear, prioritised report of exactly what's structurally holding it back and what makes enquiring harder than it should be.",
         growthNote:
-          "What counts as \"well-structured\" shifts over time as search engines refine how they read pages, and your website keeps growing — new listings, new pages, updated services. We give every new page and a fresh handful of listings the same structural and usability review each month, either fixing it or reporting it, so nothing new is left sending a weak signal or losing an enquiry, and nothing already working slips out of date as the rules change.",
+          "On Done For You, we fix all of it directly ourselves. What counts as \"well-structured\" shifts over time as search engines refine how they read pages, and your website keeps growing — new listings, new pages, updated services. We give every new page and a fresh handful of listings the same structural and usability review each month and fix it, so nothing new is left sending a weak signal or losing an enquiry, and nothing already working slips out of date as the rules change.",
       },
       {
         title: "Content Audit",
         subtitle: "the information: is it accurate and current?",
         problem: "Search engines treat stale content less favourably, and inaccurate information quietly damages the trust a visitor places in your business.",
-        fix: "We review your site content and a sample of listings for what's outdated, missing, or no longer true — fixing what we can now, and listing what to update next.",
+        fix: "We review your site content and a sample of listings for what's outdated, missing, or no longer true — and hand you a clear list of exactly what to update.",
         growthNote:
-          "What people search for changes constantly — a shift in the market, new industry changes — and content that performed well last year can quietly become outdated. Each month, we review your content and a sample of listings for accuracy and relevance, refining what's underperforming, and we track what's rising in relevance to your business, flagging genuine opportunities as they happen rather than after the moment's passed.",
+          "On Done For You, we make every update directly ourselves. What people search for changes constantly — a shift in the market, new industry changes — and content that performed well last year can quietly become outdated. Each month, we review your content and a sample of listings for accuracy and relevance, refining what's underperforming, and we track what's rising in relevance to your business, acting on genuine opportunities as they happen rather than after the moment's passed.",
       },
       {
         title: "NAP Consistency Audit",
         problem: "\"NAP\" — your Name, Address, and Phone number — is a measured local ranking factor, and every mismatch across the web quietly works against you.",
-        fix: "We check it matches exactly everywhere your business appears — your website, Google, Bing, Apple, Companies House, Rightmove, Zoopla, OnTheMarket, Propertymark, RICS, and more — and correct every mismatch we find.",
+        fix: "We check it matches exactly everywhere your business appears — your website, Google, Bing, Apple, Companies House, Rightmove, Zoopla, OnTheMarket, Propertymark, RICS, and more — and hand you an exact list of every mismatch to correct.",
         growthNote:
-          "Consistency isn't a one-time fix — directories change their formatting, details get updated in one place and forgotten in another, and new platforms emerge that need the same details added correctly from day one. We keep checking every listing every month, either correcting what's drifted ourselves or reporting it to you, whichever you'd prefer, so your ranking never quietly slips without you knowing.",
+          "On Done For You, we correct every mismatch directly ourselves. Consistency isn't a one-time fix — directories change their formatting, details get updated in one place and forgotten in another, and new platforms emerge that need the same details added correctly from day one. We keep checking every listing every month and correct what's drifted, so your ranking never quietly slips without you knowing.",
       },
       {
         title: "Profile Setup Audit",
         problem: "Your business profile is often the first impression a customer gets, before they've even visited your site — and an incomplete or poorly set-up one holds your ranking back regardless of how good your website is.",
-        fix: "We properly set up Google Business Profile, Bing Places, and Apple Business Connect — Apple especially, since most agents haven't claimed theirs at all.",
+        fix: "We audit Google Business Profile, Bing Places, and Apple Business Connect — Apple especially, since most agents haven't claimed theirs at all — and hand you exactly what to set up and correct on each.",
         growthNote:
-          "Details change — hours shift for a bank holiday, a new service gets added, a new question comes in on your public Q&A — and any of it left uncorrected quietly holds your ranking back. Depending on what you'd prefer, we check and correct all three profiles for you every month, or keep you updated with a clear report so your own team can act on it — either way, your information never quietly falls out of date.",
+          "On Done For You, we set up and correct all three profiles for you directly. Details change — hours shift for a bank holiday, a new service gets added, a new question comes in on your public Q&A — and any of it left uncorrected quietly holds your ranking back. We check and correct all three profiles for you every month, so your information never quietly falls out of date.",
       },
       {
         title: "Profile Activity",
         problem: "Google and Apple both reward business profiles that look genuinely active, and quietly downrank ones that look abandoned.",
-        fix: "We build an automated system that posts quick updates to your profiles on its own — zero effort required from you, and we talk you through exactly what's going out in your name.",
+        fix: "We build you a clear content calendar of exactly what to post and when, so your profiles keep looking genuinely active — you just publish it.",
         tierNote:
-          "This is a one-time build, giving you a reliable, fully automated system that keeps your profiles active and earning that ranking advantage from day one, with nothing further required from you.",
+          "The calendar covers a full quarter at once, so this isn't a monthly chore for whoever's posting it on your behalf.",
         growthNote:
-          "We keep the system tuned, not just running. Each month, we review what's actually performing well, refresh the content it's drawing from to match what's currently relevant, and adjust it as the market and the platforms evolve — so instead of a fixed system doing the same job indefinitely, it keeps adapting to earn you an even stronger ranking advantage over time.",
+          "On Done For You, we build and run the actual automated system ourselves — zero effort required from you, and we talk you through exactly what's going out in your name. Each month, we review what's actually performing well, refresh the content it's drawing from to match what's currently relevant, and adjust it as the market and the platforms evolve — so instead of a fixed system doing the same job indefinitely, it keeps adapting to earn you an even stronger ranking advantage over time.",
       },
       {
         title: "Total Visibility Audit",
@@ -166,7 +166,7 @@ export const products: Product[] = [
         problem: "Most agencies only ever check your Google profile — but Safari alone is ~30% of UK web traffic and over half of UK mobile browsing, and plenty of businesses have never checked it at all.",
         fix: "We check your presence everywhere a customer might actually look — Google, Bing, Apple, WhatsApp Business, voice assistants, and property-specific channels — and give you one clear view of what to fix first.",
         growthNote:
-          "New platforms emerge, and customer habits shift toward tools that didn't matter a year ago. A presence gap that didn't exist last year can quietly open up without anyone noticing until a competitor's already there first. Depending on what you'd prefer, we continually claim and set up new presence as it becomes relevant, or keep you updated with a clear report so your own team can act on it — either way, you're never the last to arrive on a platform that starts to matter.",
+          "On Done For You, we claim and set up every gap ourselves. New platforms emerge, and customer habits shift toward tools that didn't matter a year ago. A presence gap that didn't exist last year can quietly open up without anyone noticing until a competitor's already there first. We continually claim and set up new presence as it becomes relevant, so you're never the last to arrive on a platform that starts to matter.",
       },
       {
         title: "SEO & ROI Reporting",
@@ -179,9 +179,9 @@ export const products: Product[] = [
       {
         title: "Video/YouTube SEO Audit",
         problem: "Most agencies publishing video get almost no SEO value from it, because the video itself is never actually set up to be found — and YouTube is the world's second most-visited website.",
-        fix: "We check whether your titles, descriptions, tags, and links back to your site and listings are properly set up, and fix it directly or hand you a report to action.",
+        fix: "We check whether your titles, descriptions, tags, and links back to your site and listings are properly set up, and hand you a clear report to action.",
         growthNote:
-          "What ranks well on video search shifts over time too, and as you publish new video content, each piece needs the same treatment as the original audit. Every month, we check any new video the same way, and either implement the fixes or report them to you, whichever you'd prefer — so nothing new gets uploaded and quietly goes unfound.",
+          "On Done For You, we implement every fix directly ourselves. What ranks well on video search shifts over time too, and as you publish new video content, each piece needs the same treatment as the original audit. Every month, we check any new video the same way and implement the fixes — so nothing new gets uploaded and quietly goes unfound.",
         note: "Only relevant if you're already producing video content — we're not creating video for you here, just making sure what you have is actually being found.",
       },
       {
@@ -201,7 +201,7 @@ export const products: Product[] = [
       "Only 11% of businesses cited by one AI tool are also cited by another — being named by ChatGPT tells you nothing about whether Perplexity, Gemini, or Copilot have ever heard of you. Buyers and sellers increasingly ask ChatGPT, Gemini, and Perplexity who to trust before they ever browse a website — and it's not just chatbots. A normal Google search now often shows an AI-generated answer, powered by Gemini, right above the regular results. Edge does the same through Copilot, and on iPhone, Siri and Spotlight increasingly just answer the question rather than pointing to a website. Reyse audits, fixes, and actively manages your visibility across every single one — so you're the business they're told about, everywhere they ask.",
     price: "£950",
     priceNote:
-      "Foundation — one-off. Growth adds £4,000/month for ongoing implementation, entity building, and multi-branch AI visibility.",
+      "Done With You — one-off: a full audit plus a clear report for every fix. Done For You adds £4,000/month: we implement everything ourselves, plus ongoing entity building and multi-branch AI visibility.",
     stats: [
       { value: "11%", label: "of businesses cited by one AI tool are also cited by another" },
       { value: "77%", label: "of what AI cites about a business isn't even on that business's own website" },
@@ -210,7 +210,7 @@ export const products: Product[] = [
     ctaSubtext:
       "Tell us about your business and we'll show you exactly what AI is currently saying about you — and what a competitor is being recommended instead.",
     comparison: {
-      tierLabels: ["Foundation", "Growth"],
+      tierLabels: ["Done With You", "Done For You"],
       rows: [
         { service: "AI Crawler Access Check", foundation: "✓ Included", growth: "✓ Included (+ ongoing monitoring)" },
         { service: "Answer-Ready Content Audit & Fix", foundation: "✓ Included", growth: "✓ Included (+ monthly review & rewriting)" },
@@ -231,52 +231,52 @@ export const products: Product[] = [
         subtitle: "the gatekeeper: can AI even reach your site at all?",
         stat: { value: "1 in 4", label: "business websites accidentally block the AI crawlers that power citations" },
         problem: "A blocked site doesn't rank lower in ChatGPT's answers — OpenAI states plainly it never appears at all, and it's usually blocked by accident through security settings.",
-        fix: "We check whether your site is silently blocking any major AI crawler, and fix it.",
+        fix: "We check whether your site is silently blocking any major AI crawler, and hand you exactly what to fix.",
         growthNote:
-          "Hosting changes, security updates, and new CDN settings can silently start blocking these crawlers at any point, without breaking anything else on your site to warn you. Depending on what you'd prefer, we check and fix this ourselves every month, or flag it to you the moment it happens, so a technical change elsewhere never quietly switches your visibility off.",
+          "On Done For You, we fix it directly ourselves. Hosting changes, security updates, and new CDN settings can silently start blocking these crawlers at any point, without breaking anything else on your site to warn you. We check and fix this ourselves every month, so a technical change elsewhere never quietly switches your visibility off.",
       },
       {
         title: "Answer-Ready Content Audit & Fix",
         subtitle: "fixing the format of what you already have.",
         stat: { value: "40%", label: "more likely to get quoted when content leads with clear facts" },
         problem: "AI doesn't browse your website like a person does — it scans for a direct answer to a specific question and lifts it straight into its response. Vague, general text rarely gets quoted.",
-        fix: "We rewrite your key pages ourselves as part of Foundation, or give you a clear guide for structuring anything new you publish going forward.",
+        fix: "We audit your key pages and hand you a clear, specific guide for rewriting them — and for structuring anything new you publish going forward.",
         growthNote:
-          "As you publish new pages, each one needs the same treatment, and what counts as \"well-structured\" keeps shifting as AI models change how they read content. Depending on what you'd prefer, we review and rewrite every new page ourselves each month, or report it to you so your team can act on it — either way, nothing new goes unnoticed.",
+          "On Done For You, we rewrite your key pages ourselves. As you publish new pages, each one needs the same treatment, and what counts as \"well-structured\" keeps shifting as AI models change how they read content. We review and rewrite every new page ourselves each month, so nothing new goes unnoticed.",
       },
       {
         title: "Freshness Audit & Fix",
         subtitle: "the timing: is your content recent enough for AI to still trust it?",
         stat: { value: "50%", label: "of AI-cited content was refreshed within the last 3 months" },
         problem: "AI models quietly stop citing pages that haven't been touched in a while, even ones that ranked well before.",
-        fix: "We refresh your most important pages ourselves as part of Foundation, or leave you with a clear plan for keeping the rest current yourself.",
+        fix: "We audit your most important pages and hand you a clear plan for keeping them — and everything else — current.",
         growthNote:
-          "A page that was fresh last month is stale this month — AI's trust in a page decays continuously, not on a fixed schedule you can plan around once and forget. Depending on what you'd prefer, we keep everything current for you every month, or report exactly what needs updating so your team can act on it.",
+          "On Done For You, we keep everything current for you directly. A page that was fresh last month is stale this month — AI's trust in a page decays continuously, not on a fixed schedule you can plan around once and forget. We refresh whatever needs it every month, ourselves.",
       },
       {
         title: "AI Trust Signals",
         subtitle: "the code: does AI have a clean, accurate source to read you from?",
         problem: "Beyond what a human reads, AI relies on a hidden layer of code to understand exactly what your business is, what it does, and where — without it, AI is working from guesswork rather than fact.",
-        fix: "We build a dedicated llm.txt file and the structured data Google, Microsoft, and OpenAI all confirm they use, directly into your website on Foundation.",
+        fix: "We spec out the dedicated llm.txt file and the structured data Google, Microsoft, and OpenAI all confirm they use, and hand it to your developer to install.",
         growthNote:
-          "Every time your website changes — a new page, a new service — this hidden code can quietly fall out of step with what's actually on the page, with nothing visibly breaking to warn you. When that happens, AI is working from outdated facts without anyone noticing. Depending on what you'd prefer, we check and fix this every month ourselves, or report exactly what's drifted so your team can correct it.",
+          "On Done For You, we build and install this directly into your website ourselves. Every time your website changes — a new page, a new service — this hidden code can quietly fall out of step with what's actually on the page, with nothing visibly breaking to warn you. When that happens, AI is working from outdated facts without anyone noticing. We check and fix this every month ourselves.",
       },
       {
         title: "Review & Rating Schema",
         subtitle: "turning your rating into a hard data point, not just background text.",
         problem: "For \"best X\" questions, AI increasingly filters by your declared rating and review count — not by reading and estimating your reputation from the page itself.",
-        fix: "We add \"AggregateRating schema\" with your genuine, current score and count, correctly attributed back to where the reviews actually came from.",
+        fix: "We spec out \"AggregateRating schema\" with your genuine, current score and count, correctly attributed back to where the reviews actually came from, for your developer to add.",
         growthNote:
-          "Your real review score changes every time a new review comes in, but the number written into this code doesn't update on its own — left alone, AI ends up reading a rating that's no longer accurate, which can undersell a business that's actually improved. Depending on what you'd prefer, we keep this synced to your real, current score every month ourselves, or send you a simple report flagging when it's fallen behind so your team can update it.",
+          "On Done For You, we add and keep this synced ourselves. Your real review score changes every time a new review comes in, but the number written into this code doesn't update on its own — left alone, AI ends up reading a rating that's no longer accurate, which can undersell a business that's actually improved. We keep this synced to your real, current score every month.",
       },
       {
         title: "AI Visibility Audit & Fix",
         subtitle: "the test: do you actually show up, on every platform that matters?",
         stat: { value: "11%", label: "of businesses cited by one AI tool are also cited by another" },
         problem: "89% of AI citations are platform-exclusive — ranking well in ChatGPT tells you nothing about whether Gemini, Copilot, or Siri have ever heard of you.",
-        fix: "We test the real questions your customers ask — \"best estate agent in [town]\" — across all four, then fix what we can immediately or hand you a clear guide.",
+        fix: "We test the real questions your customers ask — \"best estate agent in [town]\" — across all four, and hand you a clear guide to what to fix.",
         growthNote:
-          "AI's answers change every time it's asked, and a competitor can overtake you within weeks without anything on your own site changing at all. Depending on what you'd prefer, we implement every fix ourselves or keep you updated with a clear report — either way, we re-test every month across all four ecosystems, tracking your position against your closest local competitors.",
+          "On Done For You, we implement every fix ourselves. AI's answers change every time it's asked, and a competitor can overtake you within weeks without anything on your own site changing at all. We re-test every month across all four ecosystems, tracking your position against your closest local competitors, and implement whatever's needed to hold it.",
       },
       {
         title: "AI Query Mapping",

@@ -252,7 +252,7 @@ export default async function ProductPage({
                         <h3 className="font-medium text-foreground">{addOn.title}</h3>
                         {addOn.growthOnly && (
                           <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-medium text-ink-foreground">
-                            Growth only
+                            Done For You only
                           </span>
                         )}
                       </div>
@@ -276,7 +276,7 @@ export default async function ProductPage({
                       </div>
                       {addOn.growthNote && (
                         <div className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-4">
-                          <p className="text-xs font-medium text-accent-text">On Growth</p>
+                          <p className="text-xs font-medium text-accent-text">On Done For You</p>
                           <p className="mt-1 text-sm text-foreground/70">{addOn.growthNote}</p>
                         </div>
                       )}

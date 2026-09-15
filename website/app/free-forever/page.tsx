@@ -15,8 +15,8 @@ const terms: { heading: string; body: React.ReactNode }[] = [
     body: (
       <>
         The full Reyse service for your business, on whichever tier you&rsquo;d
-        normally be on — Foundation work and, if it&rsquo;s part of what you
-        need, ongoing Growth — at no cost, for as long as Reyse is at this
+        normally be on — Done With You work and, if it&rsquo;s part of what you
+        need, ongoing Done For You — at no cost, for as long as Reyse is at this
         early stage and you stay on the terms below. This offer applies to
         any single product. Want all 5 together instead? That&rsquo;s a
         separate offer, with its own free spots — see{" "}

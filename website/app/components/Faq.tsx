@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "Am I locked into a long contract?",
     answer:
-      "One-off (Foundation) work simply ends once it's delivered — no ongoing commitment. Ongoing (Growth) subscriptions run until either side ends them, with 30 days' notice unless your order form says otherwise. There's no multi-year lock-in.",
+      "One-off (Done With You) work simply ends once it's delivered — no ongoing commitment. Ongoing (Done For You) subscriptions run until either side ends them, with 30 days' notice unless your order form says otherwise. There's no multi-year lock-in.",
   },
   {
     question: "Is this actually a real agency, or just AI?",

@@ -47,7 +47,7 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
       },
       {
         type: "p",
-        text: "For one-off (\"Foundation\") work, fees are payable as set out in your order form, typically on completion or in agreed instalments. For ongoing (\"Growth\") subscriptions, fees are billed in advance on a recurring basis and continue until the subscription is cancelled in line with the notice period in your order form.",
+        text: "For one-off (\"Done With You\") work, fees are payable as set out in your order form, typically on completion or in agreed instalments. For ongoing (\"Done For You\") subscriptions, fees are billed in advance on a recurring basis and continue until the subscription is cancelled in line with the notice period in your order form.",
       },
       {
         type: "p",

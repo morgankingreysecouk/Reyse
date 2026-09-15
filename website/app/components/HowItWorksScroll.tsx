@@ -16,7 +16,7 @@ const steps = [
   },
   {
     label: "You stay ahead of it",
-    body: "Growth keeps monitoring, managing and reporting on it every month, so nothing quietly slips backwards as search and your business keep moving.",
+    body: "Done For You keeps monitoring, managing and reporting on it every month, so nothing quietly slips backwards as search and your business keep moving.",
     Mockup: MarketIntelligenceMockup,
   },
 ];

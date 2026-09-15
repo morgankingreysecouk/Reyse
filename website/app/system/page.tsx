@@ -133,10 +133,10 @@ export default function SystemPage() {
             The 5 systems, working together
           </h2>
           <p className="mt-3 max-w-md rounded-2xl border border-accent/20 bg-accent/5 p-4 text-sm text-foreground/70">
-            The Full System runs on Growth across all 5 — Reviews and Market
-            Intelligence are ongoing services by design, with no one-off
-            version, and the weekly reporting and monthly tracking above only
-            work as a continuous service, not a one-time setup.
+            The Full System runs on Done For You across all 5 — Reviews and
+            Market Intelligence are ongoing services by design, with no
+            one-off version, and the weekly reporting and monthly tracking
+            above only work as a continuous service, not a one-time setup.
           </p>
           <p className="mt-3 max-w-2xl text-foreground/60">
             Each one stands on its own — see the individual page for what it
