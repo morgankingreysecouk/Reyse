@@ -1,5 +1,5 @@
+import Link from "next/link";
 import Reveal from "../components/Reveal";
-import SeoCourseSignupForm from "../components/SeoCourseSignupForm";
 import { pageMetadata } from "../lib/seo";
 import { checklistItems, type ChecklistItem } from "../seocourse/data";
 
@@ -112,17 +112,20 @@ export default function ResourcesPage() {
         </div>
 
         <Reveal>
-          <div className="mt-16 rounded-2xl border border-border bg-panel p-8">
+          <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
             <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
-              Start the course
+              Ready to start?
             </h2>
-            <p className="mt-2 text-sm text-foreground/65">
-              Tell us who you are and you&rsquo;re straight in — no payment,
-              no waiting for an email.
+            <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
+              No sign-up, no payment — click through and you&rsquo;re straight
+              into module one.
             </p>
-            <div className="mt-6">
-              <SeoCourseSignupForm />
-            </div>
+            <Link
+              href="/seocourse"
+              className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+            >
+              Start course →
+            </Link>
           </div>
         </Reveal>
       </div>
