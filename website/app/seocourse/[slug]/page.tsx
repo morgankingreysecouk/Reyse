@@ -10,6 +10,11 @@ import SplitRankingDemo from "../../components/SplitRankingDemo";
 import InterstitialDemo from "../../components/InterstitialDemo";
 import SchemaMarkupDemo from "../../components/SchemaMarkupDemo";
 import KeywordMatchDemo from "../../components/KeywordMatchDemo";
+import PortalDuplicationDemo from "../../components/PortalDuplicationDemo";
+import TitleMetaDemo from "../../components/TitleMetaDemo";
+import TopicDepthDemo from "../../components/TopicDepthDemo";
+import ClearStructureDemo from "../../components/ClearStructureDemo";
+import LocalWordingDemo from "../../components/LocalWordingDemo";
 import LessonJumpSelect from "../../components/LessonJumpSelect";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
@@ -26,6 +31,11 @@ const demoComponents = {
   "interstitial": InterstitialDemo,
   "schema-markup": SchemaMarkupDemo,
   "keyword-match": KeywordMatchDemo,
+  "portal-duplication": PortalDuplicationDemo,
+  "title-meta": TitleMetaDemo,
+  "topic-depth": TopicDepthDemo,
+  "clear-structure": ClearStructureDemo,
+  "local-wording": LocalWordingDemo,
 };
 
 const demoCaptions: Record<string, string> = {
@@ -39,6 +49,11 @@ const demoCaptions: Record<string, string> = {
   "interstitial": "Same page, same visitor. One of these they actually get to see.",
   "schema-markup": "Same listing, same search. One of these tells Google exactly what it's looking at.",
   "keyword-match": "Same search, same page underneath. One of these actually gets found by it.",
+  "portal-duplication": "Same property, two publishers. Only one of them gets the click.",
+  "title-meta": "Same page, same search. One title makes someone stop scrolling.",
+  "topic-depth": "Same page, same question. One of these actually finishes answering it.",
+  "clear-structure": "Same words, same page. One of these someone actually reads.",
+  "local-wording": "Same first line, same business. One of these tells you where they actually work.",
 };
 
 export function generateStaticParams() {

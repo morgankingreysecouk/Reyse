@@ -25,7 +25,12 @@ export type Lesson = {
     | "split-ranking"
     | "interstitial"
     | "schema-markup"
-    | "keyword-match";
+    | "keyword-match"
+    | "portal-duplication"
+    | "title-meta"
+    | "topic-depth"
+    | "clear-structure"
+    | "local-wording";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
@@ -528,9 +533,42 @@ export const lessons: Lesson[] = [
     doneForYou: "we implement and monitor this directly, ongoing.",
   },
   {
+    slug: "syndicated-listing-duplication",
+    category: "Real Estate-Specific Risk",
+    categoryIndex: 2,
+    itemIndex: 12,
+    title: "Syndicated Listing Duplication",
+    whatIsIt:
+      "Your listing copied onto Rightmove is technically a duplicate of your own page — and Google might decide theirs is the \"real\" one, not yours.",
+    demoComponent: "portal-duplication",
+    whyCustomer:
+      "They find your exact listing, but on Rightmove instead of your own website — meaning they never see your branding, your other properties, your reviews, or anything that builds trust in your business specifically, rather than the portal.",
+    whySearchEngine:
+      "Without a canonical tag pointing back to you, you can lose the ranking for your own listing entirely to the portal's copy — genuinely losing visibility for property you're actively trying to sell or let.",
+    whySearchEngineBadge: "Can lose your own listing's ranking entirely to the portal's copy",
+    diagnoseSteps: [
+      "Pick a live listing, copy a distinctive phrase from its description.",
+      "Search that exact phrase in Google, in quotation marks.",
+      "See which ranks higher — your own site, or the portal.",
+      "Check whether the portal's listing links back to your original.",
+    ],
+    fixBranches: [
+      {
+        condition: "No linkback, or ranking lost to the portal",
+        action:
+          "confirm with the portal whether linkbacks exist, and ask a developer to add a self-referencing canonical tag to your own listing pages.",
+      },
+    ],
+    cadence:
+      "Every new listing published is a fresh chance for this exact problem to happen again — worth spot-checking a handful of live listings monthly.",
+    cadenceBadge: "~20 min/month",
+    doneWithYou: "we show you how to check and what to ask your developer to implement.",
+    doneForYou: "we check and manage this directly across your live listings, ongoing.",
+  },
+  {
     slug: "keyword-research",
     category: "On-Page & Content",
-    categoryIndex: 2,
+    categoryIndex: 3,
     itemIndex: 13,
     title: "Keyword Research",
     whatIsIt:
@@ -580,5 +618,201 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~30-45 min/quarter",
     doneWithYou: "we run this research and hand you the phrase list to use.",
     doneForYou: "we research and apply this directly into your content, ongoing.",
+  },
+  {
+    slug: "titles-headers-meta-descriptions",
+    category: "On-Page & Content",
+    categoryIndex: 3,
+    itemIndex: 14,
+    title: "Titles, Headers, and Meta Descriptions",
+    whatIsIt:
+      "The headline Google shows for your page, and the short description underneath it — the actual blue-link text and grey summary someone sees on a results page, before they've clicked anything.",
+    demoComponent: "title-meta",
+    whyCustomer:
+      "Scanning a page of search results, a vague title like \"Home\" tells them nothing, while a specific one like \"3 Bed Houses for Sale in Colchester\" immediately signals relevance — they're far more likely to click the second one, purely from the title alone.",
+    whySearchEngine:
+      "Your title is a direct ranking signal, read to understand what the page is about. Your meta description isn't a ranking signal at all — it purely affects whether someone clicks once they see you in the results.",
+    whySearchEngineBadge: "Titles rank you directly; meta descriptions only affect the click",
+    diagnoseSteps: [
+      "Crawl your site with Screaming Frog.",
+      "Click \"Page Titles\" and \"Meta Description\" to export every one.",
+      "Check each includes what the page is about, plus your town.",
+    ],
+    diagnoseLink: { label: "Screaming Frog SEO Spider", href: "https://www.screamingfrog.co.uk/seo-spider/" },
+    fixBranches: [
+      {
+        condition: "Anything generic",
+        action: "rewrite it — keep titles under 60 characters.",
+      },
+    ],
+    cadence:
+      "Easy to get right on the first fifty pages and forget on the next fifty — worth checking every time a batch of new pages goes live.",
+    cadenceBadge: "Every new batch of pages",
+    doneWithYou: "we audit and hand you the exact rewrites.",
+    doneForYou: "we write and maintain these directly, ongoing.",
+  },
+  {
+    slug: "original-content",
+    category: "On-Page & Content",
+    categoryIndex: 3,
+    itemIndex: 15,
+    title: "Original Content",
+    whatIsIt:
+      "Content written specifically for your business, using your own real knowledge — not something that could be lifted unchanged and put on any competitor's site.",
+    whyCustomer:
+      "Generic, could-be-anyone's content doesn't build any real trust or sense that you actually know the local area — it reads like nobody specific wrote it, which is a subtle but real turn-off when they're deciding who to trust with a major decision.",
+    whySearchEngine:
+      "Google's spam and \"helpful content\" systems now actively detect and demote thin, generic, or mass-produced content — this isn't inferred from behaviour, it's a direct classification Google makes.",
+    whySearchEngineBadge: "A direct classification Google makes, not an inferred signal",
+    diagnoseSteps: [
+      "Ask yourself honestly — could this page have been written by any agency, about any town, unchanged?",
+    ],
+    fixBranches: [
+      {
+        condition: "If the honest answer is yes",
+        action:
+          "use AI only as a first draft. Always add genuine local detail, real opinion, or first-hand knowledge before publishing.",
+      },
+    ],
+    cadence: "Staying ahead of this means genuinely fresh writing on an ongoing basis, not a single content push.",
+    cadenceBadge: "Ongoing, not a one-off",
+    doneWithYou: "we review drafts and tell you what needs more genuine detail.",
+    doneForYou: "we write this directly, working from your real knowledge and experience.",
+  },
+  {
+    slug: "comprehensive-topic-depth",
+    category: "On-Page & Content",
+    categoryIndex: 3,
+    itemIndex: 16,
+    title: "Comprehensive Topic Depth",
+    whatIsIt:
+      "Answering the whole question someone's actually asking, not just a narrow slice of it — a page about \"homes for sale in [town]\" that only shows listings, with nothing about schools, transport, or price trends, is answering less than half the real question.",
+    demoComponent: "topic-depth",
+    whyCustomer:
+      "If a page only partly answers what they came to find out, they leave and go find the rest of the answer somewhere else — meaning you've done the work of attracting them, then lost them because they couldn't find the information they were looking for.",
+    whySearchEngine:
+      "Google assesses how fully a page satisfies everything a searcher likely wants to know — a thin page ranks worse even if technically well-optimised otherwise.",
+    whySearchEngineBadge: "Thin pages rank worse, even when everything else is optimised",
+    diagnoseSteps: [
+      "Pick one specific page or topic to test — for example, your \"houses for sale in [town]\" page.",
+      "Search that exact phrase (or a close variant) in Google.",
+      "Open the top 3-5 ranking pages, not just the first result.",
+      "For each one, list out every distinct subtopic they cover — schools, transport links, price trends, local amenities, an FAQ section, whatever's there.",
+      "Build a simple checklist: every subtopic you found across all of them down one side, then tick which ones your own page actually covers.",
+      "Anywhere you have a gap is a real, specific thing to fix — not a vague \"make it longer.\"",
+      "The quick AI version: paste the visible text from the top 2-3 competitor pages into ChatGPT or Claude along with your own page's text, and ask what topics they cover that yours doesn't.",
+    ],
+    fixBranches: [
+      {
+        condition: "Direct gap-filling",
+        action:
+          "add dedicated sections covering whatever the checklist revealed was missing — schools, price trends, financing for buyers, yield and compliance for landlords — written using your own real local knowledge.",
+      },
+      {
+        condition: "Original data competitors can't copy",
+        action:
+          "pull genuinely unique information — actual sold-price history for the street or area (free via the Land Registry), or your own agency's real data on how quickly properties in that area typically sell. Depth nobody else can easily replicate.",
+        links: [{ label: "Land Registry price data", href: "https://www.gov.uk/search-house-prices" }],
+      },
+      {
+        condition: "Video, transcribed into text",
+        action:
+          "record yourself walking through the topic — a short area tour, or a \"what to know before buying here\" chat — then get it transcribed and added to the page as written content. Genuine depth, plus a video asset you can reuse elsewhere.",
+      },
+      {
+        condition: "Bring in a genuine local expert",
+        action:
+          "a mortgage broker, solicitor, or surveyor you already work with contributes a short, real section — \"what a local mortgage broker wants you to know about buying in [town].\" Authentic expertise most competitors won't have, and it can build a referral relationship on the side.",
+      },
+      {
+        condition: "A real FAQ section, built from real questions",
+        action:
+          "use the actual questions clients have asked you over time, or pull from the keyword research methods covered earlier in this course, to build an FAQ section addressing genuine, common gaps.",
+      },
+    ],
+    cadence:
+      "Competitors keep adding content too, so \"thorough\" today can look thin again within a year — worth a comparison check quarterly.",
+    cadenceBadge: "Quarterly comparison check",
+    doneWithYou: "we run the competitor comparison and tell you exactly what's missing, with options for how to fill it.",
+    doneForYou:
+      "we research, source, and write the missing depth directly — including chasing the original data and expert contributions where relevant.",
+  },
+  {
+    slug: "clear-structure",
+    category: "On-Page & Content",
+    categoryIndex: 3,
+    itemIndex: 17,
+    title: "Clear Structure",
+    whatIsIt:
+      "A page that's easy to scan and follow — short paragraphs, clear subheadings — rather than a dense wall of unbroken text.",
+    demoComponent: "clear-structure",
+    whyCustomer:
+      "A wall of text looks intimidating and boring at a glance, so most people skim, miss the useful part, or simply leave without reading anything properly at all.",
+    whySearchEngine:
+      "Structure affects how long someone stays and how much they read, which Google treats as a secondary quality signal, alongside everything else it measures more directly.",
+    whySearchEngineBadge: "A secondary signal Google reads through engagement, not directly",
+    diagnoseSteps: ["Read your own page out loud, start to finish."],
+    fixBranches: [
+      {
+        condition: "If it's a struggle to read",
+        action:
+          "break up long paragraphs, add subheadings every few paragraphs, and cut anything that doesn't directly help the reader.",
+      },
+    ],
+    cadence: "Worth applying to every new page going forward, not just the ones already live.",
+    cadenceBadge: "Every new page going forward",
+    doneWithYou: "we review and mark up exactly where to restructure.",
+    doneForYou: "we write every page to this standard directly.",
+  },
+  {
+    slug: "near-me-local-wording",
+    category: "On-Page & Content",
+    categoryIndex: 3,
+    itemIndex: 18,
+    title: "\"Near Me\" and Local Wording",
+    whatIsIt:
+      "Making sure your actual town or area name appears naturally on the page, rather than only generic property terms.",
+    demoComponent: "local-wording",
+    whyCustomer:
+      "Someone searching \"estate agent bristol\" is reassured immediately when they see \"bristol\" clearly on the page — if it's missing, the page can feel generic or irrelevant, even if you genuinely do cover that area.",
+    whySearchEngine:
+      "This directly feeds Google's local relevance matching — it's checking whether your content genuinely mentions the place someone's searching near.",
+    whySearchEngineBadge: "Feeds Google's local relevance matching directly",
+    diagnoseSteps: ["Check your title and first paragraph for your area name."],
+    fixBranches: [
+      {
+        condition: "If it's missing",
+        action: "add it naturally where it belongs.",
+      },
+    ],
+    cadence: "Easy to remember on the pages built today, easy to forget on the ones added later.",
+    cadenceBadge: "Check on every new page",
+    doneWithYou: "we flag missing instances across your site.",
+    doneForYou: "we apply this consistently across everything we write.",
+  },
+  {
+    slug: "phone-number-meta-descriptions",
+    category: "On-Page & Content",
+    categoryIndex: 3,
+    itemIndex: 20,
+    title: "Phone Number in Meta Descriptions",
+    whatIsIt:
+      "Your number showing directly under your listing in the search results, so it's visible before someone even clicks through to your website.",
+    whyCustomer:
+      "Someone in a hurry can call you straight from the search results page, without ever needing to open your website and hunt for a contact page — a genuinely faster path to actually reaching you.",
+    whySearchEngine:
+      "This has no effect on ranking position at all — it purely affects whether someone calls you straight from the results, a conversion improvement, not a visibility one.",
+    whySearchEngineBadge: "No ranking effect — a conversion improvement, not a visibility one",
+    diagnoseSteps: ["Google your own business, and check what shows under your listing."],
+    fixBranches: [
+      {
+        condition: "If it's missing",
+        action: "edit your meta description in your site builder to include your number directly.",
+      },
+    ],
+    cadence: "A small fix, easy to apply once and forget everywhere else.",
+    cadenceBadge: "Apply once per page, then forget",
+    doneWithYou: "we tell you exactly which pages need this.",
+    doneForYou: "we apply this across your site directly.",
   },
 ];
