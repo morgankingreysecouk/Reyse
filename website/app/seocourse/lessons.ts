@@ -15,7 +15,13 @@ export type Lesson = {
   title: string;
   whatIsIt: string;
   analogy?: { label: string; text: string }[];
-  demoComponent?: "load-speed" | "mobile-responsive" | "security-badge" | "site-structure" | "sitemap-discovery";
+  demoComponent?:
+    | "load-speed"
+    | "mobile-responsive"
+    | "security-badge"
+    | "site-structure"
+    | "sitemap-discovery"
+    | "robots-txt";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
@@ -271,5 +277,45 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~10 min, per new page",
     doneWithYou: "we tell you exactly how to check whether new pages have been picked up.",
     doneForYou: "we handle this directly every time something new goes live.",
+  },
+  {
+    slug: "robots-txt",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 6,
+    title: "Robots.txt",
+    whatIsIt:
+      "A file telling search engines which parts of your site they're allowed to look at, and which to skip — for example, deliberately hiding an internal staff testing area, but potentially, by accident, hiding your entire live website instead.",
+    demoComponent: "robots-txt",
+    whyCustomer:
+      "Invisible directly — but if this is misconfigured, they'll experience the consequence as total invisibility: they search for your business, and you simply never appear, no matter how good everything else on your site is. It can also hide specific pages if configured wrong — the contact page, for example, quietly costing you leads nobody ever traces back to this file.",
+    whySearchEngine:
+      "Getting this wrong can accidentally hide your entire site, or specific pages, from search engines — not a minor ranking penalty, a total block on being seen at all.",
+    whySearchEngineBadge: "Can block your whole site, not just rank it lower",
+    diagnoseSteps: [
+      "Visit yourwebsite.com/robots.txt in your browser (e.g. reyselettings.co.uk/robots.txt).",
+      "Paste the contents into ChatGPT or Claude and ask if anything important is being blocked.",
+      "A clean result looks like “Allow: /” with no “Disallow:” lines blocking anything important — generally, the less restrictive, the better.",
+    ],
+    fixBranches: [
+      {
+        condition: "If you're confident it's a simple fix",
+        action: "correct it directly — ask an AI tool for the exact code, or write it yourself if you know how.",
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
+      },
+      {
+        condition: "If you're at all unsure",
+        action:
+          "ask a developer instead. This file carries real risk if done wrong — a single wrong line can silently hide your entire site.",
+      },
+    ],
+    cadence:
+      "Worth a re-check whenever a developer touches the site, or after any major rebuild — a single accidental line here can undo everything else in this entire guide.",
+    cadenceBadge: "~5 min, after any site changes",
+    doneWithYou: "we check it and tell you exactly what to fix if something's wrong.",
+    doneForYou: "we monitor this continuously and catch any accidental change immediately.",
   },
 ];

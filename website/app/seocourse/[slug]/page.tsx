@@ -5,6 +5,7 @@ import MobileResponsiveDemo from "../../components/MobileResponsiveDemo";
 import SecurityBadgeDemo from "../../components/SecurityBadgeDemo";
 import SiteStructureDemo from "../../components/SiteStructureDemo";
 import SitemapDiscoveryDemo from "../../components/SitemapDiscoveryDemo";
+import RobotsTxtDemo from "../../components/RobotsTxtDemo";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { lessons } from "../lessons";
@@ -15,6 +16,7 @@ const demoComponents = {
   "security-badge": SecurityBadgeDemo,
   "site-structure": SiteStructureDemo,
   "sitemap-discovery": SitemapDiscoveryDemo,
+  "robots-txt": RobotsTxtDemo,
 };
 
 const demoCaptions: Record<string, string> = {
@@ -23,6 +25,7 @@ const demoCaptions: Record<string, string> = {
   "security-badge": "Same enquiry form. One of these address bars makes people hesitate.",
   "site-structure": "Same listing, same site. One of these a visitor — and Google — can actually reach.",
   "sitemap-discovery": "Same four new pages. Watch how long Google takes to find them, with and without a map.",
+  "robots-txt": "Same file. One word is the entire difference between visible and invisible.",
 };
 
 export function generateStaticParams() {

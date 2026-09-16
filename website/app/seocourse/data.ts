@@ -12,6 +12,7 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Enable HTTPS / SSL (the padlock icon)", type: "direct" },
   { item: "Keep every page reachable within a few clicks", type: "direct" },
   { item: "Submit an XML sitemap to Google", type: "prerequisite" },
+  { item: "Check robots.txt isn't accidentally blocking your site", type: "prerequisite" },
   { item: "Claim and verify your Google Business Profile", type: "prerequisite" },
   { item: "Set the correct category — not the generic default", type: "direct" },
   { item: "Match your name, address and phone number exactly everywhere", type: "direct" },
