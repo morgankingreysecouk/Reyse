@@ -6,6 +6,7 @@ import SecurityBadgeDemo from "../../components/SecurityBadgeDemo";
 import SiteStructureDemo from "../../components/SiteStructureDemo";
 import SitemapDiscoveryDemo from "../../components/SitemapDiscoveryDemo";
 import RobotsTxtDemo from "../../components/RobotsTxtDemo";
+import SplitRankingDemo from "../../components/SplitRankingDemo";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { lessons } from "../lessons";
@@ -17,6 +18,7 @@ const demoComponents = {
   "site-structure": SiteStructureDemo,
   "sitemap-discovery": SitemapDiscoveryDemo,
   "robots-txt": RobotsTxtDemo,
+  "split-ranking": SplitRankingDemo,
 };
 
 const demoCaptions: Record<string, string> = {
@@ -26,6 +28,7 @@ const demoCaptions: Record<string, string> = {
   "site-structure": "Same listing, same site. One of these a visitor — and Google — can actually reach.",
   "sitemap-discovery": "Same four new pages. Watch how long Google takes to find them, with and without a map.",
   "robots-txt": "Same file. One word is the entire difference between visible and invisible.",
+  "split-ranking": "Same listing, two addresses. Watch where the ranking strength actually goes.",
 };
 
 export function generateStaticParams() {
@@ -191,27 +194,67 @@ export default async function LessonPage({
           <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
             How to check yours
           </h2>
-          <ol className="mt-6 space-y-3">
-            {lesson.diagnoseSteps.map((step, i) => (
-              <Reveal key={step} delay={i * 60}>
-                <li className="flex gap-4 rounded-xl border border-border p-4">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-xs font-medium text-accent-text">
-                    {i + 1}
-                  </span>
-                  <p className="text-sm text-foreground/70">{step}</p>
-                </li>
-              </Reveal>
-            ))}
-          </ol>
-          {lesson.diagnoseLink && (
-            <a
-              href={lesson.diagnoseLink.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Open {lesson.diagnoseLink.label} →
-            </a>
+          {lesson.diagnoseMethods ? (
+            <div className="mt-6 space-y-4">
+              {lesson.diagnoseMethods.map((method, mi) => (
+                <Reveal key={method.condition} delay={mi * 100}>
+                  <div className="rounded-2xl border border-border p-5">
+                    <p className="text-sm font-medium text-foreground">{method.condition}</p>
+                    <p className="mt-1.5 text-sm text-foreground/70">{method.action}</p>
+                    {method.steps && method.steps.length > 0 && (
+                      <ol className="mt-3 space-y-1.5">
+                        {method.steps.map((step, si) => (
+                          <li key={step} className="flex gap-2.5 text-sm text-foreground/70">
+                            <span className="shrink-0 text-xs font-medium text-accent-text">{si + 1}.</span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    )}
+                    {method.links && method.links.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {method.links.map((link) => (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground/70 hover:border-foreground/30 hover:text-foreground"
+                          >
+                            {link.label} ↗
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          ) : (
+            <>
+              <ol className="mt-6 space-y-3">
+                {lesson.diagnoseSteps?.map((step, i) => (
+                  <Reveal key={step} delay={i * 60}>
+                    <li className="flex gap-4 rounded-xl border border-border p-4">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-xs font-medium text-accent-text">
+                        {i + 1}
+                      </span>
+                      <p className="text-sm text-foreground/70">{step}</p>
+                    </li>
+                  </Reveal>
+                ))}
+              </ol>
+              {lesson.diagnoseLink && (
+                <a
+                  href={lesson.diagnoseLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+                >
+                  Open {lesson.diagnoseLink.label} →
+                </a>
+              )}
+            </>
           )}
         </div>
 

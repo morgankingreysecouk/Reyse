@@ -21,13 +21,17 @@ export type Lesson = {
     | "security-badge"
     | "site-structure"
     | "sitemap-discovery"
-    | "robots-txt";
+    | "robots-txt"
+    | "split-ranking";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
   whySearchEngineBadge: string;
-  diagnoseSteps: string[];
+  /** Simple case: one flat numbered list. */
+  diagnoseSteps?: string[];
   diagnoseLink?: ExternalLink;
+  /** Multiple distinct diagnostic approaches — rendered as method cards instead of a flat list. */
+  diagnoseMethods?: FixBranch[];
   fixBranches: FixBranch[];
   fixShortcut?: string;
   fixShortcutLinks?: ExternalLink[];
@@ -317,5 +321,134 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~5 min, after any site changes",
     doneWithYou: "we check it and tell you exactly what to fix if something's wrong.",
     doneForYou: "we monitor this continuously and catch any accidental change immediately.",
+  },
+  {
+    slug: "duplicate-content-redirects",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 7,
+    title: "Duplicate Content & Broken Redirects",
+    whatIsIt:
+      "The same page existing at two different web addresses, or an old link — say, to a property that's since sold — leading to a page that no longer exists, showing a plain “404 error” instead.",
+    demoComponent: "split-ranking",
+    whyCustomer:
+      "Clicking through to a dead page feels broken and unprofessional — like the business isn't paying attention to its own website, which quietly undermines trust in everything else you do too.",
+    whySearchEngine:
+      "Search engines actively rank down duplicate content, and when the same content exists on two URLs, your ranking strength gets split between them rather than working together.",
+    whySearchEngineBadge: "Splits your ranking strength across duplicate URLs",
+    diagnoseMethods: [
+      {
+        condition: "Method 1 — Google Search Console",
+        action: "check the Pages report for anything flagged as duplicate or redirected.",
+        steps: [
+          "Go to Google Search Console and select your property.",
+          "Click “Pages” in the sidebar under “Indexing” (this report used to be called “Coverage”).",
+          "Check for anything labelled “Duplicate without user-selected canonical” or “Page with redirect.”",
+        ],
+        links: [{ label: "Google Search Console", href: "https://search.google.com/search-console" }],
+      },
+      {
+        condition: "Method 2 — Screaming Frog, for a fuller crawl",
+        action: "run a full crawl of your site to catch what Search Console might miss.",
+        steps: [
+          "Download Screaming Frog, free.",
+          "Type your website address in and click “Start.”",
+          "Click “Response Codes” for 404s, and the “URL” tab for a duplicate content filter.",
+        ],
+        links: [{ label: "Screaming Frog SEO Spider", href: "https://www.screamingfrog.co.uk/seo-spider/" }],
+      },
+    ],
+    fixBranches: [
+      {
+        condition: "Duplicate content",
+        action: "decide which version is “official,” and redirect the other to it.",
+      },
+      {
+        condition: "Broken link",
+        action: "fix the destination, or set up a 301 redirect somewhere relevant.",
+      },
+    ],
+    cadence: "Every new page is a fresh chance for this exact issue to appear again — worth checking weekly.",
+    cadenceBadge: "~20 min/week",
+    doneWithYou: "we run the checks and tell you exactly what to redirect and where.",
+    doneForYou: "we monitor and fix this directly, every month.",
+  },
+  {
+    slug: "canonicalization",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 8,
+    title: "Canonicalization",
+    whatIsIt:
+      "If the same page accidentally exists at two addresses (for example, both with and without “www” at the front), this is a small note in the code saying “this one's the real page — ignore the other.”",
+    whyCustomer:
+      "Largely invisible — but if Google ends up showing the “wrong” duplicate version, a customer might land on an older or less complete copy of a page than the one you'd actually want them to see.",
+    whySearchEngine:
+      "Without it, Google has to guess which version to trust, and ranking strength can get split or wasted across two competing pages rather than concentrated on one strong one.",
+    whySearchEngineBadge: "Without it, Google has to guess which page counts",
+    diagnoseSteps: [
+      "Open your homepage, right-click, click “View Page Source” (or Cmd+Option+U on Mac).",
+      "Search (Cmd+F) for “canonical.”",
+      "Check the address inside that line matches the page you're actually on.",
+      "Repeat on 2–3 other key pages.",
+      "Also check whether “www” and non-“www” versions of your site both load separately, rather than one redirecting to the other.",
+    ],
+    fixBranches: [
+      {
+        condition: "This genuinely isn't a DIY job",
+        action:
+          "getting it wrong can hurt rankings. Hand this directly to a developer with your exact findings — or ask an AI tool to write the fix for you to pass along.",
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
+      },
+    ],
+    cadence:
+      "This tends to quietly reappear with site updates, whether or not anyone's watching for it — worth a check every few months.",
+    cadenceBadge: "~10 min, every few months",
+    doneWithYou: "we diagnose it and give you the exact brief to hand your developer.",
+    doneForYou: "we manage the developer relationship and this fix directly, ongoing.",
+  },
+  {
+    slug: "server-uptime",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 9,
+    title: "Server Uptime",
+    whatIsIt:
+      "How often your site is actually online when someone tries to visit it — as opposed to showing an error, or not loading at all.",
+    whyCustomer:
+      "Someone trying to visit a site that's down doesn't think “I'll try again later” — they usually assume something's wrong with the business itself, and simply go to a competitor instead.",
+    whySearchEngine:
+      "Downtime loses visitors in the moment, and if it's frequent enough, Google can reduce how often it bothers checking your site at all — in severe cases, pages can be removed from the index entirely.",
+    whySearchEngineBadge: "Frequent downtime can get pages removed from the index",
+    diagnoseSteps: [
+      "Go to uptimerobot.com and sign up, free.",
+      "Add your website as a monitor.",
+      "Let it run for a few weeks.",
+    ],
+    diagnoseLink: { label: "uptimerobot.com", href: "https://uptimerobot.com" },
+    fixBranches: [
+      {
+        condition: "Rare, brief downtime",
+        action: "not worth acting on.",
+      },
+      {
+        condition: "Frequent downtime",
+        action:
+          "your host isn't reliable enough. SiteGround, Kinsta, and WP Engine all publish real uptime guarantees worth switching to.",
+        links: [
+          { label: "SiteGround", href: "https://www.siteground.com" },
+          { label: "Kinsta", href: "https://kinsta.com" },
+          { label: "WP Engine", href: "https://wpengine.com" },
+        ],
+      },
+    ],
+    cadence:
+      "This is usually only noticed once it's already cost you a week of visibility — set the monitoring up once, then just glance at the report monthly.",
+    cadenceBadge: "~5 min/month",
+    doneWithYou: "we help you set up monitoring and tell you when to consider switching hosts.",
+    doneForYou: "we monitor this continuously and manage the hosting relationship for you.",
   },
 ];
