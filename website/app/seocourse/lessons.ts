@@ -14,7 +14,7 @@ export type Lesson = {
   title: string;
   whatIsIt: string;
   analogy?: { label: string; text: string }[];
-  demoComponent?: "load-speed" | "mobile-responsive" | "security-badge";
+  demoComponent?: "load-speed" | "mobile-responsive" | "security-badge" | "site-structure";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
@@ -186,5 +186,43 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~5 min/month",
     doneWithYou: "we tell you exactly what to check and how to fix it if something's wrong.",
     doneForYou: "we monitor this on your behalf and handle renewals before they ever lapse.",
+  },
+  {
+    slug: "site-architecture",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 4,
+    title: "Site Architecture & Internal Linking",
+    whatIsIt:
+      "How easy it is to walk from your homepage to any other page on your site — for example, whether a visitor can actually find your lettings listings if they land on a sales page, without hunting through menus.",
+    analogy: [
+      {
+        label: "The comparison",
+        text: "Imagine the hallway layout connecting every room in a shop — if a customer can't easily find their way to what they're looking for, they give up.",
+      },
+    ],
+    demoComponent: "site-structure",
+    whyCustomer:
+      "Someone interested in renting who lands on your general homepage, with no obvious path to lettings listings, will often just leave and search again rather than dig through your site — you've lost them to friction, not disinterest.",
+    whySearchEngine:
+      "A confusing structure makes it genuinely harder for Google to find and properly index your pages. A page Google can't easily reach can't rank at all, no matter how good it is — and this isn't just about your homepage. It could be something as simple as a landlord searching “rental valuation in my area” and Google being unable to find your enquiry page.",
+    whySearchEngineBadge: "Unreachable pages can't rank, period",
+    diagnoseSteps: [
+      "Sketch your site as a simple tree, homepage at the top.",
+      "Count the number of clicks needed to reach your deepest page.",
+      "Alternatively, paste your sitemap.xml contents into an AI tool and ask it to flag anything more than 3 clicks from the homepage.",
+    ],
+    fixBranches: [
+      {
+        condition: "Add internal links between genuinely related pages",
+        action:
+          "a local area guide linked to your listings in that area, for example. Do this yourself directly in your page editor, or note it as a task for a developer.",
+      },
+    ],
+    cadence:
+      "Every new page you publish needs linking in properly — this isn't a job that finishes once. Worth reviewing every time you add a meaningful batch of new content.",
+    cadenceBadge: "~15 min, per content batch",
+    doneWithYou: "we map your site and tell you exactly which pages need linking, and how.",
+    doneForYou: "we build and maintain this structure directly, every time something new is published.",
   },
 ];

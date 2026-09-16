@@ -10,6 +10,7 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Optimise Core Web Vitals / page load speed", type: "direct" },
   { item: "Make sure your site actually works on mobile", type: "direct" },
   { item: "Enable HTTPS / SSL (the padlock icon)", type: "direct" },
+  { item: "Keep every page reachable within a few clicks", type: "direct" },
   { item: "Claim and verify your Google Business Profile", type: "prerequisite" },
   { item: "Set the correct category — not the generic default", type: "direct" },
   { item: "Match your name, address and phone number exactly everywhere", type: "direct" },

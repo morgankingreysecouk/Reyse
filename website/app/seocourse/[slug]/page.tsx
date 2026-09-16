@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import LoadSpeedDemo from "../../components/LoadSpeedDemo";
 import MobileResponsiveDemo from "../../components/MobileResponsiveDemo";
 import SecurityBadgeDemo from "../../components/SecurityBadgeDemo";
+import SiteStructureDemo from "../../components/SiteStructureDemo";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { lessons } from "../lessons";
@@ -11,12 +12,14 @@ const demoComponents = {
   "load-speed": LoadSpeedDemo,
   "mobile-responsive": MobileResponsiveDemo,
   "security-badge": SecurityBadgeDemo,
+  "site-structure": SiteStructureDemo,
 };
 
 const demoCaptions: Record<string, string> = {
   "load-speed": "Same search, two agencies. Watch what happens by the time the slow one finishes loading.",
   "mobile-responsive": "Same listing page, two versions. One of these gets a tap on the enquiry button.",
   "security-badge": "Same enquiry form. One of these address bars makes people hesitate.",
+  "site-structure": "Same listing, same site. One of these a visitor — and Google — can actually reach.",
 };
 
 export function generateStaticParams() {
@@ -68,14 +71,28 @@ export default async function LessonPage({
   if (!lesson) notFound();
 
   const index = lessons.findIndex((l) => l.slug === slug);
+  const previous = index > 0 ? lessons[index - 1] : undefined;
   const next = lessons[index + 1];
 
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
       <div className="mx-auto max-w-2xl">
-        <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
-          ← Back to course info
-        </Link>
+        <div className="flex items-center justify-between">
+          <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
+            ← Back to course info
+          </Link>
+          <span className="text-sm font-medium text-foreground/60">
+            {index + 1}/{lessons.length}
+          </span>
+        </div>
+        <div className="mt-3 flex items-center gap-1.5" aria-hidden>
+          {lessons.map((l, i) => (
+            <span
+              key={l.slug}
+              className={`h-1 flex-1 rounded-full ${i <= index ? "bg-accent" : "bg-border"}`}
+            />
+          ))}
+        </div>
 
         <p className="mb-4 mt-6 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
           {lesson.category} · {lesson.categoryIndex}.{lesson.itemIndex}
@@ -278,7 +295,7 @@ export default async function LessonPage({
           </div>
         </div>
 
-        {/* Next */}
+        {/* Next / Previous */}
         <Reveal>
           <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
             {next ? (
@@ -313,6 +330,17 @@ export default async function LessonPage({
             )}
           </div>
         </Reveal>
+
+        {previous && (
+          <div className="mt-4 text-center">
+            <Link
+              href={`/seocourse/${previous.slug}`}
+              className="text-sm text-foreground/60 hover:text-foreground"
+            >
+              ← Back to {previous.title}
+            </Link>
+          </div>
+        )}
       </div>
     </main>
   );
