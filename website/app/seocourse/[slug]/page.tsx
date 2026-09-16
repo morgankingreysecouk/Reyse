@@ -4,6 +4,7 @@ import LoadSpeedDemo from "../../components/LoadSpeedDemo";
 import MobileResponsiveDemo from "../../components/MobileResponsiveDemo";
 import SecurityBadgeDemo from "../../components/SecurityBadgeDemo";
 import SiteStructureDemo from "../../components/SiteStructureDemo";
+import SitemapDiscoveryDemo from "../../components/SitemapDiscoveryDemo";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { lessons } from "../lessons";
@@ -13,6 +14,7 @@ const demoComponents = {
   "mobile-responsive": MobileResponsiveDemo,
   "security-badge": SecurityBadgeDemo,
   "site-structure": SiteStructureDemo,
+  "sitemap-discovery": SitemapDiscoveryDemo,
 };
 
 const demoCaptions: Record<string, string> = {
@@ -20,6 +22,7 @@ const demoCaptions: Record<string, string> = {
   "mobile-responsive": "Same listing page, two versions. One of these gets a tap on the enquiry button.",
   "security-badge": "Same enquiry form. One of these address bars makes people hesitate.",
   "site-structure": "Same listing, same site. One of these a visitor — and Google — can actually reach.",
+  "sitemap-discovery": "Same four new pages. Watch how long Google takes to find them, with and without a map.",
 };
 
 export function generateStaticParams() {
@@ -220,6 +223,16 @@ export default async function LessonPage({
                 <div className="rounded-2xl border border-border p-5">
                   <p className="text-sm font-medium text-foreground">{branch.condition}</p>
                   <p className="mt-1.5 text-sm text-foreground/70">{branch.action}</p>
+                  {branch.steps && branch.steps.length > 0 && (
+                    <ol className="mt-3 space-y-1.5">
+                      {branch.steps.map((step, si) => (
+                        <li key={step} className="flex gap-2.5 text-sm text-foreground/70">
+                          <span className="shrink-0 text-xs font-medium text-accent-text">{si + 1}.</span>
+                          <span>{step}</span>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
                   {branch.links && branch.links.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {branch.links.map((link) => (

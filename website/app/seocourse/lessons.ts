@@ -3,6 +3,7 @@ export type ExternalLink = { label: string; href: string };
 export type FixBranch = {
   condition: string;
   action: string;
+  steps?: string[];
   links?: ExternalLink[];
 };
 
@@ -14,7 +15,7 @@ export type Lesson = {
   title: string;
   whatIsIt: string;
   analogy?: { label: string; text: string }[];
-  demoComponent?: "load-speed" | "mobile-responsive" | "security-badge" | "site-structure";
+  demoComponent?: "load-speed" | "mobile-responsive" | "security-badge" | "site-structure" | "sitemap-discovery";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
@@ -224,5 +225,51 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~15 min, per content batch",
     doneWithYou: "we map your site and tell you exactly which pages need linking, and how.",
     doneForYou: "we build and maintain this structure directly, every time something new is published.",
+  },
+  {
+    slug: "xml-sitemap",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 5,
+    title: "XML Sitemap",
+    whatIsIt:
+      "A file you hand directly to Google, saying “here's every page I have, please check them all” — invisible to visitors, purely a background technical signal.",
+    demoComponent: "sitemap-discovery",
+    whyCustomer:
+      "They'll never see this file directly, but they feel the consequence of it — a brand-new listing that hasn't been picked up by Google yet simply doesn't show up when someone searches for it, even if it's genuinely the perfect match.",
+    whySearchEngine:
+      "Without a sitemap, Google has to discover your pages on its own, which is slower and less reliable — new pages can sit undiscovered for far longer than they should.",
+    whySearchEngineBadge: "Faster, more reliable page discovery",
+    diagnoseSteps: [
+      "Visit yourwebsite.com/sitemap.xml directly in your browser (e.g. reyselettings.co.uk/sitemap.xml).",
+      "If it loads, paste the contents into an AI tool and ask it to summarise what's listed, and whether anything important seems missing based on your site.",
+    ],
+    fixBranches: [
+      {
+        condition: "No sitemap exists, on WordPress",
+        action: "install Yoast SEO or Rank Math — either one generates a sitemap automatically, for free.",
+        links: [
+          { label: "Yoast SEO", href: "https://yoast.com" },
+          { label: "Rank Math", href: "https://rankmath.com" },
+        ],
+      },
+      {
+        condition: "A sitemap already exists",
+        action: "submit it to Google Search Console directly, so Google knows to check it:",
+        steps: [
+          "Go to Google Search Console and select your property.",
+          "Click “Sitemaps” under “Indexing” in the sidebar.",
+          "Enter the full address: https://yourwebsite.com/sitemap.xml",
+          "Click “Submit.”",
+          "Check back in a few hours to a few days, and compare the “Discovered pages” number against how many pages you actually believe your site has.",
+        ],
+        links: [{ label: "Google Search Console", href: "https://search.google.com/search-console" }],
+      },
+    ],
+    cadence:
+      "Every new page needs adding to this file too — easy to forget in the middle of running the actual business. Worth a quick check whenever you publish anything new.",
+    cadenceBadge: "~10 min, per new page",
+    doneWithYou: "we tell you exactly how to check whether new pages have been picked up.",
+    doneForYou: "we handle this directly every time something new goes live.",
   },
 ];
