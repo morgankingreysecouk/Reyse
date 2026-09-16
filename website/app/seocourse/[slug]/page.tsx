@@ -120,7 +120,7 @@ export default async function LessonPage({
               {index + 1}/{lessons.length}
             </span>
             <LessonJumpSelect
-              lessons={lessons.map((l) => ({ slug: l.slug, title: l.title, itemIndex: l.itemIndex }))}
+              lessons={lessons.map((l) => ({ slug: l.slug, title: l.title }))}
               currentSlug={lesson.slug}
             />
           </div>
@@ -189,6 +189,16 @@ export default async function LessonPage({
                       <p className="text-sm text-foreground/70">{p}</p>
                     </Reveal>
                   ))}
+                  {section.cta && (
+                    <Reveal delay={section.paragraphs.length * 60}>
+                      <Link
+                        href={section.cta.href}
+                        className="inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+                      >
+                        {section.cta.label}
+                      </Link>
+                    </Reveal>
+                  )}
                 </div>
               </div>
             ))}

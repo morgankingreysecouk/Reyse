@@ -79,3 +79,17 @@ select:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+  main {
+    padding-top: 0 !important;
+  }
+}

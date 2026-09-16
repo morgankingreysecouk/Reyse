@@ -20,7 +20,7 @@ export default function ScrollProgressBar() {
   }, []);
 
   return (
-    <div className="fixed inset-x-0 top-0 z-30 h-[3px]">
+    <div className="no-print fixed inset-x-0 top-0 z-30 h-[3px]">
       <div
         className="h-full bg-accent transition-[width] duration-150 ease-out"
         style={{ width: `${progress}%` }}

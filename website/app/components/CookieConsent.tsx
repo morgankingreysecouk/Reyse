@@ -17,7 +17,7 @@ export default function CookieConsent() {
   return (
     <>
       {!decided && (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-panel/95 backdrop-blur">
+        <div className="no-print fixed inset-x-0 bottom-0 z-40 border-t border-border bg-panel/95 backdrop-blur">
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-xl text-sm text-foreground/70">
               This site doesn&rsquo;t use tracking cookies — the only thing that

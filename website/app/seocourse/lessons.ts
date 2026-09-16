@@ -18,7 +18,7 @@ export type Lesson = {
   /** Free-form closing content (no diagnose/fix) — used for the honest-limits
    *  and course-completion pages. An empty heading continues straight on
    *  from whatIsIt rather than opening a new divided section. */
-  closingSections?: { heading: string; paragraphs: string[] }[];
+  closingSections?: { heading: string; paragraphs: string[]; cta?: { label: string; href: string } }[];
   demoComponent?:
     | "load-speed"
     | "mobile-responsive"
@@ -1800,6 +1800,13 @@ export const lessons: Lesson[] = [
           "What actually separates the agents who win from the ones who don't isn't knowing more than everyone else — it's doing this correctly, and doing it consistently. Consistency is the single most important thing in this entire guide. Little and often, kept up over time. Let one key thing slip, and it can genuinely undo everything else you've built.",
           "The longer you keep this up, the better it works. And the sooner you start, the bigger the advantage you're building — because that head start ages with you. Your consistency compounds. If Google's been recommending you for the past five years, and you've kept doing the work, adapting as the market and the platforms shift underneath you, you don't just get to number one — you stay there.",
         ],
+      },
+      {
+        heading: "",
+        paragraphs: [
+          "Add it up, and the fixed, timed checks in this guide come to roughly 3–4 hours a month — under an hour a week. On top of that sit a handful of weekly habits, like posting and replying to reviews, that don't have a fixed number of minutes but are worth building into the same routine. I understand that can feel like a lot to hold in your head all at once, so I've put together a schedule to help.",
+        ],
+        cta: { label: "Download the schedule ↓", href: "/seocourse/schedule" },
       },
       {
         heading: "A Word About Our Services",
