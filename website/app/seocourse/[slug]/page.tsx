@@ -175,37 +175,59 @@ export default async function LessonPage({
           )}
         </div>
 
-        {/* Why it matters */}
-        <div className="mt-16 border-t border-border pt-10">
-          <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
-            Why this matters
-          </h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            <Reveal>
-              <div className="h-full rounded-2xl border border-border p-5">
-                <p className="text-xs font-medium text-foreground/65">The customer&rsquo;s side</p>
-                {lesson.whyCustomerStat && (
-                  <div className="mt-3 flex items-center gap-3">
-                    <span className="font-heading text-3xl leading-none tracking-tight text-accent-text">
-                      {lesson.whyCustomerStat.value}
-                    </span>
-                    <span className="text-xs text-foreground/60">{lesson.whyCustomerStat.label}</span>
-                  </div>
+        {/* Closing content — non-actionable pages only */}
+        {lesson.closingSections && (
+          <>
+            {lesson.closingSections.map((section, si) => (
+              <div key={si} className={section.heading ? "mt-16 border-t border-border pt-10" : "mt-6"}>
+                {section.heading && (
+                  <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">{section.heading}</h2>
                 )}
-                <p className="mt-3 text-sm text-foreground/70">{lesson.whyCustomer}</p>
+                <div className={section.heading ? "mt-6 space-y-4" : "space-y-4"}>
+                  {section.paragraphs.map((p, pi) => (
+                    <Reveal key={pi} delay={pi * 60}>
+                      <p className="text-sm text-foreground/70">{p}</p>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
-            </Reveal>
-            <Reveal delay={80}>
-              <div className="h-full rounded-2xl border border-accent/20 bg-accent/5 p-5">
-                <p className="text-xs font-medium text-accent-text">The search engine&rsquo;s side</p>
-                <p className="mt-3 inline-block rounded-full bg-ink px-2.5 py-1 text-[11px] font-medium text-ink-foreground">
-                  {lesson.whySearchEngineBadge}
-                </p>
-                <p className="mt-3 text-sm text-foreground/70">{lesson.whySearchEngine}</p>
-              </div>
-            </Reveal>
+            ))}
+          </>
+        )}
+
+        {/* Why it matters */}
+        {lesson.whyCustomer && lesson.whySearchEngine && (
+          <div className="mt-16 border-t border-border pt-10">
+            <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
+              Why this matters
+            </h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <Reveal>
+                <div className="h-full rounded-2xl border border-border p-5">
+                  <p className="text-xs font-medium text-foreground/65">The customer&rsquo;s side</p>
+                  {lesson.whyCustomerStat && (
+                    <div className="mt-3 flex items-center gap-3">
+                      <span className="font-heading text-3xl leading-none tracking-tight text-accent-text">
+                        {lesson.whyCustomerStat.value}
+                      </span>
+                      <span className="text-xs text-foreground/60">{lesson.whyCustomerStat.label}</span>
+                    </div>
+                  )}
+                  <p className="mt-3 text-sm text-foreground/70">{lesson.whyCustomer}</p>
+                </div>
+              </Reveal>
+              <Reveal delay={80}>
+                <div className="h-full rounded-2xl border border-accent/20 bg-accent/5 p-5">
+                  <p className="text-xs font-medium text-accent-text">The search engine&rsquo;s side</p>
+                  <p className="mt-3 inline-block rounded-full bg-ink px-2.5 py-1 text-[11px] font-medium text-ink-foreground">
+                    {lesson.whySearchEngineBadge}
+                  </p>
+                  <p className="mt-3 text-sm text-foreground/70">{lesson.whySearchEngine}</p>
+                </div>
+              </Reveal>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Live demo */}
         {lesson.demoComponent && (
@@ -224,6 +246,7 @@ export default async function LessonPage({
         )}
 
         {/* Diagnose */}
+        {(lesson.diagnoseMethods || lesson.diagnoseSteps) && (
         <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
             How to check yours
@@ -291,8 +314,10 @@ export default async function LessonPage({
             </>
           )}
         </div>
+        )}
 
         {/* Fix */}
+        {lesson.fixBranches && lesson.fixBranches.length > 0 && (
         <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
             How to fix what you find
@@ -357,8 +382,10 @@ export default async function LessonPage({
             <p className="mt-4 text-sm text-foreground/60">{lesson.fixFollowUp}</p>
           )}
         </div>
+        )}
 
         {/* Cadence */}
+        {lesson.cadence && (
         <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
             Keeping on top of it
@@ -370,8 +397,10 @@ export default async function LessonPage({
             <p className="text-sm text-foreground/70">{lesson.cadence}</p>
           </div>
         </div>
+        )}
 
         {/* Done With You / Done For You */}
+        {lesson.doneWithYou && lesson.doneForYou && (
         <div className="mt-16 border-t border-border pt-10">
           <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
             How Reyse handles this
@@ -387,8 +416,10 @@ export default async function LessonPage({
             </div>
           </div>
         </div>
+        )}
 
         {/* Next / Previous */}
+        {!(lesson.closingSections && !next) && (
         <Reveal>
           <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
             {next ? (
@@ -423,6 +454,7 @@ export default async function LessonPage({
             )}
           </div>
         </Reveal>
+        )}
 
         {previous && (
           <div className="mt-4 text-center">

@@ -15,6 +15,10 @@ export type Lesson = {
   title: string;
   whatIsIt: string;
   analogy?: { label: string; text: string }[];
+  /** Free-form closing content (no diagnose/fix) — used for the honest-limits
+   *  and course-completion pages. An empty heading continues straight on
+   *  from whatIsIt rather than opening a new divided section. */
+  closingSections?: { heading: string; paragraphs: string[] }[];
   demoComponent?:
     | "load-speed"
     | "mobile-responsive"
@@ -31,23 +35,25 @@ export type Lesson = {
     | "topic-depth"
     | "clear-structure"
     | "local-wording";
-  whyCustomer: string;
+  /** Omitted on non-actionable closing pages that use closingSections instead. */
+  whyCustomer?: string;
   whyCustomerStat?: { value: string; label: string };
-  whySearchEngine: string;
-  whySearchEngineBadge: string;
+  whySearchEngine?: string;
+  whySearchEngineBadge?: string;
   /** Simple case: one flat numbered list. */
   diagnoseSteps?: string[];
   diagnoseLink?: ExternalLink;
   /** Multiple distinct diagnostic approaches — rendered as method cards instead of a flat list. */
   diagnoseMethods?: FixBranch[];
-  fixBranches: FixBranch[];
+  /** Omitted on non-actionable pages — there's nothing to diagnose or fix there. */
+  fixBranches?: FixBranch[];
   fixShortcut?: string;
   fixShortcutLinks?: ExternalLink[];
   fixFollowUp?: string;
-  cadence: string;
-  cadenceBadge: string;
-  doneWithYou: string;
-  doneForYou: string;
+  cadence?: string;
+  cadenceBadge?: string;
+  doneWithYou?: string;
+  doneForYou?: string;
 };
 
 export const lessons: Lesson[] = [
@@ -1753,5 +1759,57 @@ export const lessons: Lesson[] = [
     cadenceBadge: "Ongoing, watch for what's new",
     doneWithYou: "we flag new opportunities as they appear.",
     doneForYou: "we claim and manage new platform presence on your behalf, proactively.",
+  },
+  {
+    slug: "time-and-outside-your-control",
+    category: "The Honest Picture",
+    categoryIndex: 9,
+    itemIndex: 34,
+    title: "Time, and What's Outside Your Control",
+    whatIsIt:
+      "Two categories of ranking factor that don't respond to effort at all — one because it simply takes time, the other because it was never yours to control in the first place.",
+    analogy: [
+      {
+        label: "Takes time, can't be rushed",
+        text: "Domain age, backlink history, content depth, review history — all direct ranking factors, but ones that only build through elapsed time, not effort alone.",
+      },
+      {
+        label: "Completely outside your control",
+        text: "Google's algorithm, update timing, competitor decisions, real search demand, and physical distance.",
+      },
+    ],
+    whyCustomer:
+      "An established-feeling business with years of visible history and reviews simply reads as more trustworthy than a brand-new one, even if the newer business is doing everything else right — and none of the factors on the right are things a customer ever thinks about directly either.",
+    whySearchEngine:
+      "Domain age, backlink history, content depth, and review history are all genuine, direct ranking factors — but ones no amount of effort this month can shortcut. There's no fix beyond starting now, since every month delayed is a month a patient competitor pulls further ahead. Google's algorithm, update timing, competitor decisions, real search demand, and physical distance genuinely affect your ranking too — but none of them are things you can act on. This applies equally to every agency you're competing against, including whoever's ahead of you now.",
+    whySearchEngineBadge: "Genuine ranking factors — just not ones effort can shortcut",
+  },
+  {
+    slug: "course-complete",
+    category: "Course Complete",
+    categoryIndex: 10,
+    itemIndex: 35,
+    title: "You've Reached the End of the Course",
+    whatIsIt:
+      "Nothing I've shown you how to do today couldn't be done by a 15 year old. Every single fix in this guide is genuinely within reach — it doesn't take special skill, just knowing what to look for and actually doing it.",
+    closingSections: [
+      {
+        heading: "",
+        paragraphs: [
+          "I can't guarantee you'll reach number one. Nobody honestly can — not me, not anyone. But you have a genuinely strong chance, especially once you've done the research and seen for yourself that other agents in your area aren't doing this properly, if at all. In that case, it's more than likely you'll get there.",
+          "What actually separates the agents who win from the ones who don't isn't knowing more than everyone else — it's doing this correctly, and doing it consistently. Consistency is the single most important thing in this entire guide. Little and often, kept up over time. Let one key thing slip, and it can genuinely undo everything else you've built.",
+          "The longer you keep this up, the better it works. And the sooner you start, the bigger the advantage you're building — because that head start ages with you. Your consistency compounds. If Google's been recommending you for the past five years, and you've kept doing the work, adapting as the market and the platforms shift underneath you, you don't just get to number one — you stay there.",
+        ],
+      },
+      {
+        heading: "A Word About Our Services",
+        paragraphs: [
+          "Now that you've reached the end, I want to be upfront about what we do here at Reyse.",
+          "If you've read through this and thought “yes, this is exactly what I need to reach my goal” — but it feels like a lot, genuinely time-consuming, and you're not confident doing it all yourself — that's exactly what we're here for. We offer two services: Done-For-You and Done-With-You. You'll have noticed, on every single item in this guide, exactly what each service level actually covers. If something in here stood out as worth exploring properly, feel free to book a call — just click “Get Started” in the top right.",
+          "One more thing I'd genuinely appreciate: if you got any value at all from this guide, please leave us a review on Google. It helps far more than you'd think — it's how this guide reaches the next person who needs it, and it's a big part of how we grow.",
+          "As always, thank you for the most valuable thing you gave today — your attention. And if you found this useful, take a look at our other guides in the Resources section.",
+        ],
+      },
+    ],
   },
 ];
