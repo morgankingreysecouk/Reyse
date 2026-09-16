@@ -9,6 +9,8 @@ import RobotsTxtDemo from "../../components/RobotsTxtDemo";
 import SplitRankingDemo from "../../components/SplitRankingDemo";
 import InterstitialDemo from "../../components/InterstitialDemo";
 import SchemaMarkupDemo from "../../components/SchemaMarkupDemo";
+import KeywordMatchDemo from "../../components/KeywordMatchDemo";
+import LessonJumpSelect from "../../components/LessonJumpSelect";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { lessons } from "../lessons";
@@ -23,6 +25,7 @@ const demoComponents = {
   "split-ranking": SplitRankingDemo,
   "interstitial": InterstitialDemo,
   "schema-markup": SchemaMarkupDemo,
+  "keyword-match": KeywordMatchDemo,
 };
 
 const demoCaptions: Record<string, string> = {
@@ -35,6 +38,7 @@ const demoCaptions: Record<string, string> = {
   "split-ranking": "Same listing, two addresses. Watch where the ranking strength actually goes.",
   "interstitial": "Same page, same visitor. One of these they actually get to see.",
   "schema-markup": "Same listing, same search. One of these tells Google exactly what it's looking at.",
+  "keyword-match": "Same search, same page underneath. One of these actually gets found by it.",
 };
 
 export function generateStaticParams() {
@@ -96,15 +100,24 @@ export default async function LessonPage({
           <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
             ← Back to course info
           </Link>
-          <span className="text-sm font-medium text-foreground/60">
-            {index + 1}/{lessons.length}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-foreground/60">
+              {index + 1}/{lessons.length}
+            </span>
+            <LessonJumpSelect
+              lessons={lessons.map((l) => ({ slug: l.slug, title: l.title, itemIndex: l.itemIndex }))}
+              currentSlug={lesson.slug}
+            />
+          </div>
         </div>
-        <div className="mt-3 flex items-center gap-1.5" aria-hidden>
+        <div className="mt-3 flex items-center gap-1.5">
           {lessons.map((l, i) => (
-            <span
+            <Link
               key={l.slug}
-              className={`h-1 flex-1 rounded-full ${i <= index ? "bg-accent" : "bg-border"}`}
+              href={`/seocourse/${l.slug}`}
+              aria-label={`Jump to lesson ${i + 1}: ${l.title}`}
+              title={l.title}
+              className={`h-1 flex-1 rounded-full transition-colors ${i <= index ? "bg-accent" : "bg-border"} hover:bg-accent/70`}
             />
           ))}
         </div>

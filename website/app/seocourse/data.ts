@@ -25,6 +25,7 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Post to your Google Business Profile monthly", type: "direct" },
   { item: "Build a dedicated page for each town or area you cover", type: "direct" },
   { item: "Add schema markup — price, location, business type", type: "prerequisite" },
+  { item: "Research the words customers actually search, not your own internal language", type: "direct" },
   { item: "Write page titles with your service and location together", type: "direct" },
   { item: "Keep your details consistent across every directory and portal", type: "direct" },
   { item: "Claim Apple Business Connect", type: "prerequisite" },

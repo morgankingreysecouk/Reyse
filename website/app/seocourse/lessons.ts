@@ -24,7 +24,8 @@ export type Lesson = {
     | "robots-txt"
     | "split-ranking"
     | "interstitial"
-    | "schema-markup";
+    | "schema-markup"
+    | "keyword-match";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
@@ -525,5 +526,59 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~15 min/month",
     doneWithYou: "we generate the code and tell you exactly where to add it.",
     doneForYou: "we implement and monitor this directly, ongoing.",
+  },
+  {
+    slug: "keyword-research",
+    category: "On-Page & Content",
+    categoryIndex: 2,
+    itemIndex: 13,
+    title: "Keyword Research",
+    whatIsIt:
+      "Figuring out the exact words a real buyer, seller, or landlord actually types, rather than the words you'd naturally use internally — for instance, a landlord might search \"letting agent fees\" while you'd internally call it \"our pricing structure.\"",
+    demoComponent: "keyword-match",
+    whyCustomer:
+      "If your content uses different language than what they searched, it can feel like the page doesn't actually answer their question — even if, technically, it does — because it doesn't speak their language.",
+    whySearchEngine:
+      "Google matches search terms to page content — content built around the wrong words simply won't be shown for the searches that actually matter, no matter how good the content itself is.",
+    whySearchEngineBadge: "Content built on the wrong words won't surface, however good it is",
+    diagnoseMethods: [
+      {
+        condition: "Method 1 — Free: Google itself",
+        action:
+          "search your business type plus your town, then check \"People also ask\" and the related searches at the bottom — do this for both sales and lettings phrasing.",
+      },
+      {
+        condition: "Method 2 — Free: ask an AI tool",
+        action:
+          "ask directly for real phrases a buyer, seller, or landlord would search at different stages of their journey.",
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
+      },
+      {
+        condition: "Method 3 — Google Keyword Planner",
+        action:
+          "sign up, skip through campaign setup, then go to Tools → Planning → Keyword Planner. Google now requires billing details on file even for £0 spend.",
+        links: [{ label: "Google Ads", href: "https://ads.google.com" }],
+      },
+      {
+        condition: "Method 4 — AnswerThePublic",
+        action: "currently gives 3 free searches a day.",
+        links: [{ label: "AnswerThePublic", href: "https://answerthepublic.com" }],
+      },
+    ],
+    fixBranches: [
+      {
+        condition: "Once you've got a list",
+        action:
+          "combine what these methods surface into one list, then use the real phrases naturally in your website's content and page titles.",
+      },
+    ],
+    cadence:
+      "What people search for shifts with the market and the season — a list built once goes stale. Worth revisiting quarterly.",
+    cadenceBadge: "~30-45 min/quarter",
+    doneWithYou: "we run this research and hand you the phrase list to use.",
+    doneForYou: "we research and apply this directly into your content, ongoing.",
   },
 ];
