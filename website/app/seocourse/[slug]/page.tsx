@@ -8,6 +8,7 @@ import SitemapDiscoveryDemo from "../../components/SitemapDiscoveryDemo";
 import RobotsTxtDemo from "../../components/RobotsTxtDemo";
 import SplitRankingDemo from "../../components/SplitRankingDemo";
 import InterstitialDemo from "../../components/InterstitialDemo";
+import SchemaMarkupDemo from "../../components/SchemaMarkupDemo";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { lessons } from "../lessons";
@@ -21,6 +22,7 @@ const demoComponents = {
   "robots-txt": RobotsTxtDemo,
   "split-ranking": SplitRankingDemo,
   "interstitial": InterstitialDemo,
+  "schema-markup": SchemaMarkupDemo,
 };
 
 const demoCaptions: Record<string, string> = {
@@ -32,6 +34,7 @@ const demoCaptions: Record<string, string> = {
   "robots-txt": "Same file. One word is the entire difference between visible and invisible.",
   "split-ranking": "Same listing, two addresses. Watch where the ranking strength actually goes.",
   "interstitial": "Same page, same visitor. One of these they actually get to see.",
+  "schema-markup": "Same listing, same search. One of these tells Google exactly what it's looking at.",
 };
 
 export function generateStaticParams() {

@@ -23,7 +23,8 @@ export type Lesson = {
     | "sitemap-discovery"
     | "robots-txt"
     | "split-ranking"
-    | "interstitial";
+    | "interstitial"
+    | "schema-markup";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
@@ -481,5 +482,48 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~5 min, per new pop-up",
     doneWithYou: "we flag anything problematic and tell you how to adjust it.",
     doneForYou: "we review and adjust this directly whenever anything new is added.",
+  },
+  {
+    slug: "schema-markup",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 11,
+    title: "Schema Markup",
+    whatIsIt:
+      "Hidden code telling Google exactly what your page is about — price, location, business type — instead of it having to guess from the visible text alone.",
+    demoComponent: "schema-markup",
+    whyCustomer:
+      "Two listings can appear right next to each other in Google's results, but one shows the price, photo, and rating directly in the search results while the other is just a plain blue link — the enhanced one is simply more likely to get clicked, purely because it looks more useful at a glance.",
+    whyCustomerStat: { value: "20-30%", label: "increase in click-through rate on pages with schema markup" },
+    whySearchEngine:
+      "Google has said that having schema on a page doesn't push you up the rankings by itself. What it does do is unlock a \"rich result\": the same listing, but with extra details shown directly on the results page itself — a star rating with the number of reviews, or a price — pulled straight from your schema code, without anyone needing to click through first. If you were scrolling past ten plain-looking results and one suddenly had a star rating or a price shown, your eye would go straight to it. And because Google generally notices when a result keeps getting clicked more than others nearby, that extra clicking can, over time, become one small signal that helps your ranking too — though this last part is more \"widely believed\" than fully proven.",
+    whySearchEngineBadge: "Not a ranking factor itself — but the switch that unlocks rich results",
+    diagnoseSteps: [
+      "Open Google's Rich Results Test.",
+      "Enter your page's URL and run the test.",
+      "The result either lists your existing schema, or says \"No items detected.\"",
+    ],
+    diagnoseLink: { label: "Rich Results Test", href: "https://search.google.com/test/rich-results" },
+    fixBranches: [
+      {
+        condition: "No schema detected, or key details missing",
+        action:
+          "take the test results, plus your real business details — name, address, phone, services — and ask an AI tool to generate JSON-LD schema markup.",
+        steps: [
+          "Give ChatGPT or Claude your business details and ask for JSON-LD schema markup.",
+          "Add it to your site's header — usually a \"custom code\" area in your site builder.",
+          "No custom-code area? It's a quick, low-risk task to hand a developer.",
+        ],
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
+      },
+    ],
+    cadence:
+      "Site updates can silently break this without anything visibly changing on the page itself — worth re-checking monthly.",
+    cadenceBadge: "~15 min/month",
+    doneWithYou: "we generate the code and tell you exactly where to add it.",
+    doneForYou: "we implement and monitor this directly, ongoing.",
   },
 ];
