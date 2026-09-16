@@ -1,24 +1,13 @@
 import Link from "next/link";
+import ChecklistTimeline from "../components/ChecklistTimeline";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
-import { checklistItems, type ChecklistItem } from "../seocourse/data";
+import { checklistItems } from "../seocourse/data";
 
 export const metadata = pageMetadata({
   title: "The Free SEO Course",
   description: "A free course teaching estate and letting agents exactly how to get found on Google — no cost, no catch.",
 });
-
-const tagStyles: Record<ChecklistItem["type"], string> = {
-  direct: "bg-accent/15 text-accent-text",
-  indirect: "bg-ink/10 text-foreground/70",
-  prerequisite: "bg-foreground/10 text-foreground/60",
-};
-
-const tagLabels: Record<ChecklistItem["type"], string> = {
-  direct: "Direct",
-  indirect: "Indirect",
-  prerequisite: "Prerequisite",
-};
 
 export default function ResourcesPage() {
   return (
@@ -53,26 +42,18 @@ export default function ResourcesPage() {
             <strong className="text-foreground">indirect</strong> (it changes
             customer behaviour, and that behaviour is what Google eventually
             notices), or it&rsquo;s a <strong className="text-foreground">prerequisite</strong> (doesn&rsquo;t
-            boost ranking, just makes ranking possible at all). Each item
-            says clearly which applies.
+            boost ranking, just makes ranking possible at all). Watch the
+            panel on the left as you scroll — it tracks exactly which stage
+            of the course you&rsquo;re looking at.
           </p>
         </div>
+      </div>
 
-        <div className="mt-14 space-y-3">
-          {checklistItems.map((entry, i) => (
-            <Reveal key={entry.item} delay={i * 30}>
-              <div className="flex items-center justify-between gap-4 rounded-xl border border-border px-5 py-3.5">
-                <p className="text-sm text-foreground">{entry.item}</p>
-                <span
-                  className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] font-medium ${tagStyles[entry.type]}`}
-                >
-                  {tagLabels[entry.type]}
-                </span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+      <div className="mx-auto max-w-3xl">
+        <ChecklistTimeline items={checklistItems} />
+      </div>
 
+      <div className="mx-auto max-w-2xl">
         <div className="mt-14 space-y-5 text-lg text-foreground/70">
           <p>
             The end goal: becoming the obvious, undisputed number one estate
