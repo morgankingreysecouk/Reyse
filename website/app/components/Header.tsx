@@ -97,9 +97,12 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Reyse
-        </Link>
+        <div className="flex items-baseline gap-2.5">
+          <Link href="/" className="text-lg font-semibold tracking-tight">
+            Reyse
+          </Link>
+          <span className="hidden text-xs text-foreground/50 md:inline">Get Found &amp; Stay Found</span>
+        </div>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 lg:flex">
           <NavDropdown label="Managed" href="/#product" columns={productColumns} />
           <Link href="/resources" className="hover:text-foreground">

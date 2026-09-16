@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Reyse — AI search visibility and reviews for the property industry";
+export const alt = "Reyse — Get Found & Stay Found";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -71,7 +71,7 @@ export default function OpengraphImage() {
             maxWidth: 920,
           }}
         >
-          Get found by Google — and by AI.
+          Get Found &amp; Stay Found
         </div>
         <div
           style={{

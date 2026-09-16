@@ -79,6 +79,7 @@ export default function Footer() {
             <Link href="/" className="text-lg font-semibold tracking-tight">
               Reyse
             </Link>
+            <p className="mt-1 text-xs text-foreground/50">Get Found &amp; Stay Found</p>
             <NewsletterSignup />
           </div>
           <FooterColumn title="Managed" links={solutionsLinks} />

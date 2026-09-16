@@ -56,7 +56,10 @@ export default function HeroSlideshow() {
     <section className="border-b border-border bg-background lg:sticky lg:top-0 lg:z-10 lg:flex lg:h-dvh lg:items-center">
       <div className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-16 pt-28 lg:grid-cols-2 lg:items-center lg:gap-12 lg:pb-20 lg:pt-40">
         <div>
-          <h1 className="max-w-lg font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+          <span className="inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
+            Get Found &amp; Stay Found
+          </span>
+          <h1 className="mt-4 max-w-lg font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
             You&rsquo;re not losing to a better agency — you&rsquo;re losing
             to the one people find first.
           </h1>
