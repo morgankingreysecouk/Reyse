@@ -128,7 +128,6 @@ export const lessons: Lesson[] = [
     fixShortcutLinks: [
       { label: "ChatGPT", href: "https://chatgpt.com" },
       { label: "Claude", href: "https://claude.ai" },
-      { label: "Gemini", href: "https://gemini.google.com" },
     ],
     fixFollowUp: "After making any changes, re-run PageSpeed to compare the difference.",
     cadence:
@@ -185,7 +184,6 @@ export const lessons: Lesson[] = [
         links: [
           { label: "ChatGPT", href: "https://chatgpt.com" },
           { label: "Claude", href: "https://claude.ai" },
-          { label: "Gemini", href: "https://gemini.google.com" },
         ],
       },
       {
