@@ -16,6 +16,7 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Fix duplicate content and broken redirects", type: "direct" },
   { item: "Set canonical tags on any duplicate pages", type: "direct" },
   { item: "Monitor server uptime", type: "direct" },
+  { item: "Remove intrusive pop-ups that block the page on arrival", type: "direct" },
   { item: "Claim and verify your Google Business Profile", type: "prerequisite" },
   { item: "Set the correct category — not the generic default", type: "direct" },
   { item: "Match your name, address and phone number exactly everywhere", type: "direct" },

@@ -22,7 +22,8 @@ export type Lesson = {
     | "site-structure"
     | "sitemap-discovery"
     | "robots-txt"
-    | "split-ranking";
+    | "split-ranking"
+    | "interstitial";
   whyCustomer: string;
   whyCustomerStat?: { value: string; label: string };
   whySearchEngine: string;
@@ -450,5 +451,35 @@ export const lessons: Lesson[] = [
     cadenceBadge: "~5 min/month",
     doneWithYou: "we help you set up monitoring and tell you when to consider switching hosts.",
     doneForYou: "we monitor this continuously and manage the hosting relationship for you.",
+  },
+  {
+    slug: "no-intrusive-interstitials",
+    category: "Technical Foundations",
+    categoryIndex: 1,
+    itemIndex: 10,
+    title: "No Intrusive Interstitials",
+    whatIsIt:
+      "A pop-up covering the page the moment someone arrives, before they've had a chance to look at anything at all — this could be an offer, a newsletter sign-up box, or a cookie banner that's badly designed and blocks the whole screen.",
+    demoComponent: "interstitial",
+    whyCustomer:
+      "Arriving on a page only to have it immediately blocked by a pop-up is genuinely frustrating, and can make a website look scammy or untrustworthy — exactly the wrong first impression for a business someone's about to trust with selling their home. Some visitors will simply leave rather than deal with it.",
+    whySearchEngine:
+      "Google has an explicit, named penalty for this specifically on mobile search — a directly measured signal, not something inferred from behaviour. It does apply to desktop too, but the penalty is weighted more heavily toward mobile, since a full-screen pop-up is far more disruptive on a small screen.",
+    whySearchEngineBadge: "A named Google penalty, weighted heavily on mobile",
+    diagnoseSteps: [
+      "Load your site fresh in a private/incognito browser window.",
+      "Note anything blocking the screen in the first few seconds, on both desktop and mobile.",
+    ],
+    fixBranches: [
+      {
+        condition: "If you're using a pop-up",
+        action: "delay it until someone's scrolled or spent genuine time on the page, or remove it entirely.",
+      },
+    ],
+    cadence:
+      "New pop-ups get added by marketing tools often, usually without anyone realising the SEO cost — worth a quick visual check whenever a new one's added.",
+    cadenceBadge: "~5 min, per new pop-up",
+    doneWithYou: "we flag anything problematic and tell you how to adjust it.",
+    doneForYou: "we review and adjust this directly whenever anything new is added.",
   },
 ];
