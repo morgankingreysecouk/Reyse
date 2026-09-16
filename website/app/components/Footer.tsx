@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { products } from "../products/data";
-import { guides } from "../resources/data";
 import CookieSettingsLink from "./CookieSettingsLink";
 import NewsletterSignup from "./NewsletterSignup";
 
@@ -86,11 +85,8 @@ export default function Footer() {
           <FooterColumn
             title="Resources"
             links={[
-              ...guides.map((guide) => ({
-                label: guide.title,
-                href: `/resources/${guide.slug}`,
-              })),
-              { label: "See all free resources", href: "/resources", emphasis: true },
+              { label: "The Free SEO Course", href: "/resources", emphasis: true },
+              { label: "Go straight to the course", href: "/seocourse" },
             ]}
           />
           <FooterColumn title="Company" links={companyLinks} />

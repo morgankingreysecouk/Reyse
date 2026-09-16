@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { products } from "../products/data";
-import { guides } from "../resources/data";
 
 function subscribeNever() {
   return () => {};
@@ -144,20 +143,13 @@ export default function MobileMenu() {
                 </div>
 
                 <div>
-                  <p className="text-2xl font-medium">Resources</p>
-                  <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
-                    {guides.map((guide) => (
-                      <li key={guide.slug}>
-                        <Link
-                          href={`/resources/${guide.slug}`}
-                          onClick={close}
-                          className="text-base text-foreground/70 hover:text-foreground"
-                        >
-                          {guide.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  <Link
+                    href="/resources"
+                    onClick={close}
+                    className="text-2xl font-medium hover:text-foreground/80"
+                  >
+                    Resources
+                  </Link>
                 </div>
 
                 <div>
