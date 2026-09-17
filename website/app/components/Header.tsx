@@ -141,7 +141,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 border-b border-black/10 bg-background/90 backdrop-blur-md ${
+      className={`fixed inset-x-0 top-0 border-b border-black/10 bg-background/70 backdrop-blur-md ${
         inFront ? "z-20" : "z-0"
       }`}
     >
