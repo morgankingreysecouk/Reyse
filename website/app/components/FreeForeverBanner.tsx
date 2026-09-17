@@ -14,12 +14,12 @@ const offerHighlights = [
   "Done For You",
 ];
 
-function GridCross({ left }: { left: string }) {
+function GridCross({ left, top }: { left: string; top: string }) {
   return (
     <span
       aria-hidden
-      className="pointer-events-none absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 text-ink-foreground/25"
-      style={{ left }}
+      className="pointer-events-none absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 text-ink-foreground/25"
+      style={{ left, top }}
     >
       <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-current" />
       <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-current" />
@@ -27,11 +27,11 @@ function GridCross({ left }: { left: string }) {
   );
 }
 
-// Sticky, stacked on top of HeroSlideshow inside the shared wrapper in
-// page.tsx — see the comment there for how the hand-off timing works.
+const gridDividers = ["16.667%", "33.333%", "50%", "66.667%", "83.333%"];
+
 export default function FreeForeverBanner() {
   return (
-    <section className="flex flex-col items-center justify-center border-t border-b border-border bg-ink px-6 py-20 text-center text-ink-foreground lg:sticky lg:top-0 lg:z-20 lg:h-dvh lg:py-0">
+    <section className="flex flex-col items-center justify-center border-t border-b border-border bg-ink px-6 py-20 text-center text-ink-foreground">
       <div className="mx-auto flex max-w-2xl flex-col items-center gap-6">
         <h2 className="font-heading text-3xl leading-[1.15] tracking-tight sm:text-5xl">
           The first {TOTAL_SPOTS} clients pay nothing.
@@ -80,15 +80,19 @@ export default function FreeForeverBanner() {
           </svg>
         </Link>
 
-        <div className="relative mt-4 grid w-full max-w-lg grid-cols-3 border-y border-ink-foreground/10">
-          <GridCross left="33.333%" />
-          <GridCross left="66.666%" />
+        <div className="relative mt-4 grid w-full max-w-3xl grid-cols-3 border-y border-ink-foreground/10 sm:grid-cols-6">
+          {gridDividers.map((left) => (
+            <span key={left} className="hidden sm:contents">
+              <GridCross left={left} top="0%" />
+              <GridCross left={left} top="100%" />
+            </span>
+          ))}
           {offerHighlights.map((item, i) => (
             <div
               key={item}
-              className={`px-3 py-3 text-xs text-ink-foreground/65 ${
+              className={`px-3 py-2 text-xs text-ink-foreground/65 ${
                 i % 3 !== 2 ? "border-r border-ink-foreground/10" : ""
-              } ${i < 3 ? "border-b border-ink-foreground/10" : ""}`}
+              } ${i < 3 ? "border-b border-ink-foreground/10" : ""} sm:border-b-0 sm:[&:not(:last-child)]:border-r`}
             >
               {item}
             </div>

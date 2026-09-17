@@ -1,24 +1,8 @@
 import Link from "next/link";
 
-const badges = [
-  "SEO for Google, Bing & Apple",
-  "GEO for ChatGPT, Gemini & Copilot",
-  "Done With You or Done For You",
-];
-
-function CheckBadge() {
-  return (
-    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full border border-accent text-accent">
-      <svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="3">
-        <path d="m5 12 5 5 9-10" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </span>
-  );
-}
-
 export default function HeroSlideshow() {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-background lg:sticky lg:top-0 lg:z-10 lg:flex lg:h-dvh lg:items-center">
+    <section className="relative overflow-hidden border-b border-border bg-background">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
@@ -49,15 +33,6 @@ export default function HeroSlideshow() {
           Gemini, and Copilot — built specifically for estate and letting
           agents.
         </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-          {badges.map((badge) => (
-            <span key={badge} className="flex items-center gap-2 text-sm text-foreground/70">
-              <CheckBadge />
-              {badge}
-            </span>
-          ))}
-        </div>
 
         <div className="mt-9 flex flex-wrap justify-center gap-4">
           <Link

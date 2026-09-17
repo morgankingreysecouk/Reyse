@@ -20,30 +20,8 @@ const moments = industries.flatMap((industry) =>
 export default function Home() {
   return (
     <main className="flex-1">
-      {/*
-        Desktop only (lg+): Hero and the free-forever banner are both
-        `sticky top-0`, sharing this one tall wrapper. Hero holds still
-        while the banner's natural position (right after hero, so starting
-        100dvh down) scrolls up from below and slides over it — because
-        it's later in the DOM with a higher z-index. Both share this
-        wrapper's release boundary, so they end their sticky dwell at the
-        same scroll position and hand off cleanly to Products afterward,
-        instead of one lingering behind after the other releases. 220dvh =
-        hero's 100dvh + banner's 100dvh + a 20dvh dwell once the banner
-        has fully covered the hero — just enough for the stack to read as
-        deliberate rather than an abrupt cut, without making visitors
-        scroll through a screen-height of nothing before reaching it.
-
-        Below lg, both sections render as plain stacked blocks instead —
-        forcing sticky+h-dvh on a narrow viewport made hero content taller
-        than the screen, which pushed its heading up behind the fixed
-        header with no way to scroll to it. The stacking effect needs
-        room a phone doesn't have, so it's a desktop-only enhancement.
-      */}
-      <div className="relative lg:h-[220dvh]">
-        <HeroSlideshow />
-        <FreeForeverBanner />
-      </div>
+      <HeroSlideshow />
+      <FreeForeverBanner />
 
       <>
         {/* Products */}
