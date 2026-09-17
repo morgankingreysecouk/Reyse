@@ -3,6 +3,7 @@ import { industries } from "./industries/data";
 import { posts } from "./blog/data";
 import { products } from "./products/data";
 import { lessons } from "./seocourse/lessons";
+import { lessons as geoLessons } from "./geocourse/lessons";
 
 const BASE_URL = "https://reyse.co.uk";
 
@@ -46,5 +47,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...productRoutes, ...industryRoutes, ...postRoutes, ...lessonRoutes];
+  const geoLessonRoutes: MetadataRoute.Sitemap = geoLessons.map((lesson) => ({
+    url: `${BASE_URL}/geocourse/${lesson.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...productRoutes,
+    ...industryRoutes,
+    ...postRoutes,
+    ...lessonRoutes,
+    ...geoLessonRoutes,
+  ];
 }
