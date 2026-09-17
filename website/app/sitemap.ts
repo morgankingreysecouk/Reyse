@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/about`, changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/careers`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE_URL}/guarantees`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/charity`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${BASE_URL}/system`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/resources`, changeFrequency: "weekly", priority: 0.7 },

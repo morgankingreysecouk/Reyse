@@ -100,3 +100,12 @@ export const MailIcon = (
     <path d="m4 7 8 6 8-6" strokeLinecap="round" strokeLinejoin="round" />
   </Icon>
 );
+
+export const HeartIcon = (
+  <Icon>
+    <path
+      d="M12 19.5s-7.5-4.6-9.3-9.3C1.6 7.1 3.4 4 6.5 4c2 0 3.3 1.1 4 2.3.7-1.2 2-2.3 4-2.3 3.1 0 4.9 3.1 3.8 6.2C19.5 14.9 12 19.5 12 19.5Z"
+      strokeLinejoin="round"
+    />
+  </Icon>
+);

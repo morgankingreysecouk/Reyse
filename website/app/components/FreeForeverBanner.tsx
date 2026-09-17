@@ -2,6 +2,31 @@ import Link from "next/link";
 import CountdownTimer from "./CountdownTimer";
 import { CLAIMED_COUNTIES, SPOTS_REMAINING, TOTAL_SPOTS } from "../lib/freeForever";
 
+// A grid-with-plus-marks "logo wall" is a common trusted-by treatment —
+// here it carries the offer's own real facts instead, since there are no
+// client logos yet to show off.
+const offerHighlights = [
+  `${TOTAL_SPOTS} spots, free`,
+  "One per county",
+  "SEO included",
+  "GEO included",
+  "Done With You",
+  "Done For You",
+];
+
+function GridCross({ left }: { left: string }) {
+  return (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 text-ink-foreground/25"
+      style={{ left }}
+    >
+      <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-current" />
+      <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-current" />
+    </span>
+  );
+}
+
 // Sticky, stacked on top of HeroSlideshow inside the shared wrapper in
 // page.tsx — see the comment there for how the hand-off timing works.
 export default function FreeForeverBanner() {
@@ -54,6 +79,21 @@ export default function FreeForeverBanner() {
             <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Link>
+
+        <div className="relative mt-4 grid w-full max-w-lg grid-cols-3 border-y border-ink-foreground/10">
+          <GridCross left="33.333%" />
+          <GridCross left="66.666%" />
+          {offerHighlights.map((item, i) => (
+            <div
+              key={item}
+              className={`px-3 py-3 text-xs text-ink-foreground/65 ${
+                i % 3 !== 2 ? "border-r border-ink-foreground/10" : ""
+              } ${i < 3 ? "border-b border-ink-foreground/10" : ""}`}
+            >
+              {item}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

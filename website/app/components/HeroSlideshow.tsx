@@ -18,8 +18,27 @@ function CheckBadge() {
 
 export default function HeroSlideshow() {
   return (
-    <section className="border-b border-border bg-background lg:sticky lg:top-0 lg:z-10 lg:flex lg:h-dvh lg:items-center">
-      <div className="mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-20 pt-32 text-center lg:pb-24 lg:pt-40">
+    <section className="relative overflow-hidden border-b border-border bg-background lg:sticky lg:top-0 lg:z-10 lg:flex lg:h-dvh lg:items-center">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(50% 45% at 50% 42%, rgba(166,173,62,0.16), transparent 100%), radial-gradient(38% 38% at 82% 18%, rgba(166,173,62,0.10), transparent 100%), radial-gradient(38% 38% at 12% 82%, rgba(166,173,62,0.10), transparent 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(28,26,23,0.12) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+          maskImage: "radial-gradient(65% 65% at 50% 45%, black 40%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(65% 65% at 50% 45%, black 40%, transparent 100%)",
+        }}
+      />
+      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-20 pt-32 text-center lg:pb-24 lg:pt-40">
         <h1 className="font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
           Get Found &amp; Stay Found
           <br className="hidden sm:block" />{" "}

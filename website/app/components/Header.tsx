@@ -18,6 +18,7 @@ import {
   BriefcaseIcon,
   ShieldIcon,
   MailIcon,
+  HeartIcon,
 } from "./NavIcons";
 
 // One icon per product slug — matched by hand rather than derived, since
@@ -95,6 +96,12 @@ const companyColumns: MenuItem[][] = splitColumns(
       description: "Eleven specific promises, each with a real remedy.",
       href: "/guarantees",
       icon: ShieldIcon,
+    },
+    {
+      label: "Charity",
+      description: "No profit to give away yet — here's the honest plan for when there is.",
+      href: "/charity",
+      icon: HeartIcon,
     },
     {
       label: "Contact",
