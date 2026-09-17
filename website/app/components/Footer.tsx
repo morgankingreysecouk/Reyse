@@ -18,13 +18,13 @@ const companyLinks = [
   { label: "Blog", href: "/blog" },
   { label: "Careers", href: "/careers" },
   { label: "Guarantees", href: "/guarantees" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/get-started" },
 ];
 
 const getStartedLinks = [
   { label: "Get started", href: "/get-started" },
   { label: "Take the quiz", href: "/quiz" },
-  { label: "Contact us", href: "/#contact" },
+  { label: "Contact us", href: "/get-started" },
 ];
 
 const socialLinks = [

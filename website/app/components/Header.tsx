@@ -30,23 +30,31 @@ const productIcons: Record<string, React.ReactNode> = {
   scale: ScaleIcon,
 };
 
-// Split into (up to) 2 columns, sized to fit however many products there
-// are — so adding or removing one never silently drops it from the menu.
-const productColumnCount = 2;
-const productPerColumn = Math.ceil(products.length / productColumnCount);
-const productColumns: { label: string; description: string; href: string; icon?: React.ReactNode }[][] = [];
-for (let c = 0; c < productColumnCount; c++) {
-  const slice = products.slice(c * productPerColumn, (c + 1) * productPerColumn);
-  if (slice.length === 0) break;
-  productColumns.push(
-    slice.map((product) => ({
-      label: product.label,
-      description: product.tagline,
-      href: `/products/${product.slug}`,
-      icon: productIcons[product.slug],
-    })),
-  );
+type MenuItem = { label: string; description: string; href: string; icon?: React.ReactNode };
+
+// Splits into up to `targetColumns` even columns, stopping early if there
+// aren't enough items to fill them — so every dropdown shares the same
+// column width and shape as Managed, whether it has 2 items or 7.
+function splitColumns(items: MenuItem[], targetColumns: number): MenuItem[][] {
+  const perColumn = Math.ceil(items.length / targetColumns);
+  const columns: MenuItem[][] = [];
+  for (let c = 0; c < targetColumns; c++) {
+    const slice = items.slice(c * perColumn, (c + 1) * perColumn);
+    if (slice.length === 0) break;
+    columns.push(slice);
+  }
+  return columns;
 }
+
+const productColumns: MenuItem[][] = splitColumns(
+  products.map((product) => ({
+    label: product.label,
+    description: product.tagline,
+    href: `/products/${product.slug}`,
+    icon: productIcons[product.slug],
+  })),
+  2,
+);
 productColumns.push([
   {
     label: "The Full System",
@@ -62,7 +70,7 @@ productColumns.push([
   },
 ]);
 
-const companyColumns = [
+const companyColumns: MenuItem[][] = splitColumns(
   [
     {
       label: "About Reyse",
@@ -91,13 +99,14 @@ const companyColumns = [
     {
       label: "Contact",
       description: "Get in touch or book a demo.",
-      href: "/#contact",
+      href: "/get-started",
       icon: MailIcon,
     },
   ],
-];
+  3,
+);
 
-const resourcesColumns = [
+const resourcesColumns: MenuItem[][] = splitColumns(
   [
     {
       label: "SEO",
@@ -112,7 +121,8 @@ const resourcesColumns = [
       icon: SparkIcon,
     },
   ],
-];
+  3,
+);
 
 export default function Header() {
   const [inFront, setInFront] = useState(true);

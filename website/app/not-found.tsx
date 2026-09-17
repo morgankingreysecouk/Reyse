@@ -27,7 +27,7 @@ export default function NotFound() {
             Back to home
           </Link>
           <Link
-            href="/#contact"
+            href="/get-started"
             className="rounded-full border border-border bg-background/40 px-6 py-3 text-sm font-medium backdrop-blur hover:border-foreground/40"
           >
             Contact us
