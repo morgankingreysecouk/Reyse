@@ -76,9 +76,18 @@ export const lessons: Lesson[] = [
     whatIsIt:
       "Put simply, how fast your page loads, how quickly it responds when you click something, and how visually stable it is while loading.",
     analogy: [
-      { label: "Door speed", text: "how fast the shop door opens" },
-      { label: "Staff response", text: "how quickly the staff respond" },
-      { label: "Stability", text: "whether things stay still while you're reading, rather than shifting under your hand" },
+      {
+        label: "Door speed",
+        text: "A shop with a door that takes ten seconds to creak open loses customers before they even step inside — a slow-loading page does exactly the same thing.",
+      },
+      {
+        label: "Staff response",
+        text: "A shop where staff take ages to notice you've asked for help feels broken, even if they get there eventually — that's what a page feels like when it's slow to respond to a click or tap.",
+      },
+      {
+        label: "Stability",
+        text: "Shelves that shift while you're browsing make you grab the wrong thing — a page whose buttons and text jump around while it's loading causes the exact same mis-clicks.",
+      },
     ],
     demoComponent: "load-speed",
     whyCustomer:

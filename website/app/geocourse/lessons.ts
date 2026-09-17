@@ -106,11 +106,42 @@ export const lessons: Lesson[] = [
     fixBranches: [
       {
         condition: "Blocked in robots.txt",
-        action: "remove any line specifically blocking an AI crawler's user-agent.",
+        action: "edit the file directly to remove the line disallowing the crawler.",
+        steps: [
+          "Access robots.txt through your site's file manager, FTP, or — if you're on WordPress — an SEO plugin like Yoast or Rank Math that lets you edit it from the dashboard.",
+          "Find the line naming the blocked user-agent (e.g. \"User-agent: GPTBot\" followed by \"Disallow: /\") and delete that block, or change \"Disallow: /\" to \"Allow: /\".",
+          "Save, then reload yourwebsite.com/robots.txt in a browser to confirm the line is gone.",
+        ],
       },
       {
-        condition: "Blocked by your CDN or security settings",
-        action: "check for an \"AI bot\" or \"known bots\" toggle and switch it to \"allow.\"",
+        condition: "Blocked by Cloudflare or a similar CDN/security service",
+        action: "these tools block AI crawlers at a level robots.txt can't override, through their own bot-management settings.",
+        steps: [
+          "Log into Cloudflare (or your CDN provider) and find \"Bots\" or \"Security\" in the sidebar.",
+          "Look for a setting called \"AI Bots,\" \"Verified Bots,\" or \"Known Bots,\" and check whether AI crawlers are set to \"Block.\"",
+          "Switch it to \"Allow,\" then re-test using the robots.txt check and, if possible, your CDN's own \"recent blocked requests\" log to confirm the crawler is getting through now.",
+        ],
+      },
+      {
+        condition: "Blocked by your hosting provider's firewall or a security plugin",
+        action: "a security plugin like Wordfence or Sucuri, or a locked-down hosting firewall, can block crawlers independently of both robots.txt and Cloudflare.",
+        steps: [
+          "Check your security plugin's firewall or bot-blocking rules for anything treating unfamiliar user-agents as suspicious by default.",
+          "Add GPTBot, ClaudeBot, PerplexityBot, and Google-Extended to its allow-list if such a list exists.",
+          "If you're not confident making this change yourself, ask your host's support team directly: \"are AI crawlers like GPTBot allowed through your firewall?\"",
+        ],
+      },
+      {
+        condition: "Not sure which layer is actually blocking it",
+        action: "paste what you've found into AI and let it narrow it down for you.",
+        steps: [
+          "Copy your robots.txt content and a screenshot or description of your CDN/security settings.",
+          "Paste both into ChatGPT or Claude and ask: \"based on this, what specifically is blocking AI crawlers, and what exactly do I need to change?\"",
+        ],
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
       },
     ],
     cadence:
@@ -158,9 +189,30 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Confirmed — key content only appears via JavaScript",
-        action:
-          "this is a genuinely technical fix, usually meaning a developer needs to implement \"server-side rendering\" for key content — ensuring important text is present in the raw page, not just added afterward by a script.",
+        condition: "You have a developer or dev agency",
+        action: "give them the specific, actionable brief rather than a vague \"AI can't see our content\" report.",
+        steps: [
+          "Tell them exactly which pages failed the JavaScript-off test.",
+          "Ask them specifically to implement server-side rendering (SSR) or static generation for those pages, so the real content is present in the initial HTML response, not injected afterward by client-side JavaScript.",
+          "Ask them to re-run the same JavaScript-off test after the fix, and send you a screenshot confirming the content now appears.",
+        ],
+      },
+      {
+        condition: "You're on WordPress",
+        action: "the most common cause is a JavaScript-heavy page builder or theme rendering key sections client-side.",
+        steps: [
+          "Check whether the affected content sits inside a page-builder block (Elementor, Divi, etc.) known to render dynamically — these plugins vary in how much they rely on JavaScript.",
+          "Where possible, move essential text (address, services, key selling points) into a standard text block rather than a dynamic widget, since standard blocks render directly in the page HTML.",
+          "If the issue is theme-wide rather than block-specific, raise it directly with your theme or hosting support, since it may need a settings change rather than a rebuild.",
+        ],
+      },
+      {
+        condition: "You're on Wix, Squarespace, or a similar all-in-one builder",
+        action: "you have limited control over rendering, but a few things still help.",
+        steps: [
+          "Check the platform's own SEO/AI documentation for a \"static rendering\" or \"prerendering\" setting — several major builders have added this specifically in response to AI crawler demand.",
+          "Where a setting like this doesn't exist, prioritise keeping your most important facts (services, coverage area, contact details) in the platform's standard text elements rather than embedded galleries, apps, or custom code widgets, which are more likely to be JavaScript-rendered.",
+        ],
       },
     ],
     cadence: "Worth re-checking whenever your site undergoes a significant rebuild or platform change.",
@@ -197,8 +249,27 @@ export const lessons: Lesson[] = [
     fixBranches: [
       {
         condition: "Content is gated with no real reason to be",
-        action:
-          "move it out from behind logins where possible — reserve gated content for things that need to stay gated for a real reason (like personal account data), not general information that could help build your visibility.",
+        action: "move it out from behind the login or sign-up form entirely.",
+        steps: [
+          "List everything currently gated, and for each item ask: does this need to be gated for a genuine reason (personal account data, a paid product), or is it gated just because that's how it was originally built?",
+          "For anything without a real reason, republish it as an open page — you lose the email-capture, but you gain AI (and search) visibility for content that was previously invisible to both.",
+        ],
+      },
+      {
+        condition: "You want to keep some form of gate for lead capture",
+        action: "compromise by giving away the substance for free and gating only the packaged, branded version.",
+        steps: [
+          "Publish a genuinely complete, ungated version of the core information as a normal page.",
+          "Reserve the gate for a nicer packaged version — a downloadable PDF, a personalised report, or a tool — rather than gating the underlying information itself.",
+        ],
+      },
+      {
+        condition: "It's a member-only resource that genuinely needs to stay gated",
+        action: "you can't make it AI-visible directly, but you can still get credit for having it.",
+        steps: [
+          "Write a short, ungated summary page describing what the gated resource covers and who it's for, with a clear sign-up link.",
+          "That summary page — not the gated content itself — is what AI crawlers and search engines can actually read and potentially cite.",
+        ],
       },
     ],
     cadence: "Worth reviewing whenever new gated content is planned, to weigh whether it genuinely needs to be locked.",
@@ -236,12 +307,33 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "No schema detected, or missing Organization/LocalBusiness details",
-        action:
-          "ask ChatGPT or Claude to generate JSON-LD schema for your business — Organization and LocalBusiness types especially — using your real details, and add it to your site's header.",
+        condition: "No schema exists at all",
+        action: "generate it with AI and add it to your site's header — you don't need to write JSON-LD by hand.",
+        steps: [
+          "Ask ChatGPT or Claude: \"write LocalBusiness and Organization JSON-LD schema for [your business name], [address], [phone], [services], [opening hours]\" — give it your real details.",
+          "Copy the code it gives you into the <head> section of your homepage, either directly or via your CMS's \"custom code\" or SEO plugin field.",
+          "Re-run the Rich Results Test to confirm it's now detected with no errors.",
+        ],
         links: [
           { label: "ChatGPT", href: "https://chatgpt.com" },
           { label: "Claude", href: "https://claude.ai" },
+        ],
+      },
+      {
+        condition: "Schema exists but key details are missing or wrong",
+        action: "correct the specific fields the validator flags.",
+        steps: [
+          "Note exactly which fields the Rich Results Test or Schema Markup Validator flags as missing or invalid.",
+          "Ask ChatGPT or Claude to add or correct just those fields in your existing code, pasting in what you currently have.",
+          "Replace the old code with the corrected version and re-validate.",
+        ],
+      },
+      {
+        condition: "You want to go beyond the basics",
+        action: "add FAQ and Service schema too, once Organization/LocalBusiness is solid — these give AI even more structured detail to draw on.",
+        steps: [
+          "Ask ChatGPT or Claude to generate FAQPage schema from the actual FAQs already on your site, and Service schema listing what you offer.",
+          "Add both alongside your existing Organization/LocalBusiness markup, and validate all of it together.",
         ],
       },
     ],
@@ -284,9 +376,31 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "If you decide it's worth doing anyway",
-        action:
-          "create a simple Markdown file at your site's root, starting with your business name as a heading, a short 1-3 sentence summary, and links to your most important pages with brief, specific descriptions of what each one covers.",
+        condition: "You decide it's worth doing",
+        action: "it's a small, low-cost file — here's exactly how to build it.",
+        steps: [
+          "Create a plain text file named llms.txt.",
+          "Start with a level-1 Markdown heading of your business name, then a short 1-3 sentence summary of what you do and where.",
+          "Below that, list links to your most important pages (homepage, services, contact, key guides) each with a one-line description of what it covers.",
+          "Upload the file to your site's root, so it's reachable at yourwebsite.com/llms.txt.",
+        ],
+      },
+      {
+        condition: "You'd rather have AI do the writing",
+        action: "give it a list of your key pages and let it draft the file.",
+        steps: [
+          "Paste your list of key pages and a short description of your business into ChatGPT or Claude.",
+          "Ask it to format the result as a valid llms.txt file, following the standard's structure.",
+          "Review the draft for accuracy before uploading it.",
+        ],
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
+      },
+      {
+        condition: "You decide it's not worth it yet",
+        action: "that's a reasonable call too — just don't let it distract from the confirmed items elsewhere in this guide.",
       },
     ],
     cadence: "If you do implement this, update it quarterly, and keep it in sync with your robots.txt so the two files don't contradict each other.",
@@ -329,8 +443,32 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "The answer is buried",
-        action: "restructure key pages so a short, direct answer appears immediately under any heading phrased as a question, with supporting detail after.",
+        condition: "The answer is buried in a wall of text",
+        action: "restructure so the direct answer leads, with supporting detail after.",
+        steps: [
+          "Rewrite the opening of the relevant section so the actual answer appears in the first sentence — the number, the yes/no, the name — not the third paragraph.",
+          "Move context, caveats, and elaboration to follow after that direct answer, not before it.",
+        ],
+      },
+      {
+        condition: "The page doesn't ask the question at all",
+        action: "add a heading phrased as the actual question people ask, so both AI and readers can find the answer immediately.",
+        steps: [
+          "Turn a vague heading like \"Our Fees\" into the specific question people actually ask, like \"How much does it cost to sell a house in [town]?\"",
+          "Answer it directly in the sentence right underneath.",
+        ],
+      },
+      {
+        condition: "You have a lot of pages to fix and limited time",
+        action: "use AI to do the heavy lifting, then check its work.",
+        steps: [
+          "Paste a page into ChatGPT or Claude and ask: \"rewrite this so the direct answer to [the main question] appears in the first two sentences, keeping all the same facts.\"",
+          "Read the result carefully and correct anything it got factually wrong before publishing — never publish AI output about your own business unchecked.",
+        ],
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
       },
     ],
     cadence: "Worth reviewing whenever you publish new content, and re-checking older key pages every few months as writing habits drift.",
@@ -367,8 +505,29 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Pages are going stale",
-        action: "refresh key pages regularly with real, meaningful updates — new figures, current examples — not just a cosmetic date change.",
+        condition: "Pages are stale with genuinely outdated information",
+        action: "update the substance, not just the date.",
+        steps: [
+          "Replace outdated figures — prices, average time on market, local statistics — with current ones.",
+          "Add anything genuinely new since the page was last written — a new development, a policy change, an updated example.",
+          "Avoid simply changing the \"last updated\" date without changing the actual content — this doesn't fool AI systems, which assess genuine freshness signals, not just timestamps.",
+        ],
+      },
+      {
+        condition: "You have too many pages to refresh individually",
+        action: "triage by what actually gets cited, so you're not spreading effort evenly across pages that don't matter equally.",
+        steps: [
+          "Identify which pages are your highest-value targets — the ones most likely to be asked about, or that already get the most traffic.",
+          "Refresh those first, on a rolling basis, rather than trying to update everything at once.",
+        ],
+      },
+      {
+        condition: "You want a system so this doesn't slip",
+        action: "build freshness into a simple recurring habit rather than relying on remembering.",
+        steps: [
+          "Keep a simple list of your key pages with the date each was last genuinely updated.",
+          "Set a recurring monthly reminder to pick the oldest 3-5 pages on that list and refresh them.",
+        ],
       },
     ],
     cadence:
@@ -410,8 +569,26 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "If the honest answer is yes",
-        action: "add genuine local detail, real data, and first-hand knowledge — the same approaches covered in the SEO guide's depth section apply directly here too.",
+        condition: "The honest answer is yes, it's generic",
+        action: "add the specific, local, first-hand detail only you actually have.",
+        steps: [
+          "Add real local detail: specific street names, actual local landmarks, genuine knowledge of what makes different parts of your patch different from each other.",
+          "Add real data where you have it: your own average days-on-market, your own sold prices, genuine examples from properties you've actually handled.",
+          "Add a genuine point of view: what you'd honestly tell a friend, not just neutral, safe, generic advice.",
+        ],
+      },
+      {
+        condition: "You know the content is thin but don't have time to rewrite everything",
+        action: "prioritise your highest-value pages first, and use AI as a drafting assistant, not a replacement for your knowledge.",
+        steps: [
+          "Pick your 3-5 most important pages first — the ones most likely to be searched or asked about.",
+          "Talk through what you genuinely know about the topic, or write rough notes, then ask ChatGPT or Claude to turn those specific notes into a well-structured page — this keeps the substance genuinely yours rather than generic AI output.",
+          "Read the result and correct anything that reads generically or isn't quite right before publishing.",
+        ],
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
       },
     ],
     cadence: "Ongoing — competitors add content too, and AI's assessment of what counts as \"comprehensive\" shifts as the overall bar rises.",
@@ -455,8 +632,32 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Once you've found the gaps",
-        action: "build content around the genuine gaps this research reveals, prioritising questions that shift with the market — interest rates, local legislation, seasonal demand.",
+        condition: "You've found gaps in what you cover",
+        action: "build content specifically around those gaps, prioritising by how likely and how valuable each question is.",
+        steps: [
+          "Rank the gaps by how often you'd realistically expect someone to ask them, and how close they are to an actual decision to buy, sell, or let.",
+          "Write a dedicated page or section directly answering each of your top gaps, using the same answer-ready structure covered earlier in this guide.",
+        ],
+      },
+      {
+        condition: "The gaps shift with the market",
+        action: "keep a live list rather than treating this as a one-off exercise.",
+        steps: [
+          "Keep a running document of question ideas as they come up — from client conversations, forum browsing, or re-running the AI research prompt.",
+          "Review it every few months and write new content for whatever's accumulated, prioritising questions that shift with the market — interest rates, local legislation, seasonal demand.",
+        ],
+      },
+      {
+        condition: "You want the fastest route from question to published page",
+        action: "let AI draft directly from the question, then edit for accuracy.",
+        steps: [
+          "Take one specific question from your list and ask ChatGPT or Claude to draft a direct, specific answer as if written by a knowledgeable local agent.",
+          "Rewrite anything generic with your own real numbers and local knowledge before publishing — never publish an AI draft about your own market unchecked.",
+        ],
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
       },
     ],
     cadence: "What people ask shifts with the market — worth refreshing this research every few months, not treating it as a one-time list.",
@@ -491,9 +692,28 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Missing, or not correctly attributed",
-        action:
-          "add this markup, correctly attributed back to the platform the reviews actually came from — this connects directly to the review-generation work covered in the Review Management guide.",
+        condition: "Missing entirely",
+        action: "add AggregateRating schema, correctly attributed to a genuine third-party source.",
+        steps: [
+          "Ask ChatGPT or Claude to generate AggregateRating JSON-LD schema using your real review score and count from Google or Trustpilot.",
+          "Add it to your homepage (or wherever your reviews are most prominently featured) and re-run the Rich Results Test to confirm it validates.",
+        ],
+        links: [
+          { label: "ChatGPT", href: "https://chatgpt.com" },
+          { label: "Claude", href: "https://claude.ai" },
+        ],
+      },
+      {
+        condition: "It exists but isn't correctly attributed",
+        action: "fix the source reference so it points to a genuine third party, not something that reads as self-published.",
+        steps: [
+          "Check the schema's source reference actually names Google, Trustpilot, or wherever the reviews genuinely came from.",
+          "Correct it if it's missing or generic, since both AI and search engines discount ratings that don't trace back to a real platform.",
+        ],
+      },
+      {
+        condition: "Your score is solid but review count is low",
+        action: "this isn't a schema problem, it's a volume problem — the review-generation approaches from the Reviews lesson in the SEO guide feed directly into this one.",
       },
     ],
     cadence: "Your real score changes constantly as new reviews come in — this needs syncing monthly, or it quietly goes stale and AI works from an outdated number.",
@@ -531,9 +751,40 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Genuine mentions are thin",
-        action:
-          "pursue genuine coverage — the same digital PR and community engagement approaches covered elsewhere in this guide, since a mention is what you're actually after here, a link is a bonus on top.",
+        condition: "Local news and press",
+        action: "the same route as traditional backlinks, but here the mention itself is the win, whether or not it includes a link.",
+        steps: [
+          "Find local journalists covering property or business on your regional news site.",
+          "Offer a short, genuinely useful comment on a current local story — average sold prices, a market shift you're seeing.",
+          "Being named as the source is what matters here — a link is a bonus, not the requirement.",
+        ],
+      },
+      {
+        condition: "Original local data",
+        action: "publish something genuinely citable, so other sites and, increasingly, AI tools reference you by name as the source.",
+        steps: [
+          "Pull free sold-price data from the Land Registry for your area.",
+          "Turn it into a simple, clearly-titled report — average price, price change, days on market — with your business name on it as the source.",
+          "Share it directly with local news sites and community groups.",
+        ],
+        links: [{ label: "Land Registry price data", href: "https://www.gov.uk/search-house-prices" }],
+      },
+      {
+        condition: "Community sponsorship and partnerships",
+        action: "sponsoring a local team or partnering with complementary local businesses tends to earn a genuine name-check on their own site.",
+        steps: [
+          "Sponsor a local sports team, school event, or charity, and ask specifically to be named (not just logo'd) on their site.",
+          "Ask genuine local partners — mortgage brokers, solicitors, removal companies — to mention you by name where relevant, and do the same for them.",
+        ],
+      },
+      {
+        condition: "Directories and associations",
+        action: "a properly completed listing is a guaranteed, easy mention.",
+        steps: [
+          "List your business fully and accurately on your local Chamber of Commerce, Propertymark, or relevant business association directory.",
+          "Make sure your business name is spelled identically everywhere — inconsistent naming splits your mentions instead of consolidating them.",
+        ],
+        links: [{ label: "Propertymark", href: "https://www.propertymark.co.uk" }],
       },
     ],
     cadence: "Ongoing — a handful of mentions doesn't sustain visibility, this needs to keep building.",
@@ -567,8 +818,29 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Genuine participation",
-        action: "answer real questions genuinely, over time — never spam links, this only works with authentic participation.",
+        condition: "You haven't started participating yet",
+        action: "start small, genuine, and consistent — this is a long game, not a campaign.",
+        steps: [
+          "Create a genuine Reddit account under your own name or business name, with a real profile, not an anonymous throwaway.",
+          "Find 2-3 relevant subreddits or forums for your town or region and read for a week before posting anything, to understand the tone.",
+          "Start answering real questions genuinely and helpfully, without mentioning your business unless it's directly relevant and adds value — never spam links.",
+        ],
+      },
+      {
+        condition: "Something's already being said about you, good or bad",
+        action: "respond like a real person would, not like a business account issuing a statement.",
+        steps: [
+          "If it's positive, a brief, genuine thank-you is enough — don't oversell it.",
+          "If it's negative or inaccurate, respond honestly and specifically, correcting the facts without being defensive — a reasonable, human reply often does more good than the original complaint did harm.",
+        ],
+      },
+      {
+        condition: "You want to build a stronger long-term presence",
+        action: "consistency compounds here in a way a single good post never will.",
+        steps: [
+          "Set aside a fixed, small amount of time each week (even 15-20 minutes) specifically for genuine forum participation.",
+          "Track which communities you're active in and revisit them regularly, rather than posting once and disappearing.",
+        ],
       },
     ],
     cadence: "Genuinely ongoing — sustained participation over months is what this actually takes, not a single post.",
@@ -602,7 +874,33 @@ export const lessons: Lesson[] = [
         ],
       },
     ],
-    fixBranches: [{ condition: "Approaching a journalist", action: "email directly, offering to be an ongoing source." }],
+    fixBranches: [
+      {
+        condition: "Approaching a journalist for the first time",
+        action: "make it easy for them to say yes.",
+        steps: [
+          "Email directly with a specific, useful offer — a genuine local statistic, a market opinion tied to a story they're already covering, not a generic \"we'd love to be featured\" pitch.",
+          "Keep it short: who you are, the specific insight you're offering, and that you're happy to be quoted or interviewed.",
+          "Offer to be an ongoing source for future stories, not just a one-off.",
+        ],
+      },
+      {
+        condition: "You don't have an existing relationship with any local press",
+        action: "build one from a real news hook, not a cold introduction.",
+        steps: [
+          "Watch for local stories about house prices, development, or the property market, and reach out with a specific, relevant comment while the story is still live.",
+          "A useful, well-timed comment on someone else's story is a much easier way in than pitching your own story cold.",
+        ],
+      },
+      {
+        condition: "You want to generate your own story, not just comment on others",
+        action: "original local data (the same report covered in the Backlinks & Branded Mentions item) gives a journalist something genuinely new to write about.",
+        steps: [
+          "Package a piece of original local data or a clear, quotable market opinion as a short press release.",
+          "Send it directly to the same local journalists, framed as new information rather than a request for coverage.",
+        ],
+      },
+    ],
     cadence: "Ongoing — one mention fades, this compounds through a sustained relationship.",
     cadenceBadge: "Ongoing",
     doneWithYou: "we identify journalists and draft your outreach.",
@@ -636,8 +934,32 @@ export const lessons: Lesson[] = [
       },
     ],
     fixBranches: [
-      { condition: "No Knowledge Panel, or it's wrong", action: "claim and correct it where eligible." },
-      { condition: "Companies House or LinkedIn don't match", action: "update whichever is out of sync so all three tell the same story." },
+      {
+        condition: "No Knowledge Panel appears at all",
+        action: "these are algorithmically generated, so there's no direct \"apply\" button — but strengthening the underlying signals makes one more likely to appear.",
+        steps: [
+          "Make sure you have a complete, verified Google Business Profile, since this is one of the strongest inputs into a Knowledge Panel appearing.",
+          "Ensure your business is consistently named, addressed, and described the same way across Google Business Profile, your website, Companies House, and LinkedIn.",
+          "Add or confirm your Organization schema markup, since this directly feeds Google's entity understanding.",
+        ],
+      },
+      {
+        condition: "A Knowledge Panel exists but the details are wrong",
+        action: "claim it and submit a correction directly.",
+        steps: [
+          "Search your business name and look for a \"Claim this knowledge panel\" or \"Suggest an edit\" option.",
+          "Submit the correct details and allow some time for the change to be reviewed and applied.",
+        ],
+      },
+      {
+        condition: "Companies House or LinkedIn don't match your other details",
+        action: "update whichever is out of sync so every source tells the same story.",
+        steps: [
+          "Update your Companies House registered details if they're outdated (registered office address changes are free to file).",
+          "Update your LinkedIn company page so name, address, and phone number match exactly, character for character, with your website and Google Business Profile.",
+        ],
+        links: [{ label: "Companies House", href: "https://find-and-update.company-information.service.gov.uk" }],
+      },
     ],
     cadence: "Worth checking quarterly, since these sources can drift out of sync as your business changes.",
     cadenceBadge: "~10 min/quarter",
@@ -728,8 +1050,17 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Once you know where you stand",
-        action: "there's no direct fix here — use what you've found to prioritise the other items in this guide where you're actually losing ground.",
+        condition: "You're never mentioned for any of your key questions",
+        action: "this points to a fundamental visibility gap — go back through the Technical Foundations items first (crawler access, schema, server-side rendering), since these are the prerequisites for being cited at all.",
+      },
+      {
+        condition: "You're mentioned sometimes, but inconsistently",
+        action: "this usually means your underlying signals (content, mentions, entity clarity) are present but not yet strong enough to be a reliable pick — focus on strengthening the On-Page & Content and Off-Site & Authority items.",
+      },
+      {
+        condition: "A specific competitor is consistently named instead of you",
+        action: "use the Finding a Competitor's AI Visibility Gaps item later in this guide to work out exactly why, and prioritise accordingly.",
+        links: [{ label: "Finding a Competitor's AI Visibility Gaps", href: "/geocourse/competitor-ai-visibility-gaps" }],
       },
     ],
     cadence: "Worth checking monthly, tracking whether your position is improving, holding steady, or slipping.",
@@ -761,8 +1092,30 @@ export const lessons: Lesson[] = [
       },
     ],
     fixBranches: [
-      { condition: "No way to ask directly", action: "add \"how did you hear about us?\" to every enquiry, specifically including an AI option." },
-      { condition: "Want to go further", action: "where technically detectable, track referral traffic from AI platforms in your analytics." },
+      {
+        condition: "No way to ask directly yet",
+        action: "add a simple, specific question to your enquiry process.",
+        steps: [
+          "Add \"how did you hear about us?\" to every enquiry form, phone script, and in-person conversation.",
+          "Include \"ChatGPT / AI tool\" as an explicit option alongside Google, referral, and social media, not just an \"other\" box people skip.",
+        ],
+      },
+      {
+        condition: "You want more precise tracking than a self-reported answer",
+        action: "track what's technically detectable alongside what people tell you.",
+        steps: [
+          "Check your website analytics for referral traffic from sources like chat.openai.com or perplexity.ai — some AI tools do pass a referral link when someone clicks through.",
+          "Treat this as a partial picture, not a complete one — a lot of AI-driven enquiries happen by someone remembering your name and searching or calling directly, with no trackable click at all.",
+        ],
+      },
+      {
+        condition: "You're getting enquiries but can't tell if AI visibility is actually driving any of them",
+        action: "combine the two approaches above over a few months rather than expecting one enquiry to give you a clear answer.",
+        steps: [
+          "Review your \"how did you hear about us\" answers monthly alongside any AI-referral traffic you can detect.",
+          "Look for a trend over months, not a verdict from any single enquiry.",
+        ],
+      },
     ],
     cadence: "Ongoing — this data only becomes useful tracked consistently over months.",
     cadenceBadge: "Ongoing",
@@ -795,9 +1148,28 @@ export const lessons: Lesson[] = [
     ],
     fixBranches: [
       {
-        condition: "Something's wrong",
-        action:
-          "the fix is usually improving the underlying accurate signals (schema, NAP consistency, Knowledge Panel) rather than any direct \"correction\" mechanism — AI tools don't currently offer a simple way to flag and fix an error the way you might report one to Google directly.",
+        condition: "The error is a fact your own schema or profiles control (hours, address, phone, services)",
+        action: "fix it at the source, since AI tools re-derive these facts from your actual data over time — there's no separate \"tell the AI\" step.",
+        steps: [
+          "Correct the wrong detail everywhere it appears — your website, schema markup, Google Business Profile, and any other listed profile.",
+          "Recheck the same question with the same AI tools again in a few weeks, since AI systems don't update instantly when a source changes.",
+        ],
+      },
+      {
+        condition: "The error is a more general misconception (a service you no longer offer, an outdated specialism)",
+        action: "actively publish the correct, current information so there's a strong, unambiguous signal for AI to pick up instead.",
+        steps: [
+          "Write or update a page that clearly and explicitly states the current, correct information, rather than assuming it's implied elsewhere on your site.",
+          "Make sure this page is easy for both search engines and AI crawlers to find — linked from your homepage or main navigation, not buried.",
+        ],
+      },
+      {
+        condition: "Something clearly damaging or seriously inaccurate keeps appearing",
+        action: "for a serious or persistent issue, report it directly to the AI company as well as fixing the underlying source.",
+        steps: [
+          "Most major AI tools (ChatGPT, Gemini, Copilot) have a feedback or \"report an issue\" option on individual responses — use it to flag the specific inaccuracy.",
+          "Don't rely on this alone — it's a slow, uncertain channel, not a guaranteed fix, so still correct the underlying source signals in parallel.",
+        ],
       },
     ],
     cadence: "Worth checking on a regular cycle, since there's no automatic alert for this the way there is for other issues.",
@@ -818,7 +1190,29 @@ export const lessons: Lesson[] = [
     whyAIBadge: "Not a ranking factor itself — a targeting tool for everything else in this guide",
     diagnoseSteps: ["Run the same AI visibility checks from the AI Visibility Tracking item, but specifically for your closest local competitor, and compare."],
     diagnoseLink: { label: "AI Visibility Tracking", href: "/geocourse/ai-visibility-tracking" },
-    fixBranches: [{ condition: "Once you've found the gaps", action: "prioritise closing the gaps where they're currently being named and you aren't." }],
+    fixBranches: [
+      {
+        condition: "A competitor is named for a question you aren't",
+        action: "work out specifically what they have that you don't, then close that gap.",
+        steps: [
+          "Check whether they simply have more complete, specific content answering that exact question — if so, write your own, more specific and locally detailed version.",
+          "Check whether they have stronger entity signals (more consistent mentions, reviews, a Knowledge Panel) — if so, prioritise the Off-Site & Authority and Entity & Local Presence items in this guide.",
+        ],
+      },
+      {
+        condition: "Neither of you is named for a question that matters",
+        action: "this is a genuine open opportunity — whoever publishes a strong, direct answer first has a real early-mover advantage.",
+        steps: ["Write clear, answer-ready content targeting that specific question before your competitor does."],
+      },
+      {
+        condition: "You want to run this comparison on an ongoing basis",
+        action: "keep a simple running record rather than treating it as a one-time check.",
+        steps: [
+          "Keep a short list of your 5-10 most important questions and note quarterly who gets named for each.",
+          "Track whether your own position is improving or a competitor is pulling ahead over time.",
+        ],
+      },
+    ],
     cadence: "Quarterly — competitor visibility shifts as they (or you) improve.",
     cadenceBadge: "Quarterly",
     doneWithYou: "we run this comparison and hand you the priority list.",
@@ -852,7 +1246,22 @@ export const lessons: Lesson[] = [
       },
     ],
     fixBranches: [
-      { condition: "A new platform or feature emerges", action: "test it and implement for it as it emerges, rather than waiting until it's already mainstream and competitive." },
+      {
+        condition: "A new AI search feature or platform emerges",
+        action: "claim and set up your presence on it immediately, rather than waiting to see if it takes off.",
+        steps: [
+          "As soon as a new AI search tool or feature launches, check whether it has a claimable business profile or listing, and set it up properly with complete, accurate details.",
+          "Apply the same fundamentals covered in this guide — accurate NAP, schema, genuine content — since these transfer to any new platform.",
+        ],
+      },
+      {
+        condition: "You're not sure whether a new platform is worth the time yet",
+        action: "a quick, low-cost setup is rarely wasted, even if the platform doesn't take off.",
+        steps: [
+          "If setup takes under 30 minutes and costs nothing, do it anyway — the downside of being wrong is minimal, and the upside of being right and early is significant.",
+          "Reserve deeper investment (dedicated content, ongoing management) for platforms that show genuine, sustained traction.",
+        ],
+      },
     ],
     cadence: "Ongoing awareness, not a fixed schedule.",
     cadenceBadge: "Ongoing awareness",
