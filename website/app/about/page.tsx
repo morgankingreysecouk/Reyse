@@ -122,28 +122,28 @@ export default function AboutPage() {
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
       <div className="mx-auto max-w-5xl">
-        <div className="max-w-2xl">
+        <div className="mx-auto max-w-2xl text-center">
           <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
             About Reyse
           </p>
           <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
             We couldn&rsquo;t find our own agency. So we built the fix.
           </h1>
-          <p className="mt-5 text-lg text-foreground/70">
+          <p className="mx-auto mt-5 max-w-xl text-lg text-foreground/70">
             Reyse started as the answer to one lettings agency&rsquo;s invisibility
             problem — mine. It&rsquo;s now built for every estate and letting agent
             with the same blind spot.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 border-y border-border py-10 sm:grid-cols-3 sm:gap-8">
+        <div className="mt-16 grid grid-cols-1 gap-4 border-y border-border py-10 text-center sm:grid-cols-3 sm:gap-8">
           {stats.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 100}>
               <div>
                 <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
                   {stat.value}
                 </p>
-                <p className="mt-2 text-sm text-foreground/60">{stat.label}</p>
+                <p className="mx-auto mt-2 max-w-[14rem] text-sm text-foreground/60">{stat.label}</p>
               </div>
             </Reveal>
           ))}
@@ -184,16 +184,26 @@ export default function AboutPage() {
                     </div>
                   </div>
                 </Reveal>
-
-                {i === 1 ? (
-                  <ScrollTextReveal
-                    text="The reputation wasn’t really the problem — the invisibility was."
-                    className="mx-auto mt-20 max-w-3xl text-center font-heading text-3xl leading-[1.3] tracking-tight sm:text-4xl"
-                  />
-                ) : null}
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="mt-24 border-t border-border pt-16">
+          <Reveal>
+            <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+              <div className="w-40">
+                <PhotoPlaceholder label="Morgan King, Founder" note="Photo placeholder" />
+              </div>
+              <ScrollTextReveal
+                text="The reputation wasn’t really the problem — the invisibility was."
+                className="mt-8 font-heading text-3xl leading-[1.3] tracking-tight sm:text-4xl"
+              />
+              <p className="mt-6 text-sm font-medium text-foreground/60">
+                — Morgan King, Founder of Reyse
+              </p>
+            </div>
+          </Reveal>
         </div>
 
         <div className="mt-24 border-t border-border pt-14">
