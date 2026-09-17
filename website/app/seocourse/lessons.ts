@@ -18,7 +18,16 @@ export type Lesson = {
   /** Free-form closing content (no diagnose/fix) — used for the honest-limits
    *  and course-completion pages. An empty heading continues straight on
    *  from whatIsIt rather than opening a new divided section. */
-  closingSections?: { heading: string; paragraphs: string[]; cta?: { label: string; href: string } }[];
+  closingSections?: {
+    heading: string;
+    paragraphs: string[];
+    cta?: { label: string; href: string };
+    chart?: "priority-breakdown";
+  }[];
+  /** Best-estimate share of overall "getting found" impact this item carries,
+   *  out of 100 across every actionable lesson — feeds the priority chart on
+   *  the course-complete page. Directional, not a precise measurement. */
+  impactPercent?: number;
   demoComponent?:
     | "load-speed"
     | "mobile-responsive"
@@ -59,6 +68,7 @@ export type Lesson = {
 export const lessons: Lesson[] = [
   {
     slug: "core-web-vitals",
+    impactPercent: 6,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 1,
@@ -138,6 +148,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "mobile-usability",
+    impactPercent: 6,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 2,
@@ -200,6 +211,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "https-security",
+    impactPercent: 3,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 3,
@@ -259,6 +271,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "site-architecture",
+    impactPercent: 4,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 4,
@@ -318,6 +331,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "xml-sitemap",
+    impactPercent: 1,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 5,
@@ -386,6 +400,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "robots-txt",
+    impactPercent: 1,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 6,
@@ -447,6 +462,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "duplicate-content-redirects",
+    impactPercent: 3,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 7,
@@ -498,6 +514,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "canonicalization",
+    impactPercent: 2,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 8,
@@ -561,6 +578,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "server-uptime",
+    impactPercent: 1,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 9,
@@ -617,6 +635,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "no-intrusive-interstitials",
+    impactPercent: 1,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 10,
@@ -666,6 +685,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "schema-markup",
+    impactPercent: 1.5,
     category: "Technical Foundations",
     categoryIndex: 1,
     itemIndex: 11,
@@ -735,6 +755,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "syndicated-listing-duplication",
+    impactPercent: 2,
     category: "Real Estate-Specific Risk",
     categoryIndex: 2,
     itemIndex: 12,
@@ -786,6 +807,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "keyword-research",
+    impactPercent: 6,
     category: "On-Page & Content",
     categoryIndex: 3,
     itemIndex: 13,
@@ -840,6 +862,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "titles-headers-meta-descriptions",
+    impactPercent: 4,
     category: "On-Page & Content",
     categoryIndex: 3,
     itemIndex: 14,
@@ -892,6 +915,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "original-content",
+    impactPercent: 5,
     category: "On-Page & Content",
     categoryIndex: 3,
     itemIndex: 15,
@@ -940,6 +964,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "comprehensive-topic-depth",
+    impactPercent: 5,
     category: "On-Page & Content",
     categoryIndex: 3,
     itemIndex: 16,
@@ -1015,6 +1040,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "clear-structure",
+    impactPercent: 2,
     category: "On-Page & Content",
     categoryIndex: 3,
     itemIndex: 17,
@@ -1062,6 +1088,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "near-me-local-wording",
+    impactPercent: 3,
     category: "On-Page & Content",
     categoryIndex: 3,
     itemIndex: 18,
@@ -1108,6 +1135,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "phone-number-meta-descriptions",
+    impactPercent: 0.75,
     category: "On-Page & Content",
     categoryIndex: 3,
     itemIndex: 20,
@@ -1153,6 +1181,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "backlinks",
+    impactPercent: 7.5,
     category: "Off-Site & Authority",
     categoryIndex: 4,
     itemIndex: 21,
@@ -1234,6 +1263,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "reddit-forum-presence",
+    impactPercent: 4,
     category: "Off-Site & Authority",
     categoryIndex: 4,
     itemIndex: 23,
@@ -1288,6 +1318,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "nap-consistency",
+    impactPercent: 5,
     category: "Off-Site & Authority",
     categoryIndex: 4,
     itemIndex: 24,
@@ -1349,6 +1380,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "google-business-profile",
+    impactPercent: 7.5,
     category: "Local & Business Profile",
     categoryIndex: 5,
     itemIndex: 25,
@@ -1405,6 +1437,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "profile-activity",
+    impactPercent: 3,
     category: "Local & Business Profile",
     categoryIndex: 5,
     itemIndex: 26,
@@ -1457,6 +1490,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "multi-platform-presence",
+    impactPercent: 2,
     category: "Local & Business Profile",
     categoryIndex: 5,
     itemIndex: 27,
@@ -1511,6 +1545,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "agent-bios",
+    impactPercent: 3,
     category: "Trust & Authority (E-E-A-T)",
     categoryIndex: 6,
     itemIndex: 28,
@@ -1560,6 +1595,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "reviews",
+    impactPercent: 8,
     category: "Trust & Authority (E-E-A-T)",
     categoryIndex: 6,
     itemIndex: 30,
@@ -1611,6 +1647,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "analytics-enquiry-tracking",
+    impactPercent: 1,
     category: "Measurement",
     categoryIndex: 7,
     itemIndex: 31,
@@ -1666,6 +1703,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "competitor-gaps",
+    impactPercent: 1,
     category: "Playing It Smart",
     categoryIndex: 8,
     itemIndex: 32,
@@ -1714,6 +1752,7 @@ export const lessons: Lesson[] = [
   },
   {
     slug: "being-early-new-platforms",
+    impactPercent: 0.75,
     category: "Playing It Smart",
     categoryIndex: 8,
     itemIndex: 33,
@@ -1805,6 +1844,13 @@ export const lessons: Lesson[] = [
           "Add it up, and the fixed, timed checks in this guide come to roughly 3–4 hours a month — under an hour a week. On top of that sit a handful of weekly habits, like posting and replying to reviews, that don't have a fixed number of minutes but are worth building into the same routine. I understand that can feel like a lot to hold in your head all at once, so I've put together a schedule to help.",
         ],
         cta: { label: "Download the schedule ↓", href: "/seocourse/schedule" },
+      },
+      {
+        heading: "What Actually Moves the Needle",
+        paragraphs: [
+          "Not everything in this guide carries the same weight. Some of it is foundational — skip it and nothing else works. Some of it is a genuine ranking factor Google measures directly. And some of it, honestly, is a small polish that matters far less than it feels like it should. If you're short on time and need to know where to start, start at the top of this list.",
+        ],
+        chart: "priority-breakdown",
       },
       {
         heading: "A Word About Our Services",

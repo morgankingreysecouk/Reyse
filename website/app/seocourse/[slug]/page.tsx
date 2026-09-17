@@ -15,6 +15,7 @@ import TitleMetaDemo from "../../components/TitleMetaDemo";
 import TopicDepthDemo from "../../components/TopicDepthDemo";
 import ClearStructureDemo from "../../components/ClearStructureDemo";
 import LocalWordingDemo from "../../components/LocalWordingDemo";
+import PriorityBreakdownChart from "../../components/PriorityBreakdownChart";
 import LessonJumpSelect from "../../components/LessonJumpSelect";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
@@ -197,6 +198,11 @@ export default async function LessonPage({
                       >
                         {section.cta.label}
                       </Link>
+                    </Reveal>
+                  )}
+                  {section.chart === "priority-breakdown" && (
+                    <Reveal delay={section.paragraphs.length * 60}>
+                      <PriorityBreakdownChart />
                     </Reveal>
                   )}
                 </div>
