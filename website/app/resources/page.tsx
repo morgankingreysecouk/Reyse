@@ -2,7 +2,7 @@ import Link from "next/link";
 import ChecklistTimeline from "../components/ChecklistTimeline";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
-import { checklistItems } from "../seocourse/data";
+import { checklistItems, checklistCategoryBlurbs, checklistTagStyles, checklistTagLabels } from "../seocourse/data";
 
 export const metadata = pageMetadata({
   title: "The Free SEO Course",
@@ -50,7 +50,12 @@ export default function ResourcesPage() {
       </div>
 
       <div className="mx-auto max-w-3xl">
-        <ChecklistTimeline items={checklistItems} />
+        <ChecklistTimeline
+          items={checklistItems}
+          categoryBlurbs={checklistCategoryBlurbs}
+          tagStyles={checklistTagStyles}
+          tagLabels={checklistTagLabels}
+        />
       </div>
 
       <div className="mx-auto max-w-2xl">

@@ -1,32 +1,30 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  checklistCategoryBlurbs,
-  type ChecklistCategory,
-  type ChecklistItem,
-} from "../seocourse/data";
 
-const tagStyles: Record<ChecklistItem["type"], string> = {
-  direct: "bg-accent/15 text-accent-text",
-  indirect: "bg-ink/10 text-foreground/70",
-  prerequisite: "bg-foreground/10 text-foreground/60",
-};
-
-const tagLabels: Record<ChecklistItem["type"], string> = {
-  direct: "Direct",
-  indirect: "Indirect",
-  prerequisite: "Prerequisite",
-};
+export type ChecklistItem = { item: string; category: string; type: string };
 
 // Left card stays pinned and tracks whichever category is centred in the
 // viewport (same technique as IncludedItemsScroll), while the checklist
 // itself scrolls past as a connected timeline — each item's dot fills in
 // permanently the first time it's scrolled past, same one-way "seen once"
-// behaviour as Reveal elsewhere in the course.
-export default function ChecklistTimeline({ items }: { items: ChecklistItem[] }) {
+// behaviour as Reveal elsewhere in the course. Category blurbs and tag
+// styling are passed in rather than imported, so this one component serves
+// both the SEO and GEO checklists without either course's data shape
+// leaking into the other's.
+export default function ChecklistTimeline({
+  items,
+  categoryBlurbs,
+  tagStyles,
+  tagLabels,
+}: {
+  items: ChecklistItem[];
+  categoryBlurbs: Record<string, string>;
+  tagStyles: Record<string, string>;
+  tagLabels: Record<string, string>;
+}) {
   const categories = useMemo(() => {
-    const seen: ChecklistCategory[] = [];
+    const seen: string[] = [];
     for (const item of items) {
       if (!seen.includes(item.category)) seen.push(item.category);
     }
@@ -81,7 +79,7 @@ export default function ChecklistTimeline({ items }: { items: ChecklistItem[] })
           <p className="mt-4 font-heading text-xl leading-[1.15] tracking-tight">
             {categories[activeCategory]}
           </p>
-          <p className="mt-2 text-xs text-foreground/65">{checklistCategoryBlurbs[categories[activeCategory]]}</p>
+          <p className="mt-2 text-xs text-foreground/65">{categoryBlurbs[categories[activeCategory]]}</p>
 
           <div className="mt-6 flex gap-1.5" aria-hidden>
             {categories.map((cat, i) => (

@@ -67,8 +67,8 @@ export default async function GeoLessonPage({
     <main className="flex-1 px-6 pb-24 pt-40">
       <div className="mx-auto max-w-2xl">
         <div className="flex items-center justify-between">
-          <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
-            ← Back to course info
+          <Link href="/geocourse" className="text-sm text-foreground/60 hover:text-foreground">
+            ← Back to guide info
           </Link>
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-foreground/60">

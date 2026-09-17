@@ -28,6 +28,18 @@ export type ChecklistItem = {
   type: "direct" | "indirect" | "prerequisite";
 };
 
+export const checklistTagStyles: Record<ChecklistItem["type"], string> = {
+  direct: "bg-accent/15 text-accent-text",
+  indirect: "bg-ink/10 text-foreground/70",
+  prerequisite: "bg-foreground/10 text-foreground/60",
+};
+
+export const checklistTagLabels: Record<ChecklistItem["type"], string> = {
+  direct: "Direct",
+  indirect: "Indirect",
+  prerequisite: "Prerequisite",
+};
+
 export const checklistItems: ChecklistItem[] = [
   // Technical Foundations
   { item: "Optimise Core Web Vitals / page load speed", category: "Technical Foundations", type: "direct" },

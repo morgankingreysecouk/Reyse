@@ -36,36 +36,6 @@ export type Lesson = {
 
 export const lessons: Lesson[] = [
   {
-    slug: "before-you-start",
-    category: "Introduction",
-    categoryIndex: 0,
-    itemIndex: 0,
-    title: "Before You Start",
-    whatIsIt:
-      "If you've been through the SEO guide already, you'll know my story — turning around a failing branch by discovering we simply weren't visible online. What I didn't fully appreciate at the time was that fixing our Google ranking was only half the fight.",
-    closingSections: [
-      {
-        heading: "",
-        paragraphs: [
-          "A while after we'd started climbing Google's results properly, I tried something else: I asked ChatGPT, Copilot, and Gemini directly — \"who's the best estate agent in my area?\" We'd worked hard to be visible on Google. We were nowhere on any of them.",
-          "That was the moment I realised this isn't one battle, it's two. Ranking well on Google doesn't automatically mean AI tools recommend you — they work differently, weigh different things, and increasingly, that's where a growing number of buyers, sellers, and landlords are starting their search instead of typing into Google at all.",
-          "This guide covers that second battle: GEO, Generative Engine Optimisation — making sure ChatGPT, Gemini, Copilot, and Perplexity actually name you when someone asks who to trust.",
-          "Same honest approach as before: nothing in here is beyond what you can genuinely do yourself, and I'll tell you plainly where the evidence is solid and where it's still genuinely uncertain — this field is newer than traditional SEO, and anyone claiming total certainty about how AI models pick who to cite is overselling what's actually known.",
-          "And the same offer applies. This is free. If you get to the end and think \"I understand what I need to do, I just don't have the time to do it properly,\" that's what our Done-With-You and Done-For-You services are for — covered at the end.",
-        ],
-      },
-      {
-        heading: "What Is GEO, and Why Does It Actually Matter?",
-        paragraphs: [
-          "GEO stands for Generative Engine Optimisation — making sure AI tools like ChatGPT, Google's Gemini, Microsoft's Copilot, and Perplexity actually name your business when someone asks a question relevant to what you do.",
-          "This is genuinely different from a normal Google search. When someone searches Google the traditional way, they get a list of links and pick one themselves. When someone asks an AI tool the same question, the AI picks a small handful of businesses to name directly — often just one or two — and the person often never sees any other options at all. If you're not one of the names it picks, you're not \"ranked lower.\" You simply don't exist in that conversation.",
-          "Every item below is marked with how confident the underlying evidence actually is — confirmed (the AI companies themselves have stated this is a factor), strongly observed (independent research consistently shows the pattern, even without an official confirmation), or emerging and unproven (a genuine, reasonable bet, but not yet backed by solid evidence). Worth knowing the difference before you decide where to spend your time.",
-          "The end goal: being the name AI tools actually say, not just a website that technically exists somewhere in their training data.",
-        ],
-      },
-    ],
-  },
-  {
     slug: "ai-crawler-access",
     category: "Technical Foundations",
     categoryIndex: 1,
