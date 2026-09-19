@@ -10,6 +10,9 @@ export default function FreeForeverBanner() {
       <div className="mx-auto max-w-5xl">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
           <div className="text-center lg:text-left">
+            <p className="mb-3 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium uppercase tracking-wide text-ink-foreground/70">
+              The Founding Five
+            </p>
             <h2 className="font-heading text-3xl leading-[1.15] tracking-tight sm:text-5xl">
               The first {TOTAL_SPOTS} clients pay nothing.
             </h2>
@@ -35,11 +38,8 @@ export default function FreeForeverBanner() {
           </div>
 
           <div className="rounded-3xl border border-ink-foreground/15 bg-ink-foreground/5 p-5 sm:p-6">
-            <div className="flex items-center justify-between text-xs font-medium text-ink-foreground/60">
+            <div className="text-xs font-medium text-ink-foreground/60">
               <span>{SPOTS_REMAINING} of {TOTAL_SPOTS} counties still open</span>
-              <span className="font-heading text-sm tracking-tight text-ink-foreground">
-                <CountdownTimer />
-              </span>
             </div>
             <div className="mt-4 flex flex-col gap-2">
               {spots.map((county, i) => (

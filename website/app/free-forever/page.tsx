@@ -54,7 +54,7 @@ export default function FreeForeverPage() {
     <main className="flex-1 px-6 pb-24 pt-40">
       <div className="mx-auto max-w-3xl">
         <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
-          Limited offer
+          The Founding Five
         </p>
         <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
           The first {TOTAL_SPOTS} clients pay nothing.

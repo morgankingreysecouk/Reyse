@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { products } from "../products/data";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
+import VennMark from "./VennMark";
 import {
   SearchIcon,
   SparkIcon,
@@ -163,7 +164,8 @@ export default function Header() {
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
+        <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
+          <VennMark className="h-6 w-6" />
           Reyse
         </Link>
         <div className="hidden items-center gap-8 text-sm text-foreground/80 lg:flex">
