@@ -22,19 +22,19 @@ export default function HeroSlideshow() {
           WebkitMaskImage: "radial-gradient(65% 65% at 50% 45%, black 40%, transparent 100%)",
         }}
       />
-      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-20 pt-32 text-center lg:pb-24 lg:pt-40">
+      <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-24 pt-40 text-center lg:pb-32 lg:pt-52">
         <h1 className="font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
           Get Found &amp; Stay Found
           <br className="hidden sm:block" />{" "}
           with <span className="text-accent-text">Reyse</span>.
         </h1>
-        <p className="mt-6 max-w-xl text-base text-foreground/70 sm:text-lg">
+        <p className="mt-7 max-w-xl text-base text-foreground/70 sm:text-lg">
           SEO to rank on Google, and GEO to get recommended by ChatGPT,
           Gemini, and Copilot — built specifically for estate and letting
           agents.
         </p>
 
-        <div className="mt-9 flex flex-wrap justify-center gap-4">
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
             href="/get-started"
             className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
