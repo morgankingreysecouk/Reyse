@@ -27,20 +27,22 @@ export default function Home() {
         {/* Products */}
         <section id="product" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              What we do
-            </h2>
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <p className="mt-3 max-w-2xl text-foreground/60">
-                Each one on its own, or{" "}
-                <Link href="/system" className="font-medium text-accent-text hover:underline">
-                  bundled together as one system
-                </Link>{" "}
-                — with a bonus stack only the full bundle unlocks.
-              </p>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
+                  Explore our solutions.
+                </h2>
+                <p className="mt-3 max-w-2xl text-foreground/60">
+                  Each one on its own, or{" "}
+                  <Link href="/system" className="font-medium text-accent-text hover:underline">
+                    bundled together as one system
+                  </Link>{" "}
+                  — with a bonus stack only the full bundle unlocks.
+                </p>
+              </div>
               <Link
                 href="/quiz"
-                className="mt-3 inline-flex shrink-0 items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium hover:border-foreground/30 hover:bg-panel"
+                className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium hover:border-foreground/30 hover:bg-panel"
               >
                 Not sure? Take the 60-second quiz
                 <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
