@@ -2,20 +2,12 @@ import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
 import { products } from "../products/data";
-import { resourcesBySlug } from "./data";
+import { resourceStatus } from "./data";
 
 export const metadata = pageMetadata({
   title: "Free Resources",
   description: "Free courses, videos, and downloads for estate and letting agents — one set per topic: SEO, GEO, reviews, market intelligence, and scale.",
 });
-
-function statusNote(slug: string) {
-  const r = resourcesBySlug[slug];
-  const count = r.videos.length + r.audiobooks.length + r.courses.length + r.downloads.length;
-  if (r.courses.length > 0) return "Free course available";
-  if (count === 0) return "Coming soon";
-  return `${count} resource${count === 1 ? "" : "s"} so far`;
-}
 
 export default function ResourcesHub() {
   return (
@@ -50,7 +42,7 @@ export default function ResourcesHub() {
                 </div>
                 <div className="mt-6 flex items-center justify-between">
                   <span className="text-xs font-medium text-foreground/50">
-                    {statusNote(product.slug)}
+                    {resourceStatus(product.slug)}
                   </span>
                   <span className="inline-flex items-center gap-1 text-sm font-medium text-accent-text opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100">
                     View

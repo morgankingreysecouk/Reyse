@@ -1,32 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
+import PhotoPlaceholder from "../components/PhotoPlaceholder";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Careers",
   description: "Reyse is early-stage and honest about what that means. No open roles right now — here's what joining early would actually look like.",
 });
-
-function PhotoPlaceholder({ label, note }: { label: string; note: string }) {
-  return (
-    <div className="flex aspect-square w-full flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-border bg-panel p-6 text-center">
-      <span
-        aria-hidden
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-background text-foreground/30"
-      >
-        <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <circle cx="12" cy="8.5" r="3.5" />
-          <path d="M4.5 20c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6" strokeLinecap="round" />
-        </svg>
-      </span>
-      <div>
-        <p className="text-sm font-medium text-foreground/60">{label}</p>
-        <p className="mt-1 text-xs text-foreground/65">{note}</p>
-      </div>
-    </div>
-  );
-}
 
 function CardIcon({ children }: { children: React.ReactNode }) {
   return (
@@ -100,6 +81,7 @@ export default function CareersPage() {
               <PhotoPlaceholder
                 label="Reyse, today"
                 note="Photo placeholder — there's a founder and a laptop, not much else yet."
+                aspect="aspect-square"
               />
             </div>
           </Reveal>
