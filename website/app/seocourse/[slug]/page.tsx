@@ -113,7 +113,7 @@ export default async function LessonPage({
     <main className="flex-1 px-6 pb-24 pt-40">
       <div className="mx-auto max-w-2xl">
         <div className="flex items-center justify-between">
-          <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
+          <Link href="/resources/seo" className="text-sm text-foreground/60 hover:text-foreground">
             ← Back to course info
           </Link>
           <div className="flex items-center gap-2">

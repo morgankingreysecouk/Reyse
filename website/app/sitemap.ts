@@ -32,6 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const resourceRoutes: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${BASE_URL}/resources/${product.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
   const industryRoutes: MetadataRoute.Sitemap = industries.map((industry) => ({
     url: `${BASE_URL}/industries/${industry.slug}`,
     changeFrequency: "monthly",
@@ -59,6 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...productRoutes,
+    ...resourceRoutes,
     ...industryRoutes,
     ...postRoutes,
     ...lessonRoutes,

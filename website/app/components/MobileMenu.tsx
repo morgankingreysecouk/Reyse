@@ -151,24 +151,17 @@ export default function MobileMenu() {
                     Resources
                   </Link>
                   <ul className="mt-4 flex flex-col gap-3 border-l border-border pl-4">
-                    <li>
-                      <Link
-                        href="/resources"
-                        onClick={close}
-                        className="text-base text-foreground/70 hover:text-foreground"
-                      >
-                        SEO — the free course
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/geocourse"
-                        onClick={close}
-                        className="text-base text-foreground/70 hover:text-foreground"
-                      >
-                        GEO — the free guide
-                      </Link>
-                    </li>
+                    {products.map((product) => (
+                      <li key={product.slug}>
+                        <Link
+                          href={`/resources/${product.slug}`}
+                          onClick={close}
+                          className="text-base text-foreground/70 hover:text-foreground"
+                        >
+                          {product.label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 

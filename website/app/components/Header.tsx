@@ -115,20 +115,12 @@ const companyColumns: MenuItem[][] = splitColumns(
 );
 
 const resourcesColumns: MenuItem[][] = splitColumns(
-  [
-    {
-      label: "SEO",
-      description: "Free course: exactly how to get found on Google, Bing, and Apple.",
-      href: "/resources",
-      icon: SearchIcon,
-    },
-    {
-      label: "GEO",
-      description: "Free guide: how AI tools like ChatGPT decide who to recommend.",
-      href: "/geocourse",
-      icon: SparkIcon,
-    },
-  ],
+  products.map((product) => ({
+    label: product.label,
+    description: `Free resources: ${product.tagline.toLowerCase()}`,
+    href: `/resources/${product.slug}`,
+    icon: productIcons[product.slug],
+  })),
   3,
 );
 

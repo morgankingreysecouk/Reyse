@@ -6,6 +6,7 @@ import FreeForeverBanner from "./components/FreeForeverBanner";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
 import ProductsGrid from "./components/ProductsGrid";
+import ResourcesSection from "./components/ResourcesSection";
 import Reveal from "./components/Reveal";
 import { industries } from "./industries/data";
 
@@ -22,6 +23,7 @@ export default function Home() {
     <main className="flex-1">
       <HeroSlideshow />
       <FreeForeverBanner />
+      <ResourcesSection />
 
       <>
         {/* Products */}

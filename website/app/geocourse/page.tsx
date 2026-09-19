@@ -73,7 +73,7 @@ export default function GeoCoursePage() {
             One note: this guide covers GEO — AI tools like ChatGPT
             recommending you directly. Traditional SEO (Google, Bing, Apple)
             overlaps heavily but has{" "}
-            <Link href="/resources" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+            <Link href="/resources/seo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
               its own guide
             </Link>
             .

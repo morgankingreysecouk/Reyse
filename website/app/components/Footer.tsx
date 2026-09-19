@@ -104,8 +104,11 @@ export default function Footer() {
           <FooterColumn
             title="Resources"
             links={[
-              { label: "The Free SEO Course", href: "/resources", emphasis: true },
-              { label: "Go straight to the course", href: "/seocourse" },
+              { label: "All free resources", href: "/resources", emphasis: true },
+              ...products.map((product) => ({
+                label: product.label,
+                href: `/resources/${product.slug}`,
+              })),
             ]}
           />
           <FooterColumn title="Company" links={companyLinks} />
