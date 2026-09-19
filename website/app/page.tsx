@@ -3,8 +3,10 @@ import ClosingCta from "./components/ClosingCta";
 import Faq from "./components/Faq";
 import FounderCredibility from "./components/FounderCredibility";
 import FreeForeverBanner from "./components/FreeForeverBanner";
+import GuaranteesPromo from "./components/GuaranteesPromo";
 import HeroSlideshow from "./components/HeroSlideshow";
 import HowItWorksScroll from "./components/HowItWorksScroll";
+import ResourcesPromo from "./components/ResourcesPromo";
 import Reveal from "./components/Reveal";
 import { industries } from "./industries/data";
 
@@ -21,6 +23,7 @@ export default function Home() {
     <main className="flex-1">
       <HeroSlideshow />
       <FreeForeverBanner />
+      <ResourcesPromo />
 
       <>
         {/* Moments this costs you */}
@@ -82,6 +85,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <GuaranteesPromo />
 
         {/* CTA */}
         <section id="contact" className="scroll-mt-20 border-t border-border">

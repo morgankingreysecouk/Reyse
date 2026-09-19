@@ -1,56 +1,83 @@
 import Link from "next/link";
 import ChecklistTimeline from "../components/ChecklistTimeline";
 import Reveal from "../components/Reveal";
+import { AudiobookIcon, DownloadIcon, ResourceCard, VideoIcon } from "../components/ResourceCards";
 import { pageMetadata } from "../lib/seo";
 import { checklistItems, checklistCategoryBlurbs, checklistTagStyles, checklistTagLabels } from "./data";
 import { lessons } from "./lessons";
+import { resourcesBySlug } from "../resources/data";
 
 export const metadata = pageMetadata({
   title: "The Free GEO Guide",
   description: "A free guide teaching estate and letting agents exactly how to get recommended by ChatGPT, Gemini, and Copilot — no cost, no catch.",
 });
 
+const { videos, audiobooks, downloads } = resourcesBySlug.geo;
+
 export default function GeoCoursePage() {
   return (
-    <main className="flex-1 px-6 pb-24 pt-40">
-      <div className="mx-auto max-w-2xl">
-        <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
-          Free Guide
-        </p>
-        <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-          The free GEO guide for estate &amp; letting agents.
-        </h1>
+    <main className="flex-1">
+      <div className="relative overflow-hidden border-b border-border px-6 pb-20 pt-40">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(45% 45% at 50% 20%, rgba(166,173,62,0.16), transparent 100%)",
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage: "radial-gradient(rgba(28,26,23,0.12) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage: "radial-gradient(65% 55% at 50% 25%, black 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(65% 55% at 50% 25%, black 40%, transparent 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-2xl">
+          <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
+            ← All resources
+          </Link>
+          <p className="mb-4 mt-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
+            Free course available
+          </p>
+          <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+            The free GEO guide for estate &amp; letting agents.
+          </h1>
 
-        <div className="mt-10 space-y-5 text-lg text-foreground/70">
-          <p>
-            GEO stands for Generative Engine Optimisation — making sure AI
-            tools like ChatGPT, Google&rsquo;s Gemini, Microsoft&rsquo;s
-            Copilot, and Perplexity actually name your business when someone
-            asks a question relevant to what you do.
-          </p>
-          <p>
-            This is genuinely different from a normal Google search. When
-            someone searches Google the traditional way, they get a list of
-            links and pick one themselves. When someone asks an AI tool the
-            same question, the AI picks a small handful of businesses to name
-            directly — often just one or two — and the person often never
-            sees any other options at all. If you&rsquo;re not one of the
-            names it picks, you&rsquo;re not &ldquo;ranked lower.&rdquo; You
-            simply don&rsquo;t exist in that conversation.
-          </p>
-          <p>
-            Every item below is marked with how confident the underlying
-            evidence actually is: <strong className="text-foreground">confirmed</strong> (the
-            AI companies themselves have stated this is a factor),{" "}
-            <strong className="text-foreground">strongly observed</strong> (independent
-            research consistently shows the pattern, even without an official
-            confirmation), <strong className="text-foreground">emerging</strong> (a
-            genuine, reasonable bet, not yet backed by solid evidence), or{" "}
-            <strong className="text-foreground">measurement</strong> (not a
-            ranking factor itself, but how you know the rest is working).
-            Watch the panel on the left as you scroll — it tracks exactly
-            which stage of the guide you&rsquo;re looking at.
-          </p>
+          <div className="mt-10 space-y-5 text-lg text-foreground/70">
+            <p>
+              GEO stands for Generative Engine Optimisation — making sure AI
+              tools like ChatGPT, Google&rsquo;s Gemini, Microsoft&rsquo;s
+              Copilot, and Perplexity actually name your business when someone
+              asks a question relevant to what you do.
+            </p>
+            <p>
+              This is genuinely different from a normal Google search. When
+              someone searches Google the traditional way, they get a list of
+              links and pick one themselves. When someone asks an AI tool the
+              same question, the AI picks a small handful of businesses to name
+              directly — often just one or two — and the person often never
+              sees any other options at all. If you&rsquo;re not one of the
+              names it picks, you&rsquo;re not &ldquo;ranked lower.&rdquo; You
+              simply don&rsquo;t exist in that conversation.
+            </p>
+            <p>
+              Every item below is marked with how confident the underlying
+              evidence actually is: <strong className="text-foreground">confirmed</strong> (the
+              AI companies themselves have stated this is a factor),{" "}
+              <strong className="text-foreground">strongly observed</strong> (independent
+              research consistently shows the pattern, even without an official
+              confirmation), <strong className="text-foreground">emerging</strong> (a
+              genuine, reasonable bet, not yet backed by solid evidence), or{" "}
+              <strong className="text-foreground">measurement</strong> (not a
+              ranking factor itself, but how you know the rest is working).
+              Watch the panel on the left as you scroll — it tracks exactly
+              which stage of the guide you&rsquo;re looking at.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -63,8 +90,8 @@ export default function GeoCoursePage() {
         />
       </div>
 
-      <div className="mx-auto max-w-2xl">
-        <div className="mt-14 space-y-5 text-lg text-foreground/70">
+      <div className="mx-auto max-w-2xl px-6">
+        <div className="space-y-5 text-lg text-foreground/70">
           <p>
             The end goal: being the name AI tools actually say, not just a
             website that technically exists somewhere in their training data.
@@ -89,22 +116,6 @@ export default function GeoCoursePage() {
           </p>
         </div>
 
-        <div className="mt-16 border-t border-border pt-10">
-          <h2 className="font-heading text-2xl leading-[1.15] tracking-tight">
-            Why it&rsquo;s free
-          </h2>
-          <p className="mt-3 text-foreground/70">
-            Reyse is one person right now, at an early stage, and this guide
-            is the same knowledge our paid work is built on. We&rsquo;d
-            rather every agent — customer or not — actually check whether AI
-            tools recommend them, and know how to fix it if they don&rsquo;t.
-            If working through it yourself makes you decide you&rsquo;d
-            rather we just did it for you, that&rsquo;s what our Done For You
-            service is for. If it doesn&rsquo;t, you&rsquo;ve still got
-            everything you need, free, for good.
-          </p>
-        </div>
-
         <Reveal>
           <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
             <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
@@ -122,6 +133,57 @@ export default function GeoCoursePage() {
             </Link>
           </div>
         </Reveal>
+      </div>
+
+      <div className="mt-24 border-y border-border bg-ink px-6 py-20 text-ink-foreground">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-medium uppercase tracking-wide text-ink-foreground/50">
+              Why it&rsquo;s free
+            </p>
+            <p className="mt-4 font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
+              &ldquo;Reyse is one person, at an early stage, and this guide is
+              the same knowledge the paid work is built on — free whether or
+              not you ever become a client.&rdquo;
+            </p>
+          </div>
+        </Reveal>
+      </div>
+
+      <div className="bg-panel px-6 py-20">
+        <div className="mx-auto max-w-5xl">
+          <Reveal>
+            <h2 className="text-center font-heading text-3xl tracking-tight sm:text-4xl">
+              More on the way
+            </h2>
+          </Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-3">
+            <Reveal>
+              <ResourceCard
+                icon={VideoIcon}
+                title="Videos"
+                items={videos}
+                emptyNote="No videos yet. Nothing fake in the meantime — check back once there's something real to watch."
+              />
+            </Reveal>
+            <Reveal delay={70}>
+              <ResourceCard
+                icon={AudiobookIcon}
+                title="Audiobooks"
+                items={audiobooks}
+                emptyNote="Nothing here yet."
+              />
+            </Reveal>
+            <Reveal delay={140}>
+              <ResourceCard
+                icon={DownloadIcon}
+                title="Free downloads"
+                items={downloads}
+                emptyNote="No downloads yet — PDFs and templates will land here as they're built."
+              />
+            </Reveal>
+          </div>
+        </div>
       </div>
     </main>
   );

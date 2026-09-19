@@ -5,6 +5,7 @@ export type ResourceLink = {
 };
 
 export type CategoryResources = {
+  blurb: string;
   videos: ResourceLink[];
   audiobooks: ResourceLink[];
   courses: ResourceLink[];
@@ -16,6 +17,7 @@ export type CategoryResources = {
 // itself out. SEO and GEO have real courses already; the rest are next.
 export const resourcesBySlug: Record<string, CategoryResources> = {
   seo: {
+    blurb: "Getting found on Google, Bing, and Apple — the fixes that actually move rankings, in order.",
     videos: [],
     audiobooks: [],
     courses: [
@@ -28,6 +30,7 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
     downloads: [],
   },
   geo: {
+    blurb: "Getting recommended by ChatGPT, Gemini, and Copilot — how AI tools actually decide who to name.",
     videos: [],
     audiobooks: [],
     courses: [
@@ -39,9 +42,27 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
     ],
     downloads: [],
   },
-  reviews: { videos: [], audiobooks: [], courses: [], downloads: [] },
-  "market-intelligence": { videos: [], audiobooks: [], courses: [], downloads: [] },
-  scale: { videos: [], audiobooks: [], courses: [], downloads: [] },
+  reviews: {
+    blurb: "Getting more Google reviews, responding without making things worse, and turning both into a ranking signal.",
+    videos: [],
+    audiobooks: [],
+    courses: [],
+    downloads: [],
+  },
+  "market-intelligence": {
+    blurb: "Knowing exactly where you stand against the agency down the road — instead of guessing.",
+    videos: [],
+    audiobooks: [],
+    courses: [],
+    downloads: [],
+  },
+  scale: {
+    blurb: "Taking a system that works for one branch and making it work for every branch, without rebuilding it each time.",
+    videos: [],
+    audiobooks: [],
+    courses: [],
+    downloads: [],
+  },
 };
 
 export function resourceStatus(slug: string): string {
