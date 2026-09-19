@@ -142,7 +142,7 @@ export default async function ProductPage({
       <div className="mx-auto max-w-5xl">
         <div className={HeroVisual ? "grid gap-12 sm:grid-cols-[1.1fr_1fr] sm:items-center" : ""}>
           <div className="max-w-2xl">
-            <Link href="/#product" className="text-sm text-foreground/60 hover:text-foreground">
+            <Link href="/system" className="text-sm text-foreground/60 hover:text-foreground">
               ← All products
             </Link>
             <p className="mb-4 mt-6 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
