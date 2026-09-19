@@ -72,7 +72,13 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
     blurb: "Taking a system that works for one branch and making it work for every branch, without rebuilding it each time.",
     videos: [],
     audiobooks: [],
-    courses: [],
+    courses: [
+      {
+        title: "The Free Scale Course",
+        description: "Replicating SEO, GEO, and trust signals properly across every branch — not rebuilding from scratch each time.",
+        href: "/scalecourse",
+      },
+    ],
     downloads: [],
   },
 };

@@ -6,6 +6,7 @@ import { lessons } from "./seocourse/lessons";
 import { lessons as geoLessons } from "./geocourse/lessons";
 import { lessons as reviewLessons } from "./reviewscourse/lessons";
 import { lessons as marketLessons } from "./marketcourse/lessons";
+import { lessons as scaleLessons } from "./scalecourse/lessons";
 
 const BASE_URL = "https://reyse.co.uk";
 
@@ -76,6 +77,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const scaleLessonRoutes: MetadataRoute.Sitemap = scaleLessons.map((lesson) => ({
+    url: `${BASE_URL}/scalecourse/${lesson.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     ...staticRoutes,
     ...productRoutes,
@@ -86,5 +93,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...geoLessonRoutes,
     ...reviewLessonRoutes,
     ...marketLessonRoutes,
+    ...scaleLessonRoutes,
   ];
 }
