@@ -10,14 +10,12 @@ export default function FreeForeverBanner() {
       <div className="mx-auto max-w-5xl">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
           <div className="text-center lg:text-left">
-            <p className="mb-3 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium uppercase tracking-wide text-ink-foreground/70">
-              The Founding Five
-            </p>
             <h2 className="font-heading text-3xl leading-[1.15] tracking-tight sm:text-5xl">
-              The first {TOTAL_SPOTS} clients pay nothing.
+              The Founding Five
             </h2>
             <p className="mt-4 text-ink-foreground/70 lg:max-w-md">
-              One per county, free while Reyse is at this early stage.
+              The first {TOTAL_SPOTS} clients pay nothing — one per county,
+              free while Reyse is at this early stage.
               {CLAIMED_COUNTIES.length > 0 && (
                 <>
                   {" "}
