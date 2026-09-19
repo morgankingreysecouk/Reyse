@@ -1,17 +1,13 @@
 import Link from "next/link";
 import ChecklistTimeline from "../../components/ChecklistTimeline";
 import Reveal from "../../components/Reveal";
-import { AudiobookIcon, DownloadIcon, ResourceCard, VideoIcon } from "../../components/ResourceCards";
 import { pageMetadata } from "../../lib/seo";
 import { checklistItems, checklistCategoryBlurbs, checklistTagStyles, checklistTagLabels } from "../../seocourse/data";
-import { resourcesBySlug } from "../data";
 
 export const metadata = pageMetadata({
   title: "The Free SEO Course",
   description: "A free course teaching estate and letting agents exactly how to get found on Google — no cost, no catch.",
 });
-
-const { videos, audiobooks, downloads } = resourcesBySlug.seo;
 
 export default function SeoResourcesPage() {
   return (
@@ -140,42 +136,6 @@ export default function SeoResourcesPage() {
             </p>
           </div>
         </Reveal>
-      </div>
-
-      <div className="bg-panel px-6 py-20">
-        <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <h2 className="text-center font-heading text-3xl tracking-tight sm:text-4xl">
-              More on the way
-            </h2>
-          </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-3">
-            <Reveal>
-              <ResourceCard
-                icon={VideoIcon}
-                title="Videos"
-                items={videos}
-                emptyNote="No videos yet. Nothing fake in the meantime — check back once there's something real to watch."
-              />
-            </Reveal>
-            <Reveal delay={70}>
-              <ResourceCard
-                icon={AudiobookIcon}
-                title="Audiobooks"
-                items={audiobooks}
-                emptyNote="Nothing here yet."
-              />
-            </Reveal>
-            <Reveal delay={140}>
-              <ResourceCard
-                icon={DownloadIcon}
-                title="Free downloads"
-                items={downloads}
-                emptyNote="No downloads yet — PDFs and templates will land here as they're built."
-              />
-            </Reveal>
-          </div>
-        </div>
       </div>
     </main>
   );

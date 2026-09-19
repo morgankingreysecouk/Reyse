@@ -82,11 +82,3 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
     downloads: [],
   },
 };
-
-export function resourceStatus(slug: string): string {
-  const r = resourcesBySlug[slug];
-  const count = r.videos.length + r.audiobooks.length + r.courses.length + r.downloads.length;
-  if (r.courses.length > 0) return "Free course available";
-  if (count === 0) return "Coming soon";
-  return `${count} resource${count === 1 ? "" : "s"} so far`;
-}
