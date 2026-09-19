@@ -80,7 +80,7 @@ export default function SystemPage() {
               {
                 when: "Day 5",
                 what: "Crawler access, trust signals, and your core schema are live.",
-                backing: "Delivery Guarantee — miss it, and we pay your hourly rate for every day we're late.",
+                backing: "Delivery Guarantee — miss it, and we pay you for every day we're late.",
               },
               {
                 when: "Weeks 1–8",
@@ -89,8 +89,8 @@ export default function SystemPage() {
               },
               {
                 when: "Month 3",
-                what: "Your tracked enquiries, measured against your own baseline.",
-                backing: "Growth Guarantee — if they haven't grown, we fund a month of your ad spend.",
+                what: "Website and phone enquiries, tracked separately against your baseline.",
+                backing: "Growth Guarantee — no extra client from either channel, and we fund a month of your ad spend.",
               },
             ].map((step, i) => (
               <Reveal key={step.when} delay={i * 60}>

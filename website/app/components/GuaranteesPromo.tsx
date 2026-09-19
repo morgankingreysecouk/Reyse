@@ -4,8 +4,8 @@ import Reveal from "./Reveal";
 const featured = [
   {
     title: "The Growth Guarantee",
-    promise: "We commit to growing your tracked enquiries within 3 months.",
-    remedy: "If they haven't grown, we personally fund one month of your Google or Meta ad spend.",
+    promise: "Give us an honest baseline, tracked by website and by phone.",
+    remedy: "No extra client within 3 months, and we fund a month of your ad spend, on us.",
   },
   {
     title: "The Release of Commitment Guarantee",

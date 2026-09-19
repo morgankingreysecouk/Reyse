@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "Do you guarantee rankings or AI mentions?",
     answer:
-      "We don't guarantee specific rankings or that you'll dominate every AI platform — Google, Bing, and every AI provider make that call, not us, and be wary of anyone who claims otherwise. What we do guarantee: baseline AI visibility within 8 weeks, backed by a real remedy if we miss it — see our Guarantees page for that one and ten others, each with a defined consequence if we fall short.",
+      "We don't guarantee specific rankings or that you'll dominate every AI platform — Google, Bing, and every AI provider make that call, not us, and be wary of anyone who claims otherwise. What we do guarantee: baseline AI visibility within 3 months, backed by a real remedy if we miss it — see our Guarantees page for that one and ten others, each with a defined consequence if we fall short.",
   },
   {
     question: "If I cancel, do you undo what you've built?",
