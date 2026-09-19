@@ -1,5 +1,4 @@
 import Link from "next/link";
-import HeroSearchDemo from "./HeroSearchDemo";
 
 export default function HeroSlideshow() {
   return (
@@ -23,7 +22,6 @@ export default function HeroSlideshow() {
           WebkitMaskImage: "radial-gradient(65% 65% at 50% 45%, black 40%, transparent 100%)",
         }}
       />
-      <HeroSearchDemo />
       <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-24 pt-40 text-center lg:pb-32 lg:pt-52">
         <h1 className="font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
           Get Found &amp; Stay Found
