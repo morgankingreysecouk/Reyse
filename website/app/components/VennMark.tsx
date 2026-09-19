@@ -5,8 +5,8 @@
 export default function VennMark({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
-      <circle cx="38" cy="50" r="28" fill="#6c7128" fillOpacity="0.85" />
-      <circle cx="62" cy="50" r="28" fill="#a6ad3e" fillOpacity="0.85" />
+      <circle cx="35" cy="50" r="28" fill="#6c7128" />
+      <circle cx="65" cy="50" r="28" fill="#a6ad3e" />
     </svg>
   );
 }

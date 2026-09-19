@@ -23,7 +23,7 @@ export default function HeroSlideshow() {
           WebkitMaskImage: "radial-gradient(65% 65% at 50% 45%, black 40%, transparent 100%)",
         }}
       />
-      <VennMark className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-[62%] -translate-y-1/2 opacity-[0.08] sm:h-[560px] sm:w-[560px] lg:h-[680px] lg:w-[680px]" />
+      <VennMark className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-[78%] -translate-y-1/2 opacity-[0.18] sm:h-[560px] sm:w-[560px] lg:h-[680px] lg:w-[680px]" />
       <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-6 pb-24 pt-40 text-center lg:pb-32 lg:pt-52">
         <h1 className="font-heading text-4xl font-medium leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
           Get Found &amp; Stay Found

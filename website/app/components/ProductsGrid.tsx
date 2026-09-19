@@ -23,16 +23,6 @@ const mockups: Record<string, () => React.ReactNode> = {
   scale: () => <ScaleMockup />,
 };
 
-// Short benefit line for the eyebrow tag — `hook` is sized for a card
-// description, `label` is too terse — this slot needs something in between.
-const eyebrows: Record<string, string> = {
-  seo: "Rank on Google, Bing & Apple",
-  geo: "Get recommended by AI",
-  reviews: "Every review, answered",
-  "market-intelligence": "Know exactly where you stand",
-  scale: "One system, every branch",
-};
-
 function ProductCard({ product, index }: { product: Product; index: number }) {
   const { ref, visible } = useScrollReveal<HTMLAnchorElement>();
   const Mockup = mockups[product.slug];
@@ -47,10 +37,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
       }`}
     >
-      <div className="relative h-48 overflow-hidden bg-panel/60 p-4 pt-11">
-        <span className="absolute left-4 top-4 z-10 inline-block rounded-full bg-background px-2.5 py-1 text-[11px] font-medium text-foreground/70 shadow-sm">
-          {eyebrows[product.slug]}
-        </span>
+      <div className="relative h-48 overflow-hidden bg-panel/60 p-4">
         <div className="h-full">{Mockup && <Mockup />}</div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-panel to-transparent" />
       </div>
