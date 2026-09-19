@@ -2,33 +2,6 @@ import Link from "next/link";
 import CountdownTimer from "./CountdownTimer";
 import { CLAIMED_COUNTIES, SPOTS_REMAINING, TOTAL_SPOTS } from "../lib/freeForever";
 
-// A grid-with-plus-marks "logo wall" is a common trusted-by treatment —
-// here it carries the offer's own real facts instead, since there are no
-// client logos yet to show off.
-const offerHighlights = [
-  `${TOTAL_SPOTS} spots, free`,
-  "One per county",
-  "SEO included",
-  "GEO included",
-  "Done With You",
-  "Done For You",
-];
-
-function GridCross({ left, top }: { left: string; top: string }) {
-  return (
-    <span
-      aria-hidden
-      className="pointer-events-none absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 text-ink-foreground/25"
-      style={{ left, top }}
-    >
-      <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-current" />
-      <span className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-current" />
-    </span>
-  );
-}
-
-const gridDividers = ["16.667%", "33.333%", "50%", "66.667%", "83.333%"];
-
 const spots = Array.from({ length: TOTAL_SPOTS }, (_, i) => CLAIMED_COUNTIES[i] ?? null);
 
 export default function FreeForeverBanner() {
@@ -108,23 +81,13 @@ export default function FreeForeverBanner() {
           </Link>
         </div>
 
-        <div className="relative mx-auto mt-14 grid w-full max-w-3xl grid-cols-3 border-y border-ink-foreground/10 sm:grid-cols-6">
-          {gridDividers.map((left) => (
-            <span key={left} className="hidden sm:contents">
-              <GridCross left={left} top="0%" />
-              <GridCross left={left} top="100%" />
-            </span>
-          ))}
-          {offerHighlights.map((item, i) => (
-            <div
-              key={item}
-              className={`px-3 py-2 text-center text-xs text-ink-foreground/65 ${
-                i % 3 !== 2 ? "border-r border-ink-foreground/10" : ""
-              } ${i < 3 ? "border-b border-ink-foreground/10" : ""} sm:border-b-0 sm:[&:not(:last-child)]:border-r`}
-            >
-              {item}
-            </div>
-          ))}
+        <div className="mx-auto mt-14 max-w-lg text-center">
+          <p className="text-xs font-medium uppercase tracking-wide text-ink-foreground/50">
+            This offer closes in
+          </p>
+          <div className="mt-4">
+            <CountdownTimer variant="segments" />
+          </div>
         </div>
       </div>
     </section>
