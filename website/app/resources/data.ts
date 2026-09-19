@@ -46,7 +46,13 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
     blurb: "Getting more Google reviews, responding without making things worse, and turning both into a ranking signal.",
     videos: [],
     audiobooks: [],
-    courses: [],
+    courses: [
+      {
+        title: "The Free Review Management Course",
+        description: "Asking, responding, every platform that counts, and turning both into a ranking signal.",
+        href: "/reviewscourse",
+      },
+    ],
     downloads: [],
   },
   "market-intelligence": {
