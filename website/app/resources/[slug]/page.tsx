@@ -7,11 +7,11 @@ import { pageMetadata } from "../../lib/seo";
 import { products } from "../../products/data";
 import { resourcesBySlug, resourceStatus } from "../data";
 
-// SEO, GEO, and Reviews have their own static routes (app/resources/seo,
-// app/resources/geo, app/resources/reviews) with real content — this
-// generic template only serves the categories that don't have a bespoke
-// page yet.
-const dynamicSlugs = ["market-intelligence", "scale"];
+// SEO, GEO, Reviews, and Market Intelligence have their own static routes
+// (app/resources/seo, app/resources/geo, app/resources/reviews,
+// app/resources/market-intelligence) with real content — this generic
+// template only serves the categories that don't have a bespoke page yet.
+const dynamicSlugs = ["scale"];
 
 export function generateStaticParams() {
   return dynamicSlugs.map((slug) => ({ slug }));

@@ -59,7 +59,13 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
     blurb: "Knowing exactly where you stand against the agency down the road — instead of guessing.",
     videos: [],
     audiobooks: [],
-    courses: [],
+    courses: [
+      {
+        title: "The Free Market & Competitive Intelligence Course",
+        description: "Benchmarking against a named rival, catching shifts early, and turning tracking into action.",
+        href: "/marketcourse",
+      },
+    ],
     downloads: [],
   },
   scale: {
