@@ -4,6 +4,13 @@ import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
 import { guarantees } from "./data";
 
+function slugify(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 export const metadata: Metadata = pageMetadata({
   title: "Guarantees",
   description: "Eleven specific, measurable guarantees — each with a real, enforceable cost to us if we don't meet it. Not vague reassurance you'd have to argue us into honouring.",
@@ -280,26 +287,66 @@ export default function GuaranteesPage() {
       </div>
 
       <div id="the-11" className="px-6 py-24">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              In full
-            </p>
-            <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
-              The 11 guarantees.
-            </h2>
-            <p className="mt-4 text-foreground/70">
-              Every promise below names exactly what we&rsquo;re committing
-              to and exactly what happens if we don&rsquo;t deliver it. Open
-              any one for the worked example, how it&rsquo;s measured, and
-              the full terms.
-            </p>
-          </Reveal>
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-3xl">
+            <Reveal>
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                In full
+              </p>
+              <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
+                The 11 guarantees.
+              </h2>
+              <p className="mt-4 text-foreground/70">
+                Every promise below names exactly what we&rsquo;re committing
+                to and exactly what happens if we don&rsquo;t deliver it. Open
+                any one for the worked example, how it&rsquo;s measured, and
+                the full terms.
+              </p>
+            </Reveal>
+          </div>
 
-          <div className="mt-14 space-y-6">
+          {/* Below lg: a collapsible jump list instead of the sticky sidebar —
+              no JS needed, and native <details> keeps it accessible. */}
+          <details className="mt-8 rounded-2xl border border-border p-4 lg:hidden">
+            <summary className="cursor-pointer text-sm font-medium text-foreground">
+              Jump to a guarantee
+            </summary>
+            <ul className="mt-3 space-y-2 text-sm">
+              {guarantees.map((g, i) => (
+                <li key={g.title}>
+                  <a href={`#${slugify(g.title)}`} className="text-foreground/70 hover:text-foreground">
+                    {String(i + 1).padStart(2, "0")}. {g.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+
+          <div className="mt-10 grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
+            <nav className="hidden lg:block" aria-label="The 11 guarantees">
+              <div className="sticky top-24">
+                <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                  Contents
+                </p>
+                <ul className="mt-3 space-y-2 text-sm">
+                  {guarantees.map((g, i) => (
+                    <li key={g.title}>
+                      <a
+                        href={`#${slugify(g.title)}`}
+                        className="text-foreground/60 hover:text-foreground"
+                      >
+                        {String(i + 1).padStart(2, "0")}. {g.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </nav>
+
+            <div className="space-y-6">
             {guarantees.map((g, i) => (
               <Reveal key={g.title} delay={Math.min(i, 6) * 40}>
-                <div className="rounded-3xl border border-border p-6 sm:p-8">
+                <div id={slugify(g.title)} className="scroll-mt-24 rounded-3xl border border-border p-6 sm:p-8">
                   <div className="flex gap-5">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent/15 font-heading text-sm text-accent-text">
                       {String(i + 1).padStart(2, "0")}
@@ -359,6 +406,7 @@ export default function GuaranteesPage() {
                 </div>
               </Reveal>
             ))}
+            </div>
           </div>
         </div>
       </div>
