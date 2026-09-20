@@ -33,6 +33,56 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         description: "All 32 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
         href: "/downloads/the-free-seo-course.pdf",
       },
+      {
+        title: "Schema Markup Pack",
+        description: "Fill-in-the-blank structured data for your homepage, FAQs, reviews, and listing pages — paste it in, swap the brackets.",
+        href: "/downloads/reyse-schema-markup-pack.pdf",
+      },
+      {
+        title: "Google Business Profile Setup Checklist",
+        description: "Every field, in order, so nothing gets left on the generic default.",
+        href: "/downloads/reyse-gbp-setup-checklist.pdf",
+      },
+      {
+        title: "Review Request & Reply Templates",
+        description: "What to actually say — timed to the moment that works, and ready for whatever comes back.",
+        href: "/downloads/reyse-review-request-reply-templates.pdf",
+      },
+      {
+        title: "AI Visibility Self-Check Kit",
+        description: "10 real prompts to run against ChatGPT, Gemini, and Perplexity, plus a worksheet to track what comes back.",
+        href: "/downloads/reyse-ai-visibility-self-check-kit.pdf",
+      },
+      {
+        title: "AI Crawler Access Checklist",
+        description: "A blocked AI crawler means total invisibility, not a lower ranking — how to check in two minutes.",
+        href: "/downloads/reyse-ai-crawler-access-checklist.pdf",
+      },
+      {
+        title: "NAP Consistency Tracker",
+        description: "Name, address, phone — the same everywhere, checked directory by directory.",
+        href: "/downloads/reyse-nap-consistency-tracker.pdf",
+      },
+      {
+        title: "Meta Title & Description Formulas",
+        description: "Fill-in-the-blank formulas for every page type, with real character limits and worked examples.",
+        href: "/downloads/reyse-meta-title-description-formulas.pdf",
+      },
+      {
+        title: "Competitor Snapshot Worksheet",
+        description: "Put your numbers next to one real competitor's — the same signals, filled in by hand.",
+        href: "/downloads/reyse-competitor-snapshot-worksheet.pdf",
+      },
+      {
+        title: "UK Estate & Letting Agent Directory List",
+        description: "Every directory worth claiming — property portals, search platforms, and review sites — in one place.",
+        href: "/downloads/reyse-uk-directory-list.pdf",
+      },
+      {
+        title: "Monthly SEO Health-Check Checklist",
+        description: "Five minutes a month so nothing quietly decays after you've done the initial work.",
+        href: "/downloads/reyse-monthly-seo-health-check.pdf",
+      },
     ],
   },
   geo: {
