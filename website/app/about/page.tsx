@@ -10,20 +10,6 @@ export const metadata: Metadata = pageMetadata({
   description: "Why Reyse exists, and who's building it.",
 });
 
-function AvatarPlaceholder() {
-  return (
-    <span
-      aria-hidden
-      className="flex h-16 w-16 items-center justify-center rounded-full bg-ink-foreground/10 text-ink-foreground/40"
-    >
-      <svg viewBox="0 0 24 24" className="h-8 w-8" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="8.5" r="3.5" />
-        <path d="M4.5 20c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6" strokeLinecap="round" />
-      </svg>
-    </span>
-  );
-}
-
 export default function AboutPage() {
   return (
     <main className="flex-1">
@@ -143,7 +129,15 @@ export default function AboutPage() {
           <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
             <Reveal>
               <div>
-                <AvatarPlaceholder />
+                <div className="relative h-28 w-28 overflow-hidden rounded-full border border-ink-foreground/15">
+                  <Image
+                    src="/images/morgan-king.png"
+                    alt="Morgan King, Founder of Reyse"
+                    fill
+                    sizes="112px"
+                    className="object-cover"
+                  />
+                </div>
                 <p className="mt-4 font-semibold">Morgan King</p>
                 <p className="mt-1 text-sm text-ink-foreground/70">
                   Founder — and for now, the whole team. I took the
