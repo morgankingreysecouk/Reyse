@@ -3,6 +3,7 @@ import ChecklistTimeline from "../../components/ChecklistTimeline";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { checklistItems, checklistCategoryBlurbs, checklistTagStyles, checklistTagLabels } from "../../marketcourse/data";
+import { resourcesBySlug } from "../data";
 
 export const metadata = pageMetadata({
   title: "The Free Market & Competitive Intelligence Course",
@@ -10,6 +11,8 @@ export const metadata = pageMetadata({
 });
 
 export default function MarketIntelligenceResourcesPage() {
+  const downloads = resourcesBySlug["market-intelligence"].downloads;
+
   return (
     <main className="flex-1">
       <div className="relative overflow-hidden border-b border-border px-6 pb-20 pt-40">
@@ -82,6 +85,39 @@ export default function MarketIntelligenceResourcesPage() {
           tagLabels={checklistTagLabels}
         />
       </div>
+
+      {downloads.length > 0 && (
+        <div className="mx-auto mt-16 max-w-2xl px-6">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+              Downloads
+            </p>
+            <div className="mt-4 space-y-4">
+              {downloads.map((d) => (
+                <div
+                  key={d.href}
+                  className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-panel p-6"
+                >
+                  <div>
+                    <p className="font-medium text-foreground">{d.title}</p>
+                    <p className="mt-1 text-sm text-foreground/65">{d.description}</p>
+                  </div>
+                  <a
+                    href={d.href}
+                    download
+                    className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground hover:opacity-90"
+                  >
+                    Download PDF
+                    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                      <path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M3 13.5h10" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      )}
 
       <div className="mx-auto max-w-2xl px-6">
         <div className="space-y-5 text-lg text-foreground/70">

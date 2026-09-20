@@ -46,7 +46,13 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         href: "/geocourse",
       },
     ],
-    downloads: [],
+    downloads: [
+      {
+        title: "The Free GEO Guide — full PDF",
+        description: "All 23 items in one document, exactly as they appear in the guide — to save, print, or read offline.",
+        href: "/downloads/the-free-geo-guide.pdf",
+      },
+    ],
   },
   reviews: {
     blurb: "Getting more Google reviews, responding without making things worse, and turning both into a ranking signal.",
@@ -59,7 +65,13 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         href: "/reviewscourse",
       },
     ],
-    downloads: [],
+    downloads: [
+      {
+        title: "The Free Review Management Course — full PDF",
+        description: "All 22 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
+        href: "/downloads/the-free-review-management-course.pdf",
+      },
+    ],
   },
   "market-intelligence": {
     blurb: "Knowing exactly where you stand against the agency down the road — instead of guessing.",
@@ -72,7 +84,13 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         href: "/marketcourse",
       },
     ],
-    downloads: [],
+    downloads: [
+      {
+        title: "The Free Market & Competitive Intelligence Course — full PDF",
+        description: "All 17 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
+        href: "/downloads/the-free-market-intelligence-course.pdf",
+      },
+    ],
   },
   scale: {
     blurb: "Taking a system that works for one branch and making it work for every branch, without rebuilding it each time.",
@@ -85,6 +103,12 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         href: "/scalecourse",
       },
     ],
-    downloads: [],
+    downloads: [
+      {
+        title: "The Free Scale Course — full PDF",
+        description: "All 16 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
+        href: "/downloads/the-free-scale-course.pdf",
+      },
+    ],
   },
 };
