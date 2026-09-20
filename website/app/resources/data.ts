@@ -27,7 +27,13 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         href: "/seocourse",
       },
     ],
-    downloads: [],
+    downloads: [
+      {
+        title: "The Free SEO Course — full PDF",
+        description: "All 32 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
+        href: "/downloads/the-free-seo-course.pdf",
+      },
+    ],
   },
   geo: {
     blurb: "Getting recommended by ChatGPT, Gemini, and Copilot — how AI tools actually decide who to name.",
