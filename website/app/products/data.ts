@@ -44,9 +44,6 @@ export type Product = {
   label: string;
   tagline: string;
   description: string;
-  /** One short sentence for the homepage grid card — `description` is sized for a
-   *  full page intro, and reusing it there made every card a different height. */
-  hook: string;
   price: string;
   priceNote: string;
   stats?: Stat[];
@@ -71,7 +68,6 @@ export const products: Product[] = [
     slug: "seo",
     label: "SEO",
     tagline: "Found on Google. Found everywhere else too.",
-    hook: "Fast, accurate, and visible on every platform your next buyer or tenant actually uses.",
     description:
       "Nearly a third of all UK web traffic happens on Safari, not Google — and most agencies never even check it. Reyse SEO makes sure your website, your listings, and your business profiles are fast, accurate, and visible across every platform your next buyer, seller, or tenant is actually using — so more of the right searches turn into real enquiries, not lost opportunities.",
     price: "£450",
@@ -196,12 +192,11 @@ export const products: Product[] = [
     slug: "geo",
     label: "GEO",
     tagline: "Recommended by one AI. Invisible to the rest.",
-    hook: "Only 11% of businesses named by one AI tool are named by another.",
     description:
       "Only 11% of businesses cited by one AI tool are also cited by another — being named by ChatGPT tells you nothing about whether Perplexity, Gemini, or Copilot have ever heard of you. Buyers and sellers increasingly ask ChatGPT, Gemini, and Perplexity who to trust before they ever browse a website — and it's not just chatbots. A normal Google search now often shows an AI-generated answer, powered by Gemini, right above the regular results. Edge does the same through Copilot, and on iPhone, Siri and Spotlight increasingly just answer the question rather than pointing to a website. Reyse audits, fixes, and actively manages your visibility across every single one — so you're the business they're told about, everywhere they ask.",
     price: "£950",
     priceNote:
-      "Done With You — one-off: a full audit plus a clear report for every fix. Done For You adds £4,000/month: we implement everything ourselves, plus ongoing entity building and multi-branch AI visibility.",
+      "Done With You — one-off: the core audit, fixes, and trust signals (6 of the 11 items below). Done For You adds £750/month: everything else — AI query mapping, knowledge panel work, community visibility, reputation response, full-funnel attribution — plus we implement all of it ourselves, with ongoing entity building and multi-branch AI visibility.",
     stats: [
       { value: "11%", label: "of businesses cited by one AI tool are also cited by another" },
       { value: "77%", label: "of what AI cites about a business isn't even on that business's own website" },
@@ -238,7 +233,7 @@ export const products: Product[] = [
       {
         title: "Answer-Ready Content Audit & Fix",
         subtitle: "fixing the format of what you already have.",
-        stat: { value: "40%", label: "more likely to get quoted when content leads with clear facts" },
+        stat: { value: "37–41%", label: "higher odds of being cited when content leads with clear facts" },
         problem: "AI doesn't browse your website like a person does — it scans for a direct answer to a specific question and lifts it straight into its response. Vague, general text rarely gets quoted.",
         fix: "We audit your key pages and hand you a clear, specific guide for rewriting them — and for structuring anything new you publish going forward.",
         growthNote:
@@ -247,7 +242,7 @@ export const products: Product[] = [
       {
         title: "Freshness Audit & Fix",
         subtitle: "the timing: is your content recent enough for AI to still trust it?",
-        stat: { value: "50%", label: "of AI-cited content was refreshed within the last 3 months" },
+        stat: { value: "~50%", label: "of AI-cited content was refreshed within the last 3 months" },
         problem: "AI models quietly stop citing pages that haven't been touched in a while, even ones that ranked well before.",
         fix: "We audit your most important pages and hand you a clear plan for keeping them — and everything else — current.",
         growthNote:
@@ -319,7 +314,6 @@ export const products: Product[] = [
     slug: "reviews",
     label: "Review Management",
     tagline: "Watched everywhere. Missed nowhere.",
-    hook: "68% of negative reviews go unanswered. Reyse replies to every one, instantly.",
     description:
       "68% of negative reviews go completely unanswered — the exact category most likely to cost a hesitant buyer's trust before they've even called. Reviews don't just sit on Google anymore: Bing pulls in review data of its own, and Apple Business Connect actually inherits reviews directly from Yelp and Tripadvisor, meaning a review left on a site you've never logged into can shape what a customer sees on their iPhone — and the same count, rating, and response consistency directly feed both your SEO and your GEO visibility, since search engines and AI tools both use these signals to decide who to rank and who to recommend. Reyse manages your reputation across every platform that matters, closing that response gap and making sure happy customers actually leave a review in the first place.",
     price: "£299",
@@ -381,7 +375,6 @@ export const products: Product[] = [
     slug: "market-intelligence",
     label: "Market & Competitive Intelligence",
     tagline: "Know exactly where you stand, and what's coming next.",
-    hook: "Tracks your SEO and AI visibility against your closest competitor, every month.",
     description:
       "The top 20% of local businesses now capture 68% of all search visibility — a gap that keeps widening for anyone not actively tracking where they sit against it. Most businesses have no idea how their SEO and AI visibility actually compares to the competitor down the road, or what real buyers and sellers are searching for right now. Reyse tracks both, every month, so you're never guessing.",
     price: "£249",
@@ -396,9 +389,25 @@ export const products: Product[] = [
         subtitle: "the comparison: knowing where you actually stand, not just how you feel.",
         problem: "A competitor gaining just 10 fresh reviews a month can outrank a business sitting on 200 reviews from three years ago — volume alone doesn't win, momentum does, and you can't see that without watching them too.",
         fix: "Every month, we track your closest competitors' rankings, Bing/Apple visibility, review count and rating, profile activity, and AI mentions — side by side with your own numbers.",
+        impactNote:
+          "This is the diagnostic layer behind your SEO and GEO work: knowing exactly where a named competitor is ahead tells us which fix to prioritise this month, rather than working through a generic checklist in a fixed order.",
       },
       {
-        title: "Search & AI Trend Updates",
+        title: "Reputation & Activity Benchmarking",
+        subtitle: "the momentum check: are you actually gaining ground, or just standing still?",
+        problem: "Star rating and review count alone don't tell you who's winning — a competitor posting weekly and replying within hours can out-pace a business with a stronger historical rating but a stalled, silent profile.",
+        fix: "Every month, we track review momentum, Google Business Profile posting activity, and response rate and speed for your named competitors — the same way we already track it for you.",
+        impactNote:
+          "Feeds directly into your Review Management work: a competitor gaining momentum on response speed or posting frequency is a specific, closeable gap, not a vague sense that you should \"do more reviews.\"",
+      },
+      {
+        title: "Monthly Competitive Scorecard",
+        subtitle: "the report: everything in one place, not scattered across five tabs.",
+        problem: "Checking rankings, AI mentions, and review activity against a competitor takes real time, and most businesses either never do it or do it once and never look again.",
+        fix: "We build and send a single scorecard every month — your numbers against your named competitor's, side by side — so you always know exactly where you stand without having to go and look.",
+      },
+      {
+        title: "Local Market Signal Tracking",
         subtitle: "the early warning: catching a shift before your competitor does.",
         stat: { value: "56%", label: "of local businesses haven't adjusted anything for AI-driven search yet" },
         problem: "What people are actually searching for shifts constantly, and most of it happens invisibly to a business owner busy running the day-to-day — often weeks before it shows up in your enquiries.",
@@ -410,7 +419,6 @@ export const products: Product[] = [
     slug: "scale",
     label: "Scale",
     tagline: "One system, built once. Every branch, everywhere.",
-    hook: "The same setup, properly replicated for every branch — not copy-pasted and hoped for.",
     description:
       "A business with 30 locations and just 20% inconsistency in its listing data has 6 branches actively working against the other 24 at every directory where the details don't match — and multi-location brands with consistent data see up to twice the customer engagement of those without. Growing from one office to a hundred shouldn't mean rebuilding SEO, GEO, reviews, and market intelligence from scratch every time you open a door. Reyse Scale takes everything already built for your first branch and replicates it, properly, for every branch after — with the same rigour whether you're a single agency or the biggest name in the country.",
     price: "Custom",

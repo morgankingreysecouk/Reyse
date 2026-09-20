@@ -8,3 +8,8 @@
 export const SYSTEM_TOTAL_SPOTS = 5;
 export const SYSTEM_SPOTS_CLAIMED = 3;
 export const SYSTEM_SPOTS_REMAINING = SYSTEM_TOTAL_SPOTS - SYSTEM_SPOTS_CLAIMED;
+
+// The standard monthly price once a full-system spot stops being free —
+// confirmed by Morgan (2026-09-20). Shown so the "currently completely
+// free" framing doesn't read as if there's no real price behind it.
+export const SYSTEM_MONTHLY_PRICE = "£2,500";

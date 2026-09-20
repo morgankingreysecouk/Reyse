@@ -3,7 +3,7 @@ import Reveal from "../components/Reveal";
 import { bonusStack, bonusStackMonthlyTotal, bonusStackOneOffTotal } from "../lib/bonusStack";
 import { pageMetadata } from "../lib/seo";
 import { products } from "../products/data";
-import { SYSTEM_SPOTS_REMAINING, SYSTEM_TOTAL_SPOTS } from "../lib/systemOffer";
+import { SYSTEM_MONTHLY_PRICE, SYSTEM_SPOTS_REMAINING, SYSTEM_TOTAL_SPOTS } from "../lib/systemOffer";
 
 export const metadata = pageMetadata({
   title: "The Full System",
@@ -45,6 +45,15 @@ export default function SystemPage() {
               </p>
               <p className="mt-1 text-xs text-foreground/65">
                 full-system spots still open
+              </p>
+            </div>
+            <div className="h-10 w-px bg-border" />
+            <div>
+              <p className="text-sm font-medium text-foreground">
+                {SYSTEM_MONTHLY_PRICE}/month, normally
+              </p>
+              <p className="mt-1 text-xs text-foreground/65">
+                free while you&rsquo;re one of the first {SYSTEM_TOTAL_SPOTS}
               </p>
             </div>
           </div>
