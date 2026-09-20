@@ -240,6 +240,56 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         description: "All 17 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
         href: "/downloads/the-free-market-intelligence-course.pdf",
       },
+      {
+        title: "Real Competitive Set Identification Worksheet",
+        description: "Who you're actually losing enquiries to — based on real search and AI results, not who's been on the high street longest.",
+        href: "/downloads/reyse-real-competitive-set-worksheet.pdf",
+      },
+      {
+        title: "Full-Channel Competitor Benchmark",
+        description: "Google, Bing, Apple, AI mentions, reviews, and GBP activity — you against one named rival, every channel in one place.",
+        href: "/downloads/reyse-full-channel-competitor-benchmark.pdf",
+      },
+      {
+        title: "Local Market Signal Tracker",
+        description: "The area-level shifts that move demand — not about any one competitor, about the market underneath all of you.",
+        href: "/downloads/reyse-local-market-signal-tracker.pdf",
+      },
+      {
+        title: "Competitor Alert Setup Guide",
+        description: "Catch a shift as it happens instead of noticing it three months late — real, free monitoring, set up once.",
+        href: "/downloads/reyse-competitor-alert-setup-guide.pdf",
+      },
+      {
+        title: "Trust Signal Benchmark Checklist",
+        description: "Not rankings — the underlying technical trust signals, compared side by side against a named competitor.",
+        href: "/downloads/reyse-trust-signal-benchmark-checklist.pdf",
+      },
+      {
+        title: "GBP Activity Comparison Tracker",
+        description: "Posting frequency, photo freshness, and Q&A activity — compared monthly, because a stale profile loses quietly.",
+        href: "/downloads/reyse-gbp-activity-comparison-tracker.pdf",
+      },
+      {
+        title: "AI Answer Change Log",
+        description: "AI platforms update how they answer — a log to catch when the picture shifts, instead of assuming last month's check still holds.",
+        href: "/downloads/reyse-ai-answer-change-log.pdf",
+      },
+      {
+        title: "Review Momentum Tracker",
+        description: "Velocity, not totals — a competitor gaining reviews faster than you is a real signal, even if their total is still lower.",
+        href: "/downloads/reyse-review-momentum-tracker.pdf",
+      },
+      {
+        title: "Signal-vs-Noise Decision Filter",
+        description: "A competitor did something — is it actually worth reacting to, or just noise? A quick filter before you act.",
+        href: "/downloads/reyse-signal-vs-noise-decision-filter.pdf",
+      },
+      {
+        title: "Monthly Market Intelligence Scorecard",
+        description: "One simple page, once a month — the lightweight version that actually gets kept up, instead of the deep audit nobody repeats.",
+        href: "/downloads/reyse-monthly-market-intelligence-scorecard.pdf",
+      },
     ],
   },
   scale: {
