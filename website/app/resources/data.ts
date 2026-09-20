@@ -102,6 +102,56 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         description: "All 23 items in one document, exactly as they appear in the guide — to save, print, or read offline.",
         href: "/downloads/the-free-geo-guide.pdf",
       },
+      {
+        title: "llms.txt Template",
+        description: "A fill-in-the-blank starting point for the emerging llms.txt standard — paste it in, swap the brackets.",
+        href: "/downloads/reyse-llms-txt-template.pdf",
+      },
+      {
+        title: "AI Query Mapping Worksheet",
+        description: "Every real question an AI tool might be asked about your business — and which page should actually answer it.",
+        href: "/downloads/reyse-ai-query-mapping-worksheet.pdf",
+      },
+      {
+        title: "Answer-Ready Content Rewrite Checklist",
+        description: "AI tools lift a direct answer, not a scroll — before and after examples, plus a checklist for your own pages.",
+        href: "/downloads/reyse-answer-ready-content-checklist.pdf",
+      },
+      {
+        title: "Entity Consistency & sameAs Schema Kit",
+        description: "How AI tools confirm you're one real business, not several unconnected mentions — a fill-in-the-blank schema block.",
+        href: "/downloads/reyse-entity-sameas-schema-kit.pdf",
+      },
+      {
+        title: "AI Crawler Access Checklist",
+        description: "A blocked AI crawler means total invisibility, not a lower ranking — how to check in two minutes.",
+        href: "/downloads/reyse-ai-crawler-access-checklist.pdf",
+      },
+      {
+        title: "Content Visibility Checklist",
+        description: "Check whether your key content actually renders without JavaScript — most AI crawlers can't run it.",
+        href: "/downloads/reyse-content-visibility-checklist.pdf",
+      },
+      {
+        title: "AI Recommendation Test Script",
+        description: "Deeper than a simple mention check — comparison and recommendation prompts, with a confidence-tier score.",
+        href: "/downloads/reyse-ai-recommendation-test-script.pdf",
+      },
+      {
+        title: "AI Source Audit Worksheet",
+        description: "There's no “correct the AI” button — work out which real source is feeding a wrong answer, and fix that instead.",
+        href: "/downloads/reyse-ai-source-audit-worksheet.pdf",
+      },
+      {
+        title: "Property Subreddit & Forum Finder",
+        description: "The real UK property communities worth genuinely being part of — and how to participate without it backfiring.",
+        href: "/downloads/reyse-property-forum-finder.pdf",
+      },
+      {
+        title: "Competitor AI Visibility Gap Finder",
+        description: "Specifically who gets named when AI platforms are asked — side by side against one real rival.",
+        href: "/downloads/reyse-competitor-ai-visibility-gap-finder.pdf",
+      },
     ],
   },
   reviews: {
