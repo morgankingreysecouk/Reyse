@@ -68,38 +68,6 @@ export default function AboutPage() {
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              What I believe
-            </p>
-            <div className="mt-5 max-w-xl space-y-5 text-foreground/70">
-              <p>
-                Nothing Reyse does is new technology. AI-powered SEO, schema
-                markup, review management, competitive intelligence — all of
-                it already existed before Reyse did. What was missing was
-                agents actually using it. Most have never checked whether
-                they show up when someone asks ChatGPT who to use in their
-                area, let alone fixed it if they don&rsquo;t.
-              </p>
-              <p>
-                I think this is one of the first real windows for AI to
-                make a measurable difference in this industry — not as a
-                gimmick, but as leads and enquiries. For as long as most of
-                the industry hasn&rsquo;t caught on, it&rsquo;s also one of
-                the clearest ways to pull ahead of the agency down the road.
-              </p>
-              <p>
-                That&rsquo;s the bet Reyse is built on: two years on the
-                lettings desk, then a year of daily research into how AI
-                search actually works, before any of it became a product.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-
-      <div className="px-6 pb-24">
-        <div className="mx-auto max-w-5xl">
-          <Reveal>
             <div className="grid items-center gap-10 sm:grid-cols-2 sm:gap-16">
               <div>
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
@@ -127,6 +95,43 @@ export default function AboutPage() {
         </div>
       </div>
 
+      <div className="px-6 pb-24">
+        <div className="mx-auto max-w-5xl">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+              What I believe
+            </p>
+            <div className="mt-5 max-w-xl space-y-5 text-foreground/70">
+              <p>
+                That was the moment. The reputation wasn&rsquo;t really
+                the problem — the invisibility was, and fixing one
+                without the other was never going to work.
+              </p>
+              <p>
+                Nothing Reyse does is new technology. AI-powered SEO, schema
+                markup, review management, competitive intelligence — all of
+                it already existed before Reyse did. What was missing was
+                agents actually using it. Most have never checked whether
+                they show up when someone asks ChatGPT who to use in their
+                area, let alone fixed it if they don&rsquo;t.
+              </p>
+              <p>
+                I think this is one of the first real windows for AI to
+                make a measurable difference in this industry — not as a
+                gimmick, but as leads and enquiries. For as long as most of
+                the industry hasn&rsquo;t caught on, it&rsquo;s also one of
+                the clearest ways to pull ahead of the agency down the road.
+              </p>
+              <p>
+                That&rsquo;s the bet Reyse is built on: two years on the
+                lettings desk, then a year of daily research into how AI
+                search actually works, before any of it became a product.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+
       <div className="border-y border-border bg-ink px-6 py-24 text-ink-foreground">
         <div className="mx-auto max-w-5xl">
           <Reveal>
@@ -141,9 +146,11 @@ export default function AboutPage() {
                 <AvatarPlaceholder />
                 <p className="mt-4 font-semibold">Morgan King</p>
                 <p className="mt-1 text-sm text-ink-foreground/70">
-                  Founder — and for now, the whole team. Everything above
-                  is the actual reason Reyse exists, not a mission
-                  statement written after the fact.
+                  Founder — and for now, the whole team. I took the
+                  lettings job deliberately, for the sales experience —
+                  the advice was always two years of that before starting
+                  anything of your own. Reyse is what I&rsquo;m building
+                  with it.
                 </p>
               </div>
             </Reveal>
@@ -186,6 +193,15 @@ export default function AboutPage() {
                     SEO and GEO service to reyse.co.uk as I build it, in
                     public. If it doesn&rsquo;t work here first, it
                     doesn&rsquo;t go near a client.
+                  </p>
+                  <p>
+                    It&rsquo;s also why the{" "}
+                    <Link href="/guarantees" className="font-medium text-accent-text hover:underline">
+                      guarantees page
+                    </Link>{" "}
+                    exists — eleven specific, enforceable promises instead
+                    of vague reassurance. If honesty is the whole pitch,
+                    it has to be checkable.
                   </p>
                 </div>
               </div>
