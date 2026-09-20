@@ -121,6 +121,56 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         description: "All 22 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
         href: "/downloads/the-free-review-management-course.pdf",
       },
+      {
+        title: "Review Request Message Templates",
+        description: "SMS, email, and an in-person script — for every real moment, not a random fixed schedule.",
+        href: "/downloads/reyse-review-request-templates.pdf",
+      },
+      {
+        title: "Review Reply Template Library",
+        description: "Nine real scenarios — not just “good” and “bad”, the ones that actually trip people up.",
+        href: "/downloads/reyse-review-reply-template-library.pdf",
+      },
+      {
+        title: "Review Platform Coverage Checklist",
+        description: "Claimed and actively monitored, platform by platform — Google, Bing, Apple, Trustpilot, Facebook, allAgents.",
+        href: "/downloads/reyse-review-platform-coverage-checklist.pdf",
+      },
+      {
+        title: "Negative Review Decision Tree",
+        description: "Reply publicly, take it offline, or report it — worked out before you're stood in front of one.",
+        href: "/downloads/reyse-negative-review-decision-tree.pdf",
+      },
+      {
+        title: "Review Badge Embed Kit",
+        description: "A fill-in-the-blank snippet for a live-looking star rating badge on your own website.",
+        href: "/downloads/reyse-review-badge-embed-kit.pdf",
+      },
+      {
+        title: "Review Monitoring & Alert Setup Checklist",
+        description: "Turn on every platform's own notifications properly, so nothing sits unseen for a week.",
+        href: "/downloads/reyse-review-monitoring-alert-checklist.pdf",
+      },
+      {
+        title: "Monthly Review Health-Check Checklist",
+        description: "Five minutes a month so a slipping response time or a rating drift never goes unnoticed.",
+        href: "/downloads/reyse-monthly-review-health-check.pdf",
+      },
+      {
+        title: "Review Reply Builder Worksheet",
+        description: "The four-part formula behind every good reply, for anything the template library doesn't quite cover.",
+        href: "/downloads/reyse-review-reply-builder-worksheet.pdf",
+      },
+      {
+        title: "Fake/Suspicious Review Flagging Guide",
+        description: "How to actually report a fake review on Google, Trustpilot, and Facebook, and what evidence to gather first.",
+        href: "/downloads/reyse-fake-review-flagging-guide.pdf",
+      },
+      {
+        title: "AI Reputation Self-Check Kit",
+        description: "8 real prompts to run against ChatGPT, Gemini, and Perplexity, plus a worksheet to track what comes back.",
+        href: "/downloads/reyse-ai-reputation-self-check-kit.pdf",
+      },
     ],
   },
   "market-intelligence": {
