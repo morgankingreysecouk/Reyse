@@ -114,9 +114,42 @@ function DownloadVisual({ kind, iconSize, aspect }: { kind: DownloadKind; iconSi
   );
 }
 
+// Fills whatever height the bento cell gives it, rather than a fixed
+// aspect ratio — the cell's own col/row span decides how tall that is.
+function BentoVisual({ kind, iconSize }: { kind: DownloadKind; iconSize: string }) {
+  return (
+    <div className="relative flex min-h-[92px] flex-1 items-center justify-center bg-panel">
+      <span
+        className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text"
+        style={{ width: "2.6em", height: "2.6em" }}
+      >
+        {kindIcons[kind](iconSize)}
+      </span>
+      <DownloadBadge />
+    </div>
+  );
+}
+
+// Deliberately irregular — a real bento grid, not a uniform 4-up list.
+// Sized by editorial weight (the full-scope template gets the big block,
+// the narrow trackers get the small ones), with the area of every cell
+// summing to a clean multiple of the 4-column grid so `grid-flow-dense`
+// packs it without leftover gaps.
+const bentoSpec: Record<string, { col: string; row: string; icon: string; title: string; blurb?: boolean }> = {
+  "reyse-review-request-reply-templates.pdf": { col: "sm:col-span-2", row: "sm:row-span-2", icon: "h-8 w-8", title: "text-xl", blurb: true },
+  "reyse-ai-visibility-self-check-kit.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-base" },
+  "reyse-ai-crawler-access-checklist.pdf": { col: "sm:col-span-1", row: "sm:row-span-2", icon: "h-6 w-6", title: "text-base" },
+  "reyse-nap-consistency-tracker.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-base" },
+  "reyse-meta-title-description-formulas.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
+  "reyse-competitor-snapshot-worksheet.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
+  "reyse-uk-directory-list.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
+  "reyse-monthly-seo-health-check.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
+};
+
 export default function SeoDownloadsPage() {
   const downloads = resourcesBySlug.seo.downloads.map((d) => ({
     ...d,
+    file: d.href.split("/").pop() ?? "",
     kind: kindByFile[d.href.split("/").pop() ?? ""] ?? "template",
   }));
   const [featured, second, third, ...rest] = downloads;
@@ -186,22 +219,28 @@ export default function SeoDownloadsPage() {
         </div>
 
         {rest.length > 0 && (
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {rest.map((d, i) => (
-              <Reveal key={d.href} delay={i * 70}>
-                <a
-                  href={d.href}
-                  download
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
-                >
-                  <DownloadVisual kind={d.kind} iconSize="h-5 w-5" aspect="aspect-[4/3]" />
-                  <div className="p-5">
-                    <p className="text-xs font-medium text-foreground/65">{kindLabels[d.kind]}</p>
-                    <h3 className="mt-2 font-heading text-base leading-[1.25] tracking-tight">{d.title}</h3>
-                  </div>
-                </a>
-              </Reveal>
-            ))}
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-4 sm:auto-rows-[150px] sm:grid-flow-dense sm:gap-5">
+            {rest.map((d, i) => {
+              const spec = bentoSpec[d.file] ?? { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-base" };
+              return (
+                <Reveal key={d.href} delay={i * 60} className={`${spec.col} ${spec.row}`}>
+                  <a
+                    href={d.href}
+                    download
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
+                  >
+                    <BentoVisual kind={d.kind} iconSize={spec.icon} />
+                    <div className="p-4 sm:p-5">
+                      <p className="text-xs font-medium text-foreground/65">{kindLabels[d.kind]}</p>
+                      <h3 className={`mt-1.5 font-heading leading-[1.2] tracking-tight ${spec.title}`}>{d.title}</h3>
+                      {spec.blurb && (
+                        <p className="mt-2 text-sm text-foreground/65">{d.description}</p>
+                      )}
+                    </div>
+                  </a>
+                </Reveal>
+              );
+            })}
           </div>
         )}
 
