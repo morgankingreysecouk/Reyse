@@ -37,6 +37,9 @@ export function InvisibleMockup() {
         <div className="rounded-2xl border border-dashed border-border px-4 py-3 text-sm italic text-foreground/65">
           We weren&rsquo;t on the list.
         </div>
+        <p className="text-xs text-foreground/50">
+          Illustrative example — not a real conversation or real businesses.
+        </p>
       </div>
     </div>
   );

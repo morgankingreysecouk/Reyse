@@ -93,7 +93,7 @@ export default function ReviewsResourcesPage() {
               SEO course
             </Link>{" "}
             and the{" "}
-            <Link href="/geocourse" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+            <Link href="/resources/geo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
               GEO guide
             </Link>
             , since reviews feed both — but it goes deeper on this one topic

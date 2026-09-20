@@ -18,8 +18,8 @@ export default function QuizPage() {
             Not sure what you need? Let&rsquo;s find out.
           </h1>
           <p className="mt-5 text-lg text-foreground/70">
-            Five quick questions about where your business actually stands
-            today — no email required until you&rsquo;re ready.
+            A handful of quick questions about where your business actually
+            stands today — no email required until you&rsquo;re ready.
           </p>
         </div>
 

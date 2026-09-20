@@ -97,7 +97,7 @@ export default function MarketIntelligenceResourcesPage() {
               SEO course
             </Link>
             , the{" "}
-            <Link href="/geocourse" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+            <Link href="/resources/geo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
               GEO guide
             </Link>
             , and the{" "}

@@ -280,7 +280,7 @@ export const lessons: Lesson[] = [
       },
     ],
     whyCustomer:
-      "87% of unhappy customers contact a business directly before ever posting a negative review — by the time it's public, they've usually already tried the quiet route and been let down twice. A generic, defensive reply confirms exactly that impression to everyone else reading.",
+      "87% of unhappy customers contact a business directly before ever posting a negative review — by the time it's public, they've usually already tried the quiet route and been let down twice. That's exactly why a real process matters: 68% of negative reviews go completely unanswered industry-wide, and a generic, defensive reply (or no reply at all) confirms the worst impression to everyone else reading.",
     whyCustomerStat: { value: "87%", label: "of unhappy customers contact a business directly before posting a negative review" },
     whySearchEngine:
       "Search engines don't read tone, but future customers do — a specific, calm, accountable reply to a negative review is frequently cited as a reason someone still books a viewing despite the bad review sitting right above it.",

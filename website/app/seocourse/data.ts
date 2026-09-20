@@ -65,8 +65,6 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Break up long pages with subheadings and short paragraphs", category: "On-Page & Content", type: "indirect" },
   { item: "Mention your actual town or area naturally on key pages", category: "On-Page & Content", type: "direct" },
   { item: "Include your phone number directly in meta descriptions", category: "On-Page & Content", type: "indirect" },
-  { item: "Build a dedicated page for each town or area you cover", category: "On-Page & Content", type: "direct" },
-  { item: "Publish fresh content at least monthly", category: "On-Page & Content", type: "indirect" },
 
   // Off-Site & Authority
   { item: "Earn genuine backlinks from relevant local sites", category: "Off-Site & Authority", type: "direct" },
@@ -78,7 +76,6 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Claim and verify your Google Business Profile", category: "Local & Business Profile", type: "prerequisite" },
   { item: "Set the correct category — not the generic default", category: "Local & Business Profile", type: "direct" },
   { item: "Complete every profile section — hours, photos, description", category: "Local & Business Profile", type: "direct" },
-  { item: "Turn on profile messaging and answer quickly", category: "Local & Business Profile", type: "indirect" },
   { item: "Post to your Google Business Profile weekly", category: "Local & Business Profile", type: "direct" },
   { item: "Claim Bing Places and Apple Business Connect", category: "Local & Business Profile", type: "prerequisite" },
 

@@ -182,7 +182,7 @@ export default function ResourcesHub() {
               Not sure where to start?
             </h2>
             <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
-              Take the 60-second quiz — five quick questions about where
+              Take the 60-second quiz — a handful of quick questions about where
               your business actually stands today.
             </p>
             <Link

@@ -32,6 +32,8 @@ export default async function IndustryPage({
   const { slug } = await params;
   const industry = industries.find((i) => i.slug === slug);
   if (!industry) notFound();
+  // Assumes exactly 2 industries (see the ternary below too) — picking the
+  // first non-matching one only works while that holds.
   const other = industries.find((i) => i.slug !== slug);
 
   return (

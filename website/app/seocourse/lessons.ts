@@ -1147,7 +1147,7 @@ export const lessons: Lesson[] = [
     impactPercent: 0.75,
     category: "On-Page & Content",
     categoryIndex: 3,
-    itemIndex: 20,
+    itemIndex: 19,
     title: "Phone Number in Meta Descriptions",
     whatIsIt:
       "Your number showing directly under your listing in the search results, so it's visible before someone even clicks through to your website.",
@@ -1193,15 +1193,15 @@ export const lessons: Lesson[] = [
     impactPercent: 7.5,
     category: "Off-Site & Authority",
     categoryIndex: 4,
-    itemIndex: 21,
+    itemIndex: 20,
     title: "Backlinks",
     whatIsIt:
       "Other websites linking to yours — for example, a local news site linking to your agency when quoting you on a market update.",
     whyCustomer:
       "Not usually seen directly, but the effect is felt indirectly — a business that's genuinely been featured and linked to elsewhere feels more established and credible than one that's only ever findable through its own website.",
     whySearchEngine:
-      "Each genuine link is directly factored into your ranking as a vote of confidence — rated a top-3 ranking factor by 54.8% of SEO experts surveyed in 2026, one of the oldest, strongest signals that exists.",
-    whySearchEngineBadge: "Rated a top-3 ranking factor by 54.8% of SEO experts (2026)",
+      "Each genuine link is directly factored into your ranking as a vote of confidence — widely regarded by SEO practitioners as one of the oldest, strongest signals that exists.",
+    whySearchEngineBadge: "Direct — one of the longest-standing ranking factors there is",
     diagnoseMethods: [
       {
         condition: "Method 1 — Your own site, via Search Console",
@@ -1275,15 +1275,15 @@ export const lessons: Lesson[] = [
     impactPercent: 4,
     category: "Off-Site & Authority",
     categoryIndex: 4,
-    itemIndex: 23,
+    itemIndex: 21,
     title: "Reddit and Forum Presence",
     whatIsIt:
       "Genuinely participating in real conversations happening in your town's online communities — answering a real question someone asked on a local subreddit or property forum.",
     whyCustomer:
       "Seeing a genuinely helpful, non-salesy answer from a local agent in a real community discussion builds trust before they've ever visited your website at all.",
     whySearchEngine:
-      "Reddit was specifically named as a 2026 Google ranking signal in its own right, and roughly 77% of what AI cites about a business comes from off-site sources like this — not the business's own website.",
-    whySearchEngineBadge: "Named a 2026 Google ranking signal in its own right",
+      "Reddit and forum discussions increasingly surface directly in Google's results and get cited by AI tools in their own right, and roughly 77% of what AI cites about a business comes from off-site sources like this — not the business's own website.",
+    whySearchEngineBadge: "Direct — increasingly surfaced by both Google and AI tools",
     diagnoseMethods: [
       {
         condition: "Method 1 — Find where the conversations already are",
@@ -1330,7 +1330,7 @@ export const lessons: Lesson[] = [
     impactPercent: 5,
     category: "Off-Site & Authority",
     categoryIndex: 4,
-    itemIndex: 24,
+    itemIndex: 22,
     title: "NAP Consistency",
     whatIsIt:
       "Making sure your business name, address, and phone number are identical everywhere they appear online — not a slightly different phone number on one old directory listing.",
@@ -1392,7 +1392,7 @@ export const lessons: Lesson[] = [
     impactPercent: 7.5,
     category: "Local & Business Profile",
     categoryIndex: 5,
-    itemIndex: 25,
+    itemIndex: 23,
     title: "Google Business Profile",
     whatIsIt:
       "Your business's info card on Google Maps and search — hours, photos, services, all visible before someone even reaches your actual website.",
@@ -1449,7 +1449,7 @@ export const lessons: Lesson[] = [
     impactPercent: 3,
     category: "Local & Business Profile",
     categoryIndex: 5,
-    itemIndex: 26,
+    itemIndex: 24,
     title: "Profile Activity",
     whatIsIt:
       "Posting regular updates so your profile looks actively maintained — a new instruction, a seasonal message — rather than untouched for months.",
@@ -1502,7 +1502,7 @@ export const lessons: Lesson[] = [
     impactPercent: 2,
     category: "Local & Business Profile",
     categoryIndex: 5,
-    itemIndex: 27,
+    itemIndex: 25,
     title: "Multi-Platform Presence",
     whatIsIt:
       "Being visible on Bing and Apple Maps too, not just Google — an iPhone user searching “estate agent near me” through Apple Maps, for example.",
@@ -1557,7 +1557,7 @@ export const lessons: Lesson[] = [
     impactPercent: 3,
     category: "Trust & Authority (E-E-A-T)",
     categoryIndex: 6,
-    itemIndex: 28,
+    itemIndex: 26,
     title: "Agent Bios",
     whatIsIt:
       "A real, specific paragraph about each team member — their actual experience, their specialism — not just a name and job title.",
@@ -1607,7 +1607,7 @@ export const lessons: Lesson[] = [
     impactPercent: 8,
     category: "Trust & Authority (E-E-A-T)",
     categoryIndex: 6,
-    itemIndex: 30,
+    itemIndex: 27,
     title: "Reviews",
     whatIsIt: "What real customers say about you, publicly, and how — or whether — you respond to it.",
     whyCustomer:
@@ -1659,7 +1659,7 @@ export const lessons: Lesson[] = [
     impactPercent: 1,
     category: "Measurement",
     categoryIndex: 7,
-    itemIndex: 31,
+    itemIndex: 28,
     title: "Analytics, Enquiry Tracking, and Algorithm Awareness",
     whatIsIt:
       "The instruments for seeing whether everything above is actually working — tracking who visits, where enquiries genuinely come from, and whether Google's changed anything recently.",
@@ -1715,7 +1715,7 @@ export const lessons: Lesson[] = [
     impactPercent: 1,
     category: "Playing It Smart",
     categoryIndex: 8,
-    itemIndex: 32,
+    itemIndex: 29,
     title: "Finding a Competitor's Weak Spots and Content Gaps",
     whatIsIt:
       "Actively identifying where a specific, named rival is weak, rather than just “doing SEO well” in isolation and hoping it's enough.",
@@ -1764,7 +1764,7 @@ export const lessons: Lesson[] = [
     impactPercent: 0.75,
     category: "Playing It Smart",
     categoryIndex: 8,
-    itemIndex: 33,
+    itemIndex: 30,
     title: "Being Early on New Platforms",
     whatIsIt: "Claiming presence on a new platform before competitors even notice it exists.",
     whyCustomer:
@@ -1810,7 +1810,7 @@ export const lessons: Lesson[] = [
     slug: "time-and-outside-your-control",
     category: "The Honest Picture",
     categoryIndex: 9,
-    itemIndex: 34,
+    itemIndex: 31,
     title: "Time, and What's Outside Your Control",
     whatIsIt:
       "Two categories of ranking factor that don't respond to effort at all — one because it simply takes time, the other because it was never yours to control in the first place.",
@@ -1834,7 +1834,7 @@ export const lessons: Lesson[] = [
     slug: "course-complete",
     category: "Course Complete",
     categoryIndex: 10,
-    itemIndex: 35,
+    itemIndex: 32,
     title: "You've Reached the End of the Course",
     whatIsIt:
       "Nothing I've shown you how to do today couldn't be done by a 15 year old. Every single fix in this guide is genuinely within reach — it doesn't take special skill, just knowing what to look for and actually doing it.",

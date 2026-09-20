@@ -54,7 +54,7 @@ export const questions: QuizQuestion[] = [
     options: [
       { value: "one", label: "Just one", scores: {} },
       { value: "few", label: "A few (2–9)", scores: { scale: 1 } },
-      { value: "many", label: "Many (10+)", scores: { scale: 3 } },
+      { value: "many", label: "Many (10+)", scores: { scale: 2 } },
     ],
   },
 ];

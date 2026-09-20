@@ -14,7 +14,7 @@ export default function ClosingCta() {
       }`}
     >
       <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-        Ready to stop missing inquiries?
+        Ready to stop missing enquiries?
       </h2>
       <p className="mx-auto mt-3 max-w-md text-foreground/60">
         Tell us about your business and we&rsquo;ll show you Reyse in action.
