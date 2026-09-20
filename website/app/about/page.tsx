@@ -37,8 +37,9 @@ export default function AboutPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/70">
             Reyse started as the answer to one lettings agency&rsquo;s
-            invisibility problem — mine. It&rsquo;s now built for every
-            estate and letting agent with the same blind spot.
+            invisibility problem — mine. The mission hasn&rsquo;t changed
+            since: make sure no estate or letting agent is invisible to
+            the AI tools their next client is already asking.
           </p>
         </div>
       </div>
@@ -67,7 +68,10 @@ export default function AboutPage() {
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <div className="max-w-xl space-y-5 text-foreground/70">
+            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+              What I believe
+            </p>
+            <div className="mt-5 max-w-xl space-y-5 text-foreground/70">
               <p>
                 Nothing Reyse does is new technology. AI-powered SEO, schema
                 markup, review management, competitive intelligence — all of
@@ -77,7 +81,7 @@ export default function AboutPage() {
                 area, let alone fixed it if they don&rsquo;t.
               </p>
               <p>
-                We think this is one of the first real windows for AI to
+                I think this is one of the first real windows for AI to
                 make a measurable difference in this industry — not as a
                 gimmick, but as leads and enquiries. For as long as most of
                 the industry hasn&rsquo;t caught on, it&rsquo;s also one of
@@ -127,7 +131,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <h2 className="text-center font-heading text-3xl tracking-tight sm:text-4xl">
-              Leadership
+              The founder
             </h2>
           </Reveal>
 
@@ -137,9 +141,9 @@ export default function AboutPage() {
                 <AvatarPlaceholder />
                 <p className="mt-4 font-semibold">Morgan King</p>
                 <p className="mt-1 text-sm text-ink-foreground/70">
-                  Founder. Two years on the lettings desk taught me the
-                  reputation wasn&rsquo;t really the problem — the
-                  invisibility was. Reyse is what came out of that.
+                  Founder — and for now, the whole team. Everything above
+                  is the actual reason Reyse exists, not a mission
+                  statement written after the fact.
                 </p>
               </div>
             </Reveal>
@@ -176,11 +180,11 @@ export default function AboutPage() {
                 <div className="mt-5 space-y-5 text-foreground/70">
                   <p>
                     Reyse is in the process of launching right now, which
-                    means the most honest proof we can offer isn&rsquo;t a
-                    client list yet — it&rsquo;s what we&rsquo;re doing to
-                    our own website. We&rsquo;re applying Reyse&rsquo;s own
-                    SEO and GEO service to reyse.co.uk as we build it, in
-                    public. If it doesn&rsquo;t work on us first, it
+                    means the most honest proof I can offer isn&rsquo;t a
+                    client list yet — it&rsquo;s what I&rsquo;m doing to
+                    my own website. I&rsquo;m applying Reyse&rsquo;s own
+                    SEO and GEO service to reyse.co.uk as I build it, in
+                    public. If it doesn&rsquo;t work here first, it
                     doesn&rsquo;t go near a client.
                   </p>
                 </div>
@@ -190,6 +194,28 @@ export default function AboutPage() {
               <SelfAuditMockup />
             </Reveal>
           </div>
+        </div>
+      </div>
+
+      <div className="px-6 pb-20">
+        <div className="mx-auto max-w-2xl">
+          <Reveal>
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
+              <span aria-hidden className="h-px flex-1 border-t border-dashed border-border" />
+              <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full border border-border" />
+            </div>
+            <div className="mt-3 flex items-start justify-between gap-4">
+              <div>
+                <p className="text-sm font-medium text-foreground">3 August 2026</p>
+                <p className="text-sm text-foreground/60">Reyse is founded</p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm font-medium text-foreground/50">To be continued</p>
+                <p className="text-sm text-foreground/40">&hellip;</p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
 
