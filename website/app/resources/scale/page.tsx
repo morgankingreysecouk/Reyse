@@ -181,9 +181,11 @@ export default function ScaleResourcesPage() {
               Why it&rsquo;s free
             </p>
             <p className="mt-4 font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
-              &ldquo;Reyse is one person, at an early stage, and this course
-              is the same knowledge the paid work is built on — free whether
-              or not you ever become a client.&rdquo;
+              &ldquo;I learned this the hard way, over a whole career, and I
+              don&rsquo;t want anyone else to. This exists so every agent
+              gets a genuine shot at being their best — and when
+              you&rsquo;re stretched too thin to do it alone, that&rsquo;s
+              exactly when we step in.&rdquo;
             </p>
           </div>
         </Reveal>

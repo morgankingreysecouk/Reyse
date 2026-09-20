@@ -34,10 +34,11 @@ export default function ResourcesPromo() {
                 you.
               </p>
               <p className="text-sm text-foreground/60">
-                Why free? Reyse is one person, at an early stage, building
-                this in the open. Free is the honest price for knowledge
-                that isn&rsquo;t scarce — just rarely written down properly
-                for this industry.
+                Why free? I learned this the hard way, over a whole career,
+                and I don&rsquo;t want anyone else to. It&rsquo;s here so
+                every agent gets a genuine shot at being their best — and
+                when you&rsquo;re stretched too thin to do it alone,
+                that&rsquo;s exactly when we step in.
               </p>
             </div>
             <Link
