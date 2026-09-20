@@ -136,14 +136,14 @@ function BentoVisual({ kind, iconSize }: { kind: DownloadKind; iconSize: string 
 // summing to a clean multiple of the 4-column grid so `grid-flow-dense`
 // packs it without leftover gaps.
 const bentoSpec: Record<string, { col: string; row: string; icon: string; title: string; blurb?: boolean }> = {
-  "reyse-review-request-reply-templates.pdf": { col: "sm:col-span-2", row: "sm:row-span-2", icon: "h-8 w-8", title: "text-xl", blurb: true },
-  "reyse-ai-visibility-self-check-kit.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-base" },
+  "reyse-review-request-reply-templates.pdf": { col: "sm:col-span-2", row: "sm:row-span-2", icon: "h-7 w-7", title: "text-lg", blurb: true },
+  "reyse-ai-visibility-self-check-kit.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-sm" },
   "reyse-ai-crawler-access-checklist.pdf": { col: "sm:col-span-1", row: "sm:row-span-2", icon: "h-6 w-6", title: "text-base" },
-  "reyse-nap-consistency-tracker.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-base" },
-  "reyse-meta-title-description-formulas.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
-  "reyse-competitor-snapshot-worksheet.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
-  "reyse-uk-directory-list.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
-  "reyse-monthly-seo-health-check.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-lg" },
+  "reyse-nap-consistency-tracker.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-sm" },
+  "reyse-meta-title-description-formulas.pdf": { col: "sm:col-span-2", row: "sm:row-span-2", icon: "h-7 w-7", title: "text-lg", blurb: true },
+  "reyse-competitor-snapshot-worksheet.pdf": { col: "sm:col-span-2", row: "sm:row-span-1", icon: "h-6 w-6", title: "text-base" },
+  "reyse-uk-directory-list.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-sm" },
+  "reyse-monthly-seo-health-check.pdf": { col: "sm:col-span-1", row: "sm:row-span-1", icon: "h-5 w-5", title: "text-sm" },
 };
 
 export default function SeoDownloadsPage() {
