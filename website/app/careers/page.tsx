@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
-import PhotoPlaceholder from "../components/PhotoPlaceholder";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -70,11 +70,15 @@ export default function CareersPage() {
                   Read the full story
                 </Link>
               </div>
-              <PhotoPlaceholder
-                label="Reyse, today"
-                note="Photo placeholder — there's a founder and a laptop, not much else yet."
-                aspect="aspect-square"
-              />
+              <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-border">
+                <Image
+                  src="/images/careers-desk.webp"
+                  alt="A minimal home-office desk with a laptop, coffee, and a notebook — Reyse today"
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </Reveal>
         </div>
