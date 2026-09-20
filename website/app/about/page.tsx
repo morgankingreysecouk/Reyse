@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { InvisibleMockup, SelfAuditMockup } from "../components/AboutVisuals";
-import PhotoPlaceholder from "../components/PhotoPlaceholder";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -46,11 +46,20 @@ export default function AboutPage() {
       <div className="px-6">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <PhotoPlaceholder
-              label="The Reyse team"
-              note="Currently a team of one — this is where a real photo goes once there's a team to put in it."
-              aspect="aspect-[21/8]"
-            />
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border">
+              <Image
+                src="/images/about-office.webp"
+                alt="A bright, modern workspace with the Reyse logo on the wall"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+            <p className="mt-3 text-center text-xs text-foreground/50">
+              A look at the space Reyse is building toward — not a real
+              office yet. Right now it&rsquo;s genuinely a team of one.
+            </p>
           </Reveal>
         </div>
       </div>
