@@ -87,16 +87,16 @@ export default function ScaleResourcesPage() {
       </div>
 
       {downloads.length > 0 && (
-        <div className="mx-auto mt-16 max-w-2xl px-6">
+        <div className="mx-auto mt-16 max-w-4xl px-6">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
               Downloads
             </p>
-            <div className="mt-4 space-y-4">
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
               {downloads.map((d) => (
                 <div
                   key={d.href}
-                  className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-panel p-6"
+                  className="flex flex-col justify-between gap-4 rounded-2xl border border-border bg-panel p-6"
                 >
                   <div>
                     <p className="font-medium text-foreground">{d.title}</p>
@@ -105,7 +105,7 @@ export default function ScaleResourcesPage() {
                   <a
                     href={d.href}
                     download
-                    className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground hover:opacity-90"
+                    className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground hover:opacity-90"
                   >
                     Download PDF
                     <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">

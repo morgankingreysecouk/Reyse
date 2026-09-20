@@ -309,6 +309,56 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
         description: "All 16 lessons in one document, exactly as they appear in the course — to save, print, or read offline.",
         href: "/downloads/the-free-scale-course.pdf",
       },
+      {
+        title: "Branch Launch Checklist",
+        description: "The one list to run every time a new branch opens — so nothing depends on someone remembering.",
+        href: "/downloads/reyse-branch-launch-checklist.pdf",
+      },
+      {
+        title: "Branch Schema Template Kit",
+        description: "One schema block, built to be duplicated per branch — swap five fields, not rebuild the whole thing.",
+        href: "/downloads/reyse-branch-schema-template-kit.pdf",
+      },
+      {
+        title: "Branch NAP Launch Check",
+        description: "Checked once at launch, plus a rotating spot-check — not a growing matrix across every branch and directory.",
+        href: "/downloads/reyse-branch-nap-launch-check.pdf",
+      },
+      {
+        title: "Branch Page Architecture Decision Guide",
+        description: "Subdirectory or subdomain, one page or grouped — decided once, before you need it, not improvised at branch three.",
+        href: "/downloads/reyse-branch-page-architecture-guide.pdf",
+      },
+      {
+        title: "Pre-Launch Content Checklist",
+        description: "Checked once, on the new page, before it goes live — not a recurring audit of a growing network.",
+        href: "/downloads/reyse-pre-launch-content-checklist.pdf",
+      },
+      {
+        title: "Group vs Branch Reporting Template",
+        description: "A regional director scanning fifty branches needs something completely different from a branch manager checking their own patch.",
+        href: "/downloads/reyse-group-vs-branch-reporting-template.pdf",
+      },
+      {
+        title: "New Branch Directory Claim Checklist",
+        description: "Every directory claimed on day one — not “eventually,” which is how gaps quietly become permanent.",
+        href: "/downloads/reyse-new-branch-directory-claim-checklist.pdf",
+      },
+      {
+        title: "Listing Data Format Template",
+        description: "The standard spec for how every branch's data gets formatted — decided once, before branch two, not during.",
+        href: "/downloads/reyse-listing-data-format-template.pdf",
+      },
+      {
+        title: "Pre-Launch Brand Consistency Checklist",
+        description: "Checked once, on the new branch page, before it goes live — not a re-audit of every existing page each time.",
+        href: "/downloads/reyse-pre-launch-brand-consistency-checklist.pdf",
+      },
+      {
+        title: "Moat Strength Test",
+        description: "Firm criteria, not open reflection — what's actually defensible as you scale, and what any competitor can copy in a weekend.",
+        href: "/downloads/reyse-moat-strength-test.pdf",
+      },
     ],
   },
 };
