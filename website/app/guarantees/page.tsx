@@ -93,14 +93,6 @@ export default function GuaranteesPage() {
       <div className="relative overflow-hidden border-b border-border bg-ink px-6 pb-24 pt-40 text-ink-foreground">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(45% 45% at 50% 25%, rgba(166,173,62,0.18), transparent 100%)",
-          }}
-        />
-        <div
-          aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.15]"
           style={{
             backgroundImage: "radial-gradient(rgba(250,248,242,0.5) 1px, transparent 1px)",
