@@ -1,7 +1,7 @@
 import Link from "next/link";
 import VennMark from "./VennMark";
 
-export default function HeroSlideshow() {
+export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-border bg-background">
       <div

@@ -4,7 +4,7 @@ import Faq from "./components/Faq";
 import FounderCredibility from "./components/FounderCredibility";
 import FreeForeverBanner from "./components/FreeForeverBanner";
 import GuaranteesPromo from "./components/GuaranteesPromo";
-import HeroSlideshow from "./components/HeroSlideshow";
+import Hero from "./components/Hero";
 import HowItWorksScroll from "./components/HowItWorksScroll";
 import ResourcesPromo from "./components/ResourcesPromo";
 import Reveal from "./components/Reveal";
@@ -21,7 +21,7 @@ const moments = industries.flatMap((industry) =>
 export default function Home() {
   return (
     <main className="flex-1">
-      <HeroSlideshow />
+      <Hero />
       <FreeForeverBanner />
       <ResourcesPromo />
 
