@@ -153,11 +153,12 @@ export default function AboutPage() {
           <Reveal delay={150}>
             <div className="mx-auto mt-20 max-w-3xl rounded-3xl bg-accent px-8 py-14 text-center text-accent-foreground">
               <h3 className="font-heading text-3xl tracking-tight sm:text-4xl">
-                Not hiring. Yet.
+                Hiring one partner.
               </h3>
               <p className="mx-auto mt-3 max-w-sm text-sm text-accent-foreground/80">
-                Reyse is a team of one right now. Here&rsquo;s the honest
-                plan for when that changes.
+                Equity, not a salary — someone to help build sales,
+                marketing, and fulfillment alongside me. Here&rsquo;s
+                exactly what that looks like.
               </p>
               <Link
                 href="/careers"

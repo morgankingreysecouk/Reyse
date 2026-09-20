@@ -6,7 +6,7 @@ import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
   title: "Careers",
-  description: "Reyse is early-stage and honest about what that means. No open roles right now — here's what joining early would actually look like.",
+  description: "Reyse is hiring one partner — equity instead of salary, flexible hours, and a real hand in sales, marketing, and fulfillment.",
 });
 
 function CardIcon({ children }: { children: React.ReactNode }) {
@@ -132,14 +132,22 @@ export default function CareersPage() {
                   <p className="mt-2 text-sm text-foreground/70">
                     Reyse doesn&rsquo;t have a team yet — just a founder
                     building the product and the business at the same time.
+                    That&rsquo;s exactly what the role below is for.
                   </p>
                 </div>
               </Reveal>
               <Reveal delay={100}>
-                <div className="flex flex-col items-center justify-center rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground">
-                  <p className="font-heading text-6xl leading-none tracking-tight">0</p>
-                  <p className="mt-3 text-sm font-medium">
-                    open roles right now — on purpose
+                <div className="flex flex-col items-center justify-center gap-2 rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground">
+                  <p className="text-xs font-medium uppercase tracking-wide text-accent-foreground/70">
+                    Now hiring
+                  </p>
+                  <p className="font-heading text-5xl leading-none tracking-tight">
+                    Partner
+                  </p>
+                  <p className="mx-auto mt-2 max-w-xs text-sm text-accent-foreground/80">
+                    Equity, not a salary. Flexible hours, not fixed ones.
+                    Sales, marketing, fulfillment — everything, alongside
+                    the founder.
                   </p>
                 </div>
               </Reveal>
@@ -148,16 +156,16 @@ export default function CareersPage() {
                   <div className="h-full rounded-3xl border border-border bg-background p-6">
                     <CardIcon>
                       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M4 13l3-8h10l3 8" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M4 13h5a1 1 0 0 1 1 1 2 2 0 0 0 4 0 1 1 0 0 1 1-1h5" strokeLinecap="round" strokeLinejoin="round" />
+                        <circle cx="12" cy="12" r="8.5" />
+                        <path d="M12 12V3.5A8.5 8.5 0 0 1 20.5 12H12Z" fill="currentColor" stroke="none" />
                       </svg>
                     </CardIcon>
                     <h3 className="mt-4 text-sm font-semibold">
-                      Nothing to apply for, yet
+                      No salary, real equity
                     </h3>
                     <p className="mt-2 text-xs text-foreground/70">
-                      No form, no pipeline. Just accurate.
+                      Ownership in the company instead — the actual amount
+                      is a conversation, not a number on this page.
                     </p>
                   </div>
                 </Reveal>
@@ -174,7 +182,7 @@ export default function CareersPage() {
                       Real ownership, not a title
                     </h3>
                     <p className="mt-2 text-xs text-foreground/70">
-                      The first hire helps build the structure, not fit into one.
+                      The partner helps build the structure, not fit into one.
                     </p>
                   </div>
                 </Reveal>
@@ -194,15 +202,16 @@ export default function CareersPage() {
               </Reveal>
               <Reveal delay={200}>
                 <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-background px-6 py-14 text-center">
-                  <p className="font-heading text-6xl leading-none tracking-tight text-accent-text">1</p>
-                  <p className="mt-3 text-sm font-medium text-foreground/70">
-                    person, for now
+                  <p className="text-lg font-semibold text-foreground">Interested?</p>
+                  <p className="mx-auto mt-2 max-w-xs text-sm text-foreground/70">
+                    Email directly — no form, no pipeline, just a real
+                    conversation about what you&rsquo;d bring.
                   </p>
                   <a
-                    href="mailto:hello@reyse.co.uk?subject=Interested%20in%20Reyse"
+                    href="mailto:morgan.king@reyse.co.uk?subject=Partner%20role%20at%20Reyse"
                     className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
                   >
-                    hello@reyse.co.uk
+                    morgan.king@reyse.co.uk
                   </a>
                 </div>
               </Reveal>
@@ -235,14 +244,14 @@ export default function CareersPage() {
         <Reveal>
           <div className="mx-auto max-w-xl rounded-2xl border border-border bg-panel p-8 text-center">
             <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
-              Want to be on the list for when that changes?
+              Not right for the partner role, but want to be on the list?
             </h2>
             <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
               If Reyse sounds like somewhere you&rsquo;d want to work once
-              there actually is a team to join, send a short note — who you
-              are, what you&rsquo;d bring — and it&rsquo;ll be read
-              personally, not filtered by an applicant tracking system that
-              doesn&rsquo;t exist yet.
+              there&rsquo;s an actual team to join — beyond the partner role
+              above — send a short note: who you are, what you&rsquo;d
+              bring. It&rsquo;ll be read personally, not filtered by an
+              applicant tracking system that doesn&rsquo;t exist yet.
             </p>
             <a
               href="mailto:hello@reyse.co.uk?subject=Interested%20in%20Reyse"
