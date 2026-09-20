@@ -77,6 +77,7 @@ export default async function GeoLessonPage({
             <LessonJumpSelect
               lessons={lessons.map((l) => ({ slug: l.slug, title: l.title }))}
               currentSlug={lesson.slug}
+              basePath="/geocourse"
             />
           </div>
         </div>
@@ -241,8 +242,8 @@ export default async function GeoLessonPage({
                           <a
                             key={link.href}
                             href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target={link.href.startsWith("/") ? undefined : "_blank"}
+                            rel={link.href.startsWith("/") ? undefined : "noopener noreferrer"}
                             className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground/70 hover:border-foreground/30 hover:text-foreground"
                           >
                             {link.label} ↗

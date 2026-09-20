@@ -7,16 +7,18 @@ type LessonOption = { slug: string; title: string };
 export default function LessonJumpSelect({
   lessons,
   currentSlug,
+  basePath,
 }: {
   lessons: LessonOption[];
   currentSlug: string;
+  basePath: string;
 }) {
   const router = useRouter();
 
   return (
     <select
       value={currentSlug}
-      onChange={(e) => router.push(`/seocourse/${e.target.value}`)}
+      onChange={(e) => router.push(`${basePath}/${e.target.value}`)}
       aria-label="Jump to lesson"
       className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground/70 hover:border-foreground/30"
     >

@@ -69,6 +69,7 @@ export default async function LessonPage({
             <LessonJumpSelect
               lessons={lessons.map((l) => ({ slug: l.slug, title: l.title }))}
               currentSlug={lesson.slug}
+              basePath="/marketcourse"
             />
           </div>
         </div>
@@ -215,8 +216,8 @@ export default async function LessonPage({
                           <a
                             key={link.href}
                             href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            target={link.href.startsWith("/") ? undefined : "_blank"}
+                            rel={link.href.startsWith("/") ? undefined : "noopener noreferrer"}
                             className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground/70 hover:border-foreground/30 hover:text-foreground"
                           >
                             {link.label} ↗
@@ -245,8 +246,8 @@ export default async function LessonPage({
               {lesson.diagnoseLink && (
                 <a
                   href={lesson.diagnoseLink.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={lesson.diagnoseLink.href.startsWith("/") ? undefined : "_blank"}
+                  rel={lesson.diagnoseLink.href.startsWith("/") ? undefined : "noopener noreferrer"}
                   className="mt-5 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
                 >
                   Open {lesson.diagnoseLink.label} →
@@ -285,8 +286,8 @@ export default async function LessonPage({
                         <a
                           key={link.href}
                           href={link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          target={link.href.startsWith("/") ? undefined : "_blank"}
+                          rel={link.href.startsWith("/") ? undefined : "noopener noreferrer"}
                           className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-foreground/70 hover:border-foreground/30 hover:text-foreground"
                         >
                           {link.label} ↗
@@ -308,8 +309,8 @@ export default async function LessonPage({
                     <a
                       key={link.href}
                       href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      target={link.href.startsWith("/") ? undefined : "_blank"}
+                      rel={link.href.startsWith("/") ? undefined : "noopener noreferrer"}
                       className="inline-flex items-center gap-1 rounded-full border border-accent/30 bg-background px-3 py-1.5 text-xs font-medium text-foreground/70 hover:border-foreground/30 hover:text-foreground"
                     >
                       {link.label} ↗

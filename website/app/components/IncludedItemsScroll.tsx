@@ -50,6 +50,7 @@ export default function IncludedItemsScroll({
     return () => observer.disconnect();
   }, []);
 
+  if (items.length === 0) return null;
   const activeItem = items[active];
   const activeRow = comparisonRows?.find((row) => row.service === activeItem.title);
 
@@ -58,7 +59,7 @@ export default function IncludedItemsScroll({
       <div className="hidden shrink-0 sm:block sm:w-[260px]">
         <div className="sticky top-28 rounded-3xl border border-border bg-panel p-7 shadow-xl">
           <p className="font-heading text-5xl leading-none tracking-tight text-accent-text">
-            0{active + 1}
+            {String(active + 1).padStart(2, "0")}
           </p>
           <p className="mt-4 font-heading text-xl leading-[1.15] tracking-tight">
             {activeItem.title}

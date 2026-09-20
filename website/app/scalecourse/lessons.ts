@@ -225,7 +225,7 @@ export const lessons: Lesson[] = [
       "Someone reading a new branch's very first review is deciding whether to trust a business with almost no track record yet — a fully set-up, verified profile around that review does real work a bare listing can't.",
     whySearchEngine:
       "The schema and trust signals themselves are the same ones covered in the SEO and GEO courses — the only thing that changes here is sequencing: getting them live before, not after, the first review, so nothing about the branch's earliest public moment is left half-built.",
-    whySearchEngineBadge: "Foundation — a sequencing rule, not a new technical requirement",
+    whySearchEngineBadge: "Discipline — a sequencing rule, not a new technical requirement",
     diagnoseSteps: [
       "For your most recent branch opening, check the dates: when was schema live and verified, and when did the first review arrive? Was the order right?",
     ],

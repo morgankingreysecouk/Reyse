@@ -175,12 +175,12 @@ export const lessons: Lesson[] = [
       "Search your business and your named competitor's on Bing, and note who's claimed, current, and shows reviews.",
       "Do the same on Apple Maps or by asking Siri — check who's actually verified and who isn't.",
     ],
-    diagnoseLink: { label: "Bing Places", href: "https://www.bing.com/places" },
+    diagnoseLink: { label: "Bing Places", href: "https://www.bingplaces.com" },
     fixBranches: [
       {
         condition: "If a competitor has claimed Bing or Apple and you haven't",
         action: "claim yours — both are free, and this is one of the fastest gaps to close since most agents genuinely haven't done this yet.",
-        links: [{ label: "Bing Places", href: "https://www.bing.com/places" }],
+        links: [{ label: "Bing Places", href: "https://www.bingplaces.com" }],
       },
       {
         condition: "If both are claimed but a competitor's looks more current",
