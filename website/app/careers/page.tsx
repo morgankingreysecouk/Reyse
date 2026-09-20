@@ -153,6 +153,15 @@ export default function CareersPage() {
                     Sales, marketing, fulfillment — everything, alongside
                     the founder.
                   </p>
+                  <Link
+                    href="/careers/partner"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-foreground underline underline-offset-2 hover:opacity-80"
+                  >
+                    Learn more about the role
+                    <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
                 </div>
               </Reveal>
               <div className="grid grid-cols-2 gap-6">
