@@ -23,6 +23,7 @@ const lessonCounts: Record<string, number> = {
 };
 
 const totalLessons = Object.values(lessonCounts).reduce((a, b) => a + b, 0);
+const totalDownloads = Object.values(resourcesBySlug).reduce((a, c) => a + c.downloads.length, 0);
 
 const icons: Record<string, React.ReactNode> = {
   seo: (
@@ -57,6 +58,13 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
+const notIs = [
+  { not: "An email gate before you see anything", is: "Read immediately — no signup" },
+  { not: "One free chapter, then a paywall", is: "Every lesson, in full" },
+  { not: "Generic templates you’ve seen on every other blog", is: "Templates built from the real course content, not padded out" },
+  { not: "A funnel into a sales call", is: "Free whether or not you ever become a client" },
+];
+
 function ResourceCategoryCard({
   product,
   delay,
@@ -67,7 +75,8 @@ function ResourceCategoryCard({
   large?: boolean;
 }) {
   const courseHref = resourcesBySlug[product.slug]?.courses[0]?.href;
-  const count = lessonCounts[product.slug];
+  const lessonCount = lessonCounts[product.slug];
+  const downloadCount = resourcesBySlug[product.slug]?.downloads.length ?? 0;
 
   return (
     <Reveal delay={delay}>
@@ -91,9 +100,12 @@ function ResourceCategoryCard({
         </div>
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <span className="text-xs font-medium text-foreground/50">
-              {count} free lesson{count === 1 ? "" : "s"}
+              {lessonCount} lesson{lessonCount === 1 ? "" : "s"}
+            </span>
+            <span className="text-xs font-medium text-foreground/50">
+              {downloadCount} download{downloadCount === 1 ? "" : "s"}
             </span>
             <Link
               href={`/resources/${product.slug}`}
@@ -123,47 +135,134 @@ export default function ResourcesHub() {
 
   return (
     <main className="flex-1">
-      <div className="relative overflow-hidden border-b border-border px-6 pb-20 pt-40">
+      <div className="relative overflow-hidden border-b border-border bg-ink px-6 pb-24 pt-40 text-ink-foreground">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 opacity-[0.15]"
           style={{
-            backgroundImage:
-              "radial-gradient(45% 45% at 50% 25%, rgba(166,173,62,0.16), transparent 100%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.35]"
-          style={{
-            backgroundImage: "radial-gradient(rgba(28,26,23,0.12) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(rgba(250,248,242,0.5) 1px, transparent 1px)",
             backgroundSize: "28px 28px",
-            maskImage: "radial-gradient(60% 60% at 50% 30%, black 40%, transparent 100%)",
-            WebkitMaskImage: "radial-gradient(60% 60% at 50% 30%, black 40%, transparent 100%)",
+            maskImage: "radial-gradient(60% 60% at 50% 35%, black 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(60% 60% at 50% 35%, black 40%, transparent 100%)",
           }}
         />
         <div className="relative mx-auto max-w-2xl text-center">
-          <p className="mb-4 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
+          <p className="mb-4 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium text-ink-foreground/70">
             Free Resources
           </p>
-          <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+          <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
             Free, by topic.
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-foreground/70">
-            Five topics, five complete free courses — SEO, GEO, review
-            management, market intelligence, and scale. No sign-up, no
-            drip-fed emails, nothing held back for a sales call.
+          <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
+            Five topics, five complete courses, {totalDownloads} downloadable
+            templates. No sign-up, no drip-fed emails, nothing held back for
+            a sales call.
           </p>
-          <p className="mx-auto mt-5 max-w-xl text-sm font-medium text-foreground/50">
-            {totalLessons} lessons across all five, and every one of them
-            free.
-          </p>
+          <a
+            href="#topics"
+            className="mt-9 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+          >
+            Browse the five topics
+          </a>
         </div>
       </div>
 
-      <div className="px-6 py-20">
+      <div className="px-6 py-16">
+        <div className="mx-auto max-w-4xl">
+          <div className="grid gap-4 sm:grid-cols-3">
+            <Reveal>
+              <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-panel px-6 py-10 text-center">
+                <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
+                  {totalLessons}
+                </p>
+                <p className="mt-3 text-sm font-medium text-foreground/70">
+                  free lessons, across five full courses
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-panel px-6 py-10 text-center">
+                <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
+                  {totalDownloads}
+                </p>
+                <p className="mt-3 text-sm font-medium text-foreground/70">
+                  downloadable templates, checklists &amp; worksheets
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={160}>
+              <div className="flex flex-col items-center justify-center rounded-3xl bg-accent px-6 py-10 text-center text-accent-foreground">
+                <p className="font-heading text-4xl leading-none tracking-tight">
+                  £0
+                </p>
+                <p className="mt-3 text-sm font-medium text-accent-foreground/80">
+                  for all of it, no catch
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-panel px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <div className="grid gap-6 sm:grid-cols-2">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+              What you actually get
+            </p>
+            <h2 className="mt-3 max-w-2xl font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
+              Not a lead magnet. The entire thing.
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {notIs.map((row, i) => (
+              <Reveal key={row.not} delay={i * 60}>
+                <div className="h-full rounded-2xl border border-border bg-background p-6">
+                  <div className="flex items-start gap-3 opacity-60">
+                    <span
+                      aria-hidden
+                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-foreground/30 text-foreground/50"
+                    >
+                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
+                      </svg>
+                    </span>
+                    <p className="text-sm font-medium text-foreground line-through decoration-foreground/40">
+                      {row.not}
+                    </p>
+                  </div>
+                  <div className="my-4 border-t border-dashed border-border" />
+                  <div className="flex items-start gap-3">
+                    <span
+                      aria-hidden
+                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text"
+                    >
+                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <p className="text-sm font-medium text-foreground">{row.is}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div id="topics" className="px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <Reveal>
+            <p className="text-center text-xs font-medium uppercase tracking-wide text-foreground/50">
+              The five topics
+            </p>
+            <h2 className="mx-auto mt-3 max-w-xl text-center font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
+              Pick where you actually are right now.
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2">
             <ResourceCategoryCard product={seo} delay={0} large />
             <ResourceCategoryCard product={geo} delay={80} large />
           </div>
@@ -175,7 +274,22 @@ export default function ResourcesHub() {
         </div>
       </div>
 
-      <div className="px-6 pb-24">
+      <div className="border-y border-border bg-ink px-6 py-20 text-ink-foreground">
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-xs font-medium uppercase tracking-wide text-ink-foreground/50">
+              Why it&rsquo;s free
+            </p>
+            <p className="mt-4 font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
+              &ldquo;Reyse is one person, at an early stage, and this is the
+              same knowledge the paid work is built on &mdash; free whether
+              or not you ever become a client.&rdquo;
+            </p>
+          </div>
+        </Reveal>
+      </div>
+
+      <div className="px-6 py-24">
         <Reveal>
           <div className="mx-auto max-w-xl rounded-2xl border border-border bg-panel p-8 text-center">
             <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
