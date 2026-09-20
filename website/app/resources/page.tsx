@@ -74,7 +74,6 @@ function ResourceCategoryCard({
   delay: number;
   large?: boolean;
 }) {
-  const courseHref = resourcesBySlug[product.slug]?.courses[0]?.href;
   const lessonCount = lessonCounts[product.slug];
   const downloadCount = resourcesBySlug[product.slug]?.downloads.length ?? 0;
 
@@ -107,21 +106,13 @@ function ResourceCategoryCard({
             <span className="text-xs font-medium text-foreground/50">
               {downloadCount} download{downloadCount === 1 ? "" : "s"}
             </span>
-            <Link
-              href={`/resources/${product.slug}`}
-              className="text-sm font-medium text-foreground/70 hover:text-foreground"
-            >
-              Resources
-            </Link>
           </div>
-          {courseHref && (
-            <Link
-              href={courseHref}
-              className="inline-flex items-center gap-1 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Start course →
-            </Link>
-          )}
+          <Link
+            href={`/resources/${product.slug}`}
+            className="inline-flex items-center gap-1 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground hover:opacity-90"
+          >
+            Explore →
+          </Link>
         </div>
       </div>
     </Reveal>

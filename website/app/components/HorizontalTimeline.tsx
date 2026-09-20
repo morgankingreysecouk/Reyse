@@ -1,26 +1,32 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export type ChecklistItem = { item: string; category: string; type: string };
 
-type Card =
-  | { kind: "marker"; category: string; index: number }
-  | { kind: "item"; entry: ChecklistItem; key: string };
+const ChevronIcon = ({ flip }: { flip?: boolean }) => (
+  <svg
+    viewBox="0 0 16 16"
+    className={`h-4 w-4 ${flip ? "rotate-180" : ""}`}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.75"
+  >
+    <path d="M6 3l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
-// A horizontal, self-scrolling take on ChecklistTimeline's vertical
-// sticky-panel layout — same items data, but as a looping filmstrip that
-// moves on its own and can also be dragged/scrolled by hand. Content is
-// duplicated once so the loop point is invisible (resetting scrollLeft by
-// exactly half the track width lands on an identical frame).
+// A manually-driven horizontal browser, not an auto-scrolling marquee —
+// reading a real checklist while the row keeps moving under you fights the
+// one thing this component exists for. Category pills above let you jump
+// straight to a section instead; the row itself only moves on drag, scroll,
+// or the arrow buttons.
 export default function HorizontalTimeline({
   items,
-  categoryBlurbs,
   tagStyles,
   tagLabels,
 }: {
   items: ChecklistItem[];
-  categoryBlurbs: Record<string, string>;
   tagStyles: Record<string, string>;
   tagLabels: Record<string, string>;
 }) {
@@ -32,107 +38,120 @@ export default function HorizontalTimeline({
     return seen;
   }, [items]);
 
-  const cards = useMemo(() => {
-    const out: Card[] = [];
-    categories.forEach((category, index) => {
-      out.push({ kind: "marker", category, index });
-      items
-        .filter((entry) => entry.category === category)
-        .forEach((entry, i) => out.push({ kind: "item", entry, key: `${category}-${i}` }));
-    });
-    return out;
-  }, [items, categories]);
-
-  const looped = useMemo(() => [...cards, ...cards], [cards]);
-
   const trackRef = useRef<HTMLDivElement>(null);
-  const pausedRef = useRef(false);
-  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeCategory, setActiveCategory] = useState(0);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    let raf = 0;
-    const speed = 0.6;
-    const step = () => {
-      if (!pausedRef.current) {
-        const half = track.scrollWidth / 2;
-        track.scrollLeft += speed;
-        if (track.scrollLeft >= half) track.scrollLeft -= half;
-      }
-      raf = requestAnimationFrame(step);
+    const onScroll = () => {
+      const trackLeft = track.getBoundingClientRect().left;
+      let closest = 0;
+      let closestDist = Infinity;
+      cardRefs.current.forEach((el, i) => {
+        if (!el) return;
+        const dist = Math.abs(el.getBoundingClientRect().left - trackLeft);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closest = i;
+        }
+      });
+      const category = items[closest]?.category;
+      const index = categories.indexOf(category);
+      if (index !== -1) setActiveCategory(index);
     };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [looped]);
 
-  const pause = () => {
-    pausedRef.current = true;
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    track.addEventListener("scroll", onScroll, { passive: true });
+    return () => track.removeEventListener("scroll", onScroll);
+  }, [items, categories]);
+
+  const scrollToCategory = (categoryIndex: number) => {
+    const category = categories[categoryIndex];
+    const firstIndex = items.findIndex((it) => it.category === category);
+    const el = cardRefs.current[firstIndex];
+    const track = trackRef.current;
+    if (!el || !track) return;
+    track.scrollTo({ left: el.offsetLeft - track.offsetLeft, behavior: "smooth" });
   };
-  const resumeSoon = () => {
-    if (resumeTimer.current) clearTimeout(resumeTimer.current);
-    resumeTimer.current = setTimeout(() => {
-      pausedRef.current = false;
-    }, 2200);
+
+  const nudge = (dir: 1 | -1) => {
+    trackRef.current?.scrollBy({ left: dir * 300, behavior: "smooth" });
   };
 
   return (
-    <div className="relative">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-background to-transparent sm:w-20"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-background to-transparent sm:w-20"
-      />
-      <div
-        ref={trackRef}
-        onMouseEnter={pause}
-        onMouseLeave={resumeSoon}
-        onTouchStart={pause}
-        onTouchEnd={resumeSoon}
-        onPointerDown={pause}
-        onPointerUp={resumeSoon}
-        onWheel={() => {
-          pause();
-          resumeSoon();
-        }}
-        className="scrollbar-hide flex gap-4 overflow-x-auto px-6 py-2 sm:px-0"
-      >
-        {looped.map((card, i) =>
-          card.kind === "marker" ? (
+    <div>
+      <div className="scrollbar-hide -mx-1 mb-4 flex gap-2 overflow-x-auto px-1 pb-1">
+        {categories.map((category, i) => (
+          <button
+            key={category}
+            type="button"
+            onClick={() => scrollToCategory(i)}
+            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
+              i === activeCategory
+                ? "border-accent bg-accent/15 text-accent-text"
+                : "border-border text-foreground/60 hover:border-foreground/40"
+            }`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div className="relative">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-background to-transparent sm:w-12"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-background to-transparent sm:w-12"
+        />
+
+        <button
+          type="button"
+          onClick={() => nudge(-1)}
+          aria-label="Scroll left"
+          className="absolute left-0 top-1/2 z-20 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground/70 shadow-sm hover:text-foreground sm:-left-4"
+        >
+          <ChevronIcon flip />
+        </button>
+        <button
+          type="button"
+          onClick={() => nudge(1)}
+          aria-label="Scroll right"
+          className="absolute right-0 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground/70 shadow-sm hover:text-foreground sm:-right-4"
+        >
+          <ChevronIcon />
+        </button>
+
+        <div
+          ref={trackRef}
+          className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-7 py-2 sm:px-1"
+        >
+          {items.map((entry, i) => (
             <div
-              key={`marker-${i}`}
-              className="flex w-56 shrink-0 flex-col justify-center rounded-3xl bg-accent px-6 py-7 text-accent-foreground"
+              key={`${entry.category}-${i}`}
+              ref={(el) => {
+                cardRefs.current[i] = el;
+              }}
+              className="flex w-60 shrink-0 snap-start flex-col justify-between gap-5 rounded-2xl border border-border bg-panel p-5"
             >
-              <p className="font-heading text-3xl leading-none tracking-tight">
-                0{card.index + 1}
-              </p>
-              <p className="mt-3 font-heading text-lg leading-[1.15] tracking-tight">
-                {card.category}
-              </p>
-              <p className="mt-2 text-xs text-accent-foreground/75">
-                {categoryBlurbs[card.category]}
-              </p>
-            </div>
-          ) : (
-            <div
-              key={`${card.key}-${i}`}
-              className="flex w-64 shrink-0 flex-col justify-between gap-4 rounded-2xl border border-border bg-panel p-5"
-            >
-              <p className="text-sm text-foreground">{card.entry.item}</p>
+              <div>
+                <p className="text-[11px] font-medium uppercase tracking-wide text-foreground/45">
+                  {entry.category}
+                </p>
+                <p className="mt-2 text-sm text-foreground">{entry.item}</p>
+              </div>
               <span
-                className={`w-fit rounded-full px-2.5 py-1 text-[11px] font-medium ${tagStyles[card.entry.type]}`}
+                className={`w-fit rounded-full px-2.5 py-1 text-[11px] font-medium ${tagStyles[entry.type]}`}
               >
-                {tagLabels[card.entry.type]}
+                {tagLabels[entry.type]}
               </span>
             </div>
-          ),
-        )}
+          ))}
+        </div>
       </div>
     </div>
   );

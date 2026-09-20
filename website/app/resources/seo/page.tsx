@@ -3,7 +3,7 @@ import HorizontalTimeline from "../../components/HorizontalTimeline";
 import Reveal from "../../components/Reveal";
 import { AudiobookIcon, CourseIcon, DownloadIcon, VideoIcon } from "../../components/ResourceCards";
 import { pageMetadata } from "../../lib/seo";
-import { checklistItems, checklistCategoryBlurbs, checklistTagStyles, checklistTagLabels } from "../../seocourse/data";
+import { checklistItems, checklistTagStyles, checklistTagLabels } from "../../seocourse/data";
 import { resourcesBySlug } from "../data";
 
 export const metadata = pageMetadata({
@@ -11,9 +11,9 @@ export const metadata = pageMetadata({
   description: "A free course teaching estate and letting agents exactly how to get found on Google — no cost, no catch.",
 });
 
-const ExternalIcon = (
-  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-    <path d="M6 4h6v6M12 4 4 12" strokeLinecap="round" strokeLinejoin="round" />
+const ArrowIcon = (
+  <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-foreground/30 transition group-hover:translate-x-0.5 group-hover:text-foreground/60" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -88,86 +88,101 @@ export default function SeoResourcesPage() {
           <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
             Take it in however works for you
           </p>
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr_1fr]">
             {course && (
               <Link
                 href={course.href}
-                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-ink p-7 text-ink-foreground transition hover:opacity-95 sm:p-8"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-                  {CourseIcon}
-                </span>
-                <div>
-                  <p className="font-medium text-foreground">Start the course</p>
-                  <p className="mt-1 text-sm text-foreground/65">Read it here, lesson by lesson.</p>
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                  style={{
+                    backgroundImage: "radial-gradient(rgba(250,248,242,0.5) 1px, transparent 1px)",
+                    backgroundSize: "24px 24px",
+                    maskImage: "radial-gradient(55% 65% at 25% 30%, black 30%, transparent 100%)",
+                    WebkitMaskImage: "radial-gradient(55% 65% at 25% 30%, black 30%, transparent 100%)",
+                  }}
+                />
+                <div className="relative">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ink-foreground/10 text-ink-foreground">
+                    {CourseIcon}
+                  </span>
+                  <p className="mt-5 font-heading text-2xl leading-[1.15] tracking-tight">
+                    Start the course
+                  </p>
+                  <p className="mt-2 max-w-xs text-sm text-ink-foreground/70">
+                    All 32 lessons, one at a time — read here, free, no sign-up.
+                  </p>
                 </div>
+                <span className="relative mt-8 inline-flex items-center gap-1.5 text-sm font-medium">
+                  Read lesson one
+                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
               </Link>
             )}
-            {video && (
-              <a
-                href={video.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-                  {VideoIcon}
-                </span>
-                <div>
-                  <p className="flex items-center gap-1.5 font-medium text-foreground">
-                    {video.title}
-                    <span className="text-foreground/40">{ExternalIcon}</span>
-                  </p>
-                  <p className="mt-1 text-sm text-foreground/65">{video.description}</p>
-                </div>
-              </a>
-            )}
-            {audiobook && (
-              <a
-                href={audiobook.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-                  {AudiobookIcon}
-                </span>
-                <div>
-                  <p className="flex items-center gap-1.5 font-medium text-foreground">
-                    {audiobook.title}
-                    <span className="text-foreground/40">{ExternalIcon}</span>
-                  </p>
-                  <p className="mt-1 text-sm text-foreground/65">{audiobook.description}</p>
-                </div>
-              </a>
-            )}
-            {downloads.length > 0 && (
-              <Link
-                href="/resources/seo/downloads"
-                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
-              >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-                  {DownloadIcon}
-                </span>
-                <div>
-                  <p className="font-medium text-foreground">Download the resources</p>
-                  <p className="mt-1 text-sm text-foreground/65">
-                    {downloads.length} free templates &amp; checklists.
-                  </p>
-                </div>
-              </Link>
-            )}
+
+            <div className="flex flex-col divide-y divide-border rounded-3xl border border-border bg-panel p-2">
+              {video && (
+                <Link
+                  href="/resources/seo/video"
+                  className="group flex items-center gap-4 rounded-2xl p-4 transition hover:bg-background"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    {VideoIcon}
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground">{video.title}</p>
+                    <p className="mt-0.5 text-xs text-foreground/60">{video.description}</p>
+                  </div>
+                  {ArrowIcon}
+                </Link>
+              )}
+              {audiobook && (
+                <Link
+                  href="/resources/seo/listen"
+                  className="group flex items-center gap-4 p-4 transition hover:bg-background"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    {AudiobookIcon}
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground">{audiobook.title}</p>
+                    <p className="mt-0.5 text-xs text-foreground/60">{audiobook.description}</p>
+                  </div>
+                  {ArrowIcon}
+                </Link>
+              )}
+              {downloads.length > 0 && (
+                <Link
+                  href="/resources/seo/downloads"
+                  className="group flex items-center gap-4 rounded-2xl p-4 transition hover:bg-background"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    {DownloadIcon}
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground">Download the resources</p>
+                    <p className="mt-0.5 text-xs text-foreground/60">
+                      {downloads.length} free templates &amp; checklists.
+                    </p>
+                  </div>
+                  {ArrowIcon}
+                </Link>
+              )}
+            </div>
           </div>
         </Reveal>
 
         <Reveal delay={100}>
           <div className="mt-10">
             <p className="mb-4 text-xs text-foreground/50">
-              Every fix in the course, in order — drag to browse, or leave it to scroll itself.
+              Every fix in the course, in order — drag to browse, or jump to a section above.
             </p>
             <HorizontalTimeline
               items={checklistItems}
-              categoryBlurbs={checklistCategoryBlurbs}
               tagStyles={checklistTagStyles}
               tagLabels={checklistTagLabels}
             />

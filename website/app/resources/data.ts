@@ -20,14 +20,14 @@ export const resourcesBySlug: Record<string, CategoryResources> = {
     blurb: "Getting found on Google, Bing, and Apple — the fixes that actually move rankings, in order.",
     videos: [
       {
-        title: "Watch on YouTube",
+        title: "Watch",
         description: "The full SEO course, narrated end to end.",
         href: "https://www.youtube.com/watch?v=reA7SgAjdUg",
       },
     ],
     audiobooks: [
       {
-        title: "Listen on Spotify",
+        title: "Listen",
         description: "The same course as an audiobook, for the car or a commute.",
         href: "https://open.spotify.com/episode/4wosOsfUSCUqs1qWtTqVRa?si=q3ouzAftRgC8oWZR4bMRSA",
       },

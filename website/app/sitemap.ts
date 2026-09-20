@@ -21,6 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/blog`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/resources`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/resources/seo/downloads`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/resources/seo/video`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE_URL}/resources/seo/listen`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${BASE_URL}/geocourse`, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/get-started`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/newsletter`, changeFrequency: "monthly", priority: 0.4 },
