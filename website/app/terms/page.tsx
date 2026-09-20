@@ -47,7 +47,7 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
       },
       {
         type: "p",
-        text: "For one-off (\"Done With You\") work, fees are payable as set out in your order form, typically on completion or in agreed instalments. For ongoing (\"Done For You\") subscriptions, fees are billed in advance on a recurring basis and continue until the subscription is cancelled in line with the notice period in your order form.",
+        text: "For one-off (\"Done With You\") work, fees are payable as set out in your order form, typically on completion or in agreed instalments. For ongoing (\"Done For You\") subscriptions, fees are billed in advance on a recurring basis and continue until either party cancels — cancellation takes effect immediately, with no minimum notice period, unless your order form specifically says otherwise.",
       },
       {
         type: "p",
@@ -64,7 +64,7 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
     body: [
       {
         type: "p",
-        text: "For one-off work, this agreement ends once the agreed deliverables are complete. For ongoing subscriptions, this agreement continues until either party ends it with the notice period set out in your order form (or, if none is specified, 30 days' written notice).",
+        text: "For one-off work, this agreement ends once the agreed deliverables are complete. For ongoing subscriptions, this agreement continues until either party ends it — cancellation is immediate and there's no minimum notice period by default, unless your order form specifically sets one.",
       },
       {
         type: "p",
@@ -185,7 +185,7 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
   },
   {
     heading: "20. Contact us and complaints",
-    body: "Questions about these terms, or a complaint about the Service, should be sent to hello@reyse.co.uk. We aim to acknowledge complaints within 5 working days and resolve or provide a substantive response within 30 days wherever reasonably possible.",
+    body: "Questions about these terms, or a complaint about the Service generally, should be sent to hello@reyse.co.uk. We aim to acknowledge complaints within 5 working days and resolve or provide a substantive response within 30 days wherever reasonably possible. A complaint specifically about how we've handled personal data follows the separate statutory timeline set out in our Privacy Policy instead.",
   },
 ];
 

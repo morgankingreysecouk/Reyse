@@ -6,7 +6,7 @@ import { CLAIMED_COUNTIES, SPOTS_REMAINING, TOTAL_SPOTS } from "../lib/freeForev
 
 export const metadata = pageMetadata({
   title: "The first 5 clients, completely free",
-  description: "One business per county, first-come-first-served, gets the full Reyse service free while Reyse is at this stage. Here's exactly how it works.",
+  description: "One business per county, reviewed and allocated monthly, gets the full Reyse service free while Reyse is at this stage. Here's exactly how it works.",
 });
 
 const terms: { heading: string; body: React.ReactNode }[] = [
@@ -60,8 +60,9 @@ export default function FreeForeverPage() {
           The first {TOTAL_SPOTS} clients pay nothing.
         </h1>
         <p className="mt-5 text-lg text-foreground/70">
-          One business per county. First come, first served. The full
-          service, free, for as long as Reyse is at this early stage.
+          One business per county. Reviewed and allocated at the end of
+          each month. The full service, free, for as long as Reyse is at
+          this early stage.
         </p>
 
         <Reveal delay={80}>

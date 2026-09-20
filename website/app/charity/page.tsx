@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
 
@@ -9,8 +10,28 @@ export const metadata: Metadata = pageMetadata({
 
 const realities = [
   {
-    heading: "There's no profit to give away yet",
-    body: "Reyse is still early-stage — launching now, not yet profitable. A page promising a specific donation percentage before there's any profit to take it from would be a marketing line, not a commitment. This isn't that.",
+    heading: "What's already active, right now",
+    body: (
+      <>
+        Separate from the company-wide commitment below: every client
+        already gets a real donation, to a charity of their choice, built
+        into the service — see the{" "}
+        <Link href="/guarantees" className="underline hover:text-foreground">
+          Charity Flip Guarantee
+        </Link>{" "}
+        for exactly how that works and when it applies. That part isn&rsquo;t
+        waiting on anything.
+      </>
+    ),
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    heading: "There's no company-wide profit to give away yet",
+    body: "Reyse is still early-stage — launching now, not yet profitable. A page promising a specific company-wide donation percentage before there's any profit to take it from would be a marketing line, not a commitment. This isn't that.",
     icon: (
       <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M12 8c-1.5-2-4-2.5-5.5-1s-1.5 4 0 5.5L12 18l5.5-5.5c1.5-1.5 1.5-4 0-5.5s-4-1-5.5 1z" strokeLinecap="round" strokeLinejoin="round" />
@@ -53,8 +74,10 @@ export default function CharityPage() {
         <Reveal delay={100}>
           <p className="mt-5 text-lg text-foreground/70">
             Most charity pages perform a generosity the company hasn&rsquo;t
-            earned yet. This one won&rsquo;t. Here&rsquo;s exactly where
-            things stand, and what changes once Reyse is actually profitable.
+            earned yet. This one won&rsquo;t. One part of this is already
+            real and running today; the bigger, company-wide commitment
+            below is honestly still waiting on Reyse actually being
+            profitable — here&rsquo;s exactly where each one stands.
           </p>
         </Reveal>
 

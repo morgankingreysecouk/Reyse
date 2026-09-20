@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "Am I locked into a long contract?",
     answer:
-      "One-off (Done With You) work simply ends once it's delivered — no ongoing commitment. Ongoing (Done For You) subscriptions run until either side ends them, with 30 days' notice unless your order form says otherwise. There's no multi-year lock-in.",
+      "One-off (Done With You) work simply ends once it's delivered — no ongoing commitment. Ongoing (Done For You) subscriptions run until either side ends them — cancellation is immediate, no notice period, unless your order form says otherwise. There's no multi-year lock-in.",
   },
   {
     question: "Is this actually a real agency, or just AI?",
@@ -38,7 +38,7 @@ const faqs = [
   {
     question: "I'm not sure which service I actually need — where do I start?",
     answer:
-      "Take the 60-second quiz — five quick questions about where your business actually stands today, no email required until you're ready to talk.",
+      "Take the 60-second quiz — a handful of quick questions about where your business actually stands today, no email required until you're ready to talk.",
   },
 ];
 

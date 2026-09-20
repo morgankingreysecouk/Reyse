@@ -172,7 +172,7 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
     body: [
       {
         type: "p",
-        text: "If you're unhappy with how we've handled your personal data, please tell us first at hello@reyse.co.uk so we can put it right. In line with the statutory complaints-handling duty introduced by the Data (Use and Access) Act 2025, we'll acknowledge your complaint within 30 days of receiving it and investigate without unjustified delay.",
+        text: "If you're unhappy with how we've handled your personal data specifically, please tell us first at hello@reyse.co.uk so we can put it right. In line with the statutory complaints-handling duty introduced by the Data (Use and Access) Act 2025, we'll acknowledge your complaint within 30 days of receiving it and investigate without unjustified delay. This is a separate, data-specific track from the general service complaints process in our Terms of Service, which has its own, faster acknowledgement window.",
       },
       {
         type: "p",
