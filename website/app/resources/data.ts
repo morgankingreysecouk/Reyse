@@ -18,8 +18,20 @@ export type CategoryResources = {
 export const resourcesBySlug: Record<string, CategoryResources> = {
   seo: {
     blurb: "Getting found on Google, Bing, and Apple — the fixes that actually move rankings, in order.",
-    videos: [],
-    audiobooks: [],
+    videos: [
+      {
+        title: "Watch on YouTube",
+        description: "The full SEO course, narrated end to end.",
+        href: "https://www.youtube.com/watch?v=reA7SgAjdUg",
+      },
+    ],
+    audiobooks: [
+      {
+        title: "Listen on Spotify",
+        description: "The same course as an audiobook, for the car or a commute.",
+        href: "https://open.spotify.com/episode/4wosOsfUSCUqs1qWtTqVRa?si=q3ouzAftRgC8oWZR4bMRSA",
+      },
+    ],
     courses: [
       {
         title: "The Free SEO Course",

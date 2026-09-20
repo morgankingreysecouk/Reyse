@@ -1,6 +1,7 @@
 import Link from "next/link";
-import ChecklistTimeline from "../../components/ChecklistTimeline";
+import HorizontalTimeline from "../../components/HorizontalTimeline";
 import Reveal from "../../components/Reveal";
+import { AudiobookIcon, CourseIcon, DownloadIcon, VideoIcon } from "../../components/ResourceCards";
 import { pageMetadata } from "../../lib/seo";
 import { checklistItems, checklistCategoryBlurbs, checklistTagStyles, checklistTagLabels } from "../../seocourse/data";
 import { resourcesBySlug } from "../data";
@@ -10,8 +11,17 @@ export const metadata = pageMetadata({
   description: "A free course teaching estate and letting agents exactly how to get found on Google — no cost, no catch.",
 });
 
+const ExternalIcon = (
+  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <path d="M6 4h6v6M12 4 4 12" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 export default function SeoResourcesPage() {
-  const downloads = resourcesBySlug.seo.downloads;
+  const { courses, videos, audiobooks, downloads } = resourcesBySlug.seo;
+  const course = courses[0];
+  const video = videos[0];
+  const audiobook = audiobooks[0];
 
   return (
     <main className="flex-1">
@@ -67,57 +77,105 @@ export default function SeoResourcesPage() {
               <strong className="text-foreground">indirect</strong> (it changes
               customer behaviour, and that behaviour is what Google eventually
               notices), or it&rsquo;s a <strong className="text-foreground">prerequisite</strong> (doesn&rsquo;t
-              boost ranking, just makes ranking possible at all). Watch the
-              panel on the left as you scroll — it tracks exactly which stage
-              of the course you&rsquo;re looking at.
+              boost ranking, just makes ranking possible at all).
             </p>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-3xl">
-        <ChecklistTimeline
-          items={checklistItems}
-          categoryBlurbs={checklistCategoryBlurbs}
-          tagStyles={checklistTagStyles}
-          tagLabels={checklistTagLabels}
-        />
+      <div className="mx-auto max-w-4xl px-6 pt-16">
+        <Reveal>
+          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+            Take it in however works for you
+          </p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {course && (
+              <Link
+                href={course.href}
+                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                  {CourseIcon}
+                </span>
+                <div>
+                  <p className="font-medium text-foreground">Start the course</p>
+                  <p className="mt-1 text-sm text-foreground/65">Read it here, lesson by lesson.</p>
+                </div>
+              </Link>
+            )}
+            {video && (
+              <a
+                href={video.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                  {VideoIcon}
+                </span>
+                <div>
+                  <p className="flex items-center gap-1.5 font-medium text-foreground">
+                    {video.title}
+                    <span className="text-foreground/40">{ExternalIcon}</span>
+                  </p>
+                  <p className="mt-1 text-sm text-foreground/65">{video.description}</p>
+                </div>
+              </a>
+            )}
+            {audiobook && (
+              <a
+                href={audiobook.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                  {AudiobookIcon}
+                </span>
+                <div>
+                  <p className="flex items-center gap-1.5 font-medium text-foreground">
+                    {audiobook.title}
+                    <span className="text-foreground/40">{ExternalIcon}</span>
+                  </p>
+                  <p className="mt-1 text-sm text-foreground/65">{audiobook.description}</p>
+                </div>
+              </a>
+            )}
+            {downloads.length > 0 && (
+              <Link
+                href="/resources/seo/downloads"
+                className="group flex flex-col justify-between gap-6 rounded-2xl border border-border bg-panel p-6 transition hover:border-foreground/30"
+              >
+                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                  {DownloadIcon}
+                </span>
+                <div>
+                  <p className="font-medium text-foreground">Download the resources</p>
+                  <p className="mt-1 text-sm text-foreground/65">
+                    {downloads.length} free templates &amp; checklists.
+                  </p>
+                </div>
+              </Link>
+            )}
+          </div>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <div className="mt-10">
+            <p className="mb-4 text-xs text-foreground/50">
+              Every fix in the course, in order — drag to browse, or leave it to scroll itself.
+            </p>
+            <HorizontalTimeline
+              items={checklistItems}
+              categoryBlurbs={checklistCategoryBlurbs}
+              tagStyles={checklistTagStyles}
+              tagLabels={checklistTagLabels}
+            />
+          </div>
+        </Reveal>
       </div>
 
-      {downloads.length > 0 && (
-        <div className="mx-auto mt-16 max-w-4xl px-6">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              Downloads
-            </p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {downloads.map((d) => (
-                <div
-                  key={d.href}
-                  className="flex flex-col justify-between gap-4 rounded-2xl border border-border bg-panel p-6"
-                >
-                  <div>
-                    <p className="font-medium text-foreground">{d.title}</p>
-                    <p className="mt-1 text-sm text-foreground/65">{d.description}</p>
-                  </div>
-                  <a
-                    href={d.href}
-                    download
-                    className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground hover:opacity-90"
-                  >
-                    Download PDF
-                    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                      <path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M3 13.5h10" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      )}
-
-      <div className="mx-auto max-w-2xl px-6">
+      <div className="mx-auto max-w-2xl px-6 pt-20">
         <div className="space-y-5 text-lg text-foreground/70">
           <p>
             The end goal: becoming the obvious, undisputed number one estate
@@ -139,24 +197,6 @@ export default function SeoResourcesPage() {
             it&rsquo;s flagged specifically, item by item, throughout.
           </p>
         </div>
-
-        <Reveal>
-          <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
-            <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
-              Ready to start?
-            </h2>
-            <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
-              No sign-up, no payment — click through and you&rsquo;re straight
-              into module one.
-            </p>
-            <Link
-              href="/seocourse"
-              className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Start course →
-            </Link>
-          </div>
-        </Reveal>
       </div>
 
       <div className="mt-24 border-y border-border bg-ink px-6 py-20 text-ink-foreground">
