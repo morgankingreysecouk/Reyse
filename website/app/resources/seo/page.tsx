@@ -1,11 +1,11 @@
 import Link from "next/link";
-import CourseChecklistAccordion from "../../components/CourseChecklistAccordion";
+import CourseChecklistCarousel from "../../components/CourseChecklistCarousel";
 import CourseClosing from "../../components/CourseClosing";
 import CourseFormatShowcase from "../../components/CourseFormatShowcase";
 import CourseHeroStats from "../../components/CourseHeroStats";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
-import { checklistItems, checklistTagStyles, checklistTagLabels, checklistCategoryBlurbs } from "../../seocourse/data";
+import { checklistItems, checklistTagStyles, checklistTagLabels } from "../../seocourse/data";
 import { resourcesBySlug } from "../data";
 
 export const metadata = pageMetadata({
@@ -107,13 +107,12 @@ export default function SeoResourcesPage() {
         <Reveal delay={100}>
           <div className="mt-14">
             <p className="mb-4 text-xs text-foreground/50">
-              {checklistItems.length} fixes across six categories — pick one to see what&rsquo;s inside.
+              Every one of the {checklistItems.length} fixes in the course.
             </p>
-            <CourseChecklistAccordion
+            <CourseChecklistCarousel
               items={checklistItems}
               tagStyles={checklistTagStyles}
               tagLabels={checklistTagLabels}
-              categoryBlurbs={checklistCategoryBlurbs}
             />
           </div>
         </Reveal>

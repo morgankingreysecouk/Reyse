@@ -1,117 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 import Reveal from "./Reveal";
 import { guarantees } from "../guarantees/data";
-
-const AUTO_SCROLL_PX_PER_FRAME = 0.5;
-const RESUME_DELAY_MS = 1500;
+import { useAutoScrollCarousel } from "../lib/useAutoScrollCarousel";
 
 export default function GuaranteesPromo() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const pausedRef = useRef(false);
-  const virtualScrollLeftRef = useRef(0);
-  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Auto-scroll loop. scrollLeft only holds whole pixels, so a sub-pixel
-  // per-frame speed would get rounded away every frame and never move —
-  // the real position is tracked separately in virtualScrollLeftRef.
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    virtualScrollLeftRef.current = track.scrollLeft;
-    let frameId: number;
-    const step = () => {
-      const loopWidth = track.scrollWidth / 2;
-      if (pausedRef.current) {
-        virtualScrollLeftRef.current = track.scrollLeft;
-      } else if (loopWidth > 0) {
-        virtualScrollLeftRef.current += AUTO_SCROLL_PX_PER_FRAME;
-        if (virtualScrollLeftRef.current >= loopWidth) virtualScrollLeftRef.current -= loopWidth;
-        track.scrollLeft = virtualScrollLeftRef.current;
-      }
-      frameId = requestAnimationFrame(step);
-    };
-    frameId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frameId);
-  }, []);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    let dragging = false;
-    let startX = 0;
-    let startScrollLeft = 0;
-
-    const pause = () => {
-      pausedRef.current = true;
-      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
-    };
-    const scheduleResume = () => {
-      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
-      resumeTimeoutRef.current = setTimeout(() => {
-        pausedRef.current = false;
-      }, RESUME_DELAY_MS);
-    };
-
-    const onPointerDown = (e: PointerEvent) => {
-      dragging = true;
-      pause();
-      startX = e.clientX;
-      startScrollLeft = track.scrollLeft;
-      track.setPointerCapture(e.pointerId);
-    };
-    const onPointerMove = (e: PointerEvent) => {
-      if (!dragging) return;
-      track.scrollLeft = startScrollLeft - (e.clientX - startX);
-    };
-    const endDrag = () => {
-      dragging = false;
-      scheduleResume();
-    };
-    const onScroll = () => {
-      const loopWidth = track.scrollWidth / 2;
-      if (loopWidth <= 0) return;
-      if (track.scrollLeft >= loopWidth) track.scrollLeft -= loopWidth;
-      else if (track.scrollLeft < 0) track.scrollLeft += loopWidth;
-    };
-    const onWheel = () => {
-      pause();
-      scheduleResume();
-    };
-    const onKeyDown = () => {
-      pause();
-      scheduleResume();
-    };
-
-    track.addEventListener("pointerdown", onPointerDown);
-    track.addEventListener("pointermove", onPointerMove);
-    track.addEventListener("pointerup", endDrag);
-    track.addEventListener("pointercancel", endDrag);
-    track.addEventListener("touchstart", pause, { passive: true });
-    track.addEventListener("touchend", scheduleResume);
-    track.addEventListener("wheel", onWheel, { passive: true });
-    track.addEventListener("keydown", onKeyDown);
-    track.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      track.removeEventListener("pointerdown", onPointerDown);
-      track.removeEventListener("pointermove", onPointerMove);
-      track.removeEventListener("pointerup", endDrag);
-      track.removeEventListener("pointercancel", endDrag);
-      track.removeEventListener("touchstart", pause);
-      track.removeEventListener("touchend", scheduleResume);
-      track.removeEventListener("wheel", onWheel);
-      track.removeEventListener("keydown", onKeyDown);
-      track.removeEventListener("scroll", onScroll);
-      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
-    };
-  }, []);
-
+  const trackRef = useAutoScrollCarousel<HTMLDivElement>();
   const loopItems = [...guarantees, ...guarantees];
 
   return (
