@@ -1,6 +1,6 @@
+import AboutPromo from "./components/AboutPromo";
 import ClosingCta from "./components/ClosingCta";
 import Faq from "./components/Faq";
-import FounderCredibility from "./components/FounderCredibility";
 import FreeForeverBanner from "./components/FreeForeverBanner";
 import GuaranteesPromo from "./components/GuaranteesPromo";
 import Hero from "./components/Hero";
@@ -31,12 +31,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Founder credibility */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-20">
-            <FounderCredibility />
-          </div>
-        </section>
+        <AboutPromo />
 
         {/* FAQ */}
         <section className="border-t border-border">
