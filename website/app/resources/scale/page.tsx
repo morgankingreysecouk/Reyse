@@ -1,8 +1,9 @@
 import Link from "next/link";
-import ChecklistTimeline from "../../components/ChecklistTimeline";
+import HorizontalTimeline from "../../components/HorizontalTimeline";
 import Reveal from "../../components/Reveal";
+import { CourseIcon, DownloadIcon } from "../../components/ResourceCards";
 import { pageMetadata } from "../../lib/seo";
-import { checklistItems, checklistCategoryBlurbs, checklistTagStyles, checklistTagLabels } from "../../scalecourse/data";
+import { checklistItems, checklistTagStyles, checklistTagLabels } from "../../scalecourse/data";
 import { resourcesBySlug } from "../data";
 
 export const metadata = pageMetadata({
@@ -10,8 +11,17 @@ export const metadata = pageMetadata({
   description: "A free course teaching estate and letting agents exactly how to replicate SEO, GEO, and trust signals properly across every branch — no cost, no catch.",
 });
 
+const ArrowIcon = (
+  <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-foreground/30 transition group-hover:translate-x-0.5 group-hover:text-foreground/60" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+    <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 export default function ScaleResourcesPage() {
-  const downloads = resourcesBySlug.scale.downloads;
+  const { courses, videos, audiobooks, downloads } = resourcesBySlug.scale;
+  const course = courses[0];
+  const video = videos[0];
+  const audiobook = audiobooks[0];
 
   return (
     <main className="flex-1">
@@ -70,56 +80,120 @@ export default function ScaleResourcesPage() {
               drifts), or a{" "}
               <strong className="text-foreground">safeguard</strong> (protects
               the value of what&rsquo;s already been built as the network
-              grows). Watch the panel on the left as you scroll — it tracks
-              exactly which stage of the course you&rsquo;re looking at.
+              grows).
             </p>
           </div>
         </div>
       </div>
 
-      <div className="mx-auto max-w-3xl">
-        <ChecklistTimeline
-          items={checklistItems}
-          categoryBlurbs={checklistCategoryBlurbs}
-          tagStyles={checklistTagStyles}
-          tagLabels={checklistTagLabels}
-        />
+      <div className="mx-auto max-w-4xl px-6 pt-16">
+        <Reveal>
+          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+            Take it in however works for you
+          </p>
+          <div className="mt-4 grid gap-4 lg:grid-cols-[1.3fr_1fr]">
+            {course && (
+              <Link
+                href={course.href}
+                className="group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-ink p-7 text-ink-foreground transition hover:opacity-95 sm:p-8"
+              >
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-[0.15]"
+                  style={{
+                    backgroundImage: "radial-gradient(rgba(250,248,242,0.5) 1px, transparent 1px)",
+                    backgroundSize: "24px 24px",
+                    maskImage: "radial-gradient(55% 65% at 25% 30%, black 30%, transparent 100%)",
+                    WebkitMaskImage: "radial-gradient(55% 65% at 25% 30%, black 30%, transparent 100%)",
+                  }}
+                />
+                <div className="relative">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ink-foreground/10 text-ink-foreground">
+                    {CourseIcon}
+                  </span>
+                  <p className="mt-5 font-heading text-2xl leading-[1.15] tracking-tight">
+                    Start the course
+                  </p>
+                  <p className="mt-2 max-w-xs text-sm text-ink-foreground/70">
+                    Every lesson, one at a time — read here, free, no sign-up.
+                  </p>
+                </div>
+                <span className="relative mt-8 inline-flex items-center gap-1.5 text-sm font-medium">
+                  Read lesson one
+                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+              </Link>
+            )}
+
+            <div className="flex flex-col divide-y divide-border rounded-3xl border border-border bg-panel p-2">
+              {video && (
+                <Link
+                  href="/resources/scale/video"
+                  className="group flex items-center gap-4 rounded-2xl p-4 transition hover:bg-background"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    {CourseIcon}
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground">{video.title}</p>
+                    <p className="mt-0.5 text-xs text-foreground/60">{video.description}</p>
+                  </div>
+                  {ArrowIcon}
+                </Link>
+              )}
+              {audiobook && (
+                <Link
+                  href="/resources/scale/listen"
+                  className="group flex items-center gap-4 p-4 transition hover:bg-background"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    {CourseIcon}
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground">{audiobook.title}</p>
+                    <p className="mt-0.5 text-xs text-foreground/60">{audiobook.description}</p>
+                  </div>
+                  {ArrowIcon}
+                </Link>
+              )}
+              {downloads.length > 0 && (
+                <Link
+                  href="/resources/scale/downloads"
+                  className="group flex items-center gap-4 rounded-2xl p-4 transition hover:bg-background"
+                >
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    {DownloadIcon}
+                  </span>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground">Download the resources</p>
+                    <p className="mt-0.5 text-xs text-foreground/60">
+                      {downloads.length} free templates &amp; checklists.
+                    </p>
+                  </div>
+                  {ArrowIcon}
+                </Link>
+              )}
+            </div>
+          </div>
+        </Reveal>
+
+        <Reveal delay={100}>
+          <div className="mt-10">
+            <p className="mb-4 text-xs text-foreground/50">
+              Every item in the course, in order — jump to a section above, drag to browse, or leave it to scroll itself.
+            </p>
+            <HorizontalTimeline
+              items={checklistItems}
+              tagStyles={checklistTagStyles}
+              tagLabels={checklistTagLabels}
+            />
+          </div>
+        </Reveal>
       </div>
 
-      {downloads.length > 0 && (
-        <div className="mx-auto mt-16 max-w-4xl px-6">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              Downloads
-            </p>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {downloads.map((d) => (
-                <div
-                  key={d.href}
-                  className="flex flex-col justify-between gap-4 rounded-2xl border border-border bg-panel p-6"
-                >
-                  <div>
-                    <p className="font-medium text-foreground">{d.title}</p>
-                    <p className="mt-1 text-sm text-foreground/65">{d.description}</p>
-                  </div>
-                  <a
-                    href={d.href}
-                    download
-                    className="inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground hover:opacity-90"
-                  >
-                    Download PDF
-                    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                      <path d="M8 2.5v8M4.5 7l3.5 3.5L11.5 7M3 13.5h10" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      )}
-
-      <div className="mx-auto max-w-2xl px-6">
+      <div className="mx-auto max-w-2xl px-6 pt-20">
         <div className="space-y-5 text-lg text-foreground/70">
           <p>
             The end goal: a 50th branch that launches as cleanly and ranks
@@ -154,24 +228,6 @@ export default function ScaleResourcesPage() {
             specifically, item by item, throughout.
           </p>
         </div>
-
-        <Reveal>
-          <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
-            <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
-              Ready to start?
-            </h2>
-            <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
-              No sign-up, no payment — click through and you&rsquo;re straight
-              into module one.
-            </p>
-            <Link
-              href="/scalecourse"
-              className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Start course →
-            </Link>
-          </div>
-        </Reveal>
       </div>
 
       <div className="mt-24 border-y border-border bg-ink px-6 py-20 text-ink-foreground">
