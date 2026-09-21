@@ -118,7 +118,7 @@ function DownloadVisual({ kind, iconSize, aspect }: { kind: DownloadKind; iconSi
 // aspect ratio — the cell's own col/row span decides how tall that is.
 function BentoVisual({ kind, iconSize }: { kind: DownloadKind; iconSize: string }) {
   return (
-    <div className="relative flex min-h-[92px] flex-1 items-center justify-center bg-panel">
+    <div className="relative flex min-h-[64px] flex-1 items-center justify-center bg-panel">
       <span
         className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text"
         style={{ width: "2.6em", height: "2.6em" }}
@@ -230,11 +230,11 @@ export default function SeoDownloadsPage() {
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
                   >
                     <BentoVisual kind={d.kind} iconSize={spec.icon} />
-                    <div className="p-4 sm:p-5">
+                    <div className="min-h-0 shrink-0 p-4">
                       <p className="text-xs font-medium text-foreground/65">{kindLabels[d.kind]}</p>
-                      <h3 className={`mt-1.5 font-heading leading-[1.2] tracking-tight ${spec.title}`}>{d.title}</h3>
+                      <h3 className={`mt-1.5 line-clamp-2 font-heading leading-[1.25] tracking-tight ${spec.title}`}>{d.title}</h3>
                       {spec.blurb && (
-                        <p className="mt-2 text-sm text-foreground/65">{d.description}</p>
+                        <p className="mt-2 line-clamp-2 text-sm text-foreground/65">{d.description}</p>
                       )}
                     </div>
                   </a>
