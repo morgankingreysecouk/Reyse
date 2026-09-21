@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ClosingCta from "./components/ClosingCta";
 import Faq from "./components/Faq";
 import FounderCredibility from "./components/FounderCredibility";
@@ -6,17 +5,8 @@ import FreeForeverBanner from "./components/FreeForeverBanner";
 import GuaranteesPromo from "./components/GuaranteesPromo";
 import Hero from "./components/Hero";
 import HowItWorksScroll from "./components/HowItWorksScroll";
+import ManagedPromo from "./components/ManagedPromo";
 import ResourcesPromo from "./components/ResourcesPromo";
-import Reveal from "./components/Reveal";
-import { industries } from "./industries/data";
-
-const moments = industries.flatMap((industry) =>
-  industry.scenarios.map((scenario) => ({
-    industry: industry.label,
-    slug: industry.slug,
-    scenario,
-  })),
-);
 
 export default function Home() {
   return (
@@ -24,36 +14,10 @@ export default function Home() {
       <Hero />
       <FreeForeverBanner />
       <ResourcesPromo />
+      <ManagedPromo />
+      <GuaranteesPromo />
 
       <>
-        {/* Moments this costs you */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              Built specifically for estate and letting agents
-            </h2>
-            <p className="mt-3 max-w-2xl text-foreground/60">
-              Not a generic tool bolted onto property — every part of Reyse is
-              built around moments like these.
-            </p>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {moments.map((moment, i) => (
-                <Reveal key={moment.scenario} delay={i * 80}>
-                  <div className="h-full rounded-2xl border border-border p-6">
-                    <Link
-                      href={`/industries/${moment.slug}`}
-                      className="text-xs font-medium text-accent-text hover:underline"
-                    >
-                      {moment.industry}
-                    </Link>
-                    <p className="mt-3 text-sm text-foreground/70">{moment.scenario}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* How it works */}
         <section id="how-it-works" className="scroll-mt-20 border-t border-border">
           <div className="mx-auto max-w-6xl px-6 py-20">
@@ -85,8 +49,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        <GuaranteesPromo />
 
         {/* CTA */}
         <section id="contact" className="scroll-mt-20 border-t border-border">

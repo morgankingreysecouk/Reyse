@@ -115,8 +115,8 @@ export default function GuaranteesPromo() {
   const loopItems = [...guarantees, ...guarantees];
 
   return (
-    <section className="border-t border-border bg-ink text-ink-foreground">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+    <section className="overflow-x-hidden border-t border-border bg-ink text-ink-foreground">
+      <div className="mx-auto max-w-6xl px-6 pt-20">
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-3 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium text-ink-foreground/70">
             Guarantees
@@ -130,33 +130,35 @@ export default function GuaranteesPromo() {
             and exactly what happens if we don&rsquo;t deliver.
           </p>
         </div>
+      </div>
 
-        <Reveal>
-          <div
-            ref={trackRef}
-            tabIndex={0}
-            role="region"
-            aria-label="All 11 guarantees, scrollable"
-            className="-mx-6 mt-14 flex cursor-grab touch-pan-y gap-4 overflow-x-auto px-6 pb-2 outline-none [-webkit-overflow-scrolling:touch] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
-            style={{
-              maskImage:
-                "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
-            }}
-          >
-            {loopItems.map((g, i) => (
-              <div
-                key={`${g.title}-${i}`}
-                className="w-[270px] shrink-0 select-none rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-6 sm:w-[310px]"
-              >
-                <p className="text-sm font-semibold">{g.title}</p>
-                <p className="mt-3 text-sm text-ink-foreground/70">{g.promise}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
+      <Reveal>
+        <div
+          ref={trackRef}
+          tabIndex={0}
+          role="region"
+          aria-label="All 11 guarantees, scrollable"
+          className="mx-[calc(50%-50vw)] mt-14 flex w-screen cursor-grab touch-pan-y gap-4 overflow-x-auto px-6 pb-2 outline-none [-webkit-overflow-scrolling:touch] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
+          }}
+        >
+          {loopItems.map((g, i) => (
+            <div
+              key={`${g.title}-${i}`}
+              className="w-[270px] shrink-0 select-none rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-6 sm:w-[310px]"
+            >
+              <p className="text-sm font-semibold">{g.title}</p>
+              <p className="mt-3 text-sm text-ink-foreground/70">{g.promise}</p>
+            </div>
+          ))}
+        </div>
+      </Reveal>
 
+      <div className="mx-auto max-w-6xl px-6 pb-20">
         <div className="mt-10 flex justify-center">
           <Link
             href="/guarantees"
