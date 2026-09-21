@@ -4,23 +4,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 export type ChecklistItem = { item: string; category: string; type: string };
 
-const ChevronIcon = ({ flip }: { flip?: boolean }) => (
-  <svg
-    viewBox="0 0 16 16"
-    className={`h-4 w-4 ${flip ? "rotate-180" : ""}`}
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.75"
-  >
-    <path d="M6 3l5 5-5 5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-// A manually-driven horizontal browser, not an auto-scrolling marquee —
-// reading a real checklist while the row keeps moving under you fights the
-// one thing this component exists for. Category pills above let you jump
-// straight to a section instead; the row itself only moves on drag, scroll,
-// or the arrow buttons.
+// A self-scrolling, looping browser — content is duplicated once so the
+// loop point is invisible (resetting scrollLeft by exactly half the track
+// width lands on an identical frame). Auto-scroll pauses the moment someone
+// touches, hovers, or scrolls it by hand, and resumes a couple of seconds
+// after they let go, so it never fights someone actually reading a card.
 export default function HorizontalTimeline({
   items,
   tagStyles,
@@ -38,9 +26,32 @@ export default function HorizontalTimeline({
     return seen;
   }, [items]);
 
+  const looped = useMemo(() => [...items, ...items], [items]);
+
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeCategory, setActiveCategory] = useState(0);
+  const pausedRef = useRef(false);
+  const resumeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0;
+    const speed = 0.5;
+    const step = () => {
+      const half = track.scrollWidth / 2;
+      if (!pausedRef.current) {
+        track.scrollLeft += speed;
+        if (track.scrollLeft >= half) track.scrollLeft -= half;
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [looped]);
 
   useEffect(() => {
     const track = trackRef.current;
@@ -58,14 +69,14 @@ export default function HorizontalTimeline({
           closest = i;
         }
       });
-      const category = items[closest]?.category;
+      const category = looped[closest]?.category;
       const index = categories.indexOf(category);
       if (index !== -1) setActiveCategory(index);
     };
 
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => track.removeEventListener("scroll", onScroll);
-  }, [items, categories]);
+  }, [looped, categories]);
 
   const scrollToCategory = (categoryIndex: number) => {
     const category = categories[categoryIndex];
@@ -76,65 +87,61 @@ export default function HorizontalTimeline({
     track.scrollTo({ left: el.offsetLeft - track.offsetLeft, behavior: "smooth" });
   };
 
-  const nudge = (dir: 1 | -1) => {
-    const track = trackRef.current;
-    const firstCard = track?.children[0] as HTMLElement | undefined;
-    if (!track || !firstCard) return;
-    const gap = parseFloat(getComputedStyle(track).columnGap || "16");
-    track.scrollBy({ left: dir * (firstCard.getBoundingClientRect().width + gap), behavior: "smooth" });
+  const pause = () => {
+    pausedRef.current = true;
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+  };
+  const resumeSoon = () => {
+    if (resumeTimer.current) clearTimeout(resumeTimer.current);
+    resumeTimer.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, 2200);
   };
 
   return (
     <div>
-      <div className="flex items-center justify-between gap-4">
-        <div className="scrollbar-hide -mx-1 flex min-w-0 flex-1 gap-2 overflow-x-auto px-1 pb-1">
-          {categories.map((category, i) => (
-            <button
-              key={category}
-              type="button"
-              onClick={() => scrollToCategory(i)}
-              className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
-                i === activeCategory
-                  ? "border-accent bg-accent/15 text-accent-text"
-                  : "border-border text-foreground/60 hover:border-foreground/40"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        <div className="flex shrink-0 gap-2">
+      <div className="scrollbar-hide -mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
+        {categories.map((category, i) => (
           <button
+            key={category}
             type="button"
-            onClick={() => nudge(-1)}
-            aria-label="Scroll left"
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground/70 hover:border-foreground/40 hover:text-foreground"
+            onClick={() => {
+              pause();
+              scrollToCategory(i);
+              resumeSoon();
+            }}
+            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
+              i === activeCategory
+                ? "border-accent bg-accent/15 text-accent-text"
+                : "border-border text-foreground/60 hover:border-foreground/40"
+            }`}
           >
-            <ChevronIcon flip />
+            {category}
           </button>
-          <button
-            type="button"
-            onClick={() => nudge(1)}
-            aria-label="Scroll right"
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground/70 hover:border-foreground/40 hover:text-foreground"
-          >
-            <ChevronIcon />
-          </button>
-        </div>
+        ))}
       </div>
 
       <div
         ref={trackRef}
-        className="scrollbar-hide mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth py-2"
+        onMouseEnter={pause}
+        onMouseLeave={resumeSoon}
+        onTouchStart={pause}
+        onTouchEnd={resumeSoon}
+        onPointerDown={pause}
+        onPointerUp={resumeSoon}
+        onWheel={() => {
+          pause();
+          resumeSoon();
+        }}
+        className="scrollbar-hide mt-4 flex gap-4 overflow-x-auto py-2"
       >
-        {items.map((entry, i) => (
+        {looped.map((entry, i) => (
           <div
             key={`${entry.category}-${i}`}
             ref={(el) => {
               cardRefs.current[i] = el;
             }}
-            className="flex w-full shrink-0 snap-start flex-col justify-between gap-5 rounded-2xl border border-border bg-panel p-5 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+            className="flex w-full shrink-0 flex-col justify-between gap-5 rounded-2xl border border-border bg-panel p-5 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
           >
             <div>
               <p className="text-[11px] font-medium uppercase tracking-wide text-foreground/45">

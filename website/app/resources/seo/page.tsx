@@ -179,7 +179,7 @@ export default function SeoResourcesPage() {
         <Reveal delay={100}>
           <div className="mt-10">
             <p className="mb-4 text-xs text-foreground/50">
-              Every fix in the course, in order — drag to browse, or jump to a section above.
+              Every fix in the course, in order — jump to a section above, drag to browse, or leave it to scroll itself.
             </p>
             <HorizontalTimeline
               items={checklistItems}
