@@ -1,22 +1,18 @@
 export type ChecklistCategory =
   | "Technical Foundations"
-  | "Real Estate-Specific Risk"
   | "On-Page & Content"
   | "Off-Site & Authority"
   | "Local & Business Profile"
   | "Trust & Authority (E-E-A-T)"
-  | "Measurement"
-  | "Playing It Smart";
+  | "Beyond the Basics";
 
 export const checklistCategoryBlurbs: Record<ChecklistCategory, string> = {
   "Technical Foundations": "The groundwork Google needs just to find, load and trust your site at all.",
-  "Real Estate-Specific Risk": "Problems unique to property sites — syndicated portals competing with your own listings.",
   "On-Page & Content": "What's actually written on the page, and whether it matches what people search for.",
   "Off-Site & Authority": "What the rest of the internet says about you, beyond your own website.",
   "Local & Business Profile": "Your presence on Google, Bing and Apple Maps — often the first thing anyone sees.",
   "Trust & Authority (E-E-A-T)": "Whether a stranger has a real reason to trust you with a six-figure decision.",
-  Measurement: "Knowing whether any of this is actually working.",
-  "Playing It Smart": "Genuine competitive advantages, once the fundamentals are covered.",
+  "Beyond the Basics": "Real estate-specific fixes, proving it's working, and staying ahead of competitors.",
 };
 
 export type ChecklistItem = {
@@ -54,9 +50,6 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Remove intrusive pop-ups that block the page on arrival", category: "Technical Foundations", type: "direct" },
   { item: "Add schema markup — price, location, business type", category: "Technical Foundations", type: "prerequisite" },
 
-  // Real Estate-Specific Risk
-  { item: "Add a self-referencing canonical tag to listings synced to portals", category: "Real Estate-Specific Risk", type: "direct" },
-
   // On-Page & Content
   { item: "Research the words customers actually search, not your own internal language", category: "On-Page & Content", type: "direct" },
   { item: "Write specific page titles and meta descriptions, not generic ones", category: "On-Page & Content", type: "direct" },
@@ -85,9 +78,8 @@ export const checklistItems: ChecklistItem[] = [
   { item: "Reply to every review within 48 hours", category: "Trust & Authority (E-E-A-T)", type: "direct" },
   { item: "Never incentivise or gate reviews", category: "Trust & Authority (E-E-A-T)", type: "prerequisite" },
 
-  // Measurement
-  { item: "Set up analytics and track where enquiries actually come from", category: "Measurement", type: "prerequisite" },
-
-  // Playing It Smart
-  { item: "Regularly check a named competitor for gaps you can exploit", category: "Playing It Smart", type: "prerequisite" },
+  // Beyond the Basics
+  { item: "Add a self-referencing canonical tag to listings synced to portals", category: "Beyond the Basics", type: "direct" },
+  { item: "Set up analytics and track where enquiries actually come from", category: "Beyond the Basics", type: "prerequisite" },
+  { item: "Regularly check a named competitor for gaps you can exploit", category: "Beyond the Basics", type: "prerequisite" },
 ];
