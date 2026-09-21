@@ -1,5 +1,7 @@
 import Link from "next/link";
+import CourseClosing from "../components/CourseClosing";
 import CourseFormatPicker from "../components/CourseFormatPicker";
+import CourseHeroStats from "../components/CourseHeroStats";
 import HorizontalTimeline from "../components/HorizontalTimeline";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
@@ -79,6 +81,8 @@ export default function GeoCoursePage() {
               ranking factor itself, but how you know the rest is working).
             </p>
           </div>
+
+          <CourseHeroStats itemCount={checklistItems.length} downloadCount={downloads.length} />
         </div>
       </div>
 
@@ -118,32 +122,23 @@ export default function GeoCoursePage() {
         </Reveal>
       </div>
 
-      <div className="mx-auto max-w-2xl px-6 pt-20">
-        <div className="space-y-5 text-lg text-foreground/70">
-          <p>
-            The end goal: being the name AI tools actually say, not just a
-            website that technically exists somewhere in their training data.
-          </p>
-          <p className="text-base text-foreground/60">
-            One note: this guide covers GEO — AI tools like ChatGPT
-            recommending you directly. Traditional SEO (Google, Bing, Apple)
-            overlaps heavily but has{" "}
-            <Link href="/resources/seo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
-              its own guide
-            </Link>
-            .
-          </p>
-          <p className="text-base text-foreground/60">
-            One honest pattern worth flagging before you start: this field is
-            newer than traditional SEO, and anyone claiming total certainty
-            about how AI models pick who to cite is overselling what&rsquo;s
-            actually known. Nothing in here is beyond what you can genuinely
-            do yourself — I&rsquo;ll tell you plainly where the evidence is
-            solid and where it&rsquo;s still a reasonable bet, item by item,
-            throughout.
-          </p>
-        </div>
-      </div>
+      <Reveal>
+        <CourseClosing
+          endGoal="The end goal: being the name AI tools actually say, not just a website that technically exists somewhere in their training data."
+          note={
+            <>
+              This guide covers GEO — AI tools like ChatGPT recommending you
+              directly. Traditional SEO (Google, Bing, Apple) overlaps
+              heavily but has{" "}
+              <Link href="/resources/seo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+                its own guide
+              </Link>
+              .
+            </>
+          }
+          honestPattern="This field is newer than traditional SEO, and anyone claiming total certainty about how AI models pick who to cite is overselling what's actually known. Nothing in here is beyond what you can genuinely do yourself — I'll tell you plainly where the evidence is solid and where it's still a reasonable bet, item by item, throughout."
+        />
+      </Reveal>
 
       <div className="mt-24 border-y border-border bg-ink px-6 py-20 text-ink-foreground">
         <Reveal>

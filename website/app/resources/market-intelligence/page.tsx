@@ -1,5 +1,7 @@
 import Link from "next/link";
+import CourseClosing from "../../components/CourseClosing";
 import CourseFormatPicker from "../../components/CourseFormatPicker";
+import CourseHeroStats from "../../components/CourseHeroStats";
 import HorizontalTimeline from "../../components/HorizontalTimeline";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
@@ -76,6 +78,8 @@ export default function MarketIntelligenceResourcesPage() {
               intelligence already gathered into an actual decision).
             </p>
           </div>
+
+          <CourseHeroStats itemCount={checklistItems.length} downloadCount={downloads.length} />
         </div>
       </div>
 
@@ -117,41 +121,31 @@ export default function MarketIntelligenceResourcesPage() {
         </Reveal>
       </div>
 
-      <div className="mx-auto max-w-2xl px-6 pt-20">
-        <div className="space-y-5 text-lg text-foreground/70">
-          <p>
-            The end goal: never having to guess where you stand — a live,
-            provable picture of your visibility, reputation, and momentum
-            against a named rival, checked the same way, every month.
-          </p>
-          <p className="text-base text-foreground/60">
-            One note: this guide focuses specifically on measuring and
-            comparing. It leans on the{" "}
-            <Link href="/resources/seo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
-              SEO course
-            </Link>
-            , the{" "}
-            <Link href="/resources/geo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
-              GEO guide
-            </Link>
-            , and the{" "}
-            <Link href="/resources/reviews" className="text-foreground underline underline-offset-2 hover:text-accent-text">
-              Review Management course
-            </Link>{" "}
-            for the actual fixes — this one tells you which of those to
-            prioritise, and when.
-          </p>
-          <p className="text-base text-foreground/60">
-            One honest pattern worth noticing before you start: almost
-            nothing on this list is genuinely difficult to check once.
-            What&rsquo;s hard is checking it the same way, on the same
-            schedule, for long enough to see an actual trend rather than a
-            single snapshot. That&rsquo;s the actual challenge this guide
-            can&rsquo;t solve for you — and it&rsquo;s flagged specifically,
-            item by item, throughout.
-          </p>
-        </div>
-      </div>
+      <Reveal>
+        <CourseClosing
+          endGoal="The end goal: never having to guess where you stand — a live, provable picture of your visibility, reputation, and momentum against a named rival, checked the same way, every month."
+          note={
+            <>
+              This guide focuses specifically on measuring and comparing. It
+              leans on the{" "}
+              <Link href="/resources/seo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+                SEO course
+              </Link>
+              , the{" "}
+              <Link href="/resources/geo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+                GEO guide
+              </Link>
+              , and the{" "}
+              <Link href="/resources/reviews" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+                Review Management course
+              </Link>{" "}
+              for the actual fixes — this one tells you which of those to
+              prioritise, and when.
+            </>
+          }
+          honestPattern="Almost nothing on this list is genuinely difficult to check once. What's hard is checking it the same way, on the same schedule, for long enough to see an actual trend rather than a single snapshot. That's the actual challenge this guide can't solve for you — and it's flagged specifically, item by item, throughout."
+        />
+      </Reveal>
 
       <div className="mt-24 border-y border-border bg-ink px-6 py-20 text-ink-foreground">
         <Reveal>

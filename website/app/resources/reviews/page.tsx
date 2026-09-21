@@ -1,5 +1,7 @@
 import Link from "next/link";
+import CourseClosing from "../../components/CourseClosing";
 import CourseFormatPicker from "../../components/CourseFormatPicker";
+import CourseHeroStats from "../../components/CourseHeroStats";
 import HorizontalTimeline from "../../components/HorizontalTimeline";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
@@ -72,6 +74,8 @@ export default function ReviewsResourcesPage() {
               boost ranking, just makes ranking possible at all).
             </p>
           </div>
+
+          <CourseHeroStats itemCount={checklistItems.length} downloadCount={downloads.length} />
         </div>
       </div>
 
@@ -113,37 +117,27 @@ export default function ReviewsResourcesPage() {
         </Reveal>
       </div>
 
-      <div className="mx-auto max-w-2xl px-6 pt-20">
-        <div className="space-y-5 text-lg text-foreground/70">
-          <p>
-            The end goal: a review profile that&rsquo;s actively managed,
-            genuinely current, and answered — the kind that makes a
-            hesitant buyer or landlord stop scrolling and actually call.
-          </p>
-          <p className="text-base text-foreground/60">
-            One note: this guide focuses specifically on reviews. It
-            overlaps with both the{" "}
-            <Link href="/resources/seo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
-              SEO course
-            </Link>{" "}
-            and the{" "}
-            <Link href="/resources/geo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
-              GEO guide
-            </Link>
-            , since reviews feed both — but it goes deeper on this one topic
-            than either of them do.
-          </p>
-          <p className="text-base text-foreground/60">
-            One honest pattern worth noticing before you start: almost
-            nothing on this list is genuinely hard to do once. What&rsquo;s
-            hard is doing all of it, correctly, at the same time, and then
-            keeping it that way for years while reviews keep arriving and
-            competitors keep moving underneath you. That&rsquo;s the actual
-            challenge this guide can&rsquo;t solve for you — and it&rsquo;s
-            flagged specifically, item by item, throughout.
-          </p>
-        </div>
-      </div>
+      <Reveal>
+        <CourseClosing
+          endGoal="The end goal: a review profile that's actively managed, genuinely current, and answered — the kind that makes a hesitant buyer or landlord stop scrolling and actually call."
+          note={
+            <>
+              This guide focuses specifically on reviews. It overlaps with
+              both the{" "}
+              <Link href="/resources/seo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+                SEO course
+              </Link>{" "}
+              and the{" "}
+              <Link href="/resources/geo" className="text-foreground underline underline-offset-2 hover:text-accent-text">
+                GEO guide
+              </Link>
+              , since reviews feed both — but it goes deeper on this one
+              topic than either of them do.
+            </>
+          }
+          honestPattern="Almost nothing on this list is genuinely hard to do once. What's hard is doing all of it, correctly, at the same time, and then keeping it that way for years while reviews keep arriving and competitors keep moving underneath you. That's the actual challenge this guide can't solve for you — and it's flagged specifically, item by item, throughout."
+        />
+      </Reveal>
 
       <div className="mt-24 border-y border-border bg-ink px-6 py-20 text-ink-foreground">
         <Reveal>
