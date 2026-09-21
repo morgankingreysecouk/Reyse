@@ -77,72 +77,78 @@ export default function HorizontalTimeline({
   };
 
   const nudge = (dir: 1 | -1) => {
-    trackRef.current?.scrollBy({ left: dir * 300, behavior: "smooth" });
+    const track = trackRef.current;
+    const firstCard = track?.children[0] as HTMLElement | undefined;
+    if (!track || !firstCard) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap || "16");
+    track.scrollBy({ left: dir * (firstCard.getBoundingClientRect().width + gap), behavior: "smooth" });
   };
 
   return (
     <div>
-      <div className="scrollbar-hide -mx-1 mb-4 flex gap-2 overflow-x-auto px-1 pb-1">
-        {categories.map((category, i) => (
-          <button
-            key={category}
-            type="button"
-            onClick={() => scrollToCategory(i)}
-            className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
-              i === activeCategory
-                ? "border-accent bg-accent/15 text-accent-text"
-                : "border-border text-foreground/60 hover:border-foreground/40"
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-
-      <div className="relative">
-        <button
-          type="button"
-          onClick={() => nudge(-1)}
-          aria-label="Scroll left"
-          className="absolute left-0 top-1/2 z-20 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground/70 shadow-sm hover:text-foreground sm:-left-4"
-        >
-          <ChevronIcon flip />
-        </button>
-        <button
-          type="button"
-          onClick={() => nudge(1)}
-          aria-label="Scroll right"
-          className="absolute right-0 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border bg-background text-foreground/70 shadow-sm hover:text-foreground sm:-right-4"
-        >
-          <ChevronIcon />
-        </button>
-
-        <div
-          ref={trackRef}
-          className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-7 py-2 sm:px-1"
-        >
-          {items.map((entry, i) => (
-            <div
-              key={`${entry.category}-${i}`}
-              ref={(el) => {
-                cardRefs.current[i] = el;
-              }}
-              className="flex w-60 shrink-0 snap-start flex-col justify-between gap-5 rounded-2xl border border-border bg-panel p-5"
+      <div className="flex items-center justify-between gap-4">
+        <div className="scrollbar-hide -mx-1 flex min-w-0 flex-1 gap-2 overflow-x-auto px-1 pb-1">
+          {categories.map((category, i) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => scrollToCategory(i)}
+              className={`shrink-0 rounded-full border px-3.5 py-1.5 text-xs font-medium transition ${
+                i === activeCategory
+                  ? "border-accent bg-accent/15 text-accent-text"
+                  : "border-border text-foreground/60 hover:border-foreground/40"
+              }`}
             >
-              <div>
-                <p className="text-[11px] font-medium uppercase tracking-wide text-foreground/45">
-                  {entry.category}
-                </p>
-                <p className="mt-2 text-sm text-foreground">{entry.item}</p>
-              </div>
-              <span
-                className={`w-fit rounded-full px-2.5 py-1 text-[11px] font-medium ${tagStyles[entry.type]}`}
-              >
-                {tagLabels[entry.type]}
-              </span>
-            </div>
+              {category}
+            </button>
           ))}
         </div>
+
+        <div className="flex shrink-0 gap-2">
+          <button
+            type="button"
+            onClick={() => nudge(-1)}
+            aria-label="Scroll left"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground/70 hover:border-foreground/40 hover:text-foreground"
+          >
+            <ChevronIcon flip />
+          </button>
+          <button
+            type="button"
+            onClick={() => nudge(1)}
+            aria-label="Scroll right"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-border text-foreground/70 hover:border-foreground/40 hover:text-foreground"
+          >
+            <ChevronIcon />
+          </button>
+        </div>
+      </div>
+
+      <div
+        ref={trackRef}
+        className="scrollbar-hide mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth py-2"
+      >
+        {items.map((entry, i) => (
+          <div
+            key={`${entry.category}-${i}`}
+            ref={(el) => {
+              cardRefs.current[i] = el;
+            }}
+            className="flex w-full shrink-0 snap-start flex-col justify-between gap-5 rounded-2xl border border-border bg-panel p-5 sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+          >
+            <div>
+              <p className="text-[11px] font-medium uppercase tracking-wide text-foreground/45">
+                {entry.category}
+              </p>
+              <p className="mt-2 text-sm text-foreground">{entry.item}</p>
+            </div>
+            <span
+              className={`w-fit rounded-full px-2.5 py-1 text-[11px] font-medium ${tagStyles[entry.type]}`}
+            >
+              {tagLabels[entry.type]}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
