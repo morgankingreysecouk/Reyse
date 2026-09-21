@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
@@ -8,11 +9,28 @@ export const metadata = pageMetadata({
   description: "Practical, specific writing on AI search, SEO, and reviews for estate and letting agents — not vague theory.",
 });
 
-// Small topic icon per post, keyed by slug — not a photo. These are
-// abstract concepts (schema, AI search behaviour), so a real photo would
-// mean generic stock imagery; an icon gives visual differentiation without
-// faking a subject that doesn't exist. Each is a function of className so
-// the same icon can render at featured size or grid size.
+// A real photo per post, specific to what that post is actually about —
+// not generic real-estate stock imagery. Falls back to the topic icon
+// below for any slug without one yet.
+const images: Record<string, string> = {
+  "invisible-to-chatgpt": "/images/blog/invisible-to-chatgpt.webp",
+  "google-business-profile-mistakes": "/images/blog/google-business-profile-mistakes.webp",
+  "getting-more-google-reviews": "/images/blog/getting-more-google-reviews.webp",
+  "ai-search-2026-property": "/images/blog/ai-search-2026-property.webp",
+  "schema-markup-explained": "/images/blog/schema-markup-explained.webp",
+};
+
+const imageAlts: Record<string, string> = {
+  "invisible-to-chatgpt": "Someone checking what an AI chat assistant says about local estate agents on a laptop",
+  "google-business-profile-mistakes": "A Google Business Profile listing open on a smartphone",
+  "getting-more-google-reviews": "A five-star review request screen open on a smartphone",
+  "ai-search-2026-property": "A laptop and phone on a desk showing an AI search assistant and a voice assistant",
+  "schema-markup-explained": "A laptop showing structured schema markup code in a browser",
+};
+
+// Small topic icon per post, keyed by slug — used only as a fallback for
+// any post without a photo yet. Each is a function of className so the
+// same icon can render at featured size or grid size.
 const icons: Record<string, (className: string) => React.ReactNode> = {
   "invisible-to-chatgpt": (className) => (
     <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -45,7 +63,27 @@ const icons: Record<string, (className: string) => React.ReactNode> = {
   ),
 };
 
-function PostVisual({ slug, iconSize, aspect }: { slug: string; iconSize: string; aspect: string }) {
+function PostVisual({
+  slug,
+  iconSize,
+  aspect,
+  sizes,
+}: {
+  slug: string;
+  iconSize: string;
+  aspect: string;
+  sizes: string;
+}) {
+  const src = images[slug];
+
+  if (src) {
+    return (
+      <div className={`relative ${aspect} overflow-hidden rounded-2xl bg-panel`}>
+        <Image src={src} alt={imageAlts[slug] ?? ""} fill sizes={sizes} className="object-cover" />
+      </div>
+    );
+  }
+
   return (
     <div className={`flex ${aspect} items-center justify-center rounded-2xl bg-panel`}>
       <span className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text" style={{ width: "2.6em", height: "2.6em" }}>
@@ -80,7 +118,12 @@ export default function BlogIndex() {
               href={`/blog/${featured.slug}`}
               className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
             >
-              <PostVisual slug={featured.slug} iconSize="h-9 w-9" aspect="aspect-[16/9]" />
+              <PostVisual
+                slug={featured.slug}
+                iconSize="h-9 w-9"
+                aspect="aspect-[16/9]"
+                sizes="(min-width: 1024px) 56vw, 100vw"
+              />
               <div className="flex flex-1 flex-col p-6">
                 <p className="text-xs font-medium text-foreground/65">
                   {featured.date} · {featured.readingTime}
@@ -106,7 +149,12 @@ export default function BlogIndex() {
                   href={`/blog/${post.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
                 >
-                  <PostVisual slug={post.slug} iconSize="h-6 w-6" aspect="aspect-[16/10]" />
+                  <PostVisual
+                    slug={post.slug}
+                    iconSize="h-6 w-6"
+                    aspect="aspect-[16/10]"
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                  />
                   <div className="flex flex-1 flex-col p-5">
                     <p className="text-xs font-medium text-foreground/65">{post.date}</p>
                     <h3 className="mt-2 font-heading text-lg leading-[1.2] tracking-tight">
@@ -127,7 +175,12 @@ export default function BlogIndex() {
                   href={`/blog/${post.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
                 >
-                  <PostVisual slug={post.slug} iconSize="h-5 w-5" aspect="aspect-[4/3]" />
+                  <PostVisual
+                    slug={post.slug}
+                    iconSize="h-5 w-5"
+                    aspect="aspect-[4/3]"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  />
                   <div className="p-5">
                     <p className="text-xs font-medium text-foreground/65">{post.date}</p>
                     <h3 className="mt-2 font-heading text-base leading-[1.25] tracking-tight">
