@@ -47,7 +47,7 @@ export default function Quiz() {
     const interestParam = encodeURIComponent(primary.label);
 
     return (
-      <div className="mx-auto max-w-xl">
+      <div className="mx-auto max-w-xl animate-[hero-fade-in_0.4s_ease-out_backwards]">
         <p className="text-center text-sm font-medium text-accent-text">
           {industry ? `For ${industry.label.toLowerCase()} like you` : "Based on your answers"}
         </p>
@@ -108,7 +108,7 @@ export default function Quiz() {
       </div>
 
       {step === 0 ? (
-        <div className="mt-8">
+        <div key="step-0" className="mt-8 animate-[hero-fade-in_0.3s_ease-out_backwards]">
           <h2 className="text-center font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
             Estate agent or letting agent?
           </h2>
@@ -133,7 +133,7 @@ export default function Quiz() {
         (() => {
           const q = questions[step - 1];
           return (
-            <div className="mt-8">
+            <div key={`step-${step}`} className="mt-8 animate-[hero-fade-in_0.3s_ease-out_backwards]">
               <h2 className="text-center font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
                 {q.question}
               </h2>

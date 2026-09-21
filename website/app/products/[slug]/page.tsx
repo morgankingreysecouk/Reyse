@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CountUp from "../../components/CountUp";
 import Reveal from "../../components/Reveal";
 import IncludedItemsScroll from "../../components/IncludedItemsScroll";
 import {
@@ -155,7 +156,7 @@ export default async function ProductPage({
 
             <div className="mt-6">
               <p className="font-heading text-3xl leading-none tracking-tight text-accent-text">
-                {product.price}
+                <CountUp value={product.price} />
               </p>
               <p className="mt-1.5 text-sm text-foreground/60">{product.priceNote}</p>
               <p className="mt-2 text-sm text-foreground/60">
@@ -194,7 +195,7 @@ export default async function ProductPage({
               <Reveal key={stat.label} delay={i * 100}>
                 <div>
                   <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
-                    {stat.value}
+                    <CountUp value={stat.value} />
                   </p>
                   <p className="mt-2 text-sm text-foreground/60">{stat.label}</p>
                 </div>
@@ -259,7 +260,7 @@ export default async function ProductPage({
                       {addOn.stat && (
                         <div className="mt-3 flex items-center gap-4 rounded-2xl border border-accent/20 bg-accent/5 px-5 py-3">
                           <p className="shrink-0 font-heading text-3xl leading-none tracking-tight text-accent-text">
-                            {addOn.stat.value}
+                            <CountUp value={addOn.stat.value} />
                           </p>
                           <p className="text-sm text-foreground/70">{addOn.stat.label}</p>
                         </div>

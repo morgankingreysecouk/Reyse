@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CountUp from "../components/CountUp";
 import Reveal from "../components/Reveal";
 import { bonusStack, bonusStackMonthlyTotal, bonusStackOneOffTotal } from "../lib/bonusStack";
 import { pageMetadata } from "../lib/seo";
@@ -41,7 +42,7 @@ export default function SystemPage() {
           <div className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-panel p-6">
             <div>
               <p className="font-heading text-3xl leading-none tracking-tight text-accent-text">
-                {SYSTEM_SPOTS_REMAINING} / {SYSTEM_TOTAL_SPOTS}
+                <CountUp value={String(SYSTEM_SPOTS_REMAINING)} /> / {SYSTEM_TOTAL_SPOTS}
               </p>
               <p className="mt-1 text-xs text-foreground/65">
                 full-system spots still open
@@ -191,7 +192,7 @@ export default function SystemPage() {
                   </div>
                   <div className="text-right">
                     <p className="font-heading text-xl leading-none tracking-tight text-accent-text">
-                      {item.value}
+                      <CountUp value={item.value} />
                     </p>
                     <p className="mt-1 text-xs text-foreground/60">{item.cadence}</p>
                   </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import type { ComparisonRow, IncludedItem } from "../products/data";
+import CountUp from "./CountUp";
 
 function TierRow({ label, value }: { label: string; value: string }) {
   const included = value.startsWith("✓");
@@ -130,7 +131,7 @@ export default function IncludedItemsScroll({
                 {item.stat && (
                   <div className="mt-3 flex items-center gap-4 rounded-2xl border border-accent/20 bg-accent/5 px-5 py-3">
                     <p className="shrink-0 font-heading text-3xl leading-none tracking-tight text-accent-text">
-                      {item.stat.value}
+                      <CountUp value={item.stat.value} />
                     </p>
                     <p className="text-sm text-foreground/70">{item.stat.label}</p>
                   </div>

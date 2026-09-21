@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import CountUp from "../components/CountUp";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
 
@@ -131,7 +132,9 @@ export default function CharityPage() {
             </Reveal>
             <Reveal delay={100}>
               <div className="flex flex-col items-center justify-center rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground">
-                <p className="font-heading text-6xl leading-none tracking-tight">£0</p>
+                <p className="font-heading text-6xl leading-none tracking-tight">
+                  <CountUp value="£0" />
+                </p>
                 <p className="mt-3 text-sm font-medium">
                   taken from you, right now
                 </p>

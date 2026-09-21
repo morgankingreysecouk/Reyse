@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CountUp from "../components/CountUp";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
 import { products, type Product } from "../products/data";
@@ -164,7 +165,7 @@ export default function ResourcesHub() {
             <Reveal>
               <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-panel px-6 py-10 text-center">
                 <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
-                  {totalLessons}
+                  <CountUp value={String(totalLessons)} />
                 </p>
                 <p className="mt-3 text-sm font-medium text-foreground/70">
                   free lessons, across five full courses
@@ -174,7 +175,7 @@ export default function ResourcesHub() {
             <Reveal delay={80}>
               <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-panel px-6 py-10 text-center">
                 <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
-                  {totalDownloads}
+                  <CountUp value={String(totalDownloads)} />
                 </p>
                 <p className="mt-3 text-sm font-medium text-foreground/70">
                   downloadable templates, checklists &amp; worksheets
@@ -184,7 +185,7 @@ export default function ResourcesHub() {
             <Reveal delay={160}>
               <div className="flex flex-col items-center justify-center rounded-3xl bg-accent px-6 py-10 text-center text-accent-foreground">
                 <p className="font-heading text-4xl leading-none tracking-tight">
-                  £0
+                  <CountUp value="£0" />
                 </p>
                 <p className="mt-3 text-sm font-medium text-accent-foreground/80">
                   for all of it, no catch

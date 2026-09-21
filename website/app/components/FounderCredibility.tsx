@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CountUp from "./CountUp";
 import Reveal from "./Reveal";
 
 // Same three stats as /about — not a photo, since no real founder photo
@@ -42,7 +43,7 @@ export default function FounderCredibility() {
           <Reveal key={stat.label} delay={i * 100}>
             <div className="max-w-[9.5rem]">
               <p className="font-heading text-4xl leading-none tracking-tight text-accent-text">
-                {stat.value}
+                <CountUp value={stat.value} />
               </p>
               <p className="mt-2 text-sm text-foreground/60">{stat.label}</p>
             </div>

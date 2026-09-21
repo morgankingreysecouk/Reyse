@@ -1,5 +1,6 @@
 import Link from "next/link";
 import CountdownTimer from "../components/CountdownTimer";
+import CountUp from "../components/CountUp";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
 import { CLAIMED_COUNTIES, SPOTS_REMAINING, TOTAL_SPOTS } from "../lib/freeForever";
@@ -69,7 +70,7 @@ export default function FreeForeverPage() {
           <div className="mt-8 flex flex-wrap items-center gap-4 rounded-2xl border border-border bg-panel p-6">
             <div>
               <p className="font-heading text-3xl leading-none tracking-tight text-accent-text">
-                {SPOTS_REMAINING} / {TOTAL_SPOTS}
+                <CountUp value={String(SPOTS_REMAINING)} /> / {TOTAL_SPOTS}
               </p>
               <p className="mt-1 text-xs text-foreground/65">counties still open</p>
             </div>

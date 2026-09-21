@@ -17,6 +17,7 @@ import ClearStructureDemo from "../../components/ClearStructureDemo";
 import LocalWordingDemo from "../../components/LocalWordingDemo";
 import PriorityBreakdownChart from "../../components/PriorityBreakdownChart";
 import LessonJumpSelect from "../../components/LessonJumpSelect";
+import CountUp from "../../components/CountUp";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
 import { lessons } from "../lessons";
@@ -225,7 +226,7 @@ export default async function LessonPage({
                   {lesson.whyCustomerStat && (
                     <div className="mt-3 flex items-center gap-3">
                       <span className="font-heading text-3xl leading-none tracking-tight text-accent-text">
-                        {lesson.whyCustomerStat.value}
+                        <CountUp value={lesson.whyCustomerStat.value} />
                       </span>
                       <span className="text-xs text-foreground/60">{lesson.whyCustomerStat.label}</span>
                     </div>

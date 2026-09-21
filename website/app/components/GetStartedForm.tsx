@@ -38,7 +38,7 @@ export default function GetStartedForm() {
 
   if (status === "success") {
     return (
-      <div className="rounded-2xl border border-accent/40 bg-accent/10 p-8 text-center">
+      <div className="animate-[hero-fade-in_0.4s_ease-out_backwards] rounded-2xl border border-accent/40 bg-accent/10 p-8 text-center">
         <p className="font-heading text-xl leading-[1.15] tracking-tight">
           Got it — thanks.
         </p>
@@ -159,13 +159,19 @@ export default function GetStartedForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="w-full rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90 disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground transition hover:opacity-90 disabled:opacity-60 sm:w-auto"
       >
+        {status === "submitting" && (
+          <span
+            aria-hidden
+            className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-accent-foreground/30 border-t-accent-foreground"
+          />
+        )}
         {status === "submitting" ? "Sending…" : "Send it over"}
       </button>
 
       {status === "error" ? (
-        <p className="text-sm text-foreground/60">
+        <p className="animate-[hero-fade-in_0.3s_ease-out_backwards] text-sm text-foreground/60">
           That didn&rsquo;t send — mind trying again, or emailing{" "}
           <a href="mailto:hello@reyse.co.uk" className="underline hover:text-foreground">
             hello@reyse.co.uk

@@ -103,13 +103,13 @@ export default function CookiePreferencesModal() {
   return createPortal(
     <div
       ref={panelRef}
-      className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 p-0 sm:items-center sm:p-6"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 p-0 animate-[modal-backdrop-in_0.2s_ease-out_backwards] sm:items-center sm:p-6"
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="cookie-preferences-title"
-        className="max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-border bg-background p-6 shadow-xl sm:rounded-3xl sm:p-8"
+        className="max-h-[85dvh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-border bg-background p-6 shadow-xl animate-[hero-fade-in_0.25s_ease-out_backwards] sm:rounded-3xl sm:p-8"
       >
         <div className="flex items-start justify-between gap-4">
           <h2 id="cookie-preferences-title" className="font-heading text-xl leading-[1.15] tracking-tight">
