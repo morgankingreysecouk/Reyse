@@ -24,11 +24,20 @@ const kindByFile: Record<string, DownloadKind> = {
   "reyse-monthly-seo-health-check.pdf": "checklist",
 };
 
+// Filled in as real photos get generated — anything left out just falls
+// back to the icon treatment, so this can be completed gradually.
+const imageByFile: Record<string, string> = {
+  "the-free-seo-course.pdf": "/images/downloads/seo/the-free-seo-course.webp",
+  "reyse-schema-markup-pack.pdf": "/images/downloads/seo/reyse-schema-markup-pack.webp",
+  "reyse-gbp-setup-checklist.pdf": "/images/downloads/seo/reyse-gbp-setup-checklist.webp",
+};
+
 export default function SeoDownloadsPage() {
   return (
     <DownloadsBentoPage
       downloads={resourcesBySlug.seo.downloads}
       kindByFile={kindByFile}
+      imageByFile={imageByFile}
       backHref="/resources/seo"
       backLabel="Back to the SEO course"
       title="Every SEO download, in one place."

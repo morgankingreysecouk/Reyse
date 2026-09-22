@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "./Reveal";
 import type { ResourceLink } from "../resources/data";
@@ -77,15 +78,29 @@ function DownloadBadge() {
   );
 }
 
-function DownloadVisual({ kind, iconSize, aspect }: { kind: DownloadKind; iconSize: string; aspect: string }) {
+function DownloadVisual({
+  kind,
+  iconSize,
+  aspect,
+  image,
+}: {
+  kind: DownloadKind;
+  iconSize: string;
+  aspect: string;
+  image?: string;
+}) {
   return (
-    <div className={`relative flex ${aspect} items-center justify-center rounded-2xl bg-panel`}>
-      <span
-        className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text"
-        style={{ width: "2.6em", height: "2.6em" }}
-      >
-        {kindIcons[kind](iconSize)}
-      </span>
+    <div className={`relative flex ${aspect} items-center justify-center overflow-hidden rounded-2xl bg-panel`}>
+      {image ? (
+        <Image src={image} alt="" fill sizes="(min-width: 1024px) 600px, 100vw" className="object-cover" />
+      ) : (
+        <span
+          className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text"
+          style={{ width: "2.6em", height: "2.6em" }}
+        >
+          {kindIcons[kind](iconSize)}
+        </span>
+      )}
       <DownloadBadge />
     </div>
   );
@@ -93,15 +108,19 @@ function DownloadVisual({ kind, iconSize, aspect }: { kind: DownloadKind; iconSi
 
 // Fills whatever height the bento cell gives it, rather than a fixed
 // aspect ratio — the cell's own col/row span decides how tall that is.
-function BentoVisual({ kind, iconSize }: { kind: DownloadKind; iconSize: string }) {
+function BentoVisual({ kind, iconSize, image }: { kind: DownloadKind; iconSize: string; image?: string }) {
   return (
-    <div className="relative flex min-h-[64px] flex-1 items-center justify-center bg-panel">
-      <span
-        className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text"
-        style={{ width: "2.6em", height: "2.6em" }}
-      >
-        {kindIcons[kind](iconSize)}
-      </span>
+    <div className="relative flex min-h-[64px] flex-1 items-center justify-center overflow-hidden bg-panel">
+      {image ? (
+        <Image src={image} alt="" fill sizes="(min-width: 1024px) 300px, 50vw" className="object-cover" />
+      ) : (
+        <span
+          className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text"
+          style={{ width: "2.6em", height: "2.6em" }}
+        >
+          {kindIcons[kind](iconSize)}
+        </span>
+      )}
       <DownloadBadge />
     </div>
   );
@@ -126,6 +145,7 @@ const shapeSpecs: Record<(typeof SHAPE_SEQUENCE)[number], { col: string; row: st
 export default function DownloadsBentoPage({
   downloads,
   kindByFile,
+  imageByFile = {},
   backHref,
   backLabel,
   title,
@@ -137,6 +157,7 @@ export default function DownloadsBentoPage({
 }: {
   downloads: ResourceLink[];
   kindByFile: Record<string, DownloadKind>;
+  imageByFile?: Record<string, string>;
   backHref: string;
   backLabel: string;
   title: string;
@@ -146,11 +167,15 @@ export default function DownloadsBentoPage({
   ctaHref: string;
   ctaLabel: string;
 }) {
-  const withKind = downloads.map((d) => ({
-    ...d,
-    file: d.href.split("/").pop() ?? "",
-    kind: kindByFile[d.href.split("/").pop() ?? ""] ?? ("template" as DownloadKind),
-  }));
+  const withKind = downloads.map((d) => {
+    const file = d.href.split("/").pop() ?? "";
+    return {
+      ...d,
+      file,
+      kind: kindByFile[file] ?? ("template" as DownloadKind),
+      image: imageByFile[file],
+    };
+  });
   const [featured, second, third, ...rest] = withKind;
 
   return (
@@ -178,7 +203,7 @@ export default function DownloadsBentoPage({
               download
               className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
             >
-              <DownloadVisual kind={featured.kind} iconSize="h-9 w-9" aspect="aspect-[16/9]" />
+              <DownloadVisual kind={featured.kind} iconSize="h-9 w-9" aspect="aspect-[16/9]" image={featured.image} />
               <div className="flex flex-1 flex-col p-6">
                 <p className="text-xs font-medium text-foreground/65">{kindLabels[featured.kind]}</p>
                 <h2 className="mt-3 font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
@@ -203,7 +228,7 @@ export default function DownloadsBentoPage({
                   download
                   className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
                 >
-                  <DownloadVisual kind={d.kind} iconSize="h-6 w-6" aspect="aspect-[16/10]" />
+                  <DownloadVisual kind={d.kind} iconSize="h-6 w-6" aspect="aspect-[16/10]" image={d.image} />
                   <div className="flex flex-1 flex-col p-5">
                     <p className="text-xs font-medium text-foreground/65">{kindLabels[d.kind]}</p>
                     <h3 className="mt-2 font-heading text-lg leading-[1.2] tracking-tight">{d.title}</h3>
@@ -225,7 +250,7 @@ export default function DownloadsBentoPage({
                     download
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
                   >
-                    <BentoVisual kind={d.kind} iconSize={spec.icon} />
+                    <BentoVisual kind={d.kind} iconSize={spec.icon} image={d.image} />
                     <div className="min-h-0 shrink-0 p-4">
                       <p className="text-xs font-medium text-foreground/65">{kindLabels[d.kind]}</p>
                       <h3 className={`mt-1.5 line-clamp-2 font-heading leading-[1.25] tracking-tight ${spec.title}`}>{d.title}</h3>
