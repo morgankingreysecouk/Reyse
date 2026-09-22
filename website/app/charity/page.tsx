@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import CountUp from "../components/CountUp";
 import Reveal from "../components/Reveal";
@@ -290,8 +291,23 @@ export default function CharityPage() {
             </h2>
           </Reveal>
 
+          <Reveal delay={60}>
+            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border">
+              <Image
+                src="/images/charity-crisis.webp"
+                alt="A key being handed over, symbolising a safe home"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <p className="mt-3 text-center text-xs text-foreground/50">
+              A symbolic image, not a real Crisis client or premises.
+            </p>
+          </Reveal>
+
           <Reveal delay={100}>
-            <div className="mt-10 rounded-3xl border border-border bg-background p-8 sm:p-10">
+            <div className="mt-6 rounded-3xl border border-border bg-background p-8 sm:p-10">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <h3 className="font-heading text-xl leading-[1.2] tracking-tight">
