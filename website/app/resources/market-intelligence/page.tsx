@@ -1,11 +1,11 @@
 import Link from "next/link";
+import CourseChecklistCarousel from "../../components/CourseChecklistCarousel";
 import CourseClosing from "../../components/CourseClosing";
-import CourseFormatPicker from "../../components/CourseFormatPicker";
+import CourseFormatShowcase from "../../components/CourseFormatShowcase";
 import CourseHeroStats from "../../components/CourseHeroStats";
-import HorizontalTimeline from "../../components/HorizontalTimeline";
 import Reveal from "../../components/Reveal";
 import { pageMetadata } from "../../lib/seo";
-import { checklistItems, checklistTagStyles, checklistTagLabels, checklistCategoryBlurbs } from "../../marketcourse/data";
+import { checklistItems, checklistTagStyles, checklistTagLabels } from "../../marketcourse/data";
 import { resourcesBySlug } from "../data";
 
 export const metadata = pageMetadata({
@@ -20,7 +20,7 @@ export default function MarketIntelligenceResourcesPage() {
   const audiobook = audiobooks[0];
 
   return (
-    <main className="flex-1">
+    <main className="flex-1 overflow-x-hidden">
       <div className="relative overflow-hidden border-b border-border px-6 pb-20 pt-40">
         <div
           aria-hidden
@@ -40,7 +40,7 @@ export default function MarketIntelligenceResourcesPage() {
             WebkitMaskImage: "radial-gradient(65% 55% at 50% 25%, black 40%, transparent 100%)",
           }}
         />
-        <div className="relative mx-auto max-w-2xl">
+        <div className="relative mx-auto max-w-4xl">
           <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
             ← All resources
           </Link>
@@ -83,17 +83,17 @@ export default function MarketIntelligenceResourcesPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-6 pt-16">
+      <div className="mx-auto max-w-6xl px-6 pt-16">
         <Reveal>
-          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-            Take it in however works for you
+          <p className="text-sm text-foreground/60">
+            Read it, watch it, or listen to it — same 17 lessons, your call.
           </p>
           <div className="mt-4">
             {course && (
-              <CourseFormatPicker
+              <CourseFormatShowcase
                 readHref={course.href}
                 readTitle="Start the course"
-                readDescription="Every lesson, one at a time — read here, free, no sign-up."
+                readDescription="All 17 lessons, one at a time — read here, free, no sign-up."
                 readCta="Read lesson one"
                 video={video}
                 videoHref="/resources/market-intelligence/video"
@@ -109,13 +109,12 @@ export default function MarketIntelligenceResourcesPage() {
         <Reveal delay={100}>
           <div className="mt-14">
             <p className="mb-4 text-xs text-foreground/50">
-              Every item in the course — pick a section to see what&rsquo;s in it.
+              Every one of the {checklistItems.length} items in the course.
             </p>
-            <HorizontalTimeline
+            <CourseChecklistCarousel
               items={checklistItems}
               tagStyles={checklistTagStyles}
               tagLabels={checklistTagLabels}
-              categoryBlurbs={checklistCategoryBlurbs}
             />
           </div>
         </Reveal>
