@@ -40,7 +40,7 @@ export default function SeoResourcesPage() {
             WebkitMaskImage: "radial-gradient(65% 55% at 50% 25%, black 40%, transparent 100%)",
           }}
         />
-        <div className="relative mx-auto max-w-2xl">
+        <div className="relative mx-auto max-w-3xl">
           <Link href="/resources" className="text-sm text-foreground/60 hover:text-foreground">
             ← All resources
           </Link>
@@ -81,7 +81,7 @@ export default function SeoResourcesPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-4xl px-6 pt-16">
+      <div className="mx-auto max-w-5xl px-6 pt-16">
         <Reveal>
           <p className="text-sm text-foreground/60">
             Read it, watch it, or listen to it — same 32 lessons, your call.
@@ -105,7 +105,7 @@ export default function SeoResourcesPage() {
         </Reveal>
 
         <Reveal delay={100}>
-          <div className="mt-14">
+          <div className="mt-14 overflow-x-hidden">
             <p className="mb-4 text-xs text-foreground/50">
               Every one of the {checklistItems.length} fixes in the course.
             </p>

@@ -7,40 +7,57 @@ const ArrowIcon = (
   </svg>
 );
 
-function AltFormatLink({
+function FormatCard({
   href,
   icon,
-  label,
+  title,
+  description,
   cta,
+  primary,
 }: {
   href: string;
   icon: React.ReactNode;
-  label: string;
+  title: string;
+  description: string;
   cta: string;
+  primary?: boolean;
 }) {
   return (
     <Link
       href={href}
-      className="group flex flex-1 items-center gap-3 px-5 py-4 transition hover:bg-ink/[0.03] sm:px-6"
+      className={`group flex flex-col justify-between gap-6 rounded-2xl border p-5 transition hover:border-foreground/30 ${
+        primary ? "border-accent/30 bg-accent/5" : "border-border bg-panel"
+      }`}
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink/5 text-foreground/60">
-        {icon}
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="block text-sm text-foreground/60">{label}</span>
-        <span className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-text">
-          {cta}
-          {ArrowIcon}
-        </span>
+      <div>
+        <div className="flex items-start justify-between gap-2">
+          <span
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${
+              primary ? "bg-accent/15 text-accent-text" : "bg-ink/5 text-foreground/60"
+            }`}
+          >
+            {icon}
+          </span>
+          {primary && (
+            <span className="rounded-full bg-accent px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-accent-foreground">
+              Start here
+            </span>
+          )}
+        </div>
+        <p className="mt-4 font-heading text-lg leading-[1.2] tracking-tight text-foreground">{title}</p>
+        <p className="mt-1.5 text-sm text-foreground/60">{description}</p>
+      </div>
+      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-text">
+        {cta}
+        {ArrowIcon}
       </span>
     </Link>
   );
 }
 
-// One obvious primary path (read it here, free) plus a lightweight row of
-// alternate formats — sized and styled so the hierarchy is immediate: this
-// is one course, and here are three other ways to take it in, not four
-// competing options that all look the same.
+// Four equal-sized cards — the primary one is distinguished by its accent
+// colour and "Start here" badge, not by taking up more room than the
+// others, so all four formats read as options of the same weight.
 export default function CourseFormatShowcase({
   readHref,
   readTitle,
@@ -65,42 +82,36 @@ export default function CourseFormatShowcase({
   downloadsHref: string;
 }) {
   return (
-    <div>
-      <Link
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <FormatCard
         href={readHref}
-        className="group flex flex-col gap-5 rounded-2xl border border-accent/30 bg-accent/5 p-6 transition hover:border-accent/50 sm:flex-row sm:items-center sm:justify-between"
-      >
-        <div className="flex items-start gap-4">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-            {CourseIcon}
-          </span>
-          <div>
-            <p className="font-heading text-xl leading-[1.2] tracking-tight text-foreground">{readTitle}</p>
-            <p className="mt-1.5 text-sm text-foreground/60">{readDescription}</p>
-          </div>
-        </div>
-        <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-ink-foreground transition group-hover:opacity-90">
-          {readCta}
-          {ArrowIcon}
-        </span>
-      </Link>
-
-      <div className="mt-3 flex flex-col divide-y divide-border overflow-hidden rounded-2xl border border-border bg-panel sm:flex-row sm:divide-x sm:divide-y-0">
-        {video && (
-          <AltFormatLink href={videoHref} icon={VideoIcon} label="Prefer to watch?" cta="Watch now" />
-        )}
-        {audiobook && (
-          <AltFormatLink href={listenHref} icon={AudiobookIcon} label="Prefer to listen?" cta="Listen now" />
-        )}
-        {downloadsCount > 0 && (
-          <AltFormatLink
-            href={downloadsHref}
-            icon={DownloadIcon}
-            label="Want it as templates?"
-            cta={`${downloadsCount} downloads`}
-          />
-        )}
-      </div>
+        icon={CourseIcon}
+        title={readTitle}
+        description={readDescription}
+        cta={readCta}
+        primary
+      />
+      {video && (
+        <FormatCard href={videoHref} icon={VideoIcon} title={video.title} description={video.description} cta="Watch now" />
+      )}
+      {audiobook && (
+        <FormatCard
+          href={listenHref}
+          icon={AudiobookIcon}
+          title={audiobook.title}
+          description={audiobook.description}
+          cta="Listen now"
+        />
+      )}
+      {downloadsCount > 0 && (
+        <FormatCard
+          href={downloadsHref}
+          icon={DownloadIcon}
+          title="Download the resources"
+          description={`${downloadsCount} free templates & checklists.`}
+          cta="Download"
+        />
+      )}
     </div>
   );
 }

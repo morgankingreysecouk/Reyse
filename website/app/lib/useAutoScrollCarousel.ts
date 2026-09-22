@@ -67,17 +67,28 @@ export function useAutoScrollCarousel<T extends HTMLElement>() {
     };
     const onPointerMove = (e: PointerEvent) => {
       if (!dragging) return;
-      track.scrollLeft = startScrollLeft - (e.clientX - startX);
+      const loopWidth = track.scrollWidth / 2;
+      let target = startScrollLeft - (e.clientX - startX);
+      // scrollLeft can't go negative — the browser clamps it to 0 instead of
+      // wrapping, so a large rightward drag (revealing earlier items) would
+      // otherwise get stuck at the floor. Wrap here so dragging left works
+      // just as far as dragging right does.
+      if (loopWidth > 0) target = ((target % loopWidth) + loopWidth) % loopWidth;
+      track.scrollLeft = target;
     };
     const endDrag = () => {
       dragging = false;
       scheduleResume();
     };
     const onScroll = () => {
+      // Native wheel/trackpad scrolling hits the same 0-floor clamp, so
+      // correct it here too — landing strictly inside (0, loopWidth) rather
+      // than exactly on either boundary avoids re-triggering the other
+      // branch on the scroll event this correction itself fires.
       const loopWidth = track.scrollWidth / 2;
-      if (loopWidth <= 0) return;
-      if (track.scrollLeft >= loopWidth) track.scrollLeft -= loopWidth;
-      else if (track.scrollLeft < 0) track.scrollLeft += loopWidth;
+      if (loopWidth <= 1) return;
+      if (track.scrollLeft >= loopWidth) track.scrollLeft = Math.max(track.scrollLeft - loopWidth, 1);
+      else if (track.scrollLeft <= 0) track.scrollLeft = loopWidth - 1;
     };
     const onWheel = () => {
       pause();

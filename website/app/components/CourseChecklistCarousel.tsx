@@ -26,7 +26,7 @@ export default function CourseChecklistCarousel({
       tabIndex={0}
       role="region"
       aria-label={`All ${items.length} fixes, scrollable`}
-      className="-mx-6 flex cursor-grab touch-pan-y gap-3 overflow-x-auto px-6 pb-2 outline-none [-webkit-overflow-scrolling:touch] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
+      className="mx-[calc(50%-50vw)] flex w-screen cursor-grab touch-pan-y gap-4 overflow-x-auto px-6 pb-2 outline-none [-webkit-overflow-scrolling:touch] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden"
       style={{
         maskImage: "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
         WebkitMaskImage: "linear-gradient(to right, transparent, black 4%, black 96%, transparent)",
@@ -35,7 +35,7 @@ export default function CourseChecklistCarousel({
       {loopItems.map((entry, i) => (
         <div
           key={`${entry.item}-${i}`}
-          className="w-[240px] shrink-0 select-none rounded-2xl border border-border bg-panel p-5 sm:w-[270px]"
+          className="w-[270px] shrink-0 select-none rounded-2xl border border-border bg-panel p-6 sm:w-[310px]"
         >
           <p className="text-xs font-medium text-accent-text">{entry.category}</p>
           <p className="mt-2 text-sm text-foreground">{entry.item}</p>
