@@ -33,17 +33,7 @@ export default function Home() {
 
         <AboutPromo />
 
-        {/* FAQ */}
-        <section className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-6 py-20">
-            <h2 className="text-center font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              Questions people actually ask
-            </h2>
-            <div className="mt-10">
-              <Faq />
-            </div>
-          </div>
-        </section>
+        <Faq />
 
         {/* CTA */}
         <section id="contact" className="scroll-mt-20 border-t border-border">
