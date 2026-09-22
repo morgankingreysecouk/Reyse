@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
@@ -150,7 +151,22 @@ export default function GuaranteesPage() {
             </h2>
           </Reveal>
 
-          <div className="mt-12 grid items-start gap-10 sm:grid-cols-2 sm:gap-16">
+          <Reveal delay={60}>
+            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border">
+              <Image
+                src="/images/guarantees-handshake.webp"
+                alt="A handshake, symbolising a commitment kept"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <p className="mt-3 text-center text-xs text-foreground/50">
+              A symbolic image, not an actual client.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid items-start gap-10 sm:grid-cols-2 sm:gap-16">
             <Reveal>
               <div className="space-y-5 text-foreground/70">
                 <p>
