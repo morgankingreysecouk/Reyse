@@ -30,6 +30,8 @@ const imageByFile: Record<string, string> = {
   "the-free-seo-course.pdf": "/images/downloads/seo/the-free-seo-course.webp",
   "reyse-schema-markup-pack.pdf": "/images/downloads/seo/reyse-schema-markup-pack.webp",
   "reyse-gbp-setup-checklist.pdf": "/images/downloads/seo/reyse-gbp-setup-checklist.webp",
+  "reyse-review-request-reply-templates.pdf": "/images/downloads/seo/reyse-review-request-reply-templates.webp",
+  "reyse-ai-visibility-self-check-kit.pdf": "/images/downloads/seo/reyse-ai-visibility-self-check-kit.webp",
 };
 
 export default function SeoDownloadsPage() {
