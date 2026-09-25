@@ -32,7 +32,7 @@ export default function TitleMetaDemo() {
             </p>
           </GoogleResult>
         </div>
-        <p className="mt-3 text-xs text-foreground/60">Signals relevance immediately — before anyone's even clicked.</p>
+        <p className="mt-3 text-xs text-foreground/60">Signals relevance immediately — before anyone&rsquo;s even clicked.</p>
       </div>
     </div>
   );

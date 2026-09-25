@@ -25,7 +25,7 @@ export default function SystemPage() {
           Every product Reyse builds, working together instead of separately:
           found on Google, recommended by AI, every review answered, knowing
           exactly where you stand against the competitor down the road — and,
-          when you're ready, replicated properly for every branch after this
+          when you&rsquo;re ready, replicated properly for every branch after this
           one. This is that, as one system, currently completely free.
         </p>
 

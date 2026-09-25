@@ -82,7 +82,7 @@ export default function SchedulePage() {
         </h1>
         <p className="mt-4 text-lg text-foreground/70">
           Every check and habit from the course, grouped by how often it actually needs doing. Print it, stick it
-          somewhere you'll see it, or save it as a PDF to keep on file.
+          somewhere you&rsquo;ll see it, or save it as a PDF to keep on file.
         </p>
 
         <div className="no-print mt-6">
@@ -96,8 +96,8 @@ export default function SchedulePage() {
               ~3&ndash;4 hours a month for the fixed, timed checks
             </p>
             <p className="mt-2 text-sm text-foreground/70">
-              That's under an hour a week for everything on this page with a set number of minutes attached. On top
-              of that sit a handful of weekly habits — posting, replying to reviews, a bit of outreach — that don't
+              That&rsquo;s under an hour a week for everything on this page with a set number of minutes attached. On top
+              of that sit a handful of weekly habits — posting, replying to reviews, a bit of outreach — that don&rsquo;t
               have a fixed number of minutes, but are worth building into the same routine. Treat this as directional,
               not exact — some months will be lighter, some heavier.
             </p>

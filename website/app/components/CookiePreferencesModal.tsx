@@ -55,12 +55,17 @@ export default function CookiePreferencesModal() {
   const mounted = useIsClient();
   const open = useSyncExternalStore(subscribeModal, isModalOpen, isModalOpenOnServer);
   const [analytics, setAnalytics] = useState(true);
+  const [prevOpen, setPrevOpen] = useState(open);
   const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
+  // Re-read consent right as the modal opens — adjusted during render (the
+  // React-recommended pattern) rather than in an effect, since an effect's
+  // setState here would trigger an extra render after paint.
+  if (open !== prevOpen) {
+    setPrevOpen(open);
     if (open) setAnalytics(getConsent().analytics);
-  }, [open]);
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -129,7 +134,7 @@ export default function CookiePreferencesModal() {
         </div>
         <p className="mt-2 text-sm text-foreground/65">
           This is the full, honest picture — most sites here would show you three or
-          four categories whether or not they're actually used. This site only has two.
+          four categories whether or not they&rsquo;re actually used. This site only has two.
         </p>
 
         <div className="mt-6 space-y-5">
