@@ -32,6 +32,7 @@ const imageByFile: Record<string, string> = {
   "reyse-gbp-setup-checklist.pdf": "/images/downloads/seo/reyse-gbp-setup-checklist.webp",
   "reyse-review-request-reply-templates.pdf": "/images/downloads/seo/reyse-review-request-reply-templates.webp",
   "reyse-ai-visibility-self-check-kit.pdf": "/images/downloads/seo/reyse-ai-visibility-self-check-kit.webp",
+  "reyse-uk-directory-list.pdf": "/images/downloads/seo/reyse-uk-directory-list.webp",
 };
 
 export default function SeoDownloadsPage() {
