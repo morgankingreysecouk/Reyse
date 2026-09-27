@@ -33,6 +33,10 @@ const imageByFile: Record<string, string> = {
   "reyse-review-request-reply-templates.pdf": "/images/downloads/seo/reyse-review-request-reply-templates.webp",
   "reyse-ai-visibility-self-check-kit.pdf": "/images/downloads/seo/reyse-ai-visibility-self-check-kit.webp",
   "reyse-uk-directory-list.pdf": "/images/downloads/seo/reyse-uk-directory-list.webp",
+  "reyse-ai-crawler-access-checklist.pdf": "/images/downloads/seo/reyse-ai-crawler-access-checklist.webp",
+  "reyse-nap-consistency-tracker.pdf": "/images/downloads/seo/reyse-nap-consistency-tracker.webp",
+  "reyse-meta-title-description-formulas.pdf": "/images/downloads/seo/reyse-meta-title-description-formulas.webp",
+  "reyse-competitor-snapshot-worksheet.pdf": "/images/downloads/seo/reyse-competitor-snapshot-worksheet.webp",
 };
 
 export default function SeoDownloadsPage() {
