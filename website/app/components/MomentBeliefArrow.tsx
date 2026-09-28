@@ -44,14 +44,14 @@ export default function MomentBeliefArrow() {
   return (
     <svg
       ref={svgRef}
-      viewBox="0 0 64 24"
-      className="h-6 w-16 text-accent-text"
+      viewBox="0 0 72 160"
+      className="h-32 w-16 text-accent-text sm:h-40"
       fill="none"
       aria-hidden="true"
     >
       <path
         ref={pathRef}
-        d="M2 12 H50 M50 12 L41 4 M50 12 L41 20"
+        d="M14 12 L58 140 M58 140 L45 127 M58 140 L49 150"
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"

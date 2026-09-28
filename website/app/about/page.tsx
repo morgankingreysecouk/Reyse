@@ -53,7 +53,7 @@ export default function AboutPage() {
 
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <div className="grid gap-10 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6">
+          <div className="grid gap-10 sm:grid-cols-[1fr_auto_1fr] sm:items-start sm:gap-6">
             <Reveal>
               <div>
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
@@ -80,12 +80,12 @@ export default function AboutPage() {
               </div>
             </Reveal>
 
-            <div className="hidden justify-center sm:flex">
+            <div className="hidden justify-center pt-2 sm:flex">
               <MomentBeliefArrow />
             </div>
 
             <Reveal delay={150}>
-              <div>
+              <div className="sm:mt-20">
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
                   What I believe
                 </h2>
