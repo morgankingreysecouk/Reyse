@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
+import MomentBeliefArrow from "../components/MomentBeliefArrow";
 import { SelfAuditMockup } from "../components/AboutVisuals";
 import { pageMetadata } from "../lib/seo";
 
@@ -52,67 +53,71 @@ export default function AboutPage() {
       </div>
 
       <div className="px-6 py-24">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
-              The moment it clicked
-            </h2>
-            <p className="mt-5 text-foreground/70">
-              Before Reyse, I was a lettings branch manager. I inherited a
-              book of business with one of the worst reputations in the
-              area — partly deserved, and partly from being invisible
-              everywhere it mattered.
-            </p>
-            <p className="mt-4 text-foreground/70">
-              I never understood how other agents had business come to
-              them, instead of having to go out and get it every time.
-              I&rsquo;d always been tenacious, but if something was also
-              feeding me business, things could be different. So I did
-              what anyone would do: I Googled the business, and asked AI
-              tools what they&rsquo;d say about it. The business
-              wasn&rsquo;t there. Not ranked badly — just not mentioned
-              at all. Someone asking Google or ChatGPT who to
-              trust in the area would never hear of us, no matter how
-              good the service became.
-            </p>
-          </Reveal>
-        </div>
-      </div>
-
-      <div className="px-6 pb-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              What I believe
-            </p>
-            <div className="mt-5 max-w-xl space-y-5 text-foreground/70">
-              <p>
-                That was the moment. The reputation wasn&rsquo;t really
-                the problem — the invisibility was, and fixing one
-                without the other was never going to work.
-              </p>
-              <p>
-                Nothing Reyse does is new technology. AI-powered SEO, schema
-                markup, review management, competitive intelligence — all of
-                it already existed before Reyse did. What was missing was
-                agents actually using it. Most have never checked whether
-                they show up when someone asks ChatGPT who to use in their
-                area, let alone fixed it if they don&rsquo;t.
-              </p>
-              <p>
-                I think this is one of the first real windows for AI to
-                make a measurable difference in this industry — not as a
-                gimmick, but as leads and enquiries. For as long as most of
-                the industry hasn&rsquo;t caught on, it&rsquo;s also one of
-                the clearest ways to pull ahead of the agency down the road.
-              </p>
-              <p>
-                That&rsquo;s the bet Reyse is built on: two years on the
-                lettings desk, then a year of daily research into how AI
-                search actually works, before any of it became a product.
-              </p>
+          <div className="grid gap-10 sm:grid-cols-[1fr_auto_1fr] sm:items-center sm:gap-6">
+            <Reveal>
+              <div>
+                <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
+                  The moment it clicked
+                </h2>
+                <p className="mt-5 text-foreground/70">
+                  Before Reyse, I was a lettings branch manager. I inherited a
+                  book of business with one of the worst reputations in the
+                  area — partly deserved, and partly from being invisible
+                  everywhere it mattered.
+                </p>
+                <p className="mt-4 text-foreground/70">
+                  I never understood how other agents had business come to
+                  them, instead of having to go out and get it every time.
+                  I&rsquo;d always been tenacious, but if something was also
+                  feeding me business, things could be different. So I did
+                  what anyone would do: I Googled the business, and asked AI
+                  tools what they&rsquo;d say about it. The business
+                  wasn&rsquo;t there. Not ranked badly — just not mentioned
+                  at all. Someone asking Google or ChatGPT who to
+                  trust in the area would never hear of us, no matter how
+                  good the service became.
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="hidden justify-center sm:flex">
+              <MomentBeliefArrow />
             </div>
-          </Reveal>
+
+            <Reveal delay={150}>
+              <div>
+                <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
+                  What I believe
+                </h2>
+                <div className="mt-5 space-y-5 text-foreground/70">
+                  <p>
+                    That was the moment. Fixing the reputation was only half
+                    the job — that wins back the locals. Investors, people
+                    based outside the area, and people moving in were the
+                    other half, and reputation alone was never going to
+                    reach them.
+                  </p>
+                  <p>
+                    Nothing Reyse does is new technology. Search engine
+                    optimisation and generative engine optimisation both
+                    existed before Reyse did. What was missing was agents
+                    actually using it. Most have never checked whether they
+                    show up when someone asks ChatGPT — the ones who got
+                    recommended were just the lucky ones.
+                  </p>
+                  <p>
+                    I think this is one of the first real windows for AI to
+                    make a measurable difference in this industry — not as a
+                    gimmick, but as leads and enquiries. For as long as most
+                    of the industry hasn&rsquo;t caught on, it&rsquo;s also
+                    one of the clearest ways to pull ahead of the agency
+                    down the road.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </div>
 
