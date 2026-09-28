@@ -14,9 +14,6 @@ export default function GuaranteesPromo() {
     <section className="overflow-x-hidden border-t border-border bg-ink text-ink-foreground">
       <div className="mx-auto max-w-6xl px-6 pt-20">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="mb-3 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium text-ink-foreground/70">
-            Guarantees
-          </p>
           <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
             Eleven promises. Each one specific enough to break.
           </h2>

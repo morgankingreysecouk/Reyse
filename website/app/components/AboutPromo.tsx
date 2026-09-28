@@ -20,9 +20,6 @@ export default function AboutPromo() {
       <div className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
           <div>
-            <p className="mb-3 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
-              About
-            </p>
             <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
               Built by someone who&rsquo;s lived this exact problem.
             </h2>
