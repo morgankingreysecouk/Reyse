@@ -12,7 +12,7 @@ export default function ResourcesPromo() {
   return (
     <section className="border-t border-border bg-panel">
       <div className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-20">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-20">
           <div>
             <p className="mb-3 inline-block rounded-full border border-border px-3 py-1 text-xs font-medium text-foreground/70">
               Free Resources
@@ -33,13 +33,6 @@ export default function ResourcesPromo() {
                 through and decide you&rsquo;d rather we just did it for
                 you.
               </p>
-              <p className="text-sm text-foreground/60">
-                Why free? I learned this the hard way, over a whole career,
-                and I don&rsquo;t want anyone else to. It&rsquo;s here so
-                every agent gets a genuine shot at being their best — and
-                when you&rsquo;re stretched too thin to do it alone,
-                that&rsquo;s exactly when we step in.
-              </p>
             </div>
             <Link
               href="/resources"
@@ -52,16 +45,16 @@ export default function ResourcesPromo() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-5">
             {included.map((item) => (
               <div
                 key={item.label}
-                className="rounded-2xl border border-border bg-background p-6"
+                className="rounded-2xl border border-border bg-background p-8"
               >
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/15 text-accent-text">
                   {item.icon}
                 </span>
-                <p className="mt-4 font-medium text-foreground">{item.label}</p>
+                <p className="mt-5 text-lg font-medium text-foreground">{item.label}</p>
               </div>
             ))}
           </div>
