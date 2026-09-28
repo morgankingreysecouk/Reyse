@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import MomentBeliefArrow from "../components/MomentBeliefArrow";
-import { SelfAuditMockup } from "../components/AboutVisuals";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -175,39 +174,32 @@ export default function AboutPage() {
       </div>
 
       <div className="px-6 py-24">
-        <div className="mx-auto max-w-5xl">
-          <div className="grid items-center gap-10 sm:grid-cols-[1fr_360px] sm:gap-14">
-            <Reveal>
-              <div>
-                <h2 className="font-heading text-2xl leading-[1.1] tracking-tight sm:text-3xl">
-                  Built in the open
-                </h2>
-                <div className="mt-5 space-y-5 text-foreground/70">
-                  <p>
-                    Reyse is in the process of launching right now, which
-                    means the most honest proof I can offer isn&rsquo;t a
-                    client list yet — it&rsquo;s what I&rsquo;m doing to
-                    my own website. I&rsquo;m applying Reyse&rsquo;s own
-                    SEO and GEO service to reyse.co.uk as I build it, in
-                    public. If it doesn&rsquo;t work here first, it
-                    doesn&rsquo;t go near a client.
-                  </p>
-                  <p>
-                    It&rsquo;s also why the{" "}
-                    <Link href="/guarantees" className="font-medium text-accent-text hover:underline">
-                      guarantees page
-                    </Link>{" "}
-                    exists — eleven specific, enforceable promises instead
-                    of vague reassurance. If honesty is the whole pitch,
-                    it has to be checkable.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <SelfAuditMockup />
-            </Reveal>
-          </div>
+        <div className="mx-auto max-w-3xl">
+          <Reveal>
+            <h2 className="font-heading text-2xl leading-[1.1] tracking-tight sm:text-3xl">
+              Built in the open
+            </h2>
+            <div className="mt-5 space-y-5 text-foreground/70">
+              <p>
+                Reyse is in the process of launching right now, which
+                means the most honest proof I can offer isn&rsquo;t a
+                client list yet — it&rsquo;s what I&rsquo;m doing to
+                my own website. I&rsquo;m applying Reyse&rsquo;s own
+                SEO and GEO service to reyse.co.uk as I build it, in
+                public. If it doesn&rsquo;t work here first, it
+                doesn&rsquo;t go near a client.
+              </p>
+              <p>
+                It&rsquo;s also why the{" "}
+                <Link href="/guarantees" className="font-medium text-accent-text hover:underline">
+                  guarantees page
+                </Link>{" "}
+                exists — eleven specific, enforceable promises instead
+                of vague reassurance. If honesty is the whole pitch,
+                it has to be checkable.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </div>
 
