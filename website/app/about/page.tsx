@@ -58,17 +58,20 @@ export default function AboutPage() {
               The moment it clicked
             </h2>
             <p className="mt-5 text-foreground/70">
-              Before Reyse, I was a lettings negotiator. I inherited a
+              Before Reyse, I was a lettings branch manager. I inherited a
               book of business with one of the worst reputations in the
-              area — built up long before I got there, by people who
-              were long gone by the time I was left to fix it.
+              area — partly deserved, and partly from being invisible
+              everywhere it mattered.
             </p>
             <p className="mt-4 text-foreground/70">
-              I was determined to turn it around, so I did what any
-              frustrated agent would do: I Googled the business, and
-              asked AI tools what they&rsquo;d say about it. The
-              business wasn&rsquo;t there. Not ranked badly — not
-              mentioned at all. Someone asking Google or ChatGPT who to
+              I never understood how other agents had business come to
+              them, instead of having to go out and get it every time.
+              I&rsquo;d always been tenacious, but if something was also
+              feeding me business, things could be different. So I did
+              what anyone would do: I Googled the business, and asked AI
+              tools what they&rsquo;d say about it. The business
+              wasn&rsquo;t there. Not ranked badly — just not mentioned
+              at all. Someone asking Google or ChatGPT who to
               trust in the area would never hear of us, no matter how
               good the service became.
             </p>
