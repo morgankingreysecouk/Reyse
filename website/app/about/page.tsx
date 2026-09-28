@@ -143,11 +143,11 @@ export default function AboutPage() {
                 </div>
                 <p className="mt-4 font-semibold">Morgan King</p>
                 <p className="mt-1 text-sm text-ink-foreground/70">
-                  Founder — and for now, the whole team. I took the
-                  lettings job deliberately, for the sales experience —
-                  the advice was always two years of that before starting
-                  anything of your own. Reyse is what I&rsquo;m building
-                  with it.
+                  Founder — and for now, the whole team. I fell into the
+                  estate agency industry for one reason: I wanted to learn
+                  sales. Fortunately, I fell in love with the industry, and
+                  found an angle only a handful of agents were tackling.
+                  Then Reyse was born.
                 </p>
               </div>
             </Reveal>
