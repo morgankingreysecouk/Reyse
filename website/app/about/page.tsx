@@ -233,30 +233,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="px-6 pb-28 pt-4">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-            Get started
-          </p>
-          <h2 className="mx-auto mt-4 max-w-xl font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-            Want the same fix for your business?
-          </h2>
-          <div className="mt-9 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/get-started"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Get started
-            </Link>
-            <Link
-              href="/resources"
-              className="rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-foreground/40"
-            >
-              Resources
-            </Link>
-          </div>
-        </div>
-      </div>
     </main>
   );
 }
