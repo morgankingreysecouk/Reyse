@@ -3,14 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import { pageMetadata } from "../lib/seo";
+import { slugify } from "../lib/slugify";
 import { guarantees } from "./data";
-
-function slugify(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 export const metadata: Metadata = pageMetadata({
   title: "Guarantees",

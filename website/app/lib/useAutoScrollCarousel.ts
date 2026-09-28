@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 
 const AUTO_SCROLL_PX_PER_FRAME = 0.5;
 const RESUME_DELAY_MS = 1500;
+const DRAG_CLICK_THRESHOLD_PX = 6;
 
 // Drives an infinite auto-scrolling, drag/wheel/touch-pausable carousel.
 // Caller renders its items twice back to back (the loop wraps at the
@@ -44,8 +45,11 @@ export function useAutoScrollCarousel<T extends HTMLElement>() {
     if (!track) return;
 
     let dragging = false;
+    let dragCommitted = false;
     let startX = 0;
     let startScrollLeft = 0;
+    let dragDistance = 0;
+    let activePointerId: number | null = null;
 
     const pause = () => {
       pausedRef.current = true;
@@ -60,13 +64,27 @@ export function useAutoScrollCarousel<T extends HTMLElement>() {
 
     const onPointerDown = (e: PointerEvent) => {
       dragging = true;
+      dragCommitted = false;
+      dragDistance = 0;
+      activePointerId = e.pointerId;
       pause();
       startX = e.clientX;
       startScrollLeft = track.scrollLeft;
-      track.setPointerCapture(e.pointerId);
+      // Capture is deferred to onPointerMove, once movement actually
+      // confirms a drag — capturing immediately here retargets the
+      // resulting click away from whatever's under the pointer (a card's
+      // link, say), so a plain tap would never reach it.
     };
     const onPointerMove = (e: PointerEvent) => {
       if (!dragging) return;
+      dragDistance = Math.abs(e.clientX - startX);
+
+      if (!dragCommitted) {
+        if (dragDistance <= DRAG_CLICK_THRESHOLD_PX) return;
+        dragCommitted = true;
+        if (activePointerId !== null) track.setPointerCapture(activePointerId);
+      }
+
       const loopWidth = track.scrollWidth / 2;
       let target = startScrollLeft - (e.clientX - startX);
       // scrollLeft can't go negative — the browser clamps it to 0 instead of
@@ -78,6 +96,8 @@ export function useAutoScrollCarousel<T extends HTMLElement>() {
     };
     const endDrag = () => {
       dragging = false;
+      dragCommitted = false;
+      activePointerId = null;
       scheduleResume();
     };
     const onScroll = () => {
@@ -98,6 +118,16 @@ export function useAutoScrollCarousel<T extends HTMLElement>() {
       pause();
       scheduleResume();
     };
+    // Cards inside the track can be links (e.g. the guarantees carousel) —
+    // without this, a drag that ends over a card would fire its click too,
+    // turning an attempted drag into an accidental navigation. Capture
+    // phase, so this runs before the link's own click handler.
+    const onClickCapture = (e: MouseEvent) => {
+      if (dragDistance > DRAG_CLICK_THRESHOLD_PX) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
 
     track.addEventListener("pointerdown", onPointerDown);
     track.addEventListener("pointermove", onPointerMove);
@@ -108,6 +138,7 @@ export function useAutoScrollCarousel<T extends HTMLElement>() {
     track.addEventListener("wheel", onWheel, { passive: true });
     track.addEventListener("keydown", onKeyDown);
     track.addEventListener("scroll", onScroll, { passive: true });
+    track.addEventListener("click", onClickCapture, true);
 
     return () => {
       track.removeEventListener("pointerdown", onPointerDown);
@@ -119,6 +150,7 @@ export function useAutoScrollCarousel<T extends HTMLElement>() {
       track.removeEventListener("wheel", onWheel);
       track.removeEventListener("keydown", onKeyDown);
       track.removeEventListener("scroll", onScroll);
+      track.removeEventListener("click", onClickCapture, true);
       if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
     };
   }, []);

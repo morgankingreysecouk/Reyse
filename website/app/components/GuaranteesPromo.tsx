@@ -4,6 +4,7 @@ import Link from "next/link";
 import Reveal from "./Reveal";
 import { guarantees } from "../guarantees/data";
 import { useAutoScrollCarousel } from "../lib/useAutoScrollCarousel";
+import { slugify } from "../lib/slugify";
 
 export default function GuaranteesPromo() {
   const trackRef = useAutoScrollCarousel<HTMLDivElement>();
@@ -19,11 +20,6 @@ export default function GuaranteesPromo() {
           <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
             Eleven promises. Each one specific enough to break.
           </h2>
-          <p className="mt-4 text-ink-foreground/70">
-            Vague reassurance is easy to write and impossible to hold anyone
-            to. Every guarantee names exactly what we&rsquo;re promising —
-            and exactly what happens if we don&rsquo;t deliver.
-          </p>
         </div>
       </div>
 
@@ -42,13 +38,25 @@ export default function GuaranteesPromo() {
           }}
         >
           {loopItems.map((g, i) => (
-            <div
+            <Link
               key={`${g.title}-${i}`}
-              className="w-[270px] shrink-0 select-none rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-6 sm:w-[310px]"
+              href={`/guarantees#${slugify(g.title)}`}
+              // The second half of loopItems is an exact duplicate, only
+              // there so the auto-scroll loop can wrap seamlessly — without
+              // this, a keyboard/screen-reader user would tab through the
+              // same 11 links twice.
+              {...(i >= guarantees.length ? { "aria-hidden": true, tabIndex: -1 } : {})}
+              className="w-[270px] shrink-0 select-none rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-6 transition hover:border-ink-foreground/30 hover:bg-ink-foreground/10 sm:w-[310px]"
             >
               <p className="text-sm font-semibold">{g.title}</p>
               <p className="mt-3 text-sm text-ink-foreground/70">{g.promise}</p>
-            </div>
+              <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-accent-text">
+                Full details
+                <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </Link>
           ))}
         </div>
       </Reveal>
