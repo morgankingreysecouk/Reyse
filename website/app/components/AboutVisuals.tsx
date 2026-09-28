@@ -9,42 +9,6 @@ function BrowserChrome({ label }: { label?: string }) {
   );
 }
 
-export function InvisibleMockup() {
-  return (
-    <div className="overflow-hidden rounded-3xl border border-border bg-panel shadow-sm">
-      <BrowserChrome />
-      <div className="flex flex-col gap-4 p-6">
-        <div className="flex items-center gap-2 text-xs font-medium text-foreground/65">
-          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ink text-[10px] text-ink-foreground">
-            AI
-          </span>
-          ChatGPT
-        </div>
-        <div className="max-w-[85%] self-end rounded-2xl rounded-br-sm border border-border bg-background px-4 py-2.5 text-sm text-foreground">
-          best letting agent in the area?
-        </div>
-        <div className="max-w-[92%] rounded-2xl rounded-bl-sm border border-border bg-background px-4 py-3 text-sm text-foreground/80">
-          Based on reviews and reputation, here are a few worth contacting:
-        </div>
-        <div className="space-y-2">
-          <div className="rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground/60">
-            Ashcroft Property
-          </div>
-          <div className="rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground/60">
-            Willowmere Homes
-          </div>
-        </div>
-        <div className="rounded-2xl border border-dashed border-border px-4 py-3 text-sm italic text-foreground/65">
-          We weren&rsquo;t on the list.
-        </div>
-        <p className="text-xs text-foreground/50">
-          Illustrative example — not a real conversation or real businesses.
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export function SelfAuditMockup() {
   const rows = [
     "SEO — schema, speed, structure",

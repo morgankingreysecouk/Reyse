@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
-import { InvisibleMockup, SelfAuditMockup } from "../components/AboutVisuals";
+import { SelfAuditMockup } from "../components/AboutVisuals";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -52,31 +52,26 @@ export default function AboutPage() {
       </div>
 
       <div className="px-6 py-24">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-3xl">
           <Reveal>
-            <div className="grid items-center gap-10 sm:grid-cols-2 sm:gap-16">
-              <div>
-                <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
-                  The moment it clicked
-                </h2>
-                <p className="mt-5 text-foreground/70">
-                  Before Reyse, I was a lettings negotiator. I inherited a
-                  book of business with one of the worst reputations in the
-                  area — built up long before I got there, by people who
-                  were long gone by the time I was left to fix it.
-                </p>
-                <p className="mt-4 text-foreground/70">
-                  I was determined to turn it around, so I did what any
-                  frustrated agent would do: I Googled the business, and
-                  asked AI tools what they&rsquo;d say about it. The
-                  business wasn&rsquo;t there. Not ranked badly — not
-                  mentioned at all. Someone asking Google or ChatGPT who to
-                  trust in the area would never hear of us, no matter how
-                  good the service became.
-                </p>
-              </div>
-              <InvisibleMockup />
-            </div>
+            <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
+              The moment it clicked
+            </h2>
+            <p className="mt-5 text-foreground/70">
+              Before Reyse, I was a lettings negotiator. I inherited a
+              book of business with one of the worst reputations in the
+              area — built up long before I got there, by people who
+              were long gone by the time I was left to fix it.
+            </p>
+            <p className="mt-4 text-foreground/70">
+              I was determined to turn it around, so I did what any
+              frustrated agent would do: I Googled the business, and
+              asked AI tools what they&rsquo;d say about it. The
+              business wasn&rsquo;t there. Not ranked badly — not
+              mentioned at all. Someone asking Google or ChatGPT who to
+              trust in the area would never hear of us, no matter how
+              good the service became.
+            </p>
           </Reveal>
         </div>
       </div>
