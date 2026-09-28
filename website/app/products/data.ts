@@ -313,7 +313,7 @@ export const products: Product[] = [
   {
     slug: "reviews",
     label: "Review Management",
-    tagline: "Watched everywhere. Missed nowhere.",
+    tagline: "The response gap, closed for good.",
     description:
       "68% of negative reviews go completely unanswered — the exact category most likely to cost a hesitant buyer's trust before they've even called. Reviews don't just sit on Google anymore: Bing pulls in review data of its own, and Apple Business Connect actually inherits reviews directly from Yelp and Tripadvisor, meaning a review left on a site you've never logged into can shape what a customer sees on their iPhone — and the same count, rating, and response consistency directly feed both your SEO and your GEO visibility, since search engines and AI tools both use these signals to decide who to rank and who to recommend. Reyse manages your reputation across every platform that matters, closing that response gap and making sure happy customers actually leave a review in the first place.",
     price: "£299",
@@ -418,7 +418,7 @@ export const products: Product[] = [
   {
     slug: "scale",
     label: "Scale",
-    tagline: "One system, built once. Every branch, everywhere.",
+    tagline: "One system that scales properly, branch after branch.",
     description:
       "A business with 30 locations and just 20% inconsistency in its listing data has 6 branches actively working against the other 24 at every directory where the details don't match — and multi-location brands with consistent data see up to twice the customer engagement of those without. Growing from one office to a hundred shouldn't mean rebuilding SEO, GEO, reviews, and market intelligence from scratch every time you open a door. Reyse Scale takes everything already built for your first branch and replicates it, properly, for every branch after — with the same rigour whether you're a single agency or the biggest name in the country.",
     price: "Custom",

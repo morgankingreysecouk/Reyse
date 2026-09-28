@@ -22,20 +22,12 @@ export default function ManagedPromo() {
             <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
               Or let us just do it for you.
             </h2>
-            <div className="mt-6 space-y-4 text-foreground/70">
+            <div className="mt-6 text-foreground/70">
               <p>
-                Every product below comes in two forms. <strong className="text-foreground">Done With You</strong> is
-                a one-off: a full audit, then a clear report for every fix, so
-                you or your team can work through it yourselves.{" "}
-                <strong className="text-foreground">Done For You</strong> goes
-                further — we implement every fix ourselves, then keep
-                checking and maintaining it every month, because none of this
-                stays fixed once search engines, AI, and your competitors
-                keep moving.
-              </p>
-              <p className="text-sm text-foreground/60">
-                Five products, same two ways to run each one — pick whichever
-                you need, or run all five together as the Full System.
+                Every product comes two ways. <strong className="text-foreground">Done With You</strong> —
+                a one-off audit and a clear report, you make the fixes.{" "}
+                <strong className="text-foreground">Done For You</strong> — we make the fixes and keep it that
+                way every month. Same choice on all five, or run them together as the Full System.
               </p>
             </div>
             <Link
