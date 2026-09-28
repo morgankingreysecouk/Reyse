@@ -156,18 +156,18 @@ export default function AboutPage() {
           <Reveal delay={150}>
             <div className="mx-auto mt-20 max-w-3xl rounded-3xl bg-accent px-8 py-14 text-center text-accent-foreground">
               <h3 className="font-heading text-3xl tracking-tight sm:text-4xl">
-                Hiring one partner.
+                Hiring partner(s).
               </h3>
               <p className="mx-auto mt-3 max-w-sm text-sm text-accent-foreground/80">
-                Equity, not a salary — someone to help build sales,
-                marketing, and fulfillment alongside me. Here&rsquo;s
-                exactly what that looks like.
+                Equity, not a salary. Currently working, or have worked,
+                in estate agency, and fancy a change? Maybe this is for
+                you.
               </p>
               <Link
                 href="/careers"
                 className="mt-7 inline-block rounded-full bg-ink px-6 py-3 text-sm font-medium text-ink-foreground hover:opacity-90"
               >
-                See the careers page
+                Find out more
               </Link>
             </div>
           </Reveal>
