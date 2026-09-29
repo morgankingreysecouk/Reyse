@@ -83,10 +83,7 @@ export default function PartnerRolePage() {
           <Link href="/careers" className="text-sm text-ink-foreground/60 hover:text-ink-foreground">
             ← Careers
           </Link>
-          <p className="mb-4 mt-4 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium text-ink-foreground/70">
-            Now hiring
-          </p>
-          <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
             One partner. Real equity. No salary.
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
