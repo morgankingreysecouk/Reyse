@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
+import RevealWords from "../components/RevealWords";
+import ClipReveal from "../components/ClipReveal";
+import ScaleReveal from "../components/ScaleReveal";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -33,30 +36,36 @@ export default function CareersPage() {
         />
         <div className="relative mx-auto max-w-2xl text-center">
           <h1 className="font-heading text-5xl leading-[1.05] tracking-tight sm:text-6xl">
-            Careers
+            <RevealWords text="Careers" />
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
-            We&rsquo;re building Reyse from real experience, not theory —
-            if you&rsquo;d rather help shape something than follow someone
-            else&rsquo;s process, this is early enough to do that.
-          </p>
-          <a
-            href="#working-at-reyse"
-            className="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-          >
-            See where things stand
-          </a>
+          <Reveal delay={450}>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
+              We&rsquo;re building Reyse from real experience, not theory —
+              if you&rsquo;d rather help shape something than follow someone
+              else&rsquo;s process, this is early enough to do that.
+            </p>
+          </Reveal>
+          <Reveal delay={600}>
+            <a
+              href="#working-at-reyse"
+              className="mt-8 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+            >
+              See where things stand
+            </a>
+          </Reveal>
         </div>
       </div>
 
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <div className="grid items-center gap-10 sm:grid-cols-2 sm:gap-16">
-              <div>
+          <div className="grid items-center gap-10 sm:grid-cols-2 sm:gap-16">
+            <div>
+              <ClipReveal>
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
                   About Reyse
                 </h2>
+              </ClipReveal>
+              <Reveal delay={120}>
                 <p className="mt-5 text-foreground/70">
                   Reyse started as the answer to one lettings agency&rsquo;s
                   invisibility problem — mine. The mission hasn&rsquo;t
@@ -64,13 +73,17 @@ export default function CareersPage() {
                   invisible to the AI tools their next client is already
                   asking.
                 </p>
+              </Reveal>
+              <Reveal delay={220}>
                 <Link
                   href="/about"
                   className="mt-7 inline-block rounded-full border border-border px-6 py-3 text-sm font-medium hover:border-foreground/40"
                 >
                   Read the full story
                 </Link>
-              </div>
+              </Reveal>
+            </div>
+            <ClipReveal delay={100}>
               <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-border">
                 <Image
                   src="/images/careers-desk.webp"
@@ -80,18 +93,20 @@ export default function CareersPage() {
                   className="object-cover"
                 />
               </div>
-            </div>
-          </Reveal>
+            </ClipReveal>
+          </div>
         </div>
       </div>
 
       <div className="bg-panel px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <div className="max-w-xl">
+          <div className="max-w-xl">
+            <ClipReveal>
               <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
                 Why join early?
               </h2>
+            </ClipReveal>
+            <Reveal delay={120}>
               <p className="mt-5 text-foreground/70">
                 When Reyse does start hiring, the people who join first
                 won&rsquo;t be slotting into a defined role in an existing
@@ -100,36 +115,38 @@ export default function CareersPage() {
                 and genuinely harder — it&rsquo;s for a specific type of
                 person.
               </p>
-            </div>
-          </Reveal>
-          <Reveal delay={100}>
+            </Reveal>
+          </div>
+          <ScaleReveal delay={150} from="scale-95">
             <div className="mt-10 flex min-h-[220px] items-center justify-center rounded-3xl bg-ink px-8 py-16 text-center text-ink-foreground sm:min-h-[280px]">
               <p className="max-w-2xl font-heading text-3xl leading-[1.3] tracking-tight sm:text-4xl">
                 &ldquo;Early means real ownership, not a title.&rdquo;
               </p>
             </div>
-          </Reveal>
+          </ScaleReveal>
         </div>
       </div>
 
       <div id="working-at-reyse" className="bg-panel px-6 pb-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
+          <ClipReveal>
             <h2 className="text-center font-heading text-3xl tracking-tight sm:text-4xl">
               Working at Reyse
             </h2>
-          </Reveal>
+          </ClipReveal>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2">
             <div className="flex flex-col gap-6">
               <Reveal>
                 <div className="rounded-3xl border border-border bg-background p-8">
-                  <CardIcon>
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <circle cx="12" cy="8.5" r="3.5" />
-                      <path d="M4.5 20c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6" strokeLinecap="round" />
-                    </svg>
-                  </CardIcon>
+                  <ScaleReveal className="w-fit">
+                    <CardIcon>
+                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <circle cx="12" cy="8.5" r="3.5" />
+                        <path d="M4.5 20c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6" strokeLinecap="round" />
+                      </svg>
+                    </CardIcon>
+                  </ScaleReveal>
                   <h3 className="mt-4 text-lg font-semibold">
                     It&rsquo;s one person right now
                   </h3>
@@ -140,8 +157,8 @@ export default function CareersPage() {
                   </p>
                 </div>
               </Reveal>
-              <Reveal delay={100}>
-                <div className="flex flex-col items-center justify-center gap-2 rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground">
+              <ScaleReveal delay={100} from="scale-95">
+                <div className="flex flex-col items-center justify-center gap-2 rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground animate-[soft-glow_3.5s_ease-in-out_infinite]">
                   <p className="text-xs font-medium uppercase tracking-wide text-accent-foreground/70">
                     Now hiring
                   </p>
@@ -163,16 +180,18 @@ export default function CareersPage() {
                     </svg>
                   </Link>
                 </div>
-              </Reveal>
+              </ScaleReveal>
               <div className="grid grid-cols-2 gap-6">
                 <Reveal>
                   <div className="h-full rounded-3xl border border-border bg-background p-6">
-                    <CardIcon>
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <circle cx="12" cy="12" r="8.5" />
-                        <path d="M12 12V3.5A8.5 8.5 0 0 1 20.5 12H12Z" fill="currentColor" stroke="none" />
-                      </svg>
-                    </CardIcon>
+                    <ScaleReveal className="w-fit">
+                      <CardIcon>
+                        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <circle cx="12" cy="12" r="8.5" />
+                          <path d="M12 12V3.5A8.5 8.5 0 0 1 20.5 12H12Z" fill="currentColor" stroke="none" />
+                        </svg>
+                      </CardIcon>
+                    </ScaleReveal>
                     <h3 className="mt-4 text-sm font-semibold">
                       No salary, real equity
                     </h3>
@@ -184,13 +203,15 @@ export default function CareersPage() {
                 </Reveal>
                 <Reveal delay={100}>
                   <div className="h-full rounded-3xl border border-border bg-background p-6">
-                    <CardIcon>
-                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <rect x="4" y="13" width="7" height="7" rx="1" />
-                        <rect x="13" y="13" width="7" height="7" rx="1" />
-                        <rect x="8.5" y="4" width="7" height="7" rx="1" />
-                      </svg>
-                    </CardIcon>
+                    <ScaleReveal delay={100} className="w-fit">
+                      <CardIcon>
+                        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <rect x="4" y="13" width="7" height="7" rx="1" />
+                          <rect x="13" y="13" width="7" height="7" rx="1" />
+                          <rect x="8.5" y="4" width="7" height="7" rx="1" />
+                        </svg>
+                      </CardIcon>
+                    </ScaleReveal>
                     <h3 className="mt-4 text-sm font-semibold">
                       Real ownership, not a title
                     </h3>
@@ -213,7 +234,7 @@ export default function CareersPage() {
                   </ul>
                 </div>
               </Reveal>
-              <Reveal delay={200}>
+              <ScaleReveal delay={200} from="scale-95">
                 <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-background px-6 py-14 text-center">
                   <p className="text-lg font-semibold text-foreground">Interested?</p>
                   <p className="mx-auto mt-2 max-w-xs text-sm text-foreground/70">
@@ -227,7 +248,7 @@ export default function CareersPage() {
                     morgan.king@reyse.co.uk
                   </a>
                 </div>
-              </Reveal>
+              </ScaleReveal>
               <Reveal delay={300}>
                 <div className="h-full rounded-3xl border border-border bg-background p-8">
                   <h3 className="font-heading text-xl leading-[1.2] tracking-tight">
@@ -254,8 +275,8 @@ export default function CareersPage() {
       </div>
 
       <div className="px-6 py-24">
-        <Reveal>
-          <div className="mx-auto max-w-xl rounded-2xl border border-border bg-panel p-8 text-center">
+        <ScaleReveal from="scale-95" className="mx-auto max-w-xl">
+          <div className="rounded-2xl border border-border bg-panel p-8 text-center">
             <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
               Not right for the partner role, but want to be on the list?
             </h2>
@@ -271,7 +292,7 @@ export default function CareersPage() {
               hello@reyse.co.uk
             </a>
           </div>
-        </Reveal>
+        </ScaleReveal>
       </div>
     </main>
   );
