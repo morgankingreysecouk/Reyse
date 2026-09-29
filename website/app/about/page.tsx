@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
+import RevealWords from "../components/RevealWords";
+import ClipReveal from "../components/ClipReveal";
+import ScaleReveal from "../components/ScaleReveal";
+import TimelineItem from "../components/TimelineItem";
 import MomentBeliefArrow from "../components/MomentBeliefArrow";
 import { pageMetadata } from "../lib/seo";
 
@@ -43,7 +47,7 @@ export default function AboutPage() {
             Our mission
           </p>
           <h1 className="mt-4 font-heading text-4xl leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
-            We couldn&rsquo;t find our own agency. So we built the fix.
+            <RevealWords text="We couldn’t find our own agency. So we built the fix." />
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-foreground/70">
             Reyse started as the answer to one lettings agency&rsquo;s
@@ -56,7 +60,7 @@ export default function AboutPage() {
 
       <div className="px-6">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
+          <ClipReveal>
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border">
               <Image
                 src="/images/about-office.webp"
@@ -67,24 +71,28 @@ export default function AboutPage() {
                 priority
               />
             </div>
-          </Reveal>
+          </ClipReveal>
         </div>
       </div>
 
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-10 sm:grid-cols-[1fr_auto_1fr] sm:items-start sm:gap-6">
-            <Reveal>
-              <div>
+            <div>
+              <Reveal>
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
                   The moment it clicked
                 </h2>
+              </Reveal>
+              <Reveal delay={130}>
                 <p className="mt-5 text-foreground/70">
                   Before Reyse, I was a lettings branch manager. I inherited a
                   book of business with one of the worst reputations in the
                   area — partly deserved, and partly from being invisible
                   everywhere it mattered.
                 </p>
+              </Reveal>
+              <Reveal delay={260}>
                 <p className="mt-4 text-foreground/70">
                   I never understood how other agents had business come to
                   them, instead of having to go out and get it every time.
@@ -97,19 +105,21 @@ export default function AboutPage() {
                   trust in the area would never hear of us, no matter how
                   good the service became.
                 </p>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
 
             <div className="hidden justify-center pt-44 sm:flex">
               <MomentBeliefArrow />
             </div>
 
-            <Reveal delay={150}>
-              <div className="sm:mt-32">
+            <div className="sm:mt-32">
+              <Reveal delay={150}>
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
                   What I believe
                 </h2>
-                <div className="mt-5 space-y-5 text-foreground/70">
+              </Reveal>
+              <div className="mt-5 space-y-5 text-foreground/70">
+                <Reveal delay={280}>
                   <p>
                     That was the moment. Fixing the reputation was only half
                     the job — that wins back the locals. Investors, people
@@ -117,6 +127,8 @@ export default function AboutPage() {
                     other half, and reputation alone was never going to
                     reach them.
                   </p>
+                </Reveal>
+                <Reveal delay={410}>
                   <p>
                     Nothing Reyse does is new technology. Search engine
                     optimisation and generative engine optimisation both
@@ -125,6 +137,8 @@ export default function AboutPage() {
                     show up when someone asks ChatGPT — the ones who got
                     recommended were just the lucky ones.
                   </p>
+                </Reveal>
+                <Reveal delay={540}>
                   <p>
                     I think this is one of the first real windows for AI to
                     make a measurable difference in this industry — not as a
@@ -133,9 +147,9 @@ export default function AboutPage() {
                     one of the clearest ways to pull ahead of the agency
                     down the road.
                   </p>
-                </div>
+                </Reveal>
               </div>
-            </Reveal>
+            </div>
           </div>
         </div>
       </div>
@@ -149,8 +163,8 @@ export default function AboutPage() {
           </Reveal>
 
           <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
-            <Reveal>
-              <div>
+            <div>
+              <ScaleReveal from="scale-150 rotate-6" className="w-fit">
                 <div className="relative h-28 w-28 overflow-hidden rounded-full border border-ink-foreground/15">
                   <Image
                     src="/images/morgan-king.png"
@@ -160,6 +174,8 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
+              </ScaleReveal>
+              <Reveal delay={150}>
                 <p className="mt-4 font-semibold">Morgan King</p>
                 <p className="mt-1 text-sm text-ink-foreground/70">
                   Founder — and for now, the whole team. I fell into the
@@ -168,12 +184,12 @@ export default function AboutPage() {
                   found an angle only a handful of agents were tackling.
                   Then Reyse was born.
                 </p>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
 
           <Reveal delay={150}>
-            <div className="mx-auto mt-20 max-w-3xl rounded-3xl bg-accent px-8 py-14 text-center text-accent-foreground">
+            <div className="mx-auto mt-20 max-w-3xl animate-[soft-glow_3.5s_ease-in-out_infinite] rounded-3xl bg-accent px-8 py-14 text-center text-accent-foreground">
               <h3 className="font-heading text-3xl tracking-tight sm:text-4xl">
                 Hiring partner(s).
               </h3>
@@ -211,15 +227,19 @@ export default function AboutPage() {
 
           <div className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-10">
             {values.map((value, i) => (
-              <Reveal key={value.title} delay={i * 75}>
-                <div>
+              <div key={value.title}>
+                <ScaleReveal delay={i * 120} from="scale-150">
                   <p className="font-heading text-6xl tracking-tight text-ink-foreground/25 sm:text-7xl">
                     0{i + 1}
                   </p>
-                  <p className="mt-5 text-lg font-semibold">{value.title}</p>
-                  <p className="mt-3 text-sm text-ink-foreground/70">{value.body}</p>
-                </div>
-              </Reveal>
+                </ScaleReveal>
+                <Reveal delay={i * 120 + 150}>
+                  <div>
+                    <p className="mt-5 text-lg font-semibold">{value.title}</p>
+                    <p className="mt-3 text-sm text-ink-foreground/70">{value.body}</p>
+                  </div>
+                </Reveal>
+              </div>
             ))}
           </div>
         </div>
@@ -227,11 +247,13 @@ export default function AboutPage() {
 
       <div className="border-t border-border px-6 py-24">
         <div className="mx-auto max-w-3xl">
-          <Reveal>
+          <ClipReveal>
             <h2 className="font-heading text-2xl leading-[1.1] tracking-tight sm:text-3xl">
               Built in the open
             </h2>
-            <div className="mt-5 space-y-5 text-foreground/70">
+          </ClipReveal>
+          <div className="mt-5 space-y-5 text-foreground/70">
+            <Reveal delay={100}>
               <p>
                 Reyse is in the process of launching right now, which
                 means the most honest proof I can offer isn&rsquo;t a
@@ -241,6 +263,8 @@ export default function AboutPage() {
                 public. If it doesn&rsquo;t work here first, it
                 doesn&rsquo;t go near a client.
               </p>
+            </Reveal>
+            <Reveal delay={220}>
               <p>
                 It&rsquo;s also why the{" "}
                 <Link href="/guarantees" className="font-medium text-accent-text hover:underline">
@@ -250,8 +274,8 @@ export default function AboutPage() {
                 of vague reassurance. If honesty is the whole pitch,
                 it has to be checkable.
               </p>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </div>
 
@@ -275,27 +299,10 @@ export default function AboutPage() {
               }}
             >
               <div className="flex w-max gap-0">
-                {timeline.map((item) => (
-                  <div key={item.date + item.label} className="flex w-[230px] shrink-0 flex-col sm:w-[280px]">
-                    <div className="flex items-center">
-                      <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
-                      <span aria-hidden className="h-px flex-1 border-t border-dashed border-border" />
-                    </div>
-                    <div className="mt-3 pr-6">
-                      <p className="text-sm font-medium text-foreground">{item.date}</p>
-                      <p className="mt-1 text-sm text-foreground/60">{item.label}</p>
-                    </div>
-                  </div>
+                {timeline.map((item, i) => (
+                  <TimelineItem key={item.date + item.label} date={item.date} label={item.label} delay={i * 130} />
                 ))}
-                <div className="flex w-[230px] shrink-0 flex-col sm:w-[280px]">
-                  <div className="flex items-center">
-                    <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full border border-border bg-background" />
-                  </div>
-                  <div className="mt-3 pr-6">
-                    <p className="text-sm font-medium text-foreground/50">To be continued</p>
-                    <p className="mt-1 text-sm text-foreground/40">&hellip;</p>
-                  </div>
-                </div>
+                <TimelineItem date="To be continued" label="…" delay={timeline.length * 130} future showConnector={false} />
               </div>
             </div>
             <p className="mt-2 text-center text-xs text-foreground/40 sm:hidden">Scroll right for more →</p>
