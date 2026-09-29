@@ -25,25 +25,6 @@ const values = [
   },
 ];
 
-const differences = [
-  {
-    most: "Handed off to an account manager who's never touched SEO.",
-    reyse: "The person doing the work is the person you talk to.",
-  },
-  {
-    most: "The same playbook run for every client in the portfolio.",
-    reyse: "A strategy built from your specific competitors and reputation.",
-  },
-  {
-    most: "Locked into a rolling 12-month contract.",
-    reyse: "A guarantee that lets you leave any time, for any reason.",
-  },
-  {
-    most: "Never checked whether you show up in ChatGPT or Gemini — only Google.",
-    reyse: "AI search treated as seriously as Google, because that's where lookups are moving.",
-  },
-];
-
 export default function AboutPage() {
   return (
     <main className="flex-1">
@@ -228,40 +209,6 @@ export default function AboutPage() {
                   </p>
                   <p className="mt-5 text-lg font-semibold">{value.title}</p>
                   <p className="mt-3 text-sm text-ink-foreground/70">{value.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="border-t border-border px-6 py-24">
-        <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <h2 className="text-center font-heading text-3xl tracking-tight sm:text-4xl">
-              What makes us different
-            </h2>
-          </Reveal>
-          <div className="mt-14 overflow-hidden rounded-2xl border border-border divide-y divide-border">
-            <div className="grid gap-2 px-6 py-3 text-xs font-medium uppercase tracking-wide text-foreground/40 sm:grid-cols-2 sm:gap-6">
-              <span>Most agencies</span>
-              <span>Reyse</span>
-            </div>
-            {differences.map((d, i) => (
-              <Reveal key={d.reyse} delay={i * 75}>
-                <div className="grid gap-3 px-6 py-5 sm:grid-cols-2 sm:gap-6">
-                  <div className="flex items-start gap-2.5 text-sm text-foreground/50">
-                    <svg viewBox="0 0 16 16" className="mt-0.5 h-4 w-4 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                      <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-                    </svg>
-                    <span>{d.most}</span>
-                  </div>
-                  <div className="flex items-start gap-2.5 text-sm font-medium text-foreground">
-                    <svg viewBox="0 0 16 16" className="mt-0.5 h-4 w-4 shrink-0 text-accent-text" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                      <path d="M3 8.5l3.2 3.2L13 4.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span>{d.reyse}</span>
-                  </div>
                 </div>
               </Reveal>
             ))}
