@@ -10,6 +10,15 @@ export const metadata: Metadata = pageMetadata({
   description: "Why Reyse exists, and who's building it.",
 });
 
+// Month-level dates, not invented exact days — flagged for a real-date
+// pass once the actual launch dates for each milestone are confirmed.
+const timeline = [
+  { date: "3 August 2026", label: "Reyse is founded" },
+  { date: "August 2026", label: "Free resources — courses, videos, audiobooks and downloads — go live" },
+  { date: "September 2026", label: "The eleven guarantees are published" },
+  { date: "September 2026", label: "reyse.co.uk starts running Reyse's own SEO and GEO service on itself" },
+];
+
 const values = [
   {
     title: "Bespoke, never templated.",
@@ -246,24 +255,50 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="px-6 pb-20">
-        <div className="mx-auto max-w-2xl">
+      <div className="border-t border-border bg-panel px-6 py-20">
+        <div className="mx-auto max-w-5xl">
           <Reveal>
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
-              <span aria-hidden className="h-px flex-1 border-t border-dashed border-border" />
-              <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full border border-border" />
-            </div>
-            <div className="mt-3 flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm font-medium text-foreground">3 August 2026</p>
-                <p className="text-sm text-foreground/60">Reyse is founded</p>
+            <p className="text-center text-xs font-medium uppercase tracking-wide text-foreground/50">
+              Timeline
+            </p>
+            <h2 className="mt-3 text-center font-heading text-2xl tracking-tight sm:text-3xl">
+              Built in public, one milestone at a time
+            </h2>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <div
+              className="relative mt-12 -mx-6 overflow-x-auto px-6 pb-2 [scrollbar-width:thin]"
+              style={{
+                maskImage: "linear-gradient(to right, black 90%, transparent)",
+                WebkitMaskImage: "linear-gradient(to right, black 90%, transparent)",
+              }}
+            >
+              <div className="flex w-max gap-0">
+                {timeline.map((item) => (
+                  <div key={item.date + item.label} className="flex w-[230px] shrink-0 flex-col sm:w-[280px]">
+                    <div className="flex items-center">
+                      <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full bg-accent" />
+                      <span aria-hidden className="h-px flex-1 border-t border-dashed border-border" />
+                    </div>
+                    <div className="mt-3 pr-6">
+                      <p className="text-sm font-medium text-foreground">{item.date}</p>
+                      <p className="mt-1 text-sm text-foreground/60">{item.label}</p>
+                    </div>
+                  </div>
+                ))}
+                <div className="flex w-[230px] shrink-0 flex-col sm:w-[280px]">
+                  <div className="flex items-center">
+                    <span aria-hidden className="h-2.5 w-2.5 shrink-0 rounded-full border border-border bg-background" />
+                  </div>
+                  <div className="mt-3 pr-6">
+                    <p className="text-sm font-medium text-foreground/50">To be continued</p>
+                    <p className="mt-1 text-sm text-foreground/40">&hellip;</p>
+                  </div>
+                </div>
               </div>
-              <div className="text-right">
-                <p className="text-sm font-medium text-foreground/50">To be continued</p>
-                <p className="text-sm text-foreground/40">&hellip;</p>
-              </div>
             </div>
+            <p className="mt-2 text-center text-xs text-foreground/40 sm:hidden">Scroll right for more →</p>
           </Reveal>
         </div>
       </div>
