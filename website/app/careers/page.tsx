@@ -97,9 +97,8 @@ export default function CareersPage() {
                 won&rsquo;t be slotting into a defined role in an existing
                 structure — they&rsquo;ll be helping build the structure.
                 That&rsquo;s genuinely more interesting for the right person,
-                and genuinely harder, and it&rsquo;s worth being upfront about
-                both sides of that before anyone gets excited about the wrong
-                thing.
+                and genuinely harder — it&rsquo;s for a specific type of
+                person.
               </p>
             </div>
           </Reveal>
