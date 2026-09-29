@@ -207,8 +207,8 @@ export default function CareersPage() {
                 <div className="rounded-3xl border border-border bg-background p-8">
                   <h3 className="text-lg font-semibold">How we&rsquo;ll work</h3>
                   <ul className="mt-4 space-y-2 text-sm text-foreground/70">
-                    <li>Remote-first</li>
-                    <li>Direct line to the founder</li>
+                    <li>Remote or in-person</li>
+                    <li>At the same level as the founder</li>
                     <li>No bureaucracy to navigate</li>
                   </ul>
                 </div>
