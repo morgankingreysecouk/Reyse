@@ -36,9 +36,9 @@ export default function CareersPage() {
             Careers
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
-            Most careers pages perform a team and a culture that doesn&rsquo;t
-            exist yet, for a company this early. This one won&rsquo;t.
-            Here&rsquo;s exactly where things stand.
+            We&rsquo;re building Reyse from real experience, not theory —
+            if you&rsquo;d rather help shape something than follow someone
+            else&rsquo;s process, this is early enough to do that.
           </p>
           <a
             href="#working-at-reyse"
@@ -59,9 +59,10 @@ export default function CareersPage() {
                 </h2>
                 <p className="mt-5 text-foreground/70">
                   Reyse started as the answer to one lettings agency&rsquo;s
-                  invisibility problem — mine. It&rsquo;s now built for every
-                  estate and letting agent with the same blind spot. It&rsquo;s
-                  also, right now, a company of one.
+                  invisibility problem — mine. The mission hasn&rsquo;t
+                  changed since: make sure no estate or letting agent is
+                  invisible to the AI tools their next client is already
+                  asking.
                 </p>
                 <Link
                   href="/about"

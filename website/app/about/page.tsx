@@ -6,7 +6,6 @@ import RevealWords from "../components/RevealWords";
 import ClipReveal from "../components/ClipReveal";
 import ScaleReveal from "../components/ScaleReveal";
 import TimelineItem from "../components/TimelineItem";
-import MomentBeliefArrow from "../components/MomentBeliefArrow";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -77,7 +76,7 @@ export default function AboutPage() {
 
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <div className="grid gap-10 sm:grid-cols-[1fr_auto_1fr] sm:items-start sm:gap-6">
+          <div className="grid gap-10 sm:grid-cols-2 sm:items-start sm:gap-12">
             <div>
               <Reveal>
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
@@ -106,10 +105,6 @@ export default function AboutPage() {
                   good the service became.
                 </p>
               </Reveal>
-            </div>
-
-            <div className="hidden justify-center pt-44 sm:flex">
-              <MomentBeliefArrow />
             </div>
 
             <div className="sm:mt-32">
@@ -209,14 +204,14 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="bg-ink px-6 py-24 text-ink-foreground">
+      <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="font-heading text-3xl tracking-tight sm:text-4xl">
                 Why these three
               </h2>
-              <p className="mt-4 text-ink-foreground/70">
+              <p className="mt-4 text-foreground/70">
                 These aren&rsquo;t values picked to sound good in a pitch deck. Each one exists
                 because I watched agencies get burned by the opposite of it — generic strategies
                 that didn&rsquo;t fit, marketers who&rsquo;d never worked the desk, and results
@@ -229,14 +224,14 @@ export default function AboutPage() {
             {values.map((value, i) => (
               <div key={value.title}>
                 <ScaleReveal delay={i * 120} from="scale-150">
-                  <p className="font-heading text-6xl tracking-tight text-ink-foreground/25 sm:text-7xl">
+                  <p className="font-heading text-6xl tracking-tight text-foreground/15 sm:text-7xl">
                     0{i + 1}
                   </p>
                 </ScaleReveal>
                 <Reveal delay={i * 120 + 150}>
                   <div>
                     <p className="mt-5 text-lg font-semibold">{value.title}</p>
-                    <p className="mt-3 text-sm text-ink-foreground/70">{value.body}</p>
+                    <p className="mt-3 text-sm text-foreground/70">{value.body}</p>
                   </div>
                 </Reveal>
               </div>
