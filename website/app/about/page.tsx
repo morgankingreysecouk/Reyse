@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../components/Reveal";
 import MomentBeliefArrow from "../components/MomentBeliefArrow";
-import { ShieldIcon, CompassIcon, LayersIcon, ChartIcon } from "../components/NavIcons";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -13,24 +12,16 @@ export const metadata: Metadata = pageMetadata({
 
 const values = [
   {
-    icon: ShieldIcon,
-    title: "Honesty over hype",
-    body: "If it can't be explained plainly and proven, it doesn't get said — no vague reassurance, no jargon standing in for expertise.",
+    title: "Bespoke, never templated.",
+    body: "Every strategy is built around your specific area, competitors, and reputation — not a playbook run for every client. What works for the agency down the road may not work for you, so we build around what's actually true for your business, not what's convenient for ours.",
   },
   {
-    icon: CompassIcon,
-    title: "Earn it every month",
-    body: "No lock-in contracts. The work has to keep earning its place, not just win it once and coast.",
+    title: "Authenticity, from inside the industry.",
+    body: "Built by someone who worked inside an estate agency and turned an invisible branch into the leading one in its area — the strategy comes from having actually done the job, not studied it from outside.",
   },
   {
-    icon: LayersIcon,
-    title: "Bespoke, never templated",
-    body: "Every strategy is built around your specific area, competitors, and reputation — not a playbook run for every client.",
-  },
-  {
-    icon: ChartIcon,
-    title: "Growth you can measure",
-    body: "Real leads and enquiries, not rankings that only look good in a screenshot.",
+    title: "Integrity, explained in full.",
+    body: "No jargon standing in for a real answer — everything is explained clearly enough that you understand it, not just trust it. And no hype standing in for proof — we make the results measurable, so you can see them for yourself.",
   },
 ];
 
@@ -119,12 +110,12 @@ export default function AboutPage() {
               </div>
             </Reveal>
 
-            <div className="hidden justify-center pt-2 sm:flex">
+            <div className="hidden justify-center pt-44 sm:flex">
               <MomentBeliefArrow />
             </div>
 
             <Reveal delay={150}>
-              <div className="sm:mt-20">
+              <div className="sm:mt-32">
                 <h2 className="font-heading text-3xl leading-[1.1] tracking-tight sm:text-4xl">
                   What I believe
                 </h2>
@@ -212,22 +203,31 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="px-6 py-24">
+      <div className="bg-ink px-6 py-24 text-ink-foreground">
         <div className="mx-auto max-w-5xl">
           <Reveal>
-            <h2 className="text-center font-heading text-3xl tracking-tight sm:text-4xl">
-              Our values
-            </h2>
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="font-heading text-3xl tracking-tight sm:text-4xl">
+                Why these three
+              </h2>
+              <p className="mt-4 text-ink-foreground/70">
+                These aren&rsquo;t values picked to sound good in a pitch deck. Each one exists
+                because I watched agencies get burned by the opposite of it — generic strategies
+                that didn&rsquo;t fit, marketers who&rsquo;d never worked the desk, and results
+                dressed up to look better than they were.
+              </p>
+            </div>
           </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2">
+
+          <div className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-10">
             {values.map((value, i) => (
               <Reveal key={value.title} delay={i * 75}>
-                <div className="rounded-2xl border border-border p-6">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-                    {value.icon}
-                  </span>
-                  <p className="mt-4 font-medium text-foreground">{value.title}</p>
-                  <p className="mt-2 text-sm text-foreground/60">{value.body}</p>
+                <div>
+                  <p className="font-heading text-6xl tracking-tight text-ink-foreground/25 sm:text-7xl">
+                    0{i + 1}
+                  </p>
+                  <p className="mt-5 text-lg font-semibold">{value.title}</p>
+                  <p className="mt-3 text-sm text-ink-foreground/70">{value.body}</p>
                 </div>
               </Reveal>
             ))}

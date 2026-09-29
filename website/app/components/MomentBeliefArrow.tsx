@@ -44,18 +44,23 @@ export default function MomentBeliefArrow() {
   return (
     <svg
       ref={svgRef}
-      viewBox="0 0 72 160"
+      viewBox="0 0 72 170"
       className="h-32 w-16 text-accent-text sm:h-40"
       fill="none"
       aria-hidden="true"
     >
+      <filter id="handDrawnArrow" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.045 0.06" numOctaves="2" seed="7" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
       <path
         ref={pathRef}
-        d="M14 12 L58 140 M58 140 L45 127 M58 140 L49 150"
+        d="M18 8 C 4 52, 54 78, 34 128 M34 128 L24 116 M34 128 L44 118"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="2.25"
         strokeLinecap="round"
         strokeLinejoin="round"
+        filter="url(#handDrawnArrow)"
       />
     </svg>
   );
