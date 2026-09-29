@@ -217,7 +217,7 @@ export default function CareersPage() {
                 <div className="flex flex-col items-center justify-center rounded-3xl border border-border bg-background px-6 py-14 text-center">
                   <p className="text-lg font-semibold text-foreground">Interested?</p>
                   <p className="mx-auto mt-2 max-w-xs text-sm text-foreground/70">
-                    Email directly — no form, no pipeline, just a real
+                    Email directly — no form, no CV, just a real
                     conversation about what you&rsquo;d bring.
                   </p>
                   <a
