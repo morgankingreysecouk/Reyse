@@ -86,10 +86,6 @@ export default function AboutPage() {
                 priority
               />
             </div>
-            <p className="mt-3 text-center text-xs text-foreground/50">
-              A look at the space Reyse is building toward — not a real
-              office yet. Right now it&rsquo;s genuinely a team of one.
-            </p>
           </Reveal>
         </div>
       </div>
