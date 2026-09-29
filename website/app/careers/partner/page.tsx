@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "../../components/Reveal";
+import RevealWords from "../../components/RevealWords";
+import ClipReveal from "../../components/ClipReveal";
+import ScaleReveal from "../../components/ScaleReveal";
 import { pageMetadata } from "../../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -38,7 +42,7 @@ const faqs = [
   },
   {
     question: "Do I need to be based in the UK?",
-    answer: "Yes. This is remote-first day to day, but being UK-based and able to meet in person when it's actually useful matters for a partnership this close.",
+    answer: "Yes. It's remote or in-person day to day, but being UK-based and able to meet in person when it's actually useful matters for a partnership this close.",
   },
   {
     question: "What happens after I email?",
@@ -84,68 +88,76 @@ export default function PartnerRolePage() {
             ← Careers
           </Link>
           <h1 className="mt-4 font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            One partner. Real equity. No salary.
+            <RevealWords text="One partner. Real equity. No salary." />
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
-            Not an employee, not a co-founder with a different name on the
-            door — a genuine partner, with real ownership, granted from day
-            one. Here&rsquo;s exactly what that means.
-          </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-4">
-            <a
-              href="#the-deal"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              See the actual terms
-            </a>
-            <a
-              href="#faq"
-              className="rounded-full border border-ink-foreground/20 px-6 py-3 text-sm font-medium hover:border-ink-foreground/40"
-            >
-              Read the FAQ
-            </a>
-          </div>
+          <Reveal delay={550}>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
+              Not an employee, not a co-founder with a different name on the
+              door — a genuine partner, with real ownership, granted from day
+              one. Here&rsquo;s exactly what that means.
+            </p>
+          </Reveal>
+          <Reveal delay={700}>
+            <div className="mt-9 flex flex-wrap justify-center gap-4">
+              <a
+                href="#the-deal"
+                className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+              >
+                See the actual terms
+              </a>
+              <a
+                href="#faq"
+                className="rounded-full border border-ink-foreground/20 px-6 py-3 text-sm font-medium hover:border-ink-foreground/40"
+              >
+                Read the FAQ
+              </a>
+            </div>
+          </Reveal>
         </div>
       </div>
 
       <div id="the-deal" className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              What this actually is
-            </p>
+          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+            What this actually is
+          </p>
+          <ClipReveal>
             <h2 className="mt-3 max-w-2xl font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
               Not a job with equity attached. A partnership.
             </h2>
-          </Reveal>
+          </ClipReveal>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
             {notIs.map((row, i) => (
-              <Reveal key={row.not} delay={i * 60}>
+              <Reveal key={row.not} delay={i * 80}>
                 <div className="h-full rounded-2xl border border-border bg-panel p-6">
                   <div className="flex items-start gap-3 opacity-60">
-                    <span
-                      aria-hidden
-                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-foreground/30 text-foreground/50"
-                    >
-                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-                      </svg>
-                    </span>
+                    <ScaleReveal delay={i * 80} className="mt-0.5 shrink-0">
+                      <span
+                        aria-hidden
+                        className="flex h-6 w-6 items-center justify-center rounded-full border border-foreground/30 text-foreground/50"
+                      >
+                        <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
+                        </svg>
+                      </span>
+                    </ScaleReveal>
                     <p className="text-sm font-medium text-foreground line-through decoration-foreground/40">
                       {row.not}
                     </p>
                   </div>
                   <div className="my-4 border-t border-dashed border-border" />
                   <div className="flex items-start gap-3">
-                    <span
-                      aria-hidden
-                      className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text"
-                    >
-                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
+                    <ScaleReveal delay={i * 80 + 150} className="mt-0.5 shrink-0">
+                      <span
+                        aria-hidden
+                        className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent-text"
+                      >
+                        <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                          <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </span>
+                    </ScaleReveal>
                     <p className="text-sm font-medium text-foreground">{row.is}</p>
                   </div>
                 </div>
@@ -181,8 +193,8 @@ export default function PartnerRolePage() {
                 </p>
               </div>
             </Reveal>
-            <Reveal delay={100}>
-              <div className="flex flex-col items-center justify-center gap-2 rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground">
+            <ScaleReveal delay={100} from="scale-90">
+              <div className="flex flex-col items-center justify-center gap-2 rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground animate-[soft-glow_3.5s_ease-in-out_infinite]">
                 <p className="text-xs font-medium uppercase tracking-wide text-accent-foreground/70">
                   Vesting schedule
                 </p>
@@ -193,37 +205,39 @@ export default function PartnerRolePage() {
                   Granted from day one, not earned back over years.
                 </p>
               </div>
-            </Reveal>
+            </ScaleReveal>
           </div>
         </div>
       </div>
 
       <div className="border-y border-border bg-ink px-6 py-20 text-ink-foreground">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center">
+          <ScaleReveal from="scale-90" className="w-fit mx-auto">
             <p className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
               &ldquo;No salary means no salary.&rdquo;
             </p>
+          </ScaleReveal>
+          <Reveal delay={150}>
             <p className="mx-auto mt-5 max-w-xl text-sm text-ink-foreground/70">
               This only works if you can genuinely support yourself
               independently while this gets built. That&rsquo;s not a small
               ask — we&rsquo;d rather you rule yourself out now, honestly,
               than three months in.
             </p>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </div>
 
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              What you&rsquo;d actually be doing
-            </p>
+          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+            What you&rsquo;d actually be doing
+          </p>
+          <ClipReveal>
             <h2 className="mt-3 max-w-2xl font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
               The same things the founder does. All of it.
             </h2>
-          </Reveal>
+          </ClipReveal>
           <div className="mt-10 max-w-2xl space-y-5 text-foreground/70">
             <Reveal delay={80}>
               <p>
@@ -237,10 +251,10 @@ export default function PartnerRolePage() {
               <p>
                 Hours are totally variable — no clocking in, no fixed
                 schedule, no minimum tracked. It&rsquo;s judged on what
-                actually gets done, not time logged. Remote-first day to day,
-                but UK-based and able to meet in person when it&rsquo;s
-                genuinely useful, since a partnership this close is harder to
-                build entirely at a distance.
+                actually gets done, not time logged. Remote or in-person,
+                UK-based and able to meet when it&rsquo;s genuinely useful,
+                since a partnership this close is harder to build entirely at
+                a distance.
               </p>
             </Reveal>
           </div>
@@ -249,23 +263,25 @@ export default function PartnerRolePage() {
 
       <div className="bg-panel px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              Who this is for
-            </p>
+          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+            Who this is for
+          </p>
+          <ClipReveal>
             <h2 className="mt-3 max-w-2xl font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
               No experience required. These two things matter more.
             </h2>
-          </Reveal>
+          </ClipReveal>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <Reveal delay={80}>
               <div className="h-full rounded-3xl border border-border bg-background p-8">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 3v18M5 9l7-6 7 6" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
+                <ScaleReveal className="w-fit">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 3v18M5 9l7-6 7 6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </ScaleReveal>
                 <h3 className="mt-4 text-lg font-semibold">
                   A genuine self-starter
                 </h3>
@@ -279,11 +295,13 @@ export default function PartnerRolePage() {
             </Reveal>
             <Reveal delay={140}>
               <div className="h-full rounded-3xl border border-border bg-background p-8">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
+                <ScaleReveal delay={100} className="w-fit">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 text-accent-text">
+                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </ScaleReveal>
                 <h3 className="mt-4 text-lg font-semibold">
                   Genuinely comfortable with early-stage risk
                 </h3>
@@ -308,34 +326,51 @@ export default function PartnerRolePage() {
 
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              Where this all started
-            </p>
-            <h2 className="mt-3 font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
-              A lettings desk, a bad reputation, and a business that
-              didn&rsquo;t show up anywhere it was asked about.
-            </h2>
-            <Link
-              href="/about"
-              className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-accent-text hover:opacity-80"
-            >
-              Read the full story
-              <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
-          </Reveal>
+          <div className="grid items-center gap-10 sm:grid-cols-[1fr_auto] sm:gap-16">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                Where this all started
+              </p>
+              <ClipReveal>
+                <h2 className="mt-3 font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
+                  A lettings desk, a bad reputation, and a business that
+                  didn&rsquo;t show up anywhere it was asked about.
+                </h2>
+              </ClipReveal>
+              <Reveal delay={150}>
+                <Link
+                  href="/about"
+                  className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-accent-text hover:opacity-80"
+                >
+                  Read the full story
+                  <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </Reveal>
+            </div>
+            <ScaleReveal delay={100} from="scale-150 -rotate-6" className="w-fit">
+              <div className="relative h-24 w-24 overflow-hidden rounded-full border border-border sm:h-32 sm:w-32">
+                <Image
+                  src="/images/morgan-king.png"
+                  alt="Morgan King, Founder of Reyse"
+                  fill
+                  sizes="128px"
+                  className="object-cover"
+                />
+              </div>
+            </ScaleReveal>
+          </div>
         </div>
       </div>
 
       <div id="faq" className="bg-panel px-6 py-24">
         <div className="mx-auto max-w-3xl">
-          <Reveal>
+          <ClipReveal>
             <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
               Common questions
             </h2>
-          </Reveal>
+          </ClipReveal>
           <div className="mt-10 divide-y divide-border">
             {faqs.map((faq, i) => (
               <Reveal key={faq.question} delay={i * 40}>
@@ -362,13 +397,13 @@ export default function PartnerRolePage() {
       </div>
 
       <div className="px-6 py-24">
-        <Reveal>
-          <div className="mx-auto max-w-xl rounded-2xl border border-border bg-panel p-10 text-center">
+        <ScaleReveal from="scale-95" className="mx-auto max-w-xl">
+          <div className="rounded-2xl border border-border bg-panel p-10 text-center">
             <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
               Interested?
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/65">
-              Email directly — no form, no pipeline, just a real
+              Email directly — no form, no CV, just a real
               conversation about what you&rsquo;d bring.
             </p>
             <a
@@ -378,7 +413,7 @@ export default function PartnerRolePage() {
               morgan.king@reyse.co.uk
             </a>
           </div>
-        </Reveal>
+        </ScaleReveal>
       </div>
     </main>
   );

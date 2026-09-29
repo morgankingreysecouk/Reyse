@@ -189,9 +189,9 @@ export default function AboutPage() {
                 Hiring partner(s).
               </h3>
               <p className="mx-auto mt-3 max-w-sm text-sm text-accent-foreground/80">
-                Equity, not a salary. Currently working, or have worked,
-                in estate agency, and fancy a change? Maybe this is for
-                you.
+                Equity, not a salary. No experience required — just
+                someone genuinely up for building this from scratch.
+                Maybe this is for you.
               </p>
               <Link
                 href="/careers"
