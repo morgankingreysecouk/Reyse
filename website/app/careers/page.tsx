@@ -136,7 +136,7 @@ export default function CareersPage() {
                   <p className="mt-2 text-sm text-foreground/70">
                     Reyse doesn&rsquo;t have a team yet — just a founder
                     building the product and the business at the same time.
-                    That&rsquo;s exactly what the role below is for.
+                    That&rsquo;s exactly what you&rsquo;ll be helping build.
                   </p>
                 </div>
               </Reveal>
