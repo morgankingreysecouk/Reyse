@@ -177,8 +177,8 @@ export default function CareersPage() {
                       No salary, real equity
                     </h3>
                     <p className="mt-2 text-xs text-foreground/70">
-                      Ownership in the company instead — the actual amount
-                      is a conversation, not a number on this page.
+                      Ownership in the company instead of a salary — the
+                      more the business grows, the more you earn.
                     </p>
                   </div>
                 </Reveal>
