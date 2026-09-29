@@ -262,9 +262,7 @@ export default function CareersPage() {
             <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
               If Reyse sounds like somewhere you&rsquo;d want to work once
               there&rsquo;s an actual team to join — beyond the partner role
-              above — send a short note: who you are, what you&rsquo;d
-              bring. It&rsquo;ll be read personally, not filtered by an
-              applicant tracking system that doesn&rsquo;t exist yet.
+              above — send us an email.
             </p>
             <a
               href="mailto:hello@reyse.co.uk?subject=Interested%20in%20Reyse"
