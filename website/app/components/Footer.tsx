@@ -96,11 +96,11 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-panel">
       <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-4 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr] lg:gap-x-10">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-4 lg:grid-cols-5 lg:gap-x-10">
           <div className="col-span-2 sm:col-span-4 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3">
-              <VennMark className="h-9 w-9 sm:h-11 sm:w-11" />
-              <span className="font-heading text-5xl tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+            <Link href="/" className="flex items-center gap-2.5">
+              <VennMark className="h-6 w-6" />
+              <span className="font-heading text-2xl tracking-tight text-foreground">
                 Reyse
               </span>
             </Link>
