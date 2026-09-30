@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import CountUp from "../components/CountUp";
 import Reveal from "../components/Reveal";
 import RevealWords from "../components/RevealWords";
@@ -304,8 +305,20 @@ export default function CharityPage() {
             </h2>
           </ClipReveal>
 
+          <ClipReveal delay={60}>
+            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border">
+              <Image
+                src="/images/charity-sthelena.webp"
+                alt="Two hands gently clasped together across a wooden table, symbolising comfort and care"
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </ClipReveal>
+
           <ScaleReveal delay={100} from="scale-95">
-            <div className="mt-10 rounded-3xl border border-border bg-background p-8 sm:p-10">
+            <div className="mt-6 rounded-3xl border border-border bg-background p-8 sm:p-10">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <h3 className="font-heading text-xl leading-[1.2] tracking-tight">
