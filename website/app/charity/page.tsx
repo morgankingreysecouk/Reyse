@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import CountUp from "../components/CountUp";
 import Reveal from "../components/Reveal";
+import RevealWords from "../components/RevealWords";
+import ClipReveal from "../components/ClipReveal";
+import ScaleReveal from "../components/ScaleReveal";
 import { pageMetadata } from "../lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -12,11 +13,11 @@ export const metadata: Metadata = pageMetadata({
 
 const steps = [
   {
-    title: "Sign up and get the work done",
-    text: "Exactly as agreed — no different to any other client.",
+    title: "Sign up and agree the scope",
+    text: "What's being done, and by when — settled upfront, same as any other client.",
   },
   {
-    title: "Once you're happy, make a donation",
+    title: "Make a donation",
     text: "Any amount, to any registered charity, in whatever way you'd normally give — their website, JustGiving, a text donation, in person. It all counts.",
   },
   {
@@ -24,15 +25,19 @@ const steps = [
     text: "A screenshot of the confirmation, a forwarded receipt email, a photo of a paper receipt — whatever you've got. WhatsApp or email, whichever's easier.",
   },
   {
-    title: "That's it",
-    text: "No minimum amount, no approval process, no follow-up questions about how much you gave.",
+    title: "Then we get to work",
+    text: "Exactly as agreed — no different to any other client. Proof of the donation is the one thing we need before we start.",
   },
 ];
 
 const faqs = [
   {
-    question: "Do I have to donate to Crisis specifically?",
-    answer: "No. Crisis is just our recommendation if you don't already have a charity in mind. Any registered charity is fine.",
+    question: "Do I have to donate to St Helena Hospice specifically?",
+    answer: "No. St Helena Hospice is just our recommendation if you don't already have a charity in mind. Any registered charity is fine.",
+  },
+  {
+    question: "Do I need to donate before the work starts?",
+    answer: "Yes — we ask for proof of the donation before any work begins, not after. It's the one piece of commitment we ask for upfront, in place of payment.",
   },
   {
     question: "Is there a minimum amount?",
@@ -48,7 +53,7 @@ const faqs = [
   },
   {
     question: "Will this always be how Reyse works?",
-    answer: "This applies to our current free founding clients. As we move through our discounted pricing stages and eventually to full price, standard fees apply instead — the donation model is specific to this early, free stage of the business.",
+    answer: "No — this is specific to our current free, founding stage. As the business grows, this won't be how it works forever.",
   },
   {
     question: "Why should I trust you'll actually keep the future promise?",
@@ -87,49 +92,52 @@ export default function CharityPage() {
         />
         <div className="relative mx-auto max-w-2xl text-center">
           <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            We don&rsquo;t take your money. We ask you to give it to someone
-            who needs it more.
+            <RevealWords text="We don't take your money. We ask you to give it to someone who needs it more." delayStep={25} />
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
-            Right now, Reyse is completely free. Not discounted, not
-            &ldquo;free trial&rdquo; — free. All we ask in return is that
-            you donate to a charity of your choice.
-          </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-4">
-            <a
-              href="#how-it-works"
-              className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              See how it works
-            </a>
-            <a
-              href="#faq"
-              className="rounded-full border border-ink-foreground/20 px-6 py-3 text-sm font-medium hover:border-ink-foreground/40"
-            >
-              Read the FAQ
-            </a>
-          </div>
+          <Reveal delay={900}>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
+              Right now, Reyse is completely free. Not discounted, not
+              &ldquo;free trial&rdquo; — free. All we ask in return is that
+              you donate to a charity of your choice.
+            </p>
+          </Reveal>
+          <Reveal delay={1050}>
+            <div className="mt-9 flex flex-wrap justify-center gap-4">
+              <a
+                href="#how-it-works"
+                className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
+              >
+                See how it works
+              </a>
+              <a
+                href="#faq"
+                className="rounded-full border border-ink-foreground/20 px-6 py-3 text-sm font-medium hover:border-ink-foreground/40"
+              >
+                Read the FAQ
+              </a>
+            </div>
+          </Reveal>
         </div>
       </div>
 
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="grid items-center gap-10 sm:grid-cols-[1fr_280px] sm:gap-16">
-            <Reveal>
+            <ClipReveal>
               <div className="space-y-5 text-foreground/70">
                 <p>
                   We don&rsquo;t take a penny from you. All we ask in return
-                  is that you donate to a charity of your choice. However
-                  much you want, to whoever you want. The only thing we ask
-                  for is proof that you did it.
+                  is that you donate to a charity of your choice, before we
+                  start. However much you want, to whoever you want. The
+                  only thing we ask for is proof that you did it.
                 </p>
                 <p className="font-medium text-foreground">
                   That&rsquo;s it. That&rsquo;s the entire ask.
                 </p>
               </div>
-            </Reveal>
-            <Reveal delay={100}>
-              <div className="flex flex-col items-center justify-center rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground">
+            </ClipReveal>
+            <ScaleReveal delay={100} from="scale-95">
+              <div className="flex flex-col items-center justify-center gap-2 rounded-3xl bg-accent px-6 py-14 text-center text-accent-foreground animate-[soft-glow_3.5s_ease-in-out_infinite]">
                 <p className="font-heading text-6xl leading-none tracking-tight">
                   <CountUp value="£0" />
                 </p>
@@ -137,7 +145,7 @@ export default function CharityPage() {
                   taken from you, right now
                 </p>
               </div>
-            </Reveal>
+            </ScaleReveal>
           </div>
         </div>
       </div>
@@ -183,19 +191,21 @@ export default function CharityPage() {
       </div>
 
       <div className="border-y border-border bg-ink px-6 py-20 text-ink-foreground">
-        <Reveal>
-          <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center">
+          <ScaleReveal from="scale-90" className="w-fit mx-auto">
             <p className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
               &ldquo;Think of it less as a payment, and more as a
               commitment.&rdquo;
             </p>
+          </ScaleReveal>
+          <Reveal delay={150}>
             <p className="mx-auto mt-5 max-w-xl text-sm text-ink-foreground/70">
               It costs you nothing extra you wouldn&rsquo;t have already
-              been willing to spend to see if this works — it just goes
+              been willing to spend on the work itself — it just goes
               somewhere better than our bank account.
             </p>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
         <Reveal delay={80}>
           <p className="mx-auto mt-8 max-w-xl text-center text-xs text-ink-foreground/50">
             Alongside the donation, our founding clients also agree to give
@@ -209,33 +219,37 @@ export default function CharityPage() {
       <div className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="grid gap-10 sm:grid-cols-2 sm:gap-16">
-            <Reveal>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-                  Where it goes
-                </p>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                Where it goes
+              </p>
+              <ClipReveal>
                 <h2 className="mt-3 font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
                   We never see, touch, or collect the money.
                 </h2>
+              </ClipReveal>
+              <Reveal delay={120}>
                 <p className="mt-4 text-foreground/70">
                   We&rsquo;re not a fundraising platform and we don&rsquo;t
                   want to be one. You donate, you get a confirmation from
                   the charity itself, and you send us proof of that.
                   That&rsquo;s the full extent of our involvement.
                 </p>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
             <Reveal delay={100}>
               <div className="rounded-3xl border border-border bg-panel p-8">
                 <div className="flex items-start gap-3 opacity-60">
-                  <span
-                    aria-hidden
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-foreground/30 text-foreground/50"
-                  >
-                    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-                    </svg>
-                  </span>
+                  <ScaleReveal className="mt-0.5 shrink-0">
+                    <span
+                      aria-hidden
+                      className="flex h-6 w-6 items-center justify-center rounded-full border border-foreground/30 text-foreground/50"
+                    >
+                      <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
+                      </svg>
+                    </span>
+                  </ScaleReveal>
                   <div>
                     <p className="text-sm font-medium text-foreground line-through decoration-foreground/40">
                       You → Reyse → the charity
@@ -257,16 +271,18 @@ export default function CharityPage() {
                     "You → directly to the charity",
                     "You get confirmation from the charity itself",
                     "You send us proof — that's the extent of our involvement",
-                  ].map((item) => (
+                  ].map((item, i) => (
                     <div key={item} className="flex items-start gap-3">
-                      <span
-                        aria-hidden
-                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text"
-                      >
-                        <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
+                      <ScaleReveal delay={i * 80} className="mt-0.5 shrink-0">
+                        <span
+                          aria-hidden
+                          className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent-text"
+                        >
+                          <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
+                            <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                      </ScaleReveal>
                       <p className="text-sm font-medium text-foreground">{item}</p>
                     </div>
                   ))}
@@ -279,49 +295,34 @@ export default function CharityPage() {
 
       <div className="bg-panel px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              If you&rsquo;re not sure who to donate to
-            </p>
+          <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+            If you&rsquo;re not sure who to donate to
+          </p>
+          <ClipReveal>
             <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
-              We recommend Crisis.
+              We recommend St Helena Hospice.
             </h2>
-          </Reveal>
+          </ClipReveal>
 
-          <Reveal delay={60}>
-            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border">
-              <Image
-                src="/images/charity-crisis.webp"
-                alt="A key being handed over, symbolising a safe home"
-                fill
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <p className="mt-3 text-center text-xs text-foreground/50">
-              A symbolic image, not a real Crisis client or premises.
-            </p>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <div className="mt-6 rounded-3xl border border-border bg-background p-8 sm:p-10">
+          <ScaleReveal delay={100} from="scale-95">
+            <div className="mt-10 rounded-3xl border border-border bg-background p-8 sm:p-10">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <h3 className="font-heading text-xl leading-[1.2] tracking-tight">
-                    Crisis
+                    St Helena Hospice
                   </h3>
                   <p className="mt-1 text-sm text-foreground/60">
-                    The UK&rsquo;s national charity for people experiencing
-                    homelessness
+                    An independent hospice charity caring for people with
+                    incurable illness across north-east Essex
                   </p>
                 </div>
                 <a
-                  href="https://www.crisis.org.uk/"
+                  href="https://sthelena.org.uk/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-foreground hover:opacity-90"
                 >
-                  crisis.org.uk
+                  sthelena.org.uk
                   <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
                     <path d="M6 4h6v6M12 4 4 12" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -331,24 +332,21 @@ export default function CharityPage() {
               <div className="my-6 border-t border-border" />
 
               <p className="text-foreground/70">
-                We picked them deliberately, not at random: you&rsquo;re in
-                the business of helping people find homes, and Crisis
-                exists to help people who don&rsquo;t have one. It felt
-                like the right fit for this industry specifically.
+                We picked them deliberately, not at random: a smaller,
+                genuinely local hospice charity, not a national name picked
+                for recognition. Real, specific people benefit from every
+                donation, not a general fund.
               </p>
               <p className="mt-4 text-foreground/70">
-                Crisis helps people out of homelessness directly —
-                supporting them into safe, affordable housing, connecting
-                them with employment opportunities, and helping them access
-                the benefits and healthcare they&rsquo;re often shut out of
-                without a fixed address. They run Skylight centres across
-                England, Scotland and Wales, working side by side with
-                thousands of people a year, and they campaign for the wider
-                changes needed to end homelessness altogether, not just
-                manage it.
+                St Helena Hospice provides specialist palliative and
+                end-of-life care, both at their Colchester hospice and in
+                people&rsquo;s own homes, plus bereavement support for
+                adults, children and young people. Only around a fifth of
+                their funding comes from the NHS — the rest comes from
+                donations, fundraising, and their shops.
               </p>
             </div>
-          </Reveal>
+          </ScaleReveal>
 
           <Reveal delay={150}>
             <p className="mx-auto mt-6 max-w-2xl text-sm text-foreground/60">
@@ -364,24 +362,26 @@ export default function CharityPage() {
 
       <div id="how-it-works" className="px-6 py-24">
         <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <div className="max-w-2xl">
-              <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-                How it actually works
-              </p>
+          <div className="max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+              How it actually works
+            </p>
+            <ClipReveal>
               <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
                 Four steps. No approval process.
               </h2>
-            </div>
-          </Reveal>
+            </ClipReveal>
+          </div>
 
           <div className="mt-12 space-y-4">
             {steps.map((step, i) => (
               <Reveal key={step.title} delay={i * 60}>
                 <div className="flex flex-wrap gap-5 rounded-2xl border border-border bg-background p-6 sm:flex-nowrap sm:items-start">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 font-heading text-sm text-accent-text">
-                    {i + 1}
-                  </span>
+                  <ScaleReveal delay={i * 60} className="shrink-0">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent/15 font-heading text-sm text-accent-text">
+                      {i + 1}
+                    </span>
+                  </ScaleReveal>
                   <div>
                     <p className="font-medium text-foreground">{step.title}</p>
                     <p className="mt-1 text-sm text-foreground/65">{step.text}</p>
@@ -403,14 +403,14 @@ export default function CharityPage() {
 
       <div className="bg-ink px-6 py-24 text-ink-foreground">
         <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-ink-foreground/50">
-              The promise for the future
-            </p>
+          <p className="text-xs font-medium uppercase tracking-wide text-ink-foreground/50">
+            The promise for the future
+          </p>
+          <ClipReveal>
             <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
               We don&rsquo;t donate anything ourselves. Not yet.
             </h2>
-          </Reveal>
+          </ClipReveal>
 
           <div className="mt-8 space-y-5 text-ink-foreground/70">
             <Reveal delay={80}>
@@ -422,7 +422,7 @@ export default function CharityPage() {
                 we&rsquo;ve built this whole business to avoid.
               </p>
             </Reveal>
-            <Reveal delay={140}>
+            <ScaleReveal delay={140} from="scale-95">
               <div className="rounded-2xl border border-ink-foreground/15 bg-ink-foreground/5 p-6">
                 <p className="font-medium text-ink-foreground">
                   So here&rsquo;s the actual promise: once Reyse is
@@ -430,7 +430,7 @@ export default function CharityPage() {
                   profit to charity, on an ongoing basis.
                 </p>
               </div>
-            </Reveal>
+            </ScaleReveal>
             <Reveal delay={200}>
               <p>
                 We&rsquo;re not going to put a specific number, a start
@@ -453,11 +453,11 @@ export default function CharityPage() {
 
       <div id="faq" className="bg-panel px-6 py-24">
         <div className="mx-auto max-w-3xl">
-          <Reveal>
+          <ClipReveal>
             <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
               Common questions
             </h2>
-          </Reveal>
+          </ClipReveal>
           <div className="mt-10 divide-y divide-border">
             {faqs.map((faq, i) => (
               <Reveal key={faq.question} delay={i * 40}>
@@ -481,29 +481,6 @@ export default function CharityPage() {
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="px-6 py-24">
-        <Reveal>
-          <div className="mx-auto max-w-xl rounded-2xl border border-border bg-panel p-10 text-center">
-            <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              We&rsquo;re asking you to trust us before we&rsquo;ve earned
-              a track record.
-            </h2>
-            <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/65">
-              We know that&rsquo;s a genuine risk on your side. This is our
-              way of making that trade a little fairer — you don&rsquo;t
-              pay us a penny, and something good happens in the world
-              either way.
-            </p>
-            <Link
-              href="/get-started"
-              className="mt-7 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Get started
-            </Link>
-          </div>
-        </Reveal>
       </div>
     </main>
   );
