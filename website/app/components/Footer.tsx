@@ -21,12 +21,8 @@ const companyLinks = [
   { label: "Guarantees", href: "/guarantees" },
   { label: "Charity", href: "/charity" },
   { label: "Contact", href: "/get-started" },
-];
-
-const getStartedLinks = [
-  { label: "Get started", href: "/get-started" },
-  { label: "Take the quiz", href: "/quiz" },
-  { label: "Contact us", href: "/get-started" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
 ];
 
 const socialLinks = [
@@ -96,8 +92,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-border bg-panel">
       <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-4 lg:grid-cols-5 lg:gap-x-10">
-          <div className="col-span-2 sm:col-span-4 lg:col-span-1">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-3 lg:grid-cols-4 lg:gap-x-10">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5">
               <VennMark className="h-6 w-6" />
               <span className="font-heading text-2xl tracking-tight text-foreground">
@@ -120,24 +116,21 @@ export default function Footer() {
               })),
             ]}
           />
-          <FooterColumn title="Company" links={companyLinks} />
-          <FooterColumn title="Get started" links={getStartedLinks} />
-        </div>
-      </div>
-      <div className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-6 pt-6 text-xs text-foreground/65">
-          <p>
-            Statistics cited across this site are industry estimates and
-            composite figures drawn from published research and Reyse&rsquo;s
-            own work, not single-study citations — treat them as
-            directional, not exact.
-          </p>
-        </div>
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-10 text-sm text-foreground/65 sm:flex-row sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} Reyse. All rights reserved.</p>
-
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-4">
+          <div>
+            <p className="text-sm font-medium text-foreground/50">Company</p>
+            <ul className="mt-5 flex flex-col gap-3.5">
+              {companyLinks.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-base text-foreground/70 hover:text-foreground">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <CookieSettingsLink className="text-base text-foreground/70 hover:text-foreground" />
+              </li>
+            </ul>
+            <div className="mt-5 flex items-center gap-4">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
@@ -153,14 +146,12 @@ export default function Footer() {
                 </a>
               ))}
             </div>
-            <CookieSettingsLink />
-            <Link href="/privacy" className="hover:text-foreground">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-foreground">
-              Terms of Service
-            </Link>
           </div>
+        </div>
+      </div>
+      <div className="border-t border-border">
+        <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-foreground/65">
+          <p>&copy; {new Date().getFullYear()} Reyse. All rights reserved.</p>
         </div>
       </div>
     </footer>

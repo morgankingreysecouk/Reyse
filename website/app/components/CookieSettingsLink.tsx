@@ -2,9 +2,9 @@
 
 import { openPreferences } from "../lib/consent";
 
-export default function CookieSettingsLink() {
+export default function CookieSettingsLink({ className = "hover:text-foreground" }: { className?: string }) {
   return (
-    <button type="button" onClick={openPreferences} className="hover:text-foreground">
+    <button type="button" onClick={openPreferences} className={className}>
       Cookie settings
     </button>
   );

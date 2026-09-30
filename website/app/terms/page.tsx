@@ -129,6 +129,10 @@ const sections: { heading: string; body: string | LegalBlock[] }[] = [
         type: "p",
         text: "Where we've made a specific, structured guarantee with its own stated remedy (set out in full on our Guarantees page), that guarantee applies as written and takes priority over the general disclaimer above, but only for exactly what it promises. Nothing on that page, or anywhere else, guarantees a specific ranking position, that you'll appear in every AI platform, or the size of any business outcome beyond what's explicitly and specifically stated.",
       },
+      {
+        type: "p",
+        text: "Statistics cited across the site are industry estimates and composite figures drawn from published research and our own work, not single-study citations — treat them as directional, not exact.",
+      },
     ],
   },
   {
