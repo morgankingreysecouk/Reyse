@@ -2,6 +2,7 @@ import Link from "next/link";
 import { products } from "../products/data";
 import CookieSettingsLink from "./CookieSettingsLink";
 import NewsletterSignup from "./NewsletterSignup";
+import VennMark from "./VennMark";
 
 const solutionsLinks = [
   { label: "The Full System", href: "/system", emphasis: true },
@@ -70,16 +71,16 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <p className="text-sm font-medium text-foreground">{title}</p>
-      <ul className="mt-4 flex flex-col gap-3">
+      <p className="text-sm font-medium text-foreground/50">{title}</p>
+      <ul className="mt-5 flex flex-col gap-3.5">
         {links.map((link) => (
           <li key={link.label}>
             <Link
               href={link.href}
               className={
                 link.emphasis
-                  ? "text-sm font-medium text-accent-text hover:text-foreground"
-                  : "text-sm text-foreground/60 hover:text-foreground"
+                  ? "text-base font-medium text-accent-text hover:text-foreground"
+                  : "text-base text-foreground/70 hover:text-foreground"
               }
             >
               {link.label}
@@ -93,15 +94,20 @@ function FooterColumn({
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border">
-      <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5">
-          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
-            <Link href="/" className="text-lg font-semibold tracking-tight">
-              Reyse
+    <footer className="border-t border-border bg-panel">
+      <div className="mx-auto max-w-6xl px-6 pb-16 pt-20">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-14 sm:grid-cols-4 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr] lg:gap-x-10">
+          <div className="col-span-2 sm:col-span-4 lg:col-span-1">
+            <Link href="/" className="flex items-center gap-3">
+              <VennMark className="h-9 w-9 sm:h-11 sm:w-11" />
+              <span className="font-heading text-5xl tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+                Reyse
+              </span>
             </Link>
-            <p className="mt-1 text-xs text-foreground/50">Get Found &amp; Stay Found</p>
-            <NewsletterSignup />
+            <p className="mt-4 text-sm text-foreground/50">Get Found &amp; Stay Found</p>
+            <div className="mt-8 max-w-xs">
+              <NewsletterSignup />
+            </div>
           </div>
           <FooterColumn title="Managed" links={solutionsLinks} />
           <FooterColumn
@@ -127,7 +133,7 @@ export default function Footer() {
             directional, not exact.
           </p>
         </div>
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-8 text-sm text-foreground/65 sm:flex-row sm:justify-between">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-10 text-sm text-foreground/65 sm:flex-row sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Reyse. All rights reserved.</p>
 
           <div className="flex items-center gap-6">
