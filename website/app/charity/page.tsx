@@ -86,9 +86,6 @@ export default function CharityPage() {
           }}
         />
         <div className="relative mx-auto max-w-2xl text-center">
-          <p className="mb-4 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium text-ink-foreground/70">
-            Charity
-          </p>
           <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
             We don&rsquo;t take your money. We ask you to give it to someone
             who needs it more.
