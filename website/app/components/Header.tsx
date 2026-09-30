@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
 import { products } from "../products/data";
 import MobileMenu from "./MobileMenu";
 import NavDropdown from "./NavDropdown";
@@ -125,36 +124,8 @@ const resourcesColumns: MenuItem[][] = splitColumns(
 );
 
 export default function Header() {
-  const [inFront, setInFront] = useState(true);
-  const lastScrollY = useRef(0);
-
-  useEffect(() => {
-    const socialProofThreshold = () => window.innerHeight * 0.85;
-
-    const onScroll = () => {
-      const y = window.scrollY;
-
-      if (y < socialProofThreshold()) {
-        setInFront(true);
-      } else if (y > lastScrollY.current) {
-        setInFront(false);
-      } else if (y < lastScrollY.current) {
-        setInFront(true);
-      }
-
-      lastScrollY.current = y;
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header
-      className={`fixed inset-x-0 top-0 border-b border-black/10 bg-background/70 backdrop-blur-md ${
-        inFront ? "z-20" : "z-0"
-      }`}
-    >
+    <header className="fixed inset-x-0 top-0 z-20 border-b border-black/10 bg-background/70 backdrop-blur-md">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
           <VennMark className="h-6 w-6" />
