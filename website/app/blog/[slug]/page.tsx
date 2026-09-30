@@ -46,18 +46,43 @@ export default async function BlogPost({
 
         <div className="mt-5 flex items-center gap-3 text-sm text-foreground/65">
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-[11px] font-semibold text-ink-foreground">
-            MK
+            {post.author ? post.author.slice(0, 2).toUpperCase() : "MK"}
           </span>
-          <span>Morgan King</span>
+          <span>{post.author ?? "Morgan King"}</span>
           <span aria-hidden>·</span>
           <span>{post.date}</span>
           <span aria-hidden>·</span>
           <span>{post.readingTime}</span>
         </div>
+        {post.author && (
+          <p className="mt-2 text-xs text-foreground/50">
+            Researched and written automatically, from the sources linked below — not hand-written by a person.
+          </p>
+        )}
 
         <div className="mt-10">
           <ArticleBody blocks={post.body} />
         </div>
+
+        {post.references && post.references.length > 0 && (
+          <div className="mt-10 border-t border-border pt-6">
+            <p className="text-sm font-medium text-foreground/65">Sources</p>
+            <ul className="mt-3 space-y-2">
+              {post.references.map((ref) => (
+                <li key={ref.url}>
+                  <a
+                    href={ref.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-accent-text hover:opacity-80"
+                  >
+                    {ref.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
           <h2 className="font-heading text-xl leading-[1.1] tracking-tight">

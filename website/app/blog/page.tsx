@@ -63,6 +63,18 @@ const icons: Record<string, (className: string) => React.ReactNode> = {
   ),
 };
 
+// Fallback for any post without a specific icon yet — every auto-generated
+// post, and any manual one added without a photo. A radar sweep, since
+// that's literally what the research tool is doing.
+const defaultIcon = (className: string) => (
+  <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
+    <circle cx="12" cy="12" r="8.5" />
+    <path d="M12 12 12 5.5A6.5 6.5 0 0 1 18.5 12Z" fill="currentColor" stroke="none" opacity="0.15" />
+    <path d="M12 12 4 12" strokeLinecap="round" />
+    <circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none" />
+  </svg>
+);
+
 function PostVisual({
   slug,
   iconSize,
@@ -87,7 +99,7 @@ function PostVisual({
   return (
     <div className={`flex ${aspect} items-center justify-center rounded-2xl bg-panel`}>
       <span className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text" style={{ width: "2.6em", height: "2.6em" }}>
-        {icons[slug]?.(iconSize)}
+        {(icons[slug] ?? defaultIcon)(iconSize)}
       </span>
     </div>
   );
