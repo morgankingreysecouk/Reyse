@@ -77,16 +77,20 @@ const defaultIcon = (className: string) => (
 
 function PostVisual({
   slug,
+  image,
   iconSize,
   aspect,
   sizes,
 }: {
   slug: string;
+  image?: string;
   iconSize: string;
   aspect: string;
   sizes: string;
 }) {
-  const src = images[slug];
+  // Auto-generated posts carry their own photo straight on the post
+  // object; the hand-written posts still use the slug-keyed map below.
+  const src = image ?? images[slug];
 
   if (src) {
     return (
@@ -132,6 +136,7 @@ export default function BlogIndex() {
             >
               <PostVisual
                 slug={featured.slug}
+                image={featured.image}
                 iconSize="h-9 w-9"
                 aspect="aspect-[16/9]"
                 sizes="(min-width: 1024px) 56vw, 100vw"
@@ -163,6 +168,7 @@ export default function BlogIndex() {
                 >
                   <PostVisual
                     slug={post.slug}
+                    image={post.image}
                     iconSize="h-6 w-6"
                     aspect="aspect-[16/10]"
                     sizes="(min-width: 1024px) 40vw, 100vw"
@@ -189,6 +195,7 @@ export default function BlogIndex() {
                 >
                   <PostVisual
                     slug={post.slug}
+                    image={post.image}
                     iconSize="h-5 w-5"
                     aspect="aspect-[4/3]"
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"

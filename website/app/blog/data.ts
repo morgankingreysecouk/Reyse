@@ -21,6 +21,10 @@ export type Post = {
   // the rest of the site holds itself to.
   author?: string;
   references?: Reference[];
+  // Set only on auto-generated posts whose photo generation succeeded —
+  // a public path under /images/blog, same convention as the manual
+  // posts' images map in page.tsx.
+  image?: string;
 };
 
 // The hand-written posts. Auto-generated ones are never added here —

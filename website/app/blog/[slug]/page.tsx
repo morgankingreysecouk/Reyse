@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ArticleBody from "../../components/ArticleBody";
@@ -58,6 +59,12 @@ export default async function BlogPost({
           <p className="mt-2 text-xs text-foreground/50">
             Researched and written automatically, from the sources linked below — not hand-written by a person.
           </p>
+        )}
+
+        {post.image && (
+          <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl bg-panel">
+            <Image src={post.image} alt="" fill sizes="(min-width: 768px) 672px, 100vw" className="object-cover" />
+          </div>
         )}
 
         <div className="mt-10">
