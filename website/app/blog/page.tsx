@@ -120,8 +120,8 @@ export default function BlogIndex() {
             What we&rsquo;re actually seeing.
           </h1>
           <p className="mt-5 text-lg text-foreground/70">
-            The same standard we hold client work to: concrete, checkable, and
-            useful whether or not you ever become a customer.
+            Honest updates on Google, AI search, and reviews — written from
+            client work, not speculation.
           </p>
         </div>
 
