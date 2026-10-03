@@ -10,209 +10,231 @@ export const metadata = pageMetadata({
   description: "Practical, specific writing on AI search, SEO, and reviews for estate and letting agents — not vague theory.",
 });
 
-// Content radar's own classification becomes the section a post lives in —
-// same pattern as a magazine-style index grouped into named categories
-// (Guides / Reviews / Answers, say) rather than one undifferentiated feed.
-// Order here is the order sections appear on the page.
 const TOPIC_LABELS: Record<NonNullable<Post["topic"]>, string> = {
   industry_news: "Industry news",
   seo_geo: "SEO & AI search",
 };
 
+// How many of the newest posts get pulled into "Most recent" before the
+// rest fall back to being organised by topic — otherwise that section
+// would quietly swallow the entire archive forever as more posts land.
+const RECENT_COUNT = 7;
+
 function groupByTopic(allPosts: Post[]): Map<NonNullable<Post["topic"]>, Post[]> {
   const groups = new Map<NonNullable<Post["topic"]>, Post[]>();
   for (const post of allPosts) {
-    // Absent only on a post written before this field existed — not a case
-    // that exists today now the old hand-written posts are gone, but kept
-    // as a safe fallback rather than letting such a post vanish silently.
     const topic = post.topic ?? "industry_news";
     groups.set(topic, [...(groups.get(topic) ?? []), post]);
   }
   return groups;
 }
 
-function PostRow({ post }: { post: Post }) {
-  return (
-    <Link
-      href={`/blog/${post.slug}`}
-      className="group flex flex-col gap-5 border-b border-border py-8 first:pt-0 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:gap-10"
-    >
-      <div>
-        <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-          {TOPIC_LABELS[post.topic ?? "industry_news"]}
-        </p>
-        <h3 className="mt-2 flex items-center gap-2 font-heading text-2xl leading-[1.2] tracking-tight transition group-hover:text-accent-text sm:text-3xl">
-          {post.title}
-          <svg
-            viewBox="0 0 16 16"
-            className="h-4 w-4 shrink-0 -translate-x-1 text-accent-text opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            aria-hidden="true"
-          >
-            <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </h3>
-        <p className="mt-3 max-w-xl text-sm text-foreground/65">{post.excerpt}</p>
-        <p className="mt-3 text-xs text-foreground/50">
-          {post.date} · {post.readingTime}
-        </p>
+// Above-the-fold content needs the hero's own mount-triggered entrance —
+// Reveal's scroll observer never fires for something already in view at
+// load, so it would just render fully visible with no animation at all.
+// Everything below the fold gets the normal scroll reveal instead.
+function CardReveal({
+  immediate,
+  delay,
+  children,
+}: {
+  immediate: boolean;
+  delay: number;
+  children: React.ReactNode;
+}) {
+  if (immediate) {
+    return (
+      <div className="animate-[hero-fade-in_0.6s_ease-out_backwards]" style={{ animationDelay: `${delay}ms` }}>
+        {children}
       </div>
-      {post.image && (
-        <div className="relative h-40 w-full shrink-0 overflow-hidden rounded-2xl sm:h-28 sm:w-48">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            sizes="(min-width: 640px) 192px, 100vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
-          />
-        </div>
-      )}
-    </Link>
-  );
+    );
+  }
+  return <Reveal delay={delay}>{children}</Reveal>;
 }
 
-function FeaturedPost({ post }: { post: Post }) {
+function PostVisual({ post, aspect, sizes }: { post: Post; aspect: string; sizes: string }) {
+  if (!post.image) {
+    return <div className={`${aspect} rounded-2xl bg-panel`} />;
+  }
   return (
-    <div className="animate-[hero-fade-in_0.7s_ease-out_backwards]" style={{ animationDelay: "600ms" }}>
-      <Link
-        href={`/blog/${post.slug}`}
-        className="group grid gap-8 rounded-3xl border border-border bg-panel p-8 sm:grid-cols-[1.1fr_1fr] sm:items-stretch sm:gap-10 sm:p-10"
-      >
-        <div className="flex flex-col justify-center">
-          <p className="text-xs font-medium uppercase tracking-wide text-accent-text">
-            Latest · {TOPIC_LABELS[post.topic ?? "industry_news"]}
-          </p>
-          <h2 className="mt-4 flex items-center gap-2 font-heading text-3xl leading-[1.1] tracking-tight transition group-hover:text-accent-text sm:text-4xl lg:text-[2.75rem]">
-            {post.title}
-            <svg
-              viewBox="0 0 16 16"
-              className="h-5 w-5 shrink-0 -translate-x-1 text-accent-text opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              aria-hidden="true"
-            >
-              <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </h2>
-          <p className="mt-4 max-w-md text-base text-foreground/70">{post.excerpt}</p>
-          <div className="mt-6 flex items-center gap-3 text-sm text-foreground/60">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-xs font-semibold text-ink-foreground">
-              {post.author ? post.author.slice(0, 2).toUpperCase() : "MK"}
-            </span>
-            <span>{post.author ?? "Morgan King"}</span>
-            <span aria-hidden>·</span>
-            <span>{post.date}</span>
-            <span aria-hidden>·</span>
-            <span>{post.readingTime}</span>
-          </div>
-        </div>
-        {post.image && (
-          <div className="relative h-56 overflow-hidden rounded-2xl sm:h-full sm:min-h-[280px]">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              sizes="(min-width: 640px) 50vw, 100vw"
-              priority
-              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-            />
-          </div>
-        )}
-      </Link>
+    <div className={`relative ${aspect} overflow-hidden rounded-2xl bg-panel`}>
+      <Image
+        src={post.image}
+        alt={post.title}
+        fill
+        sizes={sizes}
+        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+      />
     </div>
   );
 }
 
-function TopicSection({
-  topic,
-  posts: sectionPosts,
-  immediate = false,
-}: {
-  topic: NonNullable<Post["topic"]>;
-  posts: Post[];
-  // The first non-empty section sits right under the hero, which on any
-  // normal viewport height is still "above the fold" at mount — Reveal's
-  // scroll observer never fires for an element that's already in view, so
-  // it would just render fully visible with no animation at all. That
-  // section gets the hero's own mount-triggered entrance instead; only
-  // sections that genuinely start below the fold get the scroll reveal.
-  immediate?: boolean;
-}) {
-  if (sectionPosts.length === 0) return null;
+function BigCard({ post }: { post: Post }) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
+    >
+      <PostVisual post={post} aspect="aspect-[16/9]" sizes="(min-width: 1024px) 56vw, 100vw" />
+      <div className="flex flex-1 flex-col p-6">
+        <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+          {TOPIC_LABELS[post.topic ?? "industry_news"]}
+        </p>
+        <h3 className="mt-3 font-heading text-2xl leading-[1.2] tracking-tight transition group-hover:text-accent-text sm:text-3xl">
+          {post.title}
+        </h3>
+        <p className="mt-3 text-sm text-foreground/70">{post.excerpt}</p>
+        <p className="mt-auto pt-6 text-xs font-medium text-foreground/50">
+          {post.date} · {post.readingTime}
+        </p>
+      </div>
+    </Link>
+  );
+}
 
-  const heading = <h2 className="font-heading text-4xl tracking-tight sm:text-5xl">{TOPIC_LABELS[topic]}</h2>;
+function MediumCard({ post }: { post: Post }) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
+    >
+      <PostVisual post={post} aspect="aspect-[16/10]" sizes="(min-width: 1024px) 40vw, 100vw" />
+      <div className="flex flex-1 flex-col p-5">
+        <p className="text-xs font-medium text-foreground/50">{post.date}</p>
+        <h3 className="mt-2 font-heading text-lg leading-[1.2] tracking-tight transition group-hover:text-accent-text">
+          {post.title}
+        </h3>
+      </div>
+    </Link>
+  );
+}
+
+function SmallCard({ post }: { post: Post }) {
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
+    >
+      <PostVisual post={post} aspect="aspect-[4/3]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
+      <div className="p-5">
+        <p className="text-xs font-medium text-foreground/50">{post.date}</p>
+        <h3 className="mt-2 font-heading text-base leading-[1.25] tracking-tight transition group-hover:text-accent-text">
+          {post.title}
+        </h3>
+      </div>
+    </Link>
+  );
+}
+
+// Deliberately varied sizes rather than a uniform grid — one large lead
+// card, up to two medium ones beside it, the rest smaller below. Degrades
+// gracefully: with just one post, it's only the big card.
+function VariedPostGrid({ posts: groupPosts, immediate }: { posts: Post[]; immediate: boolean }) {
+  const [featured, second, third, ...rest] = groupPosts;
+  const sideCards = [second, third].filter((p): p is Post => Boolean(p));
 
   return (
-    <section className="mt-20">
-      {immediate ? (
-        <div className="animate-[hero-fade-in_0.6s_ease-out_backwards]" style={{ animationDelay: "780ms" }}>
-          {heading}
-        </div>
-      ) : (
-        <Reveal>{heading}</Reveal>
-      )}
-      <div className="mt-6 border-t border-border">
-        {sectionPosts.map((post, i) =>
-          immediate ? (
-            <div
-              key={post.slug}
-              className="animate-[hero-fade-in_0.6s_ease-out_backwards]"
-              style={{ animationDelay: `${950 + Math.min(i, 4) * 120}ms` }}
-            >
-              <PostRow post={post} />
-            </div>
-          ) : (
-            <Reveal key={post.slug} delay={Math.min(i, 4) * 90}>
-              <PostRow post={post} />
-            </Reveal>
-          ),
+    <div>
+      <div className={`grid gap-6 ${sideCards.length > 0 ? "lg:grid-cols-[1.4fr_1fr]" : ""}`}>
+        <CardReveal immediate={immediate} delay={0}>
+          <BigCard post={featured} />
+        </CardReveal>
+        {sideCards.length > 0 && (
+          <div className="flex flex-col gap-6">
+            {sideCards.map((post, i) => (
+              <CardReveal key={post.slug} immediate={immediate} delay={120 + i * 120}>
+                <MediumCard post={post} />
+              </CardReveal>
+            ))}
+          </div>
         )}
+      </div>
+      {rest.length > 0 && (
+        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {rest.map((post, i) => (
+            <CardReveal key={post.slug} immediate={immediate} delay={360 + Math.min(i, 4) * 80}>
+              <SmallCard post={post} />
+            </CardReveal>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PostSection({ label, posts: sectionPosts, immediate }: { label: string; posts: Post[]; immediate: boolean }) {
+  if (sectionPosts.length === 0) return null;
+  return (
+    <section className="mt-16">
+      <CardReveal immediate={immediate} delay={0}>
+        <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">{label}</p>
+      </CardReveal>
+      <div className="mt-5">
+        <VariedPostGrid posts={sectionPosts} immediate={immediate} />
       </div>
     </section>
   );
 }
 
 export default function BlogIndex() {
-  // Posts are already sorted newest-first — the latest one gets the large
-  // featured treatment up top, and drops out of its topic section below so
-  // it isn't shown twice in a row.
-  const [featured, ...rest] = posts;
-  const groups = groupByTopic(rest);
+  const latest = posts[0];
+  const recentPosts = posts.slice(0, RECENT_COUNT);
+  const groups = groupByTopic(posts.slice(RECENT_COUNT));
+
+  const sections: { label: string; posts: Post[] }[] = [
+    { label: "Most recent", posts: recentPosts },
+    ...(Object.keys(TOPIC_LABELS) as NonNullable<Post["topic"]>[]).map((topic) => ({
+      label: TOPIC_LABELS[topic],
+      posts: groups.get(topic) ?? [],
+    })),
+  ];
 
   return (
-    <main className="flex-1 px-6 pb-24 pt-40">
-      <div className="mx-auto max-w-3xl text-center">
+    <main className="flex-1 px-6 pb-20 pt-40">
+      <div className="mx-auto max-w-4xl text-center">
         <p className="animate-[hero-fade-in_0.5s_ease-out_backwards] text-xs font-medium uppercase tracking-wide text-foreground/50">
           Blog
         </p>
-        <h1 className="mt-4 font-heading text-4xl leading-[1.15] tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="mt-4 font-heading text-5xl leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
           <RevealWords text="What we're actually seeing." startDelay={80} />
         </h1>
-        <p
-          className="mx-auto mt-6 max-w-xl animate-[hero-fade-in_0.6s_ease-out_backwards] text-lg text-foreground/70"
-          style={{ animationDelay: "450ms" }}
-        >
-          Honest updates on Google, AI search, and reviews — written from
-          client work, not speculation.
-        </p>
       </div>
 
-      <div className="mx-auto mt-16 max-w-5xl">{featured && <FeaturedPost post={featured} />}</div>
+      {latest && (
+        <div
+          className="mx-auto mt-12 max-w-4xl animate-[hero-fade-in_0.6s_ease-out_backwards] rounded-3xl border border-accent/25 bg-accent/10 px-6 py-8 sm:flex sm:items-center sm:justify-between sm:gap-10 sm:px-10 sm:py-10"
+          style={{ animationDelay: "450ms" }}
+        >
+          <p className="max-w-xl text-lg text-foreground/70">
+            Honest updates on Google, AI search, and reviews — written from
+            client work, not speculation.
+          </p>
+          {latest.image && (
+            <Link
+              href={`/blog/${latest.slug}`}
+              className="group mt-6 flex shrink-0 items-center gap-3 sm:mt-0"
+            >
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-20">
+                <Image
+                  src={latest.image}
+                  alt={latest.title}
+                  fill
+                  sizes="80px"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
+                />
+              </div>
+              <span className="max-w-[9rem] text-xs font-medium text-foreground/60 transition group-hover:text-accent-text">
+                Latest: {latest.title}
+              </span>
+            </Link>
+          )}
+        </div>
+      )}
 
-      <div className="mx-auto max-w-4xl">
-        {(() => {
-          let firstSeen = false;
-          return (Object.keys(TOPIC_LABELS) as NonNullable<Post["topic"]>[]).map((topic) => {
-            const sectionPosts = groups.get(topic) ?? [];
-            const immediate = !firstSeen && sectionPosts.length > 0;
-            if (immediate) firstSeen = true;
-            return <TopicSection key={topic} topic={topic} posts={sectionPosts} immediate={immediate} />;
-          });
-        })()}
+      <div className="mx-auto max-w-6xl">
+        {sections.map((section, i) => (
+          <PostSection key={section.label} label={section.label} posts={section.posts} immediate={i === 0} />
+        ))}
       </div>
     </main>
   );
