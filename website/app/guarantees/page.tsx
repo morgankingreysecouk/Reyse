@@ -192,14 +192,14 @@ export default function GuaranteesPage() {
             </Reveal>
           </div>
 
-          {/* The founder beside his own signed note — sticks alongside it
-              as it scrolls, rather than leaving a gap beneath one photo. */}
+          {/* Sticks alongside the founder's note as it scrolls, rather
+              than leaving a gap beneath a column that's just one photo. */}
           <div className="lg:sticky lg:top-28">
             <ClipReveal delay={100}>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-panel">
                 <Image
-                  src="/images/morgan-king.png"
-                  alt="Morgan King, Founder of Reyse"
+                  src="/images/guarantees-desk.webp"
+                  alt="A sunlit desk with an open notebook, a fountain pen, house keys and a cup of coffee"
                   fill
                   sizes="(min-width: 1024px) 440px, 100vw"
                   loading="eager"
