@@ -13,13 +13,6 @@ export const metadata: Metadata = pageMetadata({
   description: "Eleven specific, measurable guarantees — each with a real, enforceable cost to us if we don't meet it. Not vague reassurance you'd have to argue us into honouring.",
 });
 
-const controllables = [
-  "How fast we work",
-  "How visible you become",
-  "How transparent we are",
-  "How we behave when something goes wrong",
-];
-
 const claimSteps = [
   {
     title: "You don't have to catch us out.",
@@ -199,12 +192,14 @@ export default function GuaranteesPage() {
             </Reveal>
           </div>
 
-          <div className="space-y-6">
+          {/* The founder beside his own signed note — sticks alongside it
+              as it scrolls, rather than leaving a gap beneath one photo. */}
+          <div className="lg:sticky lg:top-28">
             <ClipReveal delay={100}>
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-panel">
                 <Image
-                  src="/images/guarantees-handshake.webp"
-                  alt="A handshake, symbolising a commitment kept"
+                  src="/images/morgan-king.png"
+                  alt="Morgan King, Founder of Reyse"
                   fill
                   sizes="(min-width: 1024px) 440px, 100vw"
                   loading="eager"
@@ -212,53 +207,6 @@ export default function GuaranteesPage() {
                 />
               </div>
             </ClipReveal>
-            <p className="-mt-3 text-center text-xs text-foreground/50">
-              A symbolic image, not an actual client.
-            </p>
-
-            <Reveal delay={150}>
-              <div className="rounded-3xl border border-border bg-panel p-8">
-                <div className="flex items-start gap-3 opacity-60">
-                  <span
-                    aria-hidden
-                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-foreground/30 text-foreground/50"
-                  >
-                    <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M4 4l8 8M12 4l-8 8" strokeLinecap="round" />
-                    </svg>
-                  </span>
-                  <div>
-                    <p className="text-sm font-medium text-foreground line-through decoration-foreground/40">
-                      A #1 ranking, guaranteed
-                    </p>
-                    <p className="mt-0.5 text-xs text-foreground/60">
-                      Nobody can honestly promise this. Not us, not anyone.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="my-6 border-t border-dashed border-border" />
-
-                <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-                  What we guarantee instead
-                </p>
-                <div className="mt-4 space-y-3">
-                  {controllables.map((item) => (
-                    <div key={item} className="flex items-start gap-3">
-                      <span
-                        aria-hidden
-                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/15 text-accent-text"
-                      >
-                        <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5">
-                          <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
-                      <p className="text-sm font-medium text-foreground">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
           </div>
         </div>
       </div>
