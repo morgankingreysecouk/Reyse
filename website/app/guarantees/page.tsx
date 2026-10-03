@@ -10,29 +10,30 @@ import { guarantees } from "./data";
 
 export const metadata: Metadata = pageMetadata({
   title: "Guarantees",
-  description: "Eleven specific, measurable guarantees — each with a real, enforceable cost to us if we don't meet it. Not vague reassurance you'd have to argue us into honouring.",
+  description:
+    "Eleven specific, measurable guarantees, each with a real cost to us if we miss it. Not vague reassurance you'd have to argue us into honouring.",
 });
 
 const claimSteps = [
   {
     title: "You don't have to catch us out.",
-    text: "We track our own delivery against every guarantee on this page, and flag a miss to you the moment it happens — before you'd even need to ask.",
+    text: "We track our own work against every guarantee on this page. If we miss one, we tell you as soon as we know, before you'd need to ask.",
   },
   {
     title: "If you spot it first, that's fine too.",
-    text: "No formal claims process, no form, no waiting period. WhatsApp, email, or a call — whichever you'd normally use — and say which guarantee you think we've missed.",
+    text: "There's no claims form and no waiting period. Message, email or call us, whichever you'd normally do, and tell us which guarantee you think we've missed.",
   },
   {
     title: "We confirm it within 1 working day.",
-    text: "If it's genuinely missed, we say so immediately and tell you exactly what happens next and when.",
+    text: "If we've missed it, we say so straight away and tell you exactly what happens next, and when.",
   },
   {
-    title: "Actioned within 5 working days of confirmation.",
-    text: "A payment, a donation, a free month, a booked photography shoot — whichever applies to that guarantee.",
+    title: "Put right within 5 working days.",
+    text: "Whether it's a payment, an ad budget, a photo shoot or a donation. Some are quicker: a missed weekly update is paid the same day.",
   },
   {
-    title: "Nothing difficult required from you.",
-    text: "Most only ask that you gave us honest information at onboarding and reasonable access to what we need. We'll always say plainly if a guarantee depends on something from you.",
+    title: "Nothing difficult needed from you.",
+    text: "Most guarantees only need honest figures from you at the start and the access we ask for. If one depends on something from you, its terms say so.",
   },
 ];
 
@@ -40,29 +41,43 @@ const faqs = [
   {
     question: "Do I need to do anything to claim a guarantee?",
     answer:
-      "Usually no. We track our own delivery against every guarantee on this page and flag a miss to you ourselves, before you'd need to notice or ask.",
+      "Usually not. We track our own work against every guarantee and tell you ourselves if we've missed one, before you'd need to notice.",
   },
   {
-    question: "What if I'm not sure whether a guarantee applies to my situation?",
-    answer: "Ask us. There's no downside to checking, and we'd rather explain a \"no\" clearly than have you wonder.",
-  },
-  {
-    question: "Can these guarantees change after I've signed up?",
+    question: "Who decides whether you've missed one?",
     answer:
-      "No. Whatever's live and published here when you join is what applies to you, for the full duration of your service with us — even if we later add or change what's offered to new clients.",
+      "We show you the evidence either way: the dates, the reports and the test results. If we see it differently, we'll talk it through, and if it's unclear, you get the benefit of the doubt.",
+  },
+  {
+    question: "What if I'm not sure whether a guarantee applies to me?",
+    answer: "Ask us. There's no downside to checking, and we'd rather explain a \"no\" properly than leave you guessing.",
+  },
+  {
+    question: "Do the guarantees apply on Done With You as well as Done For You?",
+    answer:
+      "Yes, all 11 apply on both. On Done With You, your developer makes the changes we hand over, so a few guarantees work slightly differently. Where that's the case, the terms explain how.",
+  },
+  {
+    question: "Do they still apply while Reyse is free?",
+    answer: "Yes. Anything a guarantee pays out comes from us, whether or not you're paying us anything.",
+  },
+  {
+    question: "Can the guarantees change after I've signed up?",
+    answer:
+      "Not for you. The guarantees published here when you join are the ones that apply for as long as you're with us. If we ever improve one, you get the better version too.",
+  },
+  {
+    question: "What if you miss more than one at the same time?",
+    answer: "Each one is paid in full on its own. Missing one never reduces what you're owed under another.",
   },
   {
     question: "Why won't you guarantee a #1 ranking?",
     answer:
-      "Because nobody honestly can — see \"The Honest Bit\" above. Anyone who guarantees a specific ranking position is either not telling you the truth, or setting you up for a guarantee they know they can quietly wriggle out of later.",
+      "Because nobody honestly can, and the honest bit at the top of this page explains why. Anyone who guarantees a ranking position is either not telling you the truth or offering a guarantee they know they'll find a way out of.",
   },
   {
-    question: "What happens if you miss more than one guarantee at the same time?",
-    answer: "Each one is honoured independently and in full — missing one doesn't reduce or cap what you're owed under another.",
-  },
-  {
-    question: "Do these guarantees cost extra, or are they part of the standard service?",
-    answer: "Part of the standard service, for every client, at no extra cost — not a premium add-on.",
+    question: "Do the guarantees cost extra?",
+    answer: "No. They're part of the service for every client.",
   },
 ];
 
@@ -107,14 +122,14 @@ export default function GuaranteesPage() {
         />
         <div className="relative mx-auto max-w-2xl text-center">
           <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            <RevealWords text="If we don’t deliver, it doesn’t cost you — it costs us." />
+            <RevealWords text="If we don’t deliver, it doesn’t cost you. It costs us." />
           </h1>
           <p
             className="mx-auto mt-6 max-w-xl animate-[hero-fade-in_0.6s_ease-out_backwards] text-lg text-ink-foreground/70"
             style={{ animationDelay: "450ms" }}
           >
             11 specific, measurable guarantees, each with a real cost to us if
-            we miss it — not a vague promise you&rsquo;d have to argue us into
+            we miss it. Not a vague promise you&rsquo;d have to argue us into
             honouring.
           </p>
           <div
@@ -155,21 +170,21 @@ export default function GuaranteesPage() {
                 <p>
                   As much as I&rsquo;d love to guarantee your agency will be
                   number one on Google and with AI, I can&rsquo;t.
-                  That&rsquo;s the single biggest problem with this entire
-                  industry — anyone who does promise it is lying to you, and
+                  That&rsquo;s the single biggest problem with this whole
+                  industry. Anyone who does promise it is lying to you, and
                   there&rsquo;s a real reason why.
                 </p>
                 <p>
                   Go through our free guides and you&rsquo;ll understand
                   exactly why: there are factors here that are genuinely
                   outside anyone&rsquo;s control, ours included. Google
-                  can — and regularly does — change how ranking works
-                  without warning. OpenAI, Google, and Perplexity can each
+                  can change how ranking works without warning, and
+                  regularly does. OpenAI, Google, and Perplexity can each
                   shift how they decide who to recommend, overnight, with no
                   notice to anyone. Your competitor could hire someone
                   tomorrow and outspend you. None of that is something we
-                  control. Nobody does — not us, not any agency claiming
-                  otherwise.
+                  control. Nobody does. Not us, and not any agency
+                  claiming otherwise.
                 </p>
                 <p>
                   What we do control is the work: watching these changes as
@@ -178,16 +193,15 @@ export default function GuaranteesPage() {
                   and doing everything within our power to keep you ahead of
                   the businesses that aren&rsquo;t paying this kind of
                   attention. That&rsquo;s the actual service. It&rsquo;s not
-                  a magic switch — it&rsquo;s consistent, competent, honest
-                  effort, applied specifically to your business, every
-                  single month.
+                  a magic switch. It&rsquo;s consistent, competent, honest
+                  effort, applied to your business, every single month.
                 </p>
                 <p className="font-medium text-foreground">
-                  If they still don&rsquo;t convince you how seriously we
-                  take this, I&rsquo;ll personally get on a call or come and
-                  meet you to prove it.
+                  If the guarantees below still don&rsquo;t convince you how
+                  seriously we take this, I&rsquo;ll personally get on a call
+                  or come and meet you to prove it.
                 </p>
-                <p className="text-sm text-foreground/50">— Morgan King, Founder</p>
+                <p className="text-sm text-foreground/50">Morgan King, Founder</p>
               </div>
             </Reveal>
           </div>
@@ -215,9 +229,9 @@ export default function GuaranteesPage() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <p className="font-heading text-2xl leading-[1.4] tracking-tight sm:text-3xl">
-              &ldquo;I&rsquo;ve built 11 specific guarantees — not around the
+              &ldquo;I&rsquo;ve built 11 specific guarantees. Not around the
               one outcome nobody can honestly promise, but around everything
-              that&rsquo;s actually within our control.&rdquo;
+              that&rsquo;s within our control.&rdquo;
             </p>
           </div>
         </Reveal>
@@ -352,7 +366,7 @@ export default function GuaranteesPage() {
             </ClipReveal>
             <Reveal delay={100}>
               <p className="mt-4 text-foreground/70">
-                We built these to be simple to use — a guarantee you have to
+                We built these to be simple to use. A guarantee you have to
                 fight for isn&rsquo;t really a guarantee.
               </p>
             </Reveal>

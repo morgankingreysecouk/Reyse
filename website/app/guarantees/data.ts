@@ -11,156 +11,159 @@ export const guarantees: Guarantee[] = [
   {
     title: "The Delivery Guarantee",
     promise:
-      "Crawler access, trust signals, and schema live within 5 working days of onboarding — or we pay you for every day we're late.",
+      "Your site opened up to AI tools and your business details coded in for Google and AI within 5 working days of onboarding. If we're late, we pay you for every extra working day.",
     context:
-      "This protects the very first thing you're trusting us with: that we'll actually start, on time, without you having to chase. A lot of agencies have been burned before by a marketing company that takes the deposit, has an \"onboarding call,\" and then goes quiet for three weeks. This guarantee makes that structurally impossible for us to get away with.",
+      "This covers the first thing you're trusting us with: that we'll start on time without you having to chase. Plenty of agents have paid a marketing company, sat through an onboarding call and then heard nothing for weeks. This makes that cost us money, so it doesn't happen.",
     example:
-      "Your onboarding session finishes on a Monday. By the following Monday — 5 working days later — AI crawler access should be confirmed, your trust signals should be live, and your schema markup should be implemented and verified. If it isn't, every additional working day it takes is a day you're paid for, automatically, without you having to raise it.",
+      "Your onboarding finishes on a Monday. By the following Monday, two things are done. AI tools like ChatGPT can read your website, which a lot of sites block by accident. And the behind-the-scenes code that tells Google and AI tools exactly who you are, what you do and where you are (known as schema and an llm.txt file) is in place. If either isn't done, we pay you for each working day it takes after that, without you having to ask.",
     measured:
-      "We confirm the exact onboarding completion date and time with you in writing (email or WhatsApp) so there's no ambiguity about when the 5-day clock starts.",
+      "We confirm the date and time your onboarding finished in writing, by email or WhatsApp, so there's no doubt about when the 5 days start.",
     terms: [
-      "The 5 working-day clock starts once the required access has been provided by you (confirmed and logged at onboarding), and access requests are kept to the genuine minimum needed — see Guarantee 7.",
-      "If a delay is caused by access not being provided on time by you, the clock pauses until it's resolved and restarts from there — this is the one thing that's outside our control here, and we'll tell you plainly if it applies.",
-      "\"Live\" means implemented and independently verifiable — we'll show you, not just tell you, using the same free tools covered in our DIY SEO guide, so you can check it yourself if you want to.",
-      "Payment for late days is calculated at a fair daily rate agreed at onboarding and paid directly, not offered as service credit unless you'd prefer that instead.",
+      "On Done For You, we make these changes ourselves and they're live within the 5 days. On Done With You, your developer installs them, so the guarantee is that you'll have every fix and every piece of code, ready to install, within the 5 days.",
+      "The 5 days start once you've given us the access we need, which we always keep to the minimum (see the No Overreach Guarantee). If we're waiting on access, the clock pauses until we have it, and we'll tell you if that's happening.",
+      "Some website platforms don't let anyone add this code directly, so changes have to go through the company that runs your site. If yours works that way, we'll tell you at onboarding and agree a realistic date with you before the clock starts.",
+      "Done means you can check it yourself. We'll show you how, using the same free tools we cover in our free SEO course, so you don't have to take our word for it.",
+      "We pay a set amount for each late working day, agreed with you in writing at onboarding. It's paid to you directly, not as a credit, unless you'd rather have a credit.",
     ],
   },
   {
     title: "The Growth Guarantee",
     promise:
-      "Give us an honest baseline — website and phone enquiries, tracked separately. No extra client within 3 months, and we fund a month of your Google or Meta ad spend.",
+      "Give us honest starting figures for your phone and website enquiries. If you haven't won at least one extra client within 3 months, we pay for a month of your Google or Meta ads.",
     context:
-      "The entire point of this service is a genuinely busier business, not more reports. We don't ask for a single vague \"enquiries\" number, because website enquiries and phone calls behave differently and get missed in different ways — so we track both, separately, from day one. If three months of real work hasn't brought in at least one extra client through either channel, we don't think you should be the one carrying that risk alone.",
+      "The whole point of this is a busier business, not nicer reports. Phone calls and website enquiries behave differently and get missed in different ways, so we track them separately from day one. If 3 months of work hasn't brought you at least one extra client, we don't think you should carry that risk on your own.",
     example:
-      "At onboarding, you tell us honestly how many enquiries you're currently getting each month, by channel: website forms and phone calls. We set up a dedicated tracked phone number and website enquiry tracking, so every genuine lead is counted properly rather than estimated. If, after a full 3 months, you haven't gained at least one additional client attributable to either channel, we fund the next month's Google or Meta ad spend on your behalf — real money, spent on your business, at no cost to you.",
+      "At onboarding, you tell us how many enquiries you get in a typical month, split between phone calls and your website, and roughly how many of those turn into new instructions. We set up a dedicated tracked phone number and tracking on your website's enquiry forms, so every real lead gets counted rather than guessed. If after 3 full months you haven't won at least one more instruction through those channels than your starting figures would predict, we pay for the next month of your Google or Meta advertising. That's real money spent on your business, at no cost to you.",
     measured:
-      "Against the two separate baseline figures captured honestly at onboarding — call volume through the dedicated number, and enquiries through the tracked website forms.",
+      "Against the starting figures you give us at onboarding: calls to the tracked number, enquiries through the tracked website forms, and the instructions that come from them.",
     terms: [
-      "Requires honest baseline figures for both channels at onboarding, and both forms of tracking to be live for the full 3-month window — if tracking wasn't live for the whole period, the guarantee resets once it is.",
-      "\"An extra client\" means a genuine new instruction or client won via a tracked website enquiry or the dedicated phone number within the 3-month period, over and above your stated baseline rate.",
-      "Ad spend funded under this guarantee is capped at a reasonable working budget for a business of your size, agreed with you in advance.",
-      "Applies once per client, tied to the original onboarding baseline. Reset your baseline later (a new branch, for example) and a new 3-month window applies to it.",
-      "Seasonal UK property market fluctuations are accounted for when we set expectations at onboarding, so a quiet winter month on its own doesn't automatically trigger this — we'll be upfront about what's seasonal and what's a genuine problem.",
+      "We set up the call and enquiry tracking this needs, on either plan, and it has to be running for the full 3 months. If it wasn't, the 3 months start again once it is.",
+      "The tracked number is set up so it doesn't clash with the phone number listed for you elsewhere online. Google checks that your details match everywhere, and we won't put that at risk just to measure a guarantee.",
+      "An extra client means a new instruction won through a tracked call or website enquiry during the 3 months, on top of what your starting figures would predict.",
+      "We agree the ad budget with you in advance, set at a sensible level for a business your size.",
+      "It applies once, based on your starting figures. If you set new starting figures later, for a new branch for example, a new 3 months applies to those.",
+      "The property market has quiet seasons. We'll agree at onboarding how those are allowed for, so the comparison is fair both ways.",
     ],
   },
   {
-    title: "The Release of Commitment Guarantee",
-    promise: "No contracts, ever. Leave anytime, no penalty.",
+    title: "The No Lock-In Guarantee",
+    promise: "No minimum term. Leave whenever you like, with no exit fee.",
     context:
-      "Most of the industry locks clients into 6- or 12-month contracts specifically because they know results take a while to show and they don't want you leaving before they've been paid enough to make it worthwhile. We think that's backwards — if the work is good, we shouldn't need a contract to keep you.",
+      "A lot of agencies tie you into a 6 or 12-month contract because results take time and they want paying either way. We'd rather keep you because the work is good. If it isn't, you shouldn't be stuck with us.",
     example:
-      "You sign up in March. In May, for any reason at all, you tell us you're done. There's no minimum term to sit out, no early-exit fee, no calls trying to talk you out of it. We wrap up cleanly and hand back full control of everything we set up.",
+      "You join in March. In May you decide it's not for you, for whatever reason. There's no minimum term to see out, no exit fee and no sales call trying to change your mind. We wrap things up properly and hand back full control of everything we set up.",
     terms: [
-      "Unconditional from day one — no minimum term, no notice-period penalty, no exit fee, for either the Foundation or Growth service.",
-      "On leaving, any accounts, access, and systems we set up on your behalf (Google Business Profile, schema, tracking numbers, etc.) remain fully yours and under your control — we don't hold anything hostage.",
-      "The one thing that does end is our active management — automated systems we built for you, like Profile Activity, will need someone else running them, or they'll simply stop.",
+      "This applies from day one, on both Done With You and Done For You. No minimum term, no notice-period penalty and no exit fee.",
+      "Anything we set up in your name stays yours when you leave, like your Google Business Profile and the code on your website. We don't hold anything back.",
+      "What stops is our work. Anything we were running for you, like the automated posts on your business profiles, will need someone else to run it, or it will stop.",
     ],
   },
   {
     title: "The Visibility Guarantee",
     promise:
-      "Not appearing in at least one AI platform's answer within 3 months? We pay for a professional photography shoot of your next listing.",
+      "If you're not showing up in at least one AI tool's answers within 3 months, we pay for a professional photo shoot of your next listing.",
     context:
-      "AI visibility is the newest and least understood part of this whole offer — and we want real skin in the game from us on it, not just a promise that \"it'll happen eventually.\"",
+      "AI search is the newest and least understood part of what we do, so it's where you most need us to have something on the line. We chose a photo shoot because it's something every agent pays for anyway, so it's worth real money to you.",
     example:
-      "At onboarding, we run a live diagnostic — asking ChatGPT, Google's AI Overviews, and Perplexity a set of realistic questions a genuine buyer or seller in your area would ask. We record exactly what comes back, including if nothing does. After 3 months of AI Trust Signals and Answer-Ready Content work, we re-run the exact same questions. If your business still isn't appearing in at least one of those AI answers, we book and pay for a professional photography shoot of your next listing to go live — on us.",
+      "At onboarding, we ask ChatGPT, Gemini, Copilot and Siri a set of questions a real buyer or seller in your area would ask, like \"Who's the best estate agent in [your town]?\" We record exactly what comes back, including if you're not mentioned at all. After 3 months, we ask the same questions again. If your agency still isn't named in any of the answers, we book and pay for a professional photographer for your next listing.",
     measured:
-      "Against the same fixed set of onboarding diagnostic questions, re-tested at the 3-month mark, so there's no room for cherry-picking a flattering question after the fact.",
+      "Against the same set of questions agreed at onboarding, asked again at 3 months, so nobody can pick a flattering question after the fact. AI tools give a slightly different answer each time, so we ask each question several times on each platform and save every answer for you to see.",
     terms: [
-      "Requires AI Trust Signals and Answer-Ready Content work (part of the core GEO service) to have actually been implemented — standard for every client, not an optional extra.",
-      "\"Appearing\" means your business being named, referenced, or clearly recommended in the AI's answer to at least one agreed onboarding question — not just your website being crawled somewhere in the background.",
-      "\"Next listing\" means the next new instruction you take on to market after the 3-month mark — so the shoot always applies to a genuinely upcoming listing, never one already photographed or under offer.",
-      "If a platform's own behaviour shifts mid-test in a way that affects the result, we'll re-run the test transparently and show you both results.",
+      "It depends on the AI groundwork being in place: the content rewrites and the code that helps AI understand your business. On Done For You, we do that ourselves. On Done With You, it depends on your developer installing what we've given you, and we'll check it's been done.",
+      "\"Showing up\" means your agency is named or clearly recommended in an answer to at least one of the agreed questions, not just that your website is being read somewhere in the background.",
+      "\"Next listing\" means the next property you take on after the 3 months, so the shoot is always for something new, not a property that's already been photographed or is under offer.",
+      "AI tools change how they work without warning. If one changes in the middle of a test in a way that affects the result, we'll run the test again and show you both sets of answers.",
     ],
   },
   {
     title: "The Transparency Guarantee",
-    promise: "A report every week for the first 8 weeks. Miss one, and we pay you £50 on the spot.",
+    promise: "A written update every week for your first 8 weeks. If we miss one, we pay you £50 that day.",
     context:
-      "The waiting period before results show is where trust usually breaks down with agencies — silence gets read as nothing happening. This guarantee makes that silence literally cost us money, so it's in our own interest never to let it happen.",
+      "The early weeks, before results show, are when trust usually breaks down. Silence starts to look like nothing's happening. This makes silence cost us money, so we have every reason to keep you updated.",
     example:
-      "Your onboarding finishes on a Friday. The following Friday, and every Friday for the next 8 weeks, you get a written update — plain English, what's been done, what's changing, what's coming next. If a Friday comes and goes with no report, £50 lands with you the same day, no need to ask.",
+      "Your onboarding finishes on a Friday. Every Friday for the next 8 weeks, you get a written update in plain English: what we've done, what's changed and what's next. If a Friday passes without one, we pay you £50 the same day, without you having to ask.",
     terms: [
-      "Applies to the first 8 weeks, where results are least visible and reassurance matters most. After week 8, reporting moves to a monthly cadence as part of ongoing Growth reporting.",
-      "A report counts as delivered once sent, in whichever format you chose at onboarding (WhatsApp summary, email, or dashboard update) — you don't need to have read it yet.",
-      "If a scheduled report day falls on a UK bank holiday, it's sent the next working day without triggering the guarantee — flagged to you in advance.",
+      "This covers your first 8 weeks, when results are hardest to see. After that, Done For You clients get a monthly report instead.",
+      "An update counts once it's sent, in whichever format you chose at onboarding: WhatsApp, email or your dashboard. You don't need to have read it.",
+      "If a Friday is a bank holiday, the update comes the next working day. We'll tell you in advance, and it doesn't count as a miss.",
     ],
   },
   {
     title: "The Charity Flip Guarantee",
     promise:
-      "Miss any milestone, and we make an additional donation to your chosen charity — on top of the one you're already getting from us.",
+      "Miss any guarantee and we also donate to the charity you chose when you joined, on top of whatever that guarantee already pays out.",
     context:
-      "Every client already has us donating to a charity of their choice as part of how we work. This guarantee means that if we fall short anywhere else on this page, there's a second, independent consequence that has nothing to do with money changing hands with you — it goes somewhere that actually matters.",
+      "You pick a charity when you join us. If we fall short on anything on this page, we donate to it. It's a second consequence for us, separate from what we pay you, and it goes to a cause you care about. While Reyse is free, it's the same charity you gave to when you joined, so this flips it round: this time, we're the ones giving.",
     example:
-      "If we miss the Delivery Guarantee's 5-day window, you're paid for the late days and we make an additional donation to the charity you nominated at onboarding — the two aren't a trade-off against each other, they both happen.",
+      "Say we miss the 5-day deadline in the Delivery Guarantee. You're paid for the late days, and we also make a donation to your charity. One doesn't replace the other. Both happen.",
     terms: [
-      "Stacks on top of whichever other guarantee was missed — never replaces it, never offered as a substitute for the primary remedy.",
-      "The charity is chosen by you at onboarding and stays fixed for the duration of the relationship.",
-      "The donation amount is fixed and disclosed to you at onboarding, so you know exactly what it is before you ever need it to apply.",
+      "It's always on top of the other guarantee's payout. It never replaces it.",
+      "You choose the charity when you join, and it stays the same while you're with us.",
+      "We tell you the donation amount at onboarding, so you know exactly what it is before it's ever needed.",
+      "You'll get proof of every donation we make.",
     ],
   },
   {
-    title: "The No-Overreach Guarantee",
-    promise: "Never more access than needed, always explained first.",
+    title: "The No Overreach Guarantee",
+    promise: "We only ask for the access we need, and we explain why before we ask.",
     context:
-      "Handing over admin logins to a company you've just met is one of the most uncomfortable parts of any onboarding — and one of the main reasons agencies delay getting started at all. This guarantee is about making sure that discomfort is never justified.",
+      "Handing your logins to a company you've just met is one of the most uncomfortable parts of starting with anyone new, and it's a big reason agents put off getting started. So we keep what we ask for to the minimum.",
     example:
-      "If a piece of work only needs read-only access to your Google Business Profile, that's what we ask for — not full admin rights \"just in case,\" and not access to your website's backend if the job doesn't touch it. Before we ask for anything, we tell you specifically what it's for and what we'll be able to do with it.",
+      "If we only need to see how your website is performing, we ask for view-only access to your Google Analytics, not full admin rights to everything just in case. And before we ask for any access at all, we tell you exactly what it's for and what it lets us do.",
     terms: [
-      "Applies throughout the entire relationship, not just at onboarding — if new work later genuinely requires new access, the same explain-first principle applies.",
-      "Access is reviewed and revoked on our end automatically once it's no longer needed for active work.",
-      "If you're ever unsure why we've asked for something, you can ask us to explain it again before granting it.",
+      "This applies for as long as you're with us. If new work needs new access later, we explain it first, the same way.",
+      "When we no longer need access for active work, we remove ourselves and let you know, so you can check.",
+      "If you're ever unsure why we've asked for something, ask us to explain it again before you give it.",
     ],
   },
   {
     title: "The No Surprise Changes Guarantee",
-    promise: "Nothing changes live on your site or profiles without your sign-off. Ever.",
+    promise: "Nothing we change goes live on your website or profiles until you've said yes.",
     context:
-      "You have to keep running your business while this work happens in the background — the last thing you need is to discover your website or Google profile looks different because we changed something without telling you.",
+      "You've got a business to run while this work happens in the background. The last thing you need is to find your website or Google profile looking different because we changed something without telling you.",
     example:
-      "If we recommend rewriting your homepage title tag for better SEO, we show you the exact proposed change first and get a yes before it goes live — not after.",
+      "Say we want to change the title your homepage shows in Google results, to help it rank. We show you the exact new wording first, and it only goes live once you've said yes.",
     terms: [
-      "Applies to every client-facing change: website content, schema, business profile details, listing descriptions, and anything else visible to the public.",
-      "The one explicit exception is anything you've specifically agreed at onboarding to be fully automated (the Profile Activity system, for example) — and even then, we talk you through exactly what it will post before it starts.",
-      "Sign-off can be as simple as a WhatsApp \"yes, go ahead\" — we're not asking you to fill in forms, just to actually see and approve it first.",
+      "This mainly matters on Done For You, where we make changes for you. It covers anything the public can see: your website's wording, the code behind it, your business profile details and your listing descriptions.",
+      "The one exception is anything you've agreed at onboarding to automate, like the regular posts on your business profiles. Even then, we show you what it will post before it starts.",
+      "Saying yes can be as simple as a WhatsApp message. No forms.",
     ],
   },
   {
     title: "The No Jargon Guarantee",
-    promise: "Every report explained in plain English. Every term explained, every time.",
+    promise: "Every report in plain English, with every technical term explained.",
     context:
-      "This industry runs on jargon that conveniently makes it hard for clients to check whether anything's actually happening. We built our free DIY guides specifically to strip that away, and this guarantee holds our own reporting to the same standard.",
+      "This industry hides behind jargon, which makes it hard to tell whether anything is being done. Our free courses are written to cut through that, and we hold our own reports to the same standard.",
     example:
-      "If a report mentions \"schema markup\" or \"canonicalization,\" it's explained in the same sentence, in plain language — not assumed knowledge, not something you have to Google to understand what you're paying for.",
+      "If a report mentions \"schema markup\" or \"canonical tags\", it explains what they are in the same sentence, in everyday language. You shouldn't need to look up a word to understand the work being done for you.",
     terms: [
-      "If you read a report and something's still unclear, tell us and we'll rewrite that section immediately, in whatever way actually makes sense to you — no limit on how many times you can ask.",
-      "Applies to every format we report in — written reports, dashboard summaries, and anything discussed on a call.",
+      "If anything in a report still isn't clear, tell us and we'll rewrite that part in whatever way makes sense to you, as many times as you need.",
+      "It applies to everything: written reports, dashboard summaries and anything we discuss on a call.",
     ],
   },
   {
     title: "The No Copy-Paste Strategy Guarantee",
-    promise: "No generic templates. Everything built specifically for your business.",
+    promise: "No generic templates. Everything is built for your business.",
     context:
-      "A huge amount of SEO work sold to small businesses is a templated checklist applied identically to a plumber, a dentist, and an estate agent, with the business name swapped in. Property has its own specific dynamics — portal duplication, listing turnover, local market data — that a generic strategy simply doesn't account for.",
+      "A lot of SEO sold to small businesses is the same checklist applied to a plumber, a dentist and an estate agent, with the name swapped. Property has its own quirks, like the same home appearing on several portals, stock that changes every week and local market data, and a generic plan doesn't allow for any of them.",
     example:
-      "Your property schema, your local area content, and your content audit are all built around your actual listings, your actual towns, and your actual competitors — not a generic \"local business SEO\" package repurposed from a different industry.",
+      "Your structured data, your local area pages and your content review are all based on your actual listings, your towns and your competitors, not a \"local business\" package borrowed from another industry.",
     terms: [
-      "Unconditional — structural to how the business is built, not a conditional promise that depends on circumstances.",
-      "If you ever believe something we've delivered looks templated rather than built for your business specifically, tell us and we'll show you exactly how it was built for you, or fix it if it genuinely wasn't.",
+      "This one has no conditions. It's how we work with everyone.",
+      "If anything we deliver ever looks templated to you, tell us. We'll show you how it was built for you, or redo it if it wasn't.",
     ],
   },
   {
     title: "The No Competitor Access Guarantee",
-    promise: "One agency per area, permanently. Your rival can never buy this.",
+    promise: "One agency per area. While you're with us, your competitors can't buy this.",
     context:
-      "This protects the value of everything else on this page — because none of it means much if your direct competitor down the road can access exactly the same advantage from us six months later.",
+      "Everything else on this page is worth less if the agency down the road can get exactly the same help from us six months later. This makes sure they can't.",
     example:
-      "If you're the exclusive Reyse client for your town, we will not take on a competing estate or letting agency in that same area for as long as you remain an active client — not for a trial, not for a one-off audit, not under a different name.",
+      "If you're our client in your town, we won't take on a competing estate or letting agency in the same area while you're with us. Not for a trial, not for a one-off audit, and not under a different name.",
     terms: [
-      "Applies for the duration of your active service with us.",
-      "If you leave (per the Release of Commitment Guarantee), your territory reopens after a reasonable notice period, rather than being held open indefinitely — we'll always tell you plainly if this is about to happen.",
-      "Territory boundaries are agreed explicitly with you at onboarding, based on the areas you actually operate and compete in, not an arbitrary postcode radius.",
+      "It lasts for as long as you're a client.",
+      "We agree your area with you at onboarding, based on where you actually operate and compete, rather than a radius drawn on a map.",
+      "If you leave, your area opens up again after a reasonable notice period, and we'll tell you before it does.",
     ],
   },
 ];
