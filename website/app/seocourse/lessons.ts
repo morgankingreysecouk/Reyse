@@ -1524,11 +1524,11 @@ export const lessons: Lesson[] = [
         condition: "Method 2 — Check directly in each dashboard",
         action: "confirms definitively whether you've already claimed it, rather than relying on what happens to show in search.",
         steps: [
-          "Go to bing.com/places and check whether your business is already listed under your account.",
+          "Go to bingplaces.com and check whether your business is already listed under your account.",
           "Go to businessconnect.apple.com and check the same.",
         ],
         links: [
-          { label: "Bing Places", href: "https://www.bing.com/places" },
+          { label: "Bing Places", href: "https://www.bingplaces.com" },
           { label: "Apple Business Connect", href: "https://businessconnect.apple.com" },
         ],
       },
@@ -1537,8 +1537,8 @@ export const lessons: Lesson[] = [
       {
         condition: "Not listed on Bing",
         action:
-          "claim it free at bing.com/places — Bing can often import your details directly from Google Business Profile, which speeds this up considerably.",
-        links: [{ label: "Bing Places", href: "https://www.bing.com/places" }],
+          "claim it free at bingplaces.com — Bing can often import your details directly from Google Business Profile, which speeds this up considerably.",
+        links: [{ label: "Bing Places", href: "https://www.bingplaces.com" }],
       },
       {
         condition: "Not listed on Apple Maps",
@@ -1795,7 +1795,7 @@ export const lessons: Lesson[] = [
         condition: "Not yet claimed on Bing or Apple Maps",
         action: "claim both today — free, and most competitors genuinely haven't yet, so the advantage is still there for the taking.",
         links: [
-          { label: "Bing Places", href: "https://www.bing.com/places" },
+          { label: "Bing Places", href: "https://www.bingplaces.com" },
           { label: "Apple Business Connect", href: "https://businessconnect.apple.com" },
         ],
       },

@@ -421,12 +421,12 @@ export const lessons: Lesson[] = [
       "Search your business name on Bing and check whether your Bing Places listing is claimed and shows reviews.",
       "Compare what's shown there to your Google profile — is it current, or clearly abandoned?",
     ],
-    diagnoseLink: { label: "Bing Places", href: "https://www.bing.com/places" },
+    diagnoseLink: { label: "Bing Places", href: "https://www.bingplaces.com" },
     fixBranches: [
       {
         condition: "If your Bing Places listing isn't claimed",
         action: "claim it — free, and often much less competitive than Google, since most agents genuinely haven't done this yet.",
-        links: [{ label: "Bing Places", href: "https://www.bing.com/places" }],
+        links: [{ label: "Bing Places", href: "https://www.bingplaces.com" }],
       },
       {
         condition: "If it's claimed but out of date",
