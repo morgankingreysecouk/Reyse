@@ -13,6 +13,9 @@ export type Post = {
   title: string;
   excerpt: string;
   date: string;
+  // Exact publish time — `date` is day-only, so several posts on the same
+  // day would otherwise sort in arbitrary (filename) order.
+  publishedAt?: string;
   readingTime: string;
   body: ContentBlock[];
   // Absent = the existing hand-written posts, authored by Morgan directly.
@@ -50,6 +53,10 @@ function loadGeneratedPosts(): Post[] {
     .map((file) => JSON.parse(fs.readFileSync(path.join(generatedPostsDir, file), "utf8")) as Post);
 }
 
+function publishedTime(post: Post): number {
+  return new Date(post.publishedAt ?? post.date).getTime();
+}
+
 export const posts: Post[] = [...manualPosts, ...loadGeneratedPosts()].sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  (a, b) => publishedTime(b) - publishedTime(a),
 );

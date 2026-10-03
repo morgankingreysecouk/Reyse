@@ -8,11 +8,7 @@ import Reveal from "../../components/Reveal";
 import RevealWords from "../../components/RevealWords";
 import { pageMetadata } from "../../lib/seo";
 import { posts, type ContentBlock } from "../data";
-
-const TOPIC_LABELS: Record<string, string> = {
-  industry_news: "Industry news",
-  seo_geo: "SEO & AI search",
-};
+import { StackCard, topicLabel } from "../PostCards";
 
 function domainOf(url: string) {
   try {
@@ -72,7 +68,7 @@ export default async function BlogPost({
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-    datePublished: new Date(post.date).toISOString(),
+    datePublished: new Date(post.publishedAt ?? post.date).toISOString(),
     author: { "@type": "Organization", name: post.author ?? "Reyse" },
     publisher: { "@type": "Organization", name: "Reyse" },
     ...(post.image ? { image: `https://reyse.co.uk${post.image}` } : {}),
@@ -108,14 +104,12 @@ export default async function BlogPost({
             <span aria-hidden>←</span> All posts
           </Link>
 
-          {post.topic && (
-            <p
-              className="mt-10 animate-[hero-fade-in_0.5s_ease-out_backwards] text-xs font-medium uppercase tracking-wide text-accent"
-              style={{ animationDelay: "60ms" }}
-            >
-              {TOPIC_LABELS[post.topic] ?? post.topic}
-            </p>
-          )}
+          <p
+            className="mt-10 animate-[hero-fade-in_0.5s_ease-out_backwards] text-xs font-medium uppercase tracking-wide text-accent"
+            style={{ animationDelay: "60ms" }}
+          >
+            {topicLabel(post)}
+          </p>
 
           <h1 className="mt-4 max-w-4xl font-heading text-4xl leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
             <RevealWords text={post.title} startDelay={100} delayStep={30} />
@@ -219,38 +213,10 @@ export default async function BlogPost({
             <ClipReveal>
               <h2 className="font-heading text-3xl tracking-tight sm:text-4xl">Keep reading</h2>
             </ClipReveal>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {otherPosts.map((p, i) => (
                 <Reveal key={p.slug} delay={i * 100}>
-                  <Link
-                    href={`/blog/${p.slug}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink-foreground/15 bg-ink-foreground/5 transition hover:border-ink-foreground/30 hover:bg-ink-foreground/10"
-                  >
-                    <div className="relative aspect-[16/10] overflow-hidden bg-ink-foreground/10">
-                      {p.image && (
-                        <Image
-                          src={p.image}
-                          alt={p.title}
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
-                        />
-                      )}
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      {p.topic && (
-                        <p className="text-xs font-medium uppercase tracking-wide text-accent">
-                          {TOPIC_LABELS[p.topic] ?? p.topic}
-                        </p>
-                      )}
-                      <h3 className="mt-3 font-heading text-xl leading-[1.25] tracking-tight transition group-hover:text-accent">
-                        {p.title}
-                      </h3>
-                      <p className="mt-auto pt-5 text-xs text-ink-foreground/50">
-                        {p.date} · {p.readingTime}
-                      </p>
-                    </div>
-                  </Link>
+                  <StackCard post={p} size="md" tone="dark" />
                 </Reveal>
               ))}
             </div>
