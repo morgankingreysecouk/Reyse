@@ -213,7 +213,7 @@ export default function BlogIndex() {
   ];
 
   return (
-    <main className="flex-1 overflow-x-hidden pb-20 pt-40">
+    <main className="flex-1 overflow-x-hidden pb-36 pt-40">
       <div className="mx-auto max-w-4xl px-6 text-center">
         <p className="animate-[hero-fade-in_0.5s_ease-out_backwards] text-xs font-medium uppercase tracking-wide text-foreground/50">
           Blog
