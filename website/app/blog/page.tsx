@@ -74,6 +74,59 @@ function PostRow({ post }: { post: Post }) {
   );
 }
 
+function FeaturedPost({ post }: { post: Post }) {
+  return (
+    <div className="animate-[hero-fade-in_0.7s_ease-out_backwards]" style={{ animationDelay: "600ms" }}>
+      <Link
+        href={`/blog/${post.slug}`}
+        className="group grid gap-8 rounded-3xl border border-border bg-panel p-8 sm:grid-cols-[1.1fr_1fr] sm:items-stretch sm:gap-10 sm:p-10"
+      >
+        <div className="flex flex-col justify-center">
+          <p className="text-xs font-medium uppercase tracking-wide text-accent-text">
+            Latest · {TOPIC_LABELS[post.topic ?? "industry_news"]}
+          </p>
+          <h2 className="mt-4 flex items-center gap-2 font-heading text-3xl leading-[1.1] tracking-tight transition group-hover:text-accent-text sm:text-4xl lg:text-[2.75rem]">
+            {post.title}
+            <svg
+              viewBox="0 0 16 16"
+              className="h-5 w-5 shrink-0 -translate-x-1 text-accent-text opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden="true"
+            >
+              <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </h2>
+          <p className="mt-4 max-w-md text-base text-foreground/70">{post.excerpt}</p>
+          <div className="mt-6 flex items-center gap-3 text-sm text-foreground/60">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-xs font-semibold text-ink-foreground">
+              {post.author ? post.author.slice(0, 2).toUpperCase() : "MK"}
+            </span>
+            <span>{post.author ?? "Morgan King"}</span>
+            <span aria-hidden>·</span>
+            <span>{post.date}</span>
+            <span aria-hidden>·</span>
+            <span>{post.readingTime}</span>
+          </div>
+        </div>
+        {post.image && (
+          <div className="relative h-56 overflow-hidden rounded-2xl sm:h-full sm:min-h-[280px]">
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              sizes="(min-width: 640px) 50vw, 100vw"
+              priority
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+            />
+          </div>
+        )}
+      </Link>
+    </div>
+  );
+}
+
 function TopicSection({
   topic,
   posts: sectionPosts,
@@ -96,7 +149,7 @@ function TopicSection({
   return (
     <section className="mt-20">
       {immediate ? (
-        <div className="animate-[hero-fade-in_0.6s_ease-out_backwards]" style={{ animationDelay: "550ms" }}>
+        <div className="animate-[hero-fade-in_0.6s_ease-out_backwards]" style={{ animationDelay: "780ms" }}>
           {heading}
         </div>
       ) : (
@@ -108,7 +161,7 @@ function TopicSection({
             <div
               key={post.slug}
               className="animate-[hero-fade-in_0.6s_ease-out_backwards]"
-              style={{ animationDelay: `${700 + Math.min(i, 4) * 120}ms` }}
+              style={{ animationDelay: `${950 + Math.min(i, 4) * 120}ms` }}
             >
               <PostRow post={post} />
             </div>
@@ -124,7 +177,11 @@ function TopicSection({
 }
 
 export default function BlogIndex() {
-  const groups = groupByTopic(posts);
+  // Posts are already sorted newest-first — the latest one gets the large
+  // featured treatment up top, and drops out of its topic section below so
+  // it isn't shown twice in a row.
+  const [featured, ...rest] = posts;
+  const groups = groupByTopic(rest);
 
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
@@ -143,6 +200,8 @@ export default function BlogIndex() {
           client work, not speculation.
         </p>
       </div>
+
+      <div className="mx-auto mt-16 max-w-5xl">{featured && <FeaturedPost post={featured} />}</div>
 
       <div className="mx-auto max-w-4xl">
         {(() => {
