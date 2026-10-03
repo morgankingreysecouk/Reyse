@@ -153,7 +153,7 @@ function FeaturedBand({ post }: { post: Post }) {
               src={post.image}
               alt=""
               fill
-              priority
+              loading="eager"
               sizes="(min-width: 1024px) 44vw, 100vw"
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             />

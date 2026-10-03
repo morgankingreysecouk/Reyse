@@ -155,7 +155,7 @@ export default async function BlogPost({
               src={post.image}
               alt={post.title}
               fill
-              priority
+              loading="eager"
               sizes="(min-width: 1200px) 1152px, 100vw"
               className="object-cover"
             />

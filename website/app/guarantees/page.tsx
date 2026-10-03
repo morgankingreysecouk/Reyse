@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import ArticleToc from "../components/ArticleToc";
+import ClipReveal from "../components/ClipReveal";
 import Reveal from "../components/Reveal";
+import RevealWords from "../components/RevealWords";
 import { pageMetadata } from "../lib/seo";
 import { slugify } from "../lib/slugify";
 import { guarantees } from "./data";
@@ -84,6 +86,13 @@ const faqJsonLd = {
   })),
 };
 
+// "The Delivery Guarantee" → "Delivery": in a list of eleven, repeating
+// "The … Guarantee" on every line is just noise.
+const tocHeadings = guarantees.map((g) => ({
+  id: slugify(g.title),
+  text: g.title.replace(/^The /, "").replace(/ Guarantee$/, ""),
+}));
+
 export default function GuaranteesPage() {
   return (
     <main className="flex-1">
@@ -104,20 +113,21 @@ export default function GuaranteesPage() {
           }}
         />
         <div className="relative mx-auto max-w-2xl text-center">
-          <p className="mb-4 inline-block rounded-full border border-ink-foreground/20 px-3 py-1 text-xs font-medium text-ink-foreground/70">
-            Guarantees
-          </p>
           <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            If we don&rsquo;t deliver, it doesn&rsquo;t cost you — it costs us.
+            <RevealWords text="If we don’t deliver, it doesn’t cost you — it costs us." />
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-ink-foreground/70">
-            Still not convinced? We&rsquo;re confident enough in what we
-            deliver that we&rsquo;ve built 11 specific, measurable guarantees
-            around it — each with a real, enforceable cost to us if we
-            don&rsquo;t meet it, not a vague promise you&rsquo;d have to
-            argue us into honouring.
+          <p
+            className="mx-auto mt-6 max-w-xl animate-[hero-fade-in_0.6s_ease-out_backwards] text-lg text-ink-foreground/70"
+            style={{ animationDelay: "450ms" }}
+          >
+            11 specific, measurable guarantees, each with a real cost to us if
+            we miss it — not a vague promise you&rsquo;d have to argue us into
+            honouring.
           </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-4">
+          <div
+            className="mt-9 flex animate-[hero-fade-in_0.6s_ease-out_backwards] flex-wrap justify-center gap-4"
+            style={{ animationDelay: "600ms" }}
+          >
             <a
               href="#the-11"
               className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
@@ -134,35 +144,21 @@ export default function GuaranteesPage() {
         </div>
       </div>
 
-      <div id="honest-bit" className="px-6 py-24">
-        <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-              The honest bit
-            </p>
-            <h2 className="mt-3 max-w-2xl font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
-              Why we won&rsquo;t promise you #1.
-            </h2>
-          </Reveal>
-
-          <Reveal delay={60}>
-            <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border">
-              <Image
-                src="/images/guarantees-handshake.webp"
-                alt="A handshake, symbolising a commitment kept"
-                fill
-                sizes="(min-width: 1024px) 1024px, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <p className="mt-3 text-center text-xs text-foreground/50">
-              A symbolic image, not an actual client.
-            </p>
-          </Reveal>
-
-          <div className="mt-10 grid items-start gap-10 sm:grid-cols-2 sm:gap-16">
+      <div id="honest-bit" className="scroll-mt-20 px-6 py-24">
+        <div className="mx-auto grid max-w-5xl items-start gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
+          <div>
             <Reveal>
-              <div className="space-y-5 text-foreground/70">
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                The honest bit
+              </p>
+            </Reveal>
+            <ClipReveal>
+              <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
+                Why we won&rsquo;t promise you #1.
+              </h2>
+            </ClipReveal>
+            <Reveal delay={100}>
+              <div className="mt-8 space-y-5 text-foreground/70">
                 <p>
                   As much as I&rsquo;d love to guarantee your agency will be
                   number one on Google and with AI, I can&rsquo;t.
@@ -201,8 +197,26 @@ export default function GuaranteesPage() {
                 <p className="text-sm text-foreground/50">— Morgan King, Founder</p>
               </div>
             </Reveal>
+          </div>
 
-            <Reveal delay={100}>
+          <div className="space-y-6">
+            <ClipReveal delay={100}>
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border bg-panel">
+                <Image
+                  src="/images/guarantees-handshake.webp"
+                  alt="A handshake, symbolising a commitment kept"
+                  fill
+                  sizes="(min-width: 1024px) 440px, 100vw"
+                  loading="eager"
+                  className="object-cover"
+                />
+              </div>
+            </ClipReveal>
+            <p className="-mt-3 text-center text-xs text-foreground/50">
+              A symbolic image, not an actual client.
+            </p>
+
+            <Reveal delay={150}>
               <div className="rounded-3xl border border-border bg-panel p-8">
                 <div className="flex items-start gap-3 opacity-60">
                   <span
@@ -261,51 +275,20 @@ export default function GuaranteesPage() {
         </Reveal>
       </div>
 
-      <div className="bg-panel px-6 py-24">
-        <div className="mx-auto max-w-5xl">
-          <Reveal>
-            <div className="max-w-2xl">
-              <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-                Using a guarantee
-              </p>
-              <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
-                How claiming one actually works.
-              </h2>
-              <p className="mt-4 text-foreground/70">
-                We built these to be simple to use — a guarantee you have to
-                fight for isn&rsquo;t really a guarantee.
-              </p>
-            </div>
-          </Reveal>
-
-          <div className="mt-12 space-y-4">
-            {claimSteps.map((step, i) => (
-              <Reveal key={step.title} delay={i * 60}>
-                <div className="flex flex-wrap gap-5 rounded-2xl border border-border bg-background p-6 sm:flex-nowrap sm:items-start">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/15 font-heading text-sm text-accent-text">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-medium text-foreground">{step.title}</p>
-                    <p className="mt-1 text-sm text-foreground/65">{step.text}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div id="the-11" className="px-6 py-24">
+      <div id="the-11" className="scroll-mt-20 px-6 py-24">
         <div className="mx-auto max-w-5xl">
           <div className="max-w-3xl">
             <Reveal>
               <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
                 In full
               </p>
+            </Reveal>
+            <ClipReveal>
               <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
                 The 11 guarantees.
               </h2>
+            </ClipReveal>
+            <Reveal delay={100}>
               <p className="mt-4 text-foreground/70">
                 Every promise below names exactly what we&rsquo;re committing
                 to and exactly what happens if we don&rsquo;t deliver it. Open
@@ -322,10 +305,11 @@ export default function GuaranteesPage() {
               Jump to a guarantee
             </summary>
             <ul className="mt-3 space-y-2 text-sm">
-              {guarantees.map((g, i) => (
-                <li key={g.title}>
-                  <a href={`#${slugify(g.title)}`} className="text-foreground/70 hover:text-foreground">
-                    {String(i + 1).padStart(2, "0")}. {g.title}
+              {tocHeadings.map((h, i) => (
+                <li key={h.id}>
+                  <a href={`#${h.id}`} className="flex gap-3 text-foreground/70 hover:text-foreground">
+                    <span className="font-medium tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                    {h.text}
                   </a>
                 </li>
               ))}
@@ -333,25 +317,9 @@ export default function GuaranteesPage() {
           </details>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[220px_1fr] lg:gap-14">
-            <nav className="hidden lg:block" aria-label="The 11 guarantees">
-              <div className="sticky top-24">
-                <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
-                  Contents
-                </p>
-                <ul className="mt-3 space-y-2 text-sm">
-                  {guarantees.map((g, i) => (
-                    <li key={g.title}>
-                      <a
-                        href={`#${slugify(g.title)}`}
-                        className="text-foreground/60 hover:text-foreground"
-                      >
-                        {String(i + 1).padStart(2, "0")}. {g.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </nav>
+            <aside className="hidden lg:block">
+              <ArticleToc label="The 11" headings={tocHeadings} />
+            </aside>
 
             <div className="space-y-6">
             {guarantees.map((g, i) => (
@@ -365,7 +333,7 @@ export default function GuaranteesPage() {
                       <h3 className="font-heading text-xl leading-[1.15] tracking-tight">
                         {g.title}
                       </h3>
-                      <p className="mt-3 font-medium text-foreground/90">{g.promise}</p>
+                      <p className="mt-3 text-lg font-medium leading-snug text-foreground">{g.promise}</p>
                       <p className="mt-3 text-sm text-foreground/65">{g.context}</p>
                     </div>
                   </div>
@@ -422,12 +390,52 @@ export default function GuaranteesPage() {
       </div>
 
       <div className="bg-panel px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <div className="max-w-2xl">
+            <Reveal>
+              <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+                Using a guarantee
+              </p>
+            </Reveal>
+            <ClipReveal>
+              <h2 className="mt-3 font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
+                How claiming one actually works.
+              </h2>
+            </ClipReveal>
+            <Reveal delay={100}>
+              <p className="mt-4 text-foreground/70">
+                We built these to be simple to use — a guarantee you have to
+                fight for isn&rsquo;t really a guarantee.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* A left-to-right process rather than stacked rows — the dot and
+              rule on each step echo the timeline on the About page. */}
+          <div role="list" className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-5">
+            {claimSteps.map((step, i) => (
+              <Reveal key={step.title} delay={i * 90}>
+                <div role="listitem" className="relative h-full border-t border-foreground/15 pt-8">
+                  <span aria-hidden className="absolute -top-[5px] left-0 h-2.5 w-2.5 rounded-full bg-accent" />
+                  <p aria-hidden className="font-heading text-5xl leading-none tracking-tight text-foreground/15">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-5 font-medium leading-snug text-foreground">{step.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/65">{step.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 py-24">
         <div className="mx-auto max-w-3xl">
-          <Reveal>
-            <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
+          <ClipReveal>
+            <h2 className="font-heading text-3xl leading-[1.15] tracking-tight sm:text-4xl">
               Common questions
             </h2>
-          </Reveal>
+          </ClipReveal>
           <div className="mt-10 divide-y divide-border">
             {faqs.map((faq, i) => (
               <Reveal key={faq.question} delay={i * 40}>
@@ -453,26 +461,6 @@ export default function GuaranteesPage() {
         </div>
       </div>
 
-      <div className="px-6 py-24">
-        <Reveal>
-          <div className="mx-auto max-w-xl rounded-2xl border border-border bg-panel p-10 text-center">
-            <h2 className="font-heading text-2xl leading-[1.15] tracking-tight sm:text-3xl">
-              Eleven guarantees. Nothing on the line for you.
-            </h2>
-            <p className="mx-auto mt-3 max-w-sm text-sm text-foreground/65">
-              Each one has something real on the line for us, not you. If
-              you&rsquo;ve read this far and you&rsquo;re still not sure —
-              that&rsquo;s exactly what the call is for.
-            </p>
-            <Link
-              href="/get-started"
-              className="mt-7 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-            >
-              Get started
-            </Link>
-          </div>
-        </Reveal>
-      </div>
     </main>
   );
 }

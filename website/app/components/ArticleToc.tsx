@@ -6,7 +6,7 @@ export type TocHeading = { id: string; text: string };
 
 // Highlights whichever section the reader is currently in, based on the
 // last heading that's scrolled past a line just below the fixed header.
-export default function ArticleToc({ headings }: { headings: TocHeading[] }) {
+export default function ArticleToc({ headings, label = "On this page" }: { headings: TocHeading[]; label?: string }) {
   const [active, setActive] = useState<string>();
 
   useEffect(() => {
@@ -37,8 +37,8 @@ export default function ArticleToc({ headings }: { headings: TocHeading[] }) {
   }
 
   return (
-    <nav aria-label="On this page" className="sticky top-28">
-      <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">On this page</p>
+    <nav aria-label={label} className="sticky top-28">
+      <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">{label}</p>
       <ol className="mt-4 space-y-1 border-l border-border">
         {headings.map((heading, i) => {
           const isActive = active === heading.id;
