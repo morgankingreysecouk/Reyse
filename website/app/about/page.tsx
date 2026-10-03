@@ -223,7 +223,7 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-12 sm:grid-cols-3 sm:gap-10">
             {values.map((value, i) => (
               <div key={value.title}>
-                <ScaleReveal delay={i * 120} from="scale-150">
+                <ScaleReveal delay={i * 120} from="scale-150" className="w-fit">
                   <p className="font-heading text-6xl tracking-tight text-foreground/15 sm:text-7xl">
                     0{i + 1}
                   </p>

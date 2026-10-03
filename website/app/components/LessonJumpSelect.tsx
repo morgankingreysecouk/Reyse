@@ -20,7 +20,7 @@ export default function LessonJumpSelect({
       value={currentSlug}
       onChange={(e) => router.push(`${basePath}/${e.target.value}`)}
       aria-label="Jump to lesson"
-      className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground/70 hover:border-foreground/30"
+      className="min-w-0 max-w-full truncate rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground/70 hover:border-foreground/30 sm:max-w-xs"
     >
       {lessons.map((l, i) => (
         <option key={l.slug} value={l.slug}>
