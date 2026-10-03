@@ -62,7 +62,7 @@ function TopicSection({ topic, posts: sectionPosts }: { topic: NonNullable<Post[
   if (sectionPosts.length === 0) return null;
   return (
     <Reveal>
-      <section className="mt-20 first:mt-0">
+      <section className="mt-20">
         <h2 className="font-heading text-4xl tracking-tight sm:text-5xl">{TOPIC_LABELS[topic]}</h2>
         <div className="mt-6 border-t border-border">
           {sectionPosts.map((post) => (
