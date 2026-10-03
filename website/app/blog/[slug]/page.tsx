@@ -91,22 +91,6 @@ export default async function BlogPost({
           </div>
         )}
 
-        <div className="mt-16 rounded-2xl border border-border bg-panel p-8 text-center">
-          <h2 className="font-heading text-xl leading-[1.1] tracking-tight">
-            Want to know where your own business stands?
-          </h2>
-          <p className="mx-auto mt-2 max-w-sm text-sm text-foreground/65">
-            Tell us about your business and we&rsquo;ll show you exactly what&rsquo;s
-            missing.
-          </p>
-          <Link
-            href="/get-started"
-            className="mt-6 inline-block rounded-full bg-accent px-6 py-3 text-sm font-medium text-accent-foreground hover:opacity-90"
-          >
-            Get started
-          </Link>
-        </div>
-
         {otherPosts.length > 0 && (
           <div className="mt-16 border-t border-border pt-10">
             <p className="text-sm font-medium text-foreground/65">Read next</p>
