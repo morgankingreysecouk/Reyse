@@ -117,7 +117,7 @@ export default function BlogIndex() {
       <div className="mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <h1 className="font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
-            Specifics, not theory.
+            What we&rsquo;re actually seeing.
           </h1>
           <p className="mt-5 text-lg text-foreground/70">
             The same standard we hold client work to: concrete, checkable, and
