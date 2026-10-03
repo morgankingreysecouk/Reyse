@@ -15,10 +15,10 @@ const TOPIC_LABELS: Record<NonNullable<Post["topic"]>, string> = {
   seo_geo: "SEO & AI search",
 };
 
-// How many of the newest posts get pulled into "Most recent" before the
-// rest fall back to being organised by topic — otherwise that section
-// would quietly swallow the entire archive forever as more posts land.
-const RECENT_COUNT = 7;
+// How many of the newest posts (after the one already shown in the hero
+// band) get pulled into "Most recent" before the rest fall back to being
+// organised by topic.
+const RECENT_COUNT = 9;
 
 function groupByTopic(allPosts: Post[]): Map<NonNullable<Post["topic"]>, Post[]> {
   const groups = new Map<NonNullable<Post["topic"]>, Post[]>();
@@ -36,20 +36,29 @@ function groupByTopic(allPosts: Post[]): Map<NonNullable<Post["topic"]>, Post[]>
 function CardReveal({
   immediate,
   delay,
+  className = "",
   children,
 }: {
   immediate: boolean;
   delay: number;
+  className?: string;
   children: React.ReactNode;
 }) {
   if (immediate) {
     return (
-      <div className="animate-[hero-fade-in_0.6s_ease-out_backwards]" style={{ animationDelay: `${delay}ms` }}>
+      <div
+        className={`animate-[hero-fade-in_0.6s_ease-out_backwards] ${className}`}
+        style={{ animationDelay: `${delay}ms` }}
+      >
         {children}
       </div>
     );
   }
-  return <Reveal delay={delay}>{children}</Reveal>;
+  return (
+    <Reveal delay={delay} className={className}>
+      {children}
+    </Reveal>
+  );
 }
 
 function PostVisual({ post, aspect, sizes }: { post: Post; aspect: string; sizes: string }) {
@@ -75,7 +84,7 @@ function BigCard({ post }: { post: Post }) {
       href={`/blog/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
     >
-      <PostVisual post={post} aspect="aspect-[16/9]" sizes="(min-width: 1024px) 56vw, 100vw" />
+      <PostVisual post={post} aspect="aspect-[16/10]" sizes="(min-width: 1024px) 40vw, 100vw" />
       <div className="flex flex-1 flex-col p-6">
         <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
           {TOPIC_LABELS[post.topic ?? "industry_news"]}
@@ -92,68 +101,79 @@ function BigCard({ post }: { post: Post }) {
   );
 }
 
-function MediumCard({ post }: { post: Post }) {
-  return (
-    <Link
-      href={`/blog/${post.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
-    >
-      <PostVisual post={post} aspect="aspect-[16/10]" sizes="(min-width: 1024px) 40vw, 100vw" />
-      <div className="flex flex-1 flex-col p-5">
-        <p className="text-xs font-medium text-foreground/50">{post.date}</p>
-        <h3 className="mt-2 font-heading text-lg leading-[1.2] tracking-tight transition group-hover:text-accent-text">
-          {post.title}
-        </h3>
-      </div>
-    </Link>
-  );
-}
-
-function SmallCard({ post }: { post: Post }) {
+// The small square cards in the 2x2 grid beside the lead card.
+function GridCard({ post }: { post: Post }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
     >
-      <PostVisual post={post} aspect="aspect-[4/3]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
-      <div className="p-5">
-        <p className="text-xs font-medium text-foreground/50">{post.date}</p>
-        <h3 className="mt-2 font-heading text-base leading-[1.25] tracking-tight transition group-hover:text-accent-text">
+      <PostVisual post={post} aspect="aspect-square" sizes="(min-width: 1024px) 15vw, 50vw" />
+      <div className="p-4">
+        <h3 className="font-heading text-base leading-[1.25] tracking-tight transition group-hover:text-accent-text">
           {post.title}
         </h3>
+        <p className="mt-1.5 line-clamp-2 text-xs text-foreground/60">{post.excerpt}</p>
       </div>
     </Link>
   );
 }
 
-// Deliberately varied sizes rather than a uniform grid — one large lead
-// card, up to two medium ones beside it, the rest smaller below. Degrades
-// gracefully: with just one post, it's only the big card.
-function VariedPostGrid({ posts: groupPosts, immediate }: { posts: Post[]; immediate: boolean }) {
-  const [featured, second, third, ...rest] = groupPosts;
-  const sideCards = [second, third].filter((p): p is Post => Boolean(p));
-
+// The compact thumbnail + text rows in the sidebar list.
+function SidebarRow({ post }: { post: Post }) {
   return (
-    <div>
-      <div className={`grid gap-6 ${sideCards.length > 0 ? "lg:grid-cols-[1.4fr_1fr]" : "max-w-2xl"}`}>
-        <CardReveal immediate={immediate} delay={0}>
-          <BigCard post={featured} />
-        </CardReveal>
-        {sideCards.length > 0 && (
-          <div className="flex flex-col gap-6">
-            {sideCards.map((post, i) => (
-              <CardReveal key={post.slug} immediate={immediate} delay={120 + i * 120}>
-                <MediumCard post={post} />
-              </CardReveal>
-            ))}
-          </div>
+    <Link href={`/blog/${post.slug}`} className="group flex items-start gap-4">
+      <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-panel">
+        {post.image && (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes="64px"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
+          />
         )}
       </div>
-      {rest.length > 0 && (
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {rest.map((post, i) => (
-            <CardReveal key={post.slug} immediate={immediate} delay={360 + Math.min(i, 4) * 80}>
-              <SmallCard post={post} />
+      <div className="min-w-0">
+        <h3 className="font-heading text-base leading-[1.25] tracking-tight transition group-hover:text-accent-text">
+          {post.title}
+        </h3>
+        <p className="mt-1.5 line-clamp-2 text-xs text-foreground/60">{post.excerpt}</p>
+      </div>
+    </Link>
+  );
+}
+
+// One lead card, up to four small cards in a 2x2 grid to its left, and a
+// sidebar list of the remaining posts to its right. Degrades gracefully
+// down to just the lead card when a section only has one post.
+function VariedPostGrid({ posts: groupPosts, immediate }: { posts: Post[]; immediate: boolean }) {
+  const [featured, ...rest] = groupPosts;
+  const gridPosts = rest.slice(0, 4);
+  const sidebarPosts = rest.slice(4);
+  const hasSiblings = gridPosts.length > 0 || sidebarPosts.length > 0;
+
+  return (
+    <div className={`grid gap-8 ${hasSiblings ? "lg:grid-cols-[1fr_1.3fr_1fr]" : "max-w-2xl"}`}>
+      <CardReveal immediate={immediate} delay={0} className="lg:order-2">
+        <BigCard post={featured} />
+      </CardReveal>
+
+      {gridPosts.length > 0 && (
+        <div className="grid grid-cols-2 content-start gap-4 lg:order-1">
+          {gridPosts.map((post, i) => (
+            <CardReveal key={post.slug} immediate={immediate} delay={120 + i * 90}>
+              <GridCard post={post} />
+            </CardReveal>
+          ))}
+        </div>
+      )}
+
+      {sidebarPosts.length > 0 && (
+        <div className="flex flex-col gap-6 lg:order-3">
+          {sidebarPosts.map((post, i) => (
+            <CardReveal key={post.slug} immediate={immediate} delay={480 + Math.min(i, 4) * 90}>
+              <SidebarRow post={post} />
             </CardReveal>
           ))}
         </div>
@@ -178,8 +198,11 @@ function PostSection({ label, posts: sectionPosts, immediate }: { label: string;
 
 export default function BlogIndex() {
   const latest = posts[0];
-  const recentPosts = posts.slice(0, RECENT_COUNT);
-  const groups = groupByTopic(posts.slice(RECENT_COUNT));
+  // The hero band below already shows the latest post in full, so the
+  // listing starts from the next one instead of repeating it.
+  const afterLatest = posts.slice(1);
+  const recentPosts = afterLatest.slice(0, RECENT_COUNT);
+  const groups = groupByTopic(afterLatest.slice(RECENT_COUNT));
 
   const sections: { label: string; posts: Post[] }[] = [
     { label: "Most recent", posts: recentPosts },
@@ -190,8 +213,8 @@ export default function BlogIndex() {
   ];
 
   return (
-    <main className="flex-1 px-6 pb-20 pt-40">
-      <div className="mx-auto max-w-4xl text-center">
+    <main className="flex-1 overflow-x-hidden pb-20 pt-40">
+      <div className="mx-auto max-w-4xl px-6 text-center">
         <p className="animate-[hero-fade-in_0.5s_ease-out_backwards] text-xs font-medium uppercase tracking-wide text-foreground/50">
           Blog
         </p>
@@ -202,36 +225,55 @@ export default function BlogIndex() {
 
       {latest && (
         <div
-          className="mx-auto mt-12 max-w-4xl animate-[hero-fade-in_0.6s_ease-out_backwards] rounded-3xl border border-accent/25 bg-accent/10 px-6 py-8 sm:flex sm:items-center sm:justify-between sm:gap-10 sm:px-10 sm:py-10"
+          className="relative mx-[calc(50%-50vw)] mt-16 w-screen animate-[hero-fade-in_0.6s_ease-out_backwards] border-y border-border bg-accent/10"
           style={{ animationDelay: "450ms" }}
         >
-          <p className="max-w-xl text-lg text-foreground/70">
-            Honest updates on Google, AI search, and reviews — written from
-            client work, not speculation.
-          </p>
-          {latest.image && (
-            <Link
-              href={`/blog/${latest.slug}`}
-              className="group mt-6 flex shrink-0 items-center gap-3 sm:mt-0"
-            >
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl sm:h-20 sm:w-20">
+          <Link
+            href={`/blog/${latest.slug}`}
+            className="group mx-auto flex max-w-6xl flex-col gap-10 px-6 py-14 sm:flex-row sm:items-stretch sm:gap-12"
+          >
+            <div className="flex flex-1 flex-col justify-between py-2">
+              <p className="text-xs font-medium uppercase tracking-wide text-accent-text">
+                {TOPIC_LABELS[latest.topic ?? "industry_news"]}
+              </p>
+              <h2 className="mt-8 flex items-center gap-3 font-heading text-4xl leading-[1.1] tracking-tight transition group-hover:text-accent-text sm:text-5xl">
+                {latest.title}
+                <svg
+                  viewBox="0 0 16 16"
+                  className="h-6 w-6 shrink-0 -translate-x-1 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </h2>
+              <div className="mt-8 flex flex-wrap items-end justify-between gap-6">
+                <div className="text-sm text-foreground/60">
+                  <p className="font-medium text-foreground">{latest.author ?? "Morgan King"}</p>
+                  <p className="mt-0.5">{latest.date}</p>
+                </div>
+                <p className="max-w-xs text-sm text-foreground/70">{latest.excerpt}</p>
+              </div>
+            </div>
+            {latest.image && (
+              <div className="relative h-64 w-full shrink-0 overflow-hidden rounded-2xl sm:h-auto sm:w-[38%]">
                 <Image
                   src={latest.image}
                   alt={latest.title}
                   fill
-                  sizes="80px"
-                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
+                  sizes="(min-width: 640px) 38vw, 100vw"
+                  priority
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
                 />
               </div>
-              <span className="max-w-[9rem] text-xs font-medium text-foreground/60 transition group-hover:text-accent-text">
-                Latest: {latest.title}
-              </span>
-            </Link>
-          )}
+            )}
+          </Link>
         </div>
       )}
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl px-6">
         {sections.map((section, i) => (
           <PostSection key={section.label} label={section.label} posts={section.posts} immediate={i === 0} />
         ))}
