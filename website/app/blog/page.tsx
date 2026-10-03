@@ -3,115 +3,79 @@ import Link from "next/link";
 import Reveal from "../components/Reveal";
 import RevealWords from "../components/RevealWords";
 import { pageMetadata } from "../lib/seo";
-import { posts } from "./data";
+import { posts, type Post } from "./data";
 
 export const metadata = pageMetadata({
   title: "Blog",
   description: "Practical, specific writing on AI search, SEO, and reviews for estate and letting agents — not vague theory.",
 });
 
-// A real photo per post, specific to what that post is actually about —
-// not generic real-estate stock imagery. Falls back to the topic icon
-// below for any slug without one yet.
-const images: Record<string, string> = {
-  "invisible-to-chatgpt": "/images/blog/invisible-to-chatgpt.webp",
-  "google-business-profile-mistakes": "/images/blog/google-business-profile-mistakes.webp",
-  "getting-more-google-reviews": "/images/blog/getting-more-google-reviews.webp",
-  "ai-search-2026-property": "/images/blog/ai-search-2026-property.webp",
-  "schema-markup-explained": "/images/blog/schema-markup-explained.webp",
+// Content radar's own classification becomes the section a post lives in —
+// same pattern as a magazine-style index grouped into named categories
+// (Guides / Reviews / Answers, say) rather than one undifferentiated feed.
+// Order here is the order sections appear on the page.
+const TOPIC_LABELS: Record<NonNullable<Post["topic"]>, string> = {
+  industry_news: "Industry news",
+  seo_geo: "SEO & AI search",
 };
 
-const imageAlts: Record<string, string> = {
-  "invisible-to-chatgpt": "Someone checking what an AI chat assistant says about local estate agents on a laptop",
-  "google-business-profile-mistakes": "A Google Business Profile listing open on a smartphone",
-  "getting-more-google-reviews": "A five-star review request screen open on a smartphone",
-  "ai-search-2026-property": "A laptop and phone on a desk showing an AI search assistant and a voice assistant",
-  "schema-markup-explained": "A laptop showing structured schema markup code in a browser",
-};
-
-// Small topic icon per post, keyed by slug — used only as a fallback for
-// any post without a photo yet. Each is a function of className so the
-// same icon can render at featured size or grid size.
-const icons: Record<string, (className: string) => React.ReactNode> = {
-  "invisible-to-chatgpt": (className) => (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M4 5h16v11H9l-4 4V5Z" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8.5 10h7M8.5 13h4.5" strokeLinecap="round" />
-    </svg>
-  ),
-  "google-business-profile-mistakes": (className) => (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" strokeLinecap="round" strokeLinejoin="round" />
-      <circle cx="12" cy="9.5" r="2.5" />
-    </svg>
-  ),
-  "getting-more-google-reviews": (className) => (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M12 4.5l2.2 4.5 4.9.7-3.55 3.47.84 4.88L12 15.8l-4.4 2.25.84-4.88L4.9 9.7l4.9-.7L12 4.5Z" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
-  "ai-search-2026-property": (className) => (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
-      <circle cx="10.5" cy="10.5" r="6.5" />
-      <path d="M19.5 19.5 15.2 15.2" strokeLinecap="round" />
-      <path d="M10.5 7.5v6M7.5 10.5h6" strokeLinecap="round" />
-    </svg>
-  ),
-  "schema-markup-explained": (className) => (
-    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M9 4 4 12l5 8M15 4l5 8-5 8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
-};
-
-// Fallback for any post without a specific icon yet — every auto-generated
-// post, and any manual one added without a photo. A radar sweep, since
-// that's literally what the research tool is doing.
-const defaultIcon = (className: string) => (
-  <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.5">
-    <circle cx="12" cy="12" r="8.5" />
-    <path d="M12 12 12 5.5A6.5 6.5 0 0 1 18.5 12Z" fill="currentColor" stroke="none" opacity="0.15" />
-    <path d="M12 12 4 12" strokeLinecap="round" />
-    <circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none" />
-  </svg>
-);
-
-function PostVisual({
-  slug,
-  image,
-  iconSize,
-  aspect,
-  sizes,
-}: {
-  slug: string;
-  image?: string;
-  iconSize: string;
-  aspect: string;
-  sizes: string;
-}) {
-  // Auto-generated posts carry their own photo straight on the post
-  // object; the hand-written posts still use the slug-keyed map below.
-  const src = image ?? images[slug];
-
-  if (src) {
-    return (
-      <div className={`relative ${aspect} overflow-hidden rounded-2xl bg-panel`}>
-        <Image src={src} alt={imageAlts[slug] ?? ""} fill sizes={sizes} className="object-cover" />
-      </div>
-    );
+function groupByTopic(allPosts: Post[]): Map<NonNullable<Post["topic"]>, Post[]> {
+  const groups = new Map<NonNullable<Post["topic"]>, Post[]>();
+  for (const post of allPosts) {
+    // Absent only on a post written before this field existed — not a case
+    // that exists today now the old hand-written posts are gone, but kept
+    // as a safe fallback rather than letting such a post vanish silently.
+    const topic = post.topic ?? "industry_news";
+    groups.set(topic, [...(groups.get(topic) ?? []), post]);
   }
+  return groups;
+}
 
+function PostRow({ post }: { post: Post }) {
   return (
-    <div className={`flex ${aspect} items-center justify-center rounded-2xl bg-panel`}>
-      <span className="flex items-center justify-center rounded-full bg-accent/15 text-accent-text" style={{ width: "2.6em", height: "2.6em" }}>
-        {(icons[slug] ?? defaultIcon)(iconSize)}
-      </span>
-    </div>
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group flex flex-col gap-5 border-b border-border py-8 first:pt-0 last:border-0 sm:flex-row sm:items-center sm:justify-between sm:gap-10"
+    >
+      <div>
+        <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">
+          {TOPIC_LABELS[post.topic ?? "industry_news"]}
+        </p>
+        <h3 className="mt-2 font-heading text-2xl leading-[1.2] tracking-tight transition group-hover:opacity-70 sm:text-3xl">
+          {post.title}
+        </h3>
+        <p className="mt-3 max-w-xl text-sm text-foreground/65">{post.excerpt}</p>
+        <p className="mt-3 text-xs text-foreground/50">
+          {post.date} · {post.readingTime}
+        </p>
+      </div>
+      {post.image && (
+        <div className="relative h-40 w-full shrink-0 overflow-hidden rounded-2xl sm:h-28 sm:w-48">
+          <Image src={post.image} alt="" fill sizes="192px" className="object-cover" />
+        </div>
+      )}
+    </Link>
+  );
+}
+
+function TopicSection({ topic, posts: sectionPosts }: { topic: NonNullable<Post["topic"]>; posts: Post[] }) {
+  if (sectionPosts.length === 0) return null;
+  return (
+    <Reveal>
+      <section className="mt-20 first:mt-0">
+        <h2 className="font-heading text-4xl tracking-tight sm:text-5xl">{TOPIC_LABELS[topic]}</h2>
+        <div className="mt-6 border-t border-border">
+          {sectionPosts.map((post) => (
+            <PostRow key={post.slug} post={post} />
+          ))}
+        </div>
+      </section>
+    </Reveal>
   );
 }
 
 export default function BlogIndex() {
-  const [featured, second, third, ...rest] = posts;
+  const groups = groupByTopic(posts);
 
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
@@ -126,96 +90,10 @@ export default function BlogIndex() {
         </p>
       </div>
 
-      <div className="mx-auto max-w-6xl">
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
-          <Reveal>
-            <Link
-              href={`/blog/${featured.slug}`}
-              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
-            >
-              <PostVisual
-                slug={featured.slug}
-                image={featured.image}
-                iconSize="h-9 w-9"
-                aspect="aspect-[16/9]"
-                sizes="(min-width: 1024px) 56vw, 100vw"
-              />
-              <div className="flex flex-1 flex-col p-6">
-                <p className="text-xs font-medium text-foreground/65">
-                  {featured.date} · {featured.readingTime}
-                </p>
-                <h2 className="mt-3 font-heading text-2xl leading-[1.2] tracking-tight sm:text-3xl">
-                  {featured.title}
-                </h2>
-                <p className="mt-3 text-sm text-foreground/70">{featured.excerpt}</p>
-                <span className="mt-auto inline-flex items-center gap-1 pt-6 text-sm font-medium text-accent-text opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100">
-                  Read
-                  <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </div>
-            </Link>
-          </Reveal>
-
-          <div className="flex flex-col gap-6">
-            {[second, third].filter(Boolean).map((post, i) => (
-              <Reveal key={post.slug} delay={(i + 1) * 70}>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border transition hover:border-foreground/30"
-                >
-                  <PostVisual
-                    slug={post.slug}
-                    image={post.image}
-                    iconSize="h-6 w-6"
-                    aspect="aspect-[16/10]"
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                  />
-                  <div className="flex flex-1 flex-col p-5">
-                    <p className="text-xs font-medium text-foreground/65">{post.date}</p>
-                    <h3 className="mt-2 font-heading text-lg leading-[1.2] tracking-tight">
-                      {post.title}
-                    </h3>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-
-        {rest.length > 0 && (
-          <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {rest.map((post, i) => (
-              <Reveal key={post.slug} delay={i * 70}>
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border transition hover:border-foreground/30"
-                >
-                  <PostVisual
-                    slug={post.slug}
-                    image={post.image}
-                    iconSize="h-5 w-5"
-                    aspect="aspect-[4/3]"
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  />
-                  <div className="p-5">
-                    <p className="text-xs font-medium text-foreground/65">{post.date}</p>
-                    <h3 className="mt-2 font-heading text-base leading-[1.25] tracking-tight">
-                      {post.title}
-                    </h3>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        )}
-
-        <div className="mt-16 flex justify-center">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-sm font-medium text-foreground/70">
-            1
-          </span>
-        </div>
+      <div className="mx-auto max-w-4xl">
+        {(Object.keys(TOPIC_LABELS) as NonNullable<Post["topic"]>[]).map((topic) => (
+          <TopicSection key={topic} topic={topic} posts={groups.get(topic) ?? []} />
+        ))}
       </div>
     </main>
   );

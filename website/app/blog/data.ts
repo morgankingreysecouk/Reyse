@@ -25,6 +25,10 @@ export type Post = {
   // a public path under /images/blog, same convention as the manual
   // posts' images map in page.tsx.
   image?: string;
+  // Content radar's own classification, used to group posts into named
+  // sections on the index page. Absent on any post written before this
+  // field existed — treated as "industry_news" there, see TOPIC_LABELS.
+  topic?: "seo_geo" | "industry_news";
 };
 
 // The hand-written posts. Auto-generated ones are never added here —
