@@ -135,7 +135,7 @@ function VariedPostGrid({ posts: groupPosts, immediate }: { posts: Post[]; immed
 
   return (
     <div>
-      <div className={`grid gap-6 ${sideCards.length > 0 ? "lg:grid-cols-[1.4fr_1fr]" : ""}`}>
+      <div className={`grid gap-6 ${sideCards.length > 0 ? "lg:grid-cols-[1.4fr_1fr]" : "max-w-2xl"}`}>
         <CardReveal immediate={immediate} delay={0}>
           <BigCard post={featured} />
         </CardReveal>
