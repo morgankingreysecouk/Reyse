@@ -5,6 +5,11 @@ import ArticleBody from "../../components/ArticleBody";
 import { pageMetadata } from "../../lib/seo";
 import { posts } from "../data";
 
+const TOPIC_LABELS: Record<string, string> = {
+  industry_news: "Industry news",
+  seo_geo: "SEO & AI search",
+};
+
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
@@ -20,6 +25,7 @@ export async function generateMetadata({
   return pageMetadata({
     title: post.title,
     description: post.excerpt,
+    image: post.image ? `https://reyse.co.uk${post.image}` : undefined,
   });
 }
 
@@ -34,14 +40,36 @@ export default async function BlogPost({
 
   const otherPosts = posts.filter((p) => p.slug !== slug).slice(0, 2);
 
+  // JSON-LD so search engines (and AI answer engines — the entire point
+  // of the product this blog sits under) get an unambiguous, structured
+  // description of the post rather than having to infer one from prose.
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: new Date(post.date).toISOString(),
+    author: { "@type": "Organization", name: post.author ?? "Reyse" },
+    publisher: { "@type": "Organization", name: "Reyse" },
+    ...(post.image ? { image: `https://reyse.co.uk${post.image}` } : {}),
+    mainEntityOfPage: `https://reyse.co.uk/blog/${post.slug}`,
+  };
+
   return (
     <main className="flex-1 px-6 pb-24 pt-40">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <div className="mx-auto max-w-2xl">
         <Link href="/blog" className="text-sm text-foreground/60 hover:text-foreground">
           ← All posts
         </Link>
 
-        <h1 className="mt-6 font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
+        {post.topic && (
+          <p className="mt-6 text-xs font-medium uppercase tracking-wide text-foreground/50">
+            {TOPIC_LABELS[post.topic] ?? post.topic}
+          </p>
+        )}
+
+        <h1 className="mt-3 font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl">
           {post.title}
         </h1>
 
@@ -63,7 +91,7 @@ export default async function BlogPost({
 
         {post.image && (
           <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl bg-panel">
-            <Image src={post.image} alt="" fill sizes="(min-width: 768px) 672px, 100vw" className="object-cover" />
+            <Image src={post.image} alt={post.title} fill sizes="(min-width: 768px) 672px, 100vw" className="object-cover" />
           </div>
         )}
 

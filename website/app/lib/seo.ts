@@ -10,9 +10,15 @@ import type { Metadata } from "next";
 export function pageMetadata({
   title,
   description,
+  image,
 }: {
   title: string;
   description: string;
+  // Lets a page (a blog post, specifically) use its own real image for
+  // link previews instead of always falling back to the generic
+  // site-wide OG image — otherwise sharing a post never actually shows
+  // the photo generated for it.
+  image?: string;
 }): Metadata {
   return {
     title,
@@ -24,7 +30,7 @@ export function pageMetadata({
       siteName: "Reyse",
       locale: "en_GB",
       type: "website",
-      images: ["/opengraph-image"],
+      images: [image ?? "/opengraph-image"],
     },
     twitter: {
       card: "summary_large_image",

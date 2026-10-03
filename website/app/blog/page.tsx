@@ -51,7 +51,7 @@ function PostRow({ post }: { post: Post }) {
       </div>
       {post.image && (
         <div className="relative h-40 w-full shrink-0 overflow-hidden rounded-2xl sm:h-28 sm:w-48">
-          <Image src={post.image} alt="" fill sizes="192px" className="object-cover" />
+          <Image src={post.image} alt={post.title} fill sizes="(min-width: 640px) 192px, 100vw" className="object-cover" />
         </div>
       )}
     </Link>
