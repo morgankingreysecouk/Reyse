@@ -1,15 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ArticleBody from "../../components/ArticleBody";
+import ArticleBody, { sectionId } from "../../components/ArticleBody";
+import ArticleToc from "../../components/ArticleToc";
+import ClipReveal from "../../components/ClipReveal";
 import Reveal from "../../components/Reveal";
+import RevealWords from "../../components/RevealWords";
 import { pageMetadata } from "../../lib/seo";
-import { posts } from "../data";
+import { posts, type ContentBlock } from "../data";
 
 const TOPIC_LABELS: Record<string, string> = {
   industry_news: "Industry news",
   seo_geo: "SEO & AI search",
 };
+
+function domainOf(url: string) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+}
+
+function ExternalIcon() {
+  return (
+    <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <path d="M6 3h7v7M13 3 4 12" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 export function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
@@ -39,7 +58,11 @@ export default async function BlogPost({
   const post = posts.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const otherPosts = posts.filter((p) => p.slug !== slug).slice(0, 2);
+  const otherPosts = posts.filter((p) => p.slug !== slug).slice(0, 3);
+  const headings = post.body
+    .filter((b): b is Extract<ContentBlock, { type: "h2" }> => b.type === "h2")
+    .map((b, i) => ({ id: sectionId(i), text: b.text }));
+  const hasToc = headings.length > 1;
 
   // JSON-LD so search engines (and AI answer engines — the entire point
   // of the product this blog sits under) get an unambiguous, structured
@@ -57,120 +80,183 @@ export default async function BlogPost({
   };
 
   return (
-    <main className="flex-1 px-6 pb-24 pt-40">
+    <main className="flex-1">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <div className="mx-auto max-w-2xl">
-        <Link href="/blog" className="text-sm text-foreground/60 hover:text-foreground">
-          ← All posts
-        </Link>
 
-        {/* This whole header block sits above the fold at any normal
-            viewport height, so it gets the hero's own mount-triggered
-            entrance (same as the blog index hero) rather than Reveal —
-            Reveal's scroll observer never fires for something already
-            in view on load, which would mean no animation at all here. */}
-        {post.topic && (
-          <p className="mt-6 animate-[hero-fade-in_0.5s_ease-out_backwards] text-xs font-medium uppercase tracking-wide text-foreground/50">
-            {TOPIC_LABELS[post.topic] ?? post.topic}
-          </p>
-        )}
-
-        <h1
-          className="mt-3 animate-[hero-fade-in_0.55s_ease-out_backwards] font-heading text-4xl leading-[1.1] tracking-tight sm:text-5xl"
-          style={{ animationDelay: "80ms" }}
-        >
-          {post.title}
-        </h1>
-
+      {/* Everything down to the photo is above the fold, so it uses the
+          mount-triggered hero entrance rather than scroll reveals. */}
+      <div
+        className={`relative overflow-hidden bg-ink px-6 pt-36 text-ink-foreground ${
+          post.image ? "pb-44 sm:pb-56" : "pb-20"
+        }`}
+      >
         <div
-          className="mt-5 animate-[hero-fade-in_0.55s_ease-out_backwards] text-sm text-foreground/65"
-          style={{ animationDelay: "190ms" }}
-        >
-          <div className="flex items-center gap-3">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-ink text-[11px] font-semibold text-ink-foreground">
-              {post.author ? post.author.slice(0, 2).toUpperCase() : "MK"}
-            </span>
-            <span>{post.author ?? "Morgan King"}</span>
-            <span aria-hidden>·</span>
-            <span>{post.date}</span>
-            <span aria-hidden>·</span>
-            <span>{post.readingTime}</span>
-          </div>
-          {post.author && (
-            <p className="mt-2 text-xs text-foreground/50">
-              Researched and written automatically, from the sources linked below — not hand-written by a person.
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.15]"
+          style={{
+            backgroundImage: "radial-gradient(rgba(250,248,242,0.5) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            maskImage: "radial-gradient(70% 70% at 30% 30%, black 40%, transparent 100%)",
+            WebkitMaskImage: "radial-gradient(70% 70% at 30% 30%, black 40%, transparent 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl">
+          <Link
+            href="/blog"
+            className="inline-flex animate-[hero-fade-in_0.5s_ease-out_backwards] items-center gap-1.5 text-sm text-ink-foreground/60 transition hover:text-ink-foreground"
+          >
+            <span aria-hidden>←</span> All posts
+          </Link>
+
+          {post.topic && (
+            <p
+              className="mt-10 animate-[hero-fade-in_0.5s_ease-out_backwards] text-xs font-medium uppercase tracking-wide text-accent"
+              style={{ animationDelay: "60ms" }}
+            >
+              {TOPIC_LABELS[post.topic] ?? post.topic}
             </p>
           )}
-        </div>
 
-        {post.image && (
-          <div
-            className="relative mt-8 aspect-[16/9] animate-[hero-fade-in_0.6s_ease-out_backwards] overflow-hidden rounded-2xl bg-panel"
-            style={{ animationDelay: "280ms" }}
+          <h1 className="mt-4 max-w-4xl font-heading text-4xl leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+            <RevealWords text={post.title} startDelay={100} delayStep={30} />
+          </h1>
+
+          <p
+            className="mt-6 max-w-2xl animate-[hero-fade-in_0.6s_ease-out_backwards] text-lg text-ink-foreground/70"
+            style={{ animationDelay: "450ms" }}
           >
-            <Image src={post.image} alt={post.title} fill sizes="(min-width: 768px) 672px, 100vw" className="object-cover" />
-          </div>
-        )}
+            {post.excerpt}
+          </p>
 
-        <div className="mt-10">
-          <ArticleBody blocks={post.body} />
-        </div>
-
-        {post.references && post.references.length > 0 && (
-          <Reveal>
-            <div className="mt-10 border-t border-border pt-6">
-              <p className="text-sm font-medium text-foreground/65">Sources</p>
-              <ul className="mt-3 space-y-2">
-                {post.references.map((ref) => (
-                  <li key={ref.url}>
-                    <a
-                      href={ref.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-accent-text hover:opacity-80"
-                    >
-                      {ref.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div
+            className="mt-8 animate-[hero-fade-in_0.6s_ease-out_backwards]"
+            style={{ animationDelay: "550ms" }}
+          >
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-foreground/70">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-accent-foreground">
+                {post.author ? post.author.slice(0, 2).toUpperCase() : "MK"}
+              </span>
+              <span className="font-medium text-ink-foreground">{post.author ?? "Morgan King"}</span>
+              <span aria-hidden>·</span>
+              <span>{post.date}</span>
+              <span aria-hidden>·</span>
+              <span>{post.readingTime}</span>
             </div>
-          </Reveal>
-        )}
+            {post.author && (
+              <p className="mt-3 text-xs text-ink-foreground/45">
+                Researched and written automatically, from the sources linked below — not hand-written by a person.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
 
-        {otherPosts.length > 0 && (
-          <div className="mt-16 border-t border-border pt-10">
-            <Reveal>
-              <p className="text-sm font-medium text-foreground/65">Read next</p>
-            </Reveal>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+      {post.image && (
+        <div className="px-6">
+          <div
+            className="relative mx-auto -mt-32 aspect-[4/3] max-w-6xl animate-[hero-fade-in_0.8s_ease-out_backwards] overflow-hidden rounded-3xl bg-panel sm:-mt-40 sm:aspect-[2/1]"
+            style={{ animationDelay: "350ms" }}
+          >
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              priority
+              sizes="(min-width: 1200px) 1152px, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      )}
+
+      <div className="px-6 pb-24 pt-16 sm:pt-24">
+        <div
+          className={`mx-auto max-w-6xl ${
+            hasToc ? "lg:grid lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-20" : ""
+          }`}
+        >
+          {hasToc && (
+            <aside className="hidden lg:block">
+              <ArticleToc headings={headings} />
+            </aside>
+          )}
+
+          <article className={`min-w-0 ${hasToc ? "max-w-3xl" : "mx-auto max-w-3xl"}`}>
+            <ArticleBody blocks={post.body} />
+
+            {post.references && post.references.length > 0 && (
+              <Reveal>
+                <div className="mt-20 rounded-3xl border border-border bg-panel p-6 sm:p-8">
+                  <p className="text-xs font-medium uppercase tracking-wide text-foreground/50">Sources</p>
+                  <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                    {post.references.map((ref) => (
+                      <li key={ref.url}>
+                        <a
+                          href={ref.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex h-full flex-col justify-between gap-4 rounded-2xl border border-border bg-background p-4 transition hover:border-foreground/30"
+                        >
+                          <span className="text-sm font-medium leading-snug text-foreground">{ref.label}</span>
+                          <span className="flex items-center gap-1.5 text-xs text-foreground/50 transition group-hover:text-accent-text">
+                            {domainOf(ref.url)}
+                            <ExternalIcon />
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
+          </article>
+        </div>
+      </div>
+
+      {otherPosts.length > 0 && (
+        <section className="bg-ink px-6 py-24 text-ink-foreground">
+          <div className="mx-auto max-w-6xl">
+            <ClipReveal>
+              <h2 className="font-heading text-3xl tracking-tight sm:text-4xl">Keep reading</h2>
+            </ClipReveal>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {otherPosts.map((p, i) => (
                 <Reveal key={p.slug} delay={i * 100}>
                   <Link
                     href={`/blog/${p.slug}`}
-                    className="group block rounded-2xl border border-border p-5 transition hover:border-foreground/30 hover:bg-panel"
+                    className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink-foreground/15 bg-ink-foreground/5 transition hover:border-ink-foreground/30 hover:bg-ink-foreground/10"
                   >
-                    <h3 className="flex items-center gap-1.5 font-heading text-base leading-[1.25] tracking-tight transition group-hover:text-accent-text">
-                      {p.title}
-                      <svg
-                        viewBox="0 0 16 16"
-                        className="h-3.5 w-3.5 shrink-0 -translate-x-1 opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        aria-hidden="true"
-                      >
-                        <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </h3>
-                    <p className="mt-2 text-xs text-foreground/65">{p.readingTime}</p>
+                    <div className="relative aspect-[16/10] overflow-hidden bg-ink-foreground/10">
+                      {p.image && (
+                        <Image
+                          src={p.image}
+                          alt={p.title}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.05]"
+                        />
+                      )}
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      {p.topic && (
+                        <p className="text-xs font-medium uppercase tracking-wide text-accent">
+                          {TOPIC_LABELS[p.topic] ?? p.topic}
+                        </p>
+                      )}
+                      <h3 className="mt-3 font-heading text-xl leading-[1.25] tracking-tight transition group-hover:text-accent">
+                        {p.title}
+                      </h3>
+                      <p className="mt-auto pt-5 text-xs text-ink-foreground/50">
+                        {p.date} · {p.readingTime}
+                      </p>
+                    </div>
                   </Link>
                 </Reveal>
               ))}
             </div>
           </div>
-        )}
-      </div>
+        </section>
+      )}
     </main>
   );
 }
